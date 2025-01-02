@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_pacientes"
+        android:icon="@drawable/appbar_pacientes_24"
+        android:title="@string/title_pacientes" />
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_clinicas"
+        android:icon="@drawable/icons8_clinic_50"
+        android:title="@string/title_clinicas" />
+
+</menu>

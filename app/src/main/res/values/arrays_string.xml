@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="length_types">
+        <item>km</item>
+        <item>hm</item>
+        <item>dam</item>
+        <item>m</item>
+        <item>dm</item>
+        <item>cm</item>
+        <item>mm</item>
+    </string-array>
+
+    <string-array name="size_types">
+        <item>kg</item>
+        <item>hg</item>
+        <item>dag</item>
+        <item>g</item>
+        <item>dg</item>
+        <item>cg</item>
+        <item>mg</item>
+    </string-array>
+
+    <string-array name="genero_types">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+</resources>

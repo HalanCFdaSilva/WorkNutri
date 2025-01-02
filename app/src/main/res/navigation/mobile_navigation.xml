@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_pacientes">
+
+
+
+    <fragment
+        android:id="@+id/navigation_pacientes"
+        android:name="com.example.nutricoop.ui.agendaPacientes.AgendaPacienteFragment"
+        android:label="@string/title_pacientes"
+        tools:layout="@layout/fragment_agenda_pacientes" >
+        <action
+            android:id="@+id/action_navigation_pacientes_to_navigation_clinicas"
+            app:destination="@id/navigation_clinicas" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_clinicas"
+        android:name="com.example.nutricoop.ui.agendaClinicas.AgendaClinicasFragment"
+        android:label="@string/title_clinicas"
+        tools:layout="@layout/fragment_agenda_clinicas" />
+
+
+</navigation>

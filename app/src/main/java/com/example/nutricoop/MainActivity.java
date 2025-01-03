@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.nutricoop.ui.addClinica.AddClinicActivie;
+import com.example.nutricoop.ui.addClinica.AddClinicActivy;
 import com.example.nutricoop.ui.addPaciente.AddPacienteActiivie;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         floatBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), AddClinicActivie.class);;
+                Intent intent = new Intent(getBaseContext(), AddClinicActivy.class);;
                 if(isPaciente){
                     intent = new Intent(getBaseContext(), AddPacienteActiivie.class);
                 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addClinica.AddClinicActivie">
+    tools:context=".ui.addClinica.AddClinicActivy">
 
     <ScrollView
         android:id="@+id/add_clinica_activy_scrollview"
@@ -19,14 +19,11 @@
             android:orientation="vertical">
 
 
+<!--        DADOS GERAIS CLINICA-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/add_clinica_dados_gerais_constraint"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/add_clinica_dados_gerais_title"
@@ -47,8 +44,10 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/add_clinica_dados_gerais_title" />
 
+
+<!--                NOME-->
                 <TextView
-                    android:id="@+id/add_clinica_dados_gerais_name_title"
+                    android:id="@+id/add_clinica_dados_gerais_title_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -67,19 +66,77 @@
                     android:hint="DIGITE O NOME CLINICA"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_dados_gerais_name_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_dados_gerais_title_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/add_clinica_dados_gerais_name_title"
-                    app:layout_constraintTop_toTopOf="@+id/add_clinica_dados_gerais_name_title" />
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_dados_gerais_title_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_dados_gerais_title_name" />
+
+                <!--           EMAIL-->
+                <TextView
+                    android:id="@+id/add_clinica_dados_pessoais_title_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/email_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_dados_gerais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_dados_gerais_name_edit_text_name" />
+
+                <EditText
+                    android:id="@+id/add_clinica_dados_pessoais_edit_text_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="DIGITE O EMAIL"
+                    android:inputType="textEmailAddress"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_dados_pessoais_title_email"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_dados_gerais_name_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_dados_gerais_name_edit_text_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_dados_pessoais_title_email" />
+
+
+                <!--           TELEFONE-->
+                <TextView
+                    android:id="@+id/add_clinica_dados_pessoais_title_fone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/fone_title"
+                    app:layout_constraintEnd_toStartOf="@+id/add_clinica_dados_pessoais_edit_text_fone"
+                    app:layout_constraintHorizontal_bias="0.66"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_dados_gerais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_dados_pessoais_edit_text_email" />
+
+                <EditText
+                    android:id="@+id/add_clinica_dados_pessoais_edit_text_fone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="DIGITE O TELEFONE"
+                    android:inputType="phone"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_dados_pessoais_title_fone"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_dados_gerais_name_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_dados_gerais_name_edit_text_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_dados_pessoais_title_fone" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+<!--            ENDERECO CLINICA-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/add_clinica_endereco_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
 
                 <TextView
                     android:id="@+id/add_clinica_endereco_title"
@@ -99,9 +156,235 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/add_clinica_endereco_title" />
+
+
+                <!--            CEP-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_cep_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="CEP:"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_sortDivider" />
+                <EditText
+                    android:id="@+id/add_clinica_endereco_cep_edit_text"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:ems="10"
+                    android:hint="DIGITE O CEP"
+                    android:inputType="textPostalAddress"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintVertical_bias="0.333" />
+
+
+                <!--            RUA-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_rua_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Rua:"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_cep_edit_text" />
+
+                <EditText
+                    android:id="@+id/add_clinica_endereco_rua_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="64dp"
+                    android:ems="10"
+                    android:hint="DIGITE O NOME DA RUA"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_rua_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_cep_edit_text"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_cep_edit_text" />
+
+
+
+<!--            NUMERO-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_numero_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Numero:"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_rua_edit_text" />
+
+                <EditText
+                    android:id="@+id/add_clinica_endereco_numero_edit_text"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="NUMERO"
+                    android:inputType="number"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_numero_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_numero_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_numero_title" />
+
+
+
+<!--            COMPLEMENTO-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_complemento_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Complemento: "
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_numero_edit_text"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_numero_edit_text"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_numero_edit_text" />
+
+                <EditText
+                    android:id="@+id/add_clinica_endereco_complemento_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="DIGITE O COMPLEMENTO"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_complemento_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_complemento_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_complemento_title" />
+
+
+
+<!--            CIDADE-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_cidade_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Cidade:"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_numero_edit_text" />
+
+                <EditText
+                    android:id="@+id/add_clinica_endereco_cidade_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="DIGITE A CIDADE"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_cidade_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_endereco_rua_edit_text"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_rua_edit_text"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_cidade_title" />
+
+
+
+<!--            BAIRRO-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_bairro_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Bairro:"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_endereco_cep_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_endereco_cidade_edit_text" />
+
+                <EditText
+                    android:id="@+id/add_clinica_endereco_bairro_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="DIGITE O BAIRRO"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_bairro_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_bairro_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_bairro_title" />
+
+
+
+                <!--            ESTADO-->
+                <TextView
+                    android:id="@+id/add_clinica_endereco_estado_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="9dp"
+                    android:text="Estado:"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_bairro_edit_text"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_bairro_edit_text"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_bairro_edit_text" />
+
+                <Spinner
+                    android:id="@+id/add_clinica_endereco_estado_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:entries="@array/estado_brasil"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_clinica_endereco_estado_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_clinica_endereco_estado_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_clinica_endereco_estado_title" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_clinica_horario_atendimento_constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/add_clinica_horario_atendimento_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="HORÁRIOS DE ATENDIMENTO NA CLINICA"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_clinica_horario_atendimento_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_clinica_horario_atendimento_title" />
+
+                <LinearLayout
+                    android:id="@+id/add_clinica_horario_atendimento_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="64dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_horario_atendimento_sortDivider" />
+
+                <Button
+                    android:id="@+id/add_clinica_horario_atendimento_button_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="ADICIONAR HORÁRIO"
+                    app:layout_constraintEnd_toEndOf="@+id/add_clinica_horario_atendimento_layout"
+                    app:layout_constraintStart_toStartOf="@+id/add_clinica_horario_atendimento_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/add_clinica_horario_atendimento_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </ScrollView>
@@ -120,7 +403,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/add_clinica_activy_activity_nav_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
@@ -129,7 +412,7 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_activity_fab"
+        android:id="@+id/add_clinica_activy_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"

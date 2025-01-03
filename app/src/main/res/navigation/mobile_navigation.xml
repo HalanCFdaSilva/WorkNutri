@@ -22,7 +22,7 @@
         android:id="@+id/navigation_clinicas"
         android:name="com.example.nutricoop.ui.agendaClinicas.AgendaClinicasFragment"
         android:label="@string/title_clinicas"
-        tools:layout="@layout/fragment_agenda_clinicas" />
+        tools:layout="@layout/fragment_agenda" />
 
 
 </navigation>

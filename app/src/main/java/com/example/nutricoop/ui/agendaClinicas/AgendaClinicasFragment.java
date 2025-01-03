@@ -25,10 +25,8 @@ public class AgendaClinicasFragment extends Fragment {
 
         binding = FragmentAgendaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-
-
         MainActivity.isPaciente = false;
+        binding.agendaFragmentLayoutSearch.setHint("Digite o nome da clinica");
         return root;
     }
 

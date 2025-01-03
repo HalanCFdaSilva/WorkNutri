@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.addPaciente.AddPacienteActiivie"/>
-        <activity android:name=".ui.addClinica.AddClinicActivie"/>
+        <activity android:name=".ui.addClinica.AddClinicActivy"/>
 
     </application>
 

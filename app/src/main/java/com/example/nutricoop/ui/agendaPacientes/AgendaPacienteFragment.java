@@ -28,12 +28,14 @@ public class AgendaPacienteFragment extends Fragment {
         binding = FragmentAgendaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         MainActivity.isPaciente = true;
+        binding.agendaFragmentLayoutSearch.setHint("Digite o nome do paciente");
         return root;
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
         binding.agendaFragmentLinearLayout.removeAllViews();
         PacienteDao pacienteDao = AppDataBase.getInstance(getContext()).pacienteDao();
         LetterPacienteFragment letterPacienteFragment = new LetterPacienteFragment(getLayoutInflater(),pacienteDao.getAllInOrder());

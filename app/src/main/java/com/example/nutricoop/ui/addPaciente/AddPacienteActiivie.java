@@ -3,16 +3,15 @@ package com.example.nutricoop.ui.addPaciente;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.nutricoop.R;
-import com.example.nutricoop.calcular.Conversor;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
 import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
 import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddPacienteActiivie extends AppCompatActivity {
 
@@ -20,10 +19,10 @@ public class AddPacienteActiivie extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_paciente_cordinator);
+        setContentView(R.layout.add_paciente_activy);
 
 
-        Button button = findViewById(R.id.add_paciente_save_button);
+        FloatingActionButton button = findViewById(R.id.add_paciente_activy_fab);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -39,7 +39,7 @@ public class LetterPacienteFragment  {
                 textView.setText(String.valueOf(letter));
 
                 LinearLayout linearLayout = layoutInflate.findViewById(R.id.agenda_letter_fragment_linear_layout);
-                inf(linearLayout,pacientestoAdd);
+                inflateLetterPacienteCard(linearLayout,pacientestoAdd);
 
                 viewGroup.addView(layoutInflate);
             }
@@ -60,20 +60,9 @@ public class LetterPacienteFragment  {
         return newPacientes;
     }
 
-    private boolean hasPacienteIfLetter(char letter) {
-        for (Paciente paciente : pacientes) {
-            if (letter  == paciente.getNomePaciente().charAt(0)){
-                return true;
-            }
-            if (letter  < paciente.getNomePaciente().charAt(0)){
-                break;
-            }
 
-        }
-        return false;
-    }
 
-    private void inf(LinearLayout layout,List<Paciente>pacientesToAdd){
+    private void inflateLetterPacienteCard(LinearLayout layout,List<Paciente>pacientesToAdd){
         PacienteCardInflater cardInflater = new PacienteCardInflater(pacientesToAdd);
         cardInflater.refreshLayout(layout,layoutInflater );
     }

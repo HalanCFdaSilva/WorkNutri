@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.nutricoop.MainActivity;
-import com.example.nutricoop.databinding.FragmentAgendaPacientesBinding;
+import com.example.nutricoop.databinding.FragmentAgendaBinding;
 import com.example.nutricoop.sqlLite.dao.PacienteDao;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
 import com.example.nutricoop.ui.agendaPacientes.Inflaters.LetterPacienteFragment;
@@ -18,14 +18,14 @@ import com.example.nutricoop.ui.agendaPacientes.Inflaters.LetterPacienteFragment
 public class AgendaPacienteFragment extends Fragment {
 
 
-    private FragmentAgendaPacientesBinding binding;
+    private FragmentAgendaBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
 
-        binding = FragmentAgendaPacientesBinding.inflate(inflater, container, false);
+        binding = FragmentAgendaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         MainActivity.isPaciente = true;
         return root;
@@ -34,10 +34,10 @@ public class AgendaPacienteFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        binding.agendaPacienteFragmentLinearLayout.removeAllViews();
+        binding.agendaFragmentLinearLayout.removeAllViews();
         PacienteDao pacienteDao = AppDataBase.getInstance(getContext()).pacienteDao();
         LetterPacienteFragment letterPacienteFragment = new LetterPacienteFragment(getLayoutInflater(),pacienteDao.getAllInOrder());
-        letterPacienteFragment.generateAgenda(binding.agendaPacienteFragmentLinearLayout);
+        letterPacienteFragment.generateAgenda(binding.agendaFragmentLinearLayout);
 
 
 

@@ -11,7 +11,7 @@
         android:id="@+id/navigation_pacientes"
         android:name="com.example.nutricoop.ui.agendaPacientes.AgendaPacienteFragment"
         android:label="@string/title_pacientes"
-        tools:layout="@layout/fragment_agenda_pacientes" >
+        tools:layout="@layout/fragment_agenda" >
         <action
             android:id="@+id/action_navigation_pacientes_to_navigation_clinicas"
             app:destination="@id/navigation_clinicas" />

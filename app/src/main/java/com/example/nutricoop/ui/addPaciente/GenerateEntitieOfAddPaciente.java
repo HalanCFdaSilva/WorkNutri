@@ -20,7 +20,7 @@ public class GenerateEntitieOfAddPaciente {
     public Patologia generatePatologia() {
 
         Patologia patologia = new Patologia();
-        patologia.setPatologiaAtual(getStringOfEditText(R.id.add_paciente_patologia_multiline_edit_patologia_atual));
+        patologia.setPatologiaAtual(getStringOfEditText(R.id.paciente_descrition_patologia_patologia_atual));
         patologia.setUrina(getStringOfEditText(R.id.add_paciente_patologia_edit_text_urina));
         patologia.setFezes(getStringOfEditText(R.id.add_paciente_patologia_edit_text_fezes));
         patologia.setHoraSono(getStringOfEditText(R.id.add_paciente_patologia_edit_text_sono));
@@ -44,7 +44,7 @@ public class GenerateEntitieOfAddPaciente {
         String pesoAtualConvertido = Conversor.convertToGram(position,atual);
 
 
-        atual = Double.parseDouble(getStringOfEditText(R.id.add_paciente_antropometria_edit_text_altura));
+        atual = Double.parseDouble(getStringOfEditText(R.id.paciente_descrition_antropometria_altura));
         position = getPositionOfSpinner(R.id.add_paciente_antropometria_spinner_altura);
         String alturaConvertido = Conversor.convertToGram(position,atual);
 

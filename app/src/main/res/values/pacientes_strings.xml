@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="paciente_title">DADOS GERAIS PACIENTE</string>
     <string name="nome_title">Nome: </string>
     <string name="cpf_title">CPF: </string>
+    <string name="genero_title">genero:</string>
     <string name="idade_title">Idade: </string>
-    <string name="peso_title">Peso: </string>
-    <string name="altura_title">Altura: </string>
+    <string name="nascimento_title">Nascimento:</string>
     <string name="fone_title">Telefone: </string>
     <string name="email_title">Email: </string>
-    <string name="peso_ideal_title">Peso ideal: </string>
     <string name="observacao_title">Observações: </string>
     <string name="button_antropometric">Antropometria</string>
     <string name="button_patologic">Patologia</string>

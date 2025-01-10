@@ -26,663 +26,917 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="DADOS GERAIS PACIENTE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/add_paciente_dados_pessoais_sortDivider"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_paciente_dados_pessoais_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_paciente_dados_pessoais" />
-
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/nome_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_sortDivider" />
-
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="64dp"
-                android:ems="10"
-                android:hint="DIGITE O NOME"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_name" />
+                app:layout_constraintTop_toTopOf="parent" >
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/paciente_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <!--           CPF-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_cpf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/cpf_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_dados_pessoais_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_dados_pessoais" />
 
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_cpf"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="DIGITE O CPF"
-                android:inputType="text"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_cpf"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/nome_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_sortDivider" />
 
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="64dp"
+                    android:ems="10"
+                    android:hint="@string/nome_hint"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_name" />
 
-            <!--           GENERO-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_genero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="genero:"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_cpf"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_cpf" />
+                <!--           CPF-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_cpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/cpf_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
 
-            <Spinner
-                android:id="@+id/add_paciente_dados_pessoais_spinner_genero"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:entries="@array/genero_types"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_genero"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_genero"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_genero" />
-
-
-            <!--           IDADE-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_idade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/idade_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_cpf" />
-
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_idade"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="DIGITE A IDADE"
-                android:inputType="number"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_idade"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
-
-            <!--           DATA NASCIMENTO-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_nascimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Nascimento:"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
-
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_nascimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:ems="10"
-                android:hint="DIGITE A DATA NASCIMENTO"
-                android:inputType="date"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_nascimento"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
-                app:layout_constraintVertical_bias="1.0" />
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_cpf"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/cpf_hint"
+                    android:inputType="text"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_cpf"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
 
 
-            <!--           EMAIL-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/email_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_nascimento" />
+                <!--           GENERO-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_genero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/genero_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_cpf"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_cpf" />
 
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="DIGITE O EMAIL"
-                android:inputType="textEmailAddress"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_email"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_email" />
+                <Spinner
+                    android:id="@+id/add_paciente_dados_pessoais_spinner_genero"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:entries="@array/genero_types"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_genero"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_genero"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_genero" />
 
-            <!--           TELEFONE-->
-            <TextView
-                android:id="@+id/add_paciente_dados_pessoais_title_fone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/fone_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_email" />
 
-            <EditText
-                android:id="@+id/add_paciente_dados_pessoais_edit_text_fone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="DIGITE O TELEFONE"
-                android:inputType="phone"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_fone"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_fone" />
+                <!--           IDADE-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_idade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/idade_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_cpf" />
 
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/idade_hint"
+                    android:inputType="number"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_idade"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
+
+                <!--           DATA NASCIMENTO-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_nascimento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/nascimento_title"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
+
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_nascimento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:ems="10"
+                    android:hint="@string/nascimento_hint"
+                    android:inputType="date"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_nascimento"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    app:layout_constraintVertical_bias="1.0" />
+
+
+                <!--           EMAIL-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/email_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_nascimento" />
+
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/email_hint"
+                    android:inputType="textEmailAddress"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_email"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_email" />
+
+                <!--           TELEFONE-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_title_fone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/fone_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_email" />
+
+                <EditText
+                    android:id="@+id/add_paciente_dados_pessoais_edit_text_fone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/fone_hint"
+                    android:inputType="phone"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_fone"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_fone" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            ANTROPOMETRIA-->
 
-            <TextView
-                android:id="@+id/add_paciente_antropometria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="DADOS ANTROPOMETRICOS PACIENTE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_fone" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/add_paciente_antropometria_sortDivider"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_paciente_antropometria_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_paciente_antropometria" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_layout" >
 
-            <!--            ALTURA-->
-            <TextView
-                android:id="@+id/add_paciente_antropometria_title_altura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/altura_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_sortDivider" />
+                <TextView
+                    android:id="@+id/add_paciente_antropometria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/antropometria_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/add_paciente_antropometria_edit_text_altura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:hint="DIGITE A ALTURA"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_title_altura"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_title_altura"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_title_altura" />
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_antropometria_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_antropometria" />
 
-            <Spinner
-                android:id="@+id/add_paciente_antropometria_spinner_altura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:entries="@array/length_types"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_edit_text_altura"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_altura"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_edit_text_altura" />
+                <!--            ALTURA-->
+                <TextView
+                    android:id="@+id/paciente_descrition_antropometria_altura_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/altura_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_sortDivider" />
 
+                <EditText
+                    android:id="@+id/paciente_descrition_antropometria_altura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="@string/altura_hint"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_altura_title"
+                    app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_altura_title"
+                    app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_altura_title" />
 
-            <!--            PESO-->
-            <TextView
-                android:id="@+id/add_paciente_antropometria_title_peso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/peso_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_title_altura"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_edit_text_altura" />
-
-            <!--            PESO ATUAL-->
-            <TextView
-                android:id="@+id/add_paciente_antropometria_title_peso_atual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Atual:"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_title_peso"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_title_peso" />
-
-            <EditText
-                android:id="@+id/add_paciente_antropometria_edit_text_peso_atual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:hint="DIGITE O PESO"
-                android:inputType="numberDecimal"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_title_peso_atual"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_altura"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_title_peso_atual"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_title_peso_atual" />
-
-            <Spinner
-                android:id="@+id/add_paciente_antropometria_spinner_peso_atual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:entries="@array/size_types"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_edit_text_peso_atual" />
-
-            <!--            PESO IDEAL-->
-            <TextView
-                android:id="@+id/add_paciente_antropometria_title_peso_ideal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Ideal"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_title_peso_atual"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_title_peso_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_title_peso_atual" />
-
-            <EditText
-                android:id="@+id/add_paciente_antropometria_edit_text_peso_ideal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:hint="DIGITE O PESO IDEAL"
-                android:inputType="numberDecimal"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_title_peso_ideal"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_title_peso_ideal"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_title_peso_ideal" />
-
-            <Spinner
-                android:id="@+id/add_paciente_antropometria_spinner_peso_ideal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:entries="@array/size_types"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_edit_text_peso_ideal" />
+                <Spinner
+                    android:id="@+id/add_paciente_antropometria_spinner_altura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:entries="@array/length_types"
+                    app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_altura"
+                    app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_altura"
+                    app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_altura" />
 
 
-            <Button
-                android:id="@+id/add_paciente_antropometria_calculos"
-                android:layout_width="75dp"
-                android:layout_height="40dp"
-                android:text="Ver"
-                android:textSize="14sp"
-                app:cornerRadius="@dimen/cardview_default_radius"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_ideal" />
+                <!--            PESO-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_title_peso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/peso_upper_title"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_altura_title"
+                    app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_altura" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_antropometria_peso_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/add_paciente_antropometria_title_peso"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_antropometria_title_peso" />
+
+                <!--            PESO ATUAL-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_title_peso_atual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/peso_atual_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_title_peso"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_peso_sortDivider" />
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_peso_atual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="@string/peso_atual_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_title_peso_atual"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_antropometria_altura"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_title_peso_atual"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_title_peso_atual" />
+
+                <Spinner
+                    android:id="@+id/add_paciente_antropometria_spinner_peso_atual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:entries="@array/size_types"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_edit_text_peso_atual" />
+
+                <!--            PESO IDEAL-->
+                <TextView
+                    android:id="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/peso_ideal_title"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_title_peso_atual"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_title_peso_atual"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_title_peso_atual" />
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_peso_ideal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:hint="@string/peso_ideal_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_atual"
+                    app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                    app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_peso_ideal_title" />
+
+                <Spinner
+                    android:id="@+id/add_paciente_antropometria_spinner_peso_ideal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:entries="@array/size_types"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_edit_text_peso_ideal" />
+
+
+
+                <!--            CIRCUNFERENCIA PACIENTE-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_title"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_altura_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_edit_text_peso_ideal" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_antropometria_circum_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/add_paciente_antropometria_circum_title"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_antropometria_circum_title" />
+
+
+<!--                CIRCUNFERENCIA BRAÇO DIREITO-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_braco_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_braco_title_small"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_circum_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_sortDivider"/>
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/circum_braco_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintEnd_toStartOf="@+id/add_paciente_antropometria_circum_braco_cm"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_braco_title" />
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_braco_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cm_string"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_braco_title" />
+
+
+
+<!--                CIRCUMFERENCIA COXA DIREITA-->
+                <TextView
+                        android:id="@+id/add_paciente_antropometria_circum_coxa_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_coxa_title_small"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_braco_title"/>
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_coxa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/circum_coxa_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_coxa_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_coxa_title" />
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_coxa_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cm_string"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_coxa_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_coxa_title" />
+
+
+
+                <!--                CIRCUMFERENCIA ABDOMEN-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_abdomen_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_abdomen_title_small"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_coxa_title"/>
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_abdomen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/circum_abdomen_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_abdomen_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_abdomen_title" />
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_abdomen_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cm_string"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_abdomen_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_abdomen_title" />
+
+
+
+                <!--                CIRCUMFERENCIA CINTURA-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_cintura_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_cintura_title_small"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_abdomen_title"/>
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_ccintura"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/circum_cintura_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_cintura_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_cintura_title" />
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_cintura_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cm_string"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_cintura_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_cintura_title" />
+
+
+
+                <!--                CIRCUMFERENCIA QUADRIL-->
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_quadril_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/circum_quadril_title_small"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_cintura_title"/>
+
+                <EditText
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_quadril"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:hint="@string/circum_quadril_hint"
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_quadril_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_antropometria_edit_text_circum_braco"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_quadril_title" />
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_circum_quadril_cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cm_string"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_antropometria_circum_quadril_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_quadril_title" />
+
+
+                <Button
+                    android:id="@+id/add_paciente_antropometria_calculos"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
+                    android:text="Ver"
+                    android:textSize="14sp"
+                    app:cornerRadius="@dimen/cardview_default_radius"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_quadril_cm" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <!--           DADOS PATOLOGICOS PACIENTE -->
-            <TextView
-                android:id="@+id/add_paciente_patologia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="DADOS PATOLOGICOS PACIENTE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_calculos" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/add_paciente_patologia_sortDivider"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_paciente_patologia_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_paciente_patologia" />
-
-            <!--            PATOLOGIA ATUAL-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_patologia_atual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Patologia Atual:"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_sortDivider" />
-
-            <EditText
-                android:id="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:singleLine="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_title_patologia_atual" />
+                app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_layout" >
+
+                <TextView
+                    android:id="@+id/add_paciente_patologia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/patologia_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_patologia_sortDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_patologia" />
+
+                <!--            PATOLOGIA ATUAL-->
+                <TextView
+                    android:id="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/patologia_atual_title"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_sortDivider" />
+
+                <EditText
+                    android:id="@+id/paciente_descrition_patologia_patologia_atual"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="@string/patologia_atual_hint"
+                    android:singleLine="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_patologia_patologia_atual_title" />
 
 
-            <!--            URINA-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_urina"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Urina:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual" />
+                <!--            URINA-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_urina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/urina_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_patologia_patologia_atual" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_urina"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_urina"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_urina"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_urina" />
-
-
-            <!--            FEZES-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_fezes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Fezes:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_urina" />
-
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_fezes"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_fezes"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_fezes"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_fezes" />
-
-            <!--            HORA SONO-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_sono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Hora sono:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_fezes"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_fezes" />
-
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_sono"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_sono"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_sono"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_sono" />
-
-            <!--            MEDICACAO-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_medicacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Medicacao:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_sono" />
-
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_medicacao"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_medicacao"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_medicacao"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_medicacao" />
-
-            <!--            SUPLEMENTO-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_suplemento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Suplemento:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_medicacao" />
-
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_suplemento"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_suplemento"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_suplemento"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_suplemento" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_urina"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/urina_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_urina"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_urina"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_urina" />
 
 
-            <!--            ETILICO-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_etilico"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Etilico:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_suplemento" />
+                <!--            FEZES-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_fezes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/fezes_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_urina" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_etilico"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_etilico"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_etilico"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_etilico" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_fezes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/fezes_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_fezes"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_fezes"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_fezes" />
 
-            <!--            FUMANTE-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_fumante"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Fumante:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_etilico" />
+                <!--            HORA SONO-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_sono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sono_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_fezes"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_fezes" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_fumante"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_fumante"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_fumante"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_fumante" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_sono"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/sono_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_sono"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_sono"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_sono" />
+
+                <!--            MEDICACAO-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_medicacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/medicacao_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_sono" />
+
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_medicacao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/medicacao_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_medicacao"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_medicacao"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_medicacao" />
+
+                <!--            SUPLEMENTO-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_suplemento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/suplemento_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_medicacao" />
+
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_suplemento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/suplemento_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_suplemento"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_suplemento"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_suplemento" />
 
 
-            <!--            ALERGIA ALIMENTAR-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_alergia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Alergias:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_fumante" />
+                <!--            ETILICO-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_etilico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/etilico_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_suplemento" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_alergia"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_alergia"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_alergia"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_alergia" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_etilico"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/etilico_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_etilico"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_etilico"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_etilico" />
 
-            <!--            CONSUMO AGUA-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_itle_agua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Consumo Agua:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_alergia" />
+                <!--            FUMANTE-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_fumante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/fumante_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_etilico" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_agua"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_itle_agua"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_itle_agua"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_itle_agua" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_fumante"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/fumante_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_fumante"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_fumante"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_fumante" />
 
 
-            <!--            ACUCAR-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_acucar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Acucar:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_agua" />
+                <!--            ALERGIA ALIMENTAR-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_alergia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/alergias_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_fumante" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_acucar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_acucar"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_acucar"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_acucar" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_alergia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/alergias_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_alergia"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_alergia"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_alergia" />
 
-            <!--            ATIVIDADE FISICA-->
-            <TextView
-                android:id="@+id/add_paciente_patologia_title_atividade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Atividade Fisica:"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_patologia_title_patologia_atual"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_acucar" />
+                <!--            CONSUMO AGUA-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/agua_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_alergia" />
 
-            <EditText
-                android:id="@+id/add_paciente_patologia_edit_text_atividade"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_atividade"
-                app:layout_constraintEnd_toEndOf="@+id/add_paciente_patologia_multiline_edit_patologia_atual"
-                app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_atividade"
-                app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_atividade" />
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_agua"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/agua_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_agua"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_agua"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_agua" />
+
+
+                <!--            ACUCAR-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_acucar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/acucar_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_agua" />
+
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_acucar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_acucar"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_acucar"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_acucar" />
+
+                <!--            ATIVIDADE FISICA-->
+                <TextView
+                    android:id="@+id/add_paciente_patologia_title_atividade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/atividade_title"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_acucar" />
+
+                <EditText
+                    android:id="@+id/add_paciente_patologia_edit_text_atividade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/atividade_hint"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_atividade"
+                    app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_atividade"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_patologia_title_atividade" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <!--            observações-->
@@ -691,8 +945,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/observacao_title"
-                app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_edit_text_atividade" />
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_paciente_patologia_layout" />
 
             <EditText
                 android:id="@+id/add_paciente_Multiline_edit_observation"
@@ -700,13 +956,16 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="96dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
+                android:hint="@string/observacoes_hint"
                 android:singleLine="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/add_paciente_title_observation"
-                app:layout_constraintTop_toBottomOf="@+id/add_paciente_title_observation" />
+                app:layout_constraintTop_toBottomOf="@+id/add_paciente_title_observation"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

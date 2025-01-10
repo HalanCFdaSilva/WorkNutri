@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="patologia_title">DADOS PATOLOGICOS PACIENTE</string>
+    <string name="patologia_atual_title">Patologia Atual:</string>
+    <string name="urina_title">Urina:</string>
+    <string name="fezes_title">Fezes:</string>
+    <string name="sono_title">Hora sono:</string>
+    <string name="medicacao_title">Medicacao:</string>
+    <string name="suplemento_title">Suplemento:</string>
+    <string name="etilico_title">Etilico:</string>
+    <string name="fumante_title">Fumante:</string>
+    <string name="alergias_title">Alergias:</string>
+    <string name="agua_title">Consumo Agua:</string>
+    <string name="acucar_title">Açucar:</string>
+    <string name="atividade_title">Atividade Fisica:</string>
+</resources>

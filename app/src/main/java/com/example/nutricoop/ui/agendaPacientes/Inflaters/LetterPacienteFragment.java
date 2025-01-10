@@ -1,5 +1,6 @@
 package com.example.nutricoop.ui.agendaPacientes.Inflaters;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class LetterPacienteFragment  {
                 textView.setText(String.valueOf(letter));
 
                 LinearLayout linearLayout = layoutInflate.findViewById(R.id.agenda_letter_fragment_linear_layout);
-                inflateLetterPacienteCard(linearLayout,pacientestoAdd);
+                inflateLetterPacienteCard(linearLayout,pacientestoAdd,viewGroup.getContext());
 
                 viewGroup.addView(layoutInflate);
             }
@@ -62,8 +63,8 @@ public class LetterPacienteFragment  {
 
 
 
-    private void inflateLetterPacienteCard(LinearLayout layout,List<Paciente>pacientesToAdd){
-        PacienteCardInflater cardInflater = new PacienteCardInflater(pacientesToAdd);
+    private void inflateLetterPacienteCard(LinearLayout layout, List<Paciente>pacientesToAdd, Context context){
+        PacienteCardInflater cardInflater = new PacienteCardInflater(pacientesToAdd,context);
         cardInflater.refreshLayout(layout,layoutInflater );
     }
 }

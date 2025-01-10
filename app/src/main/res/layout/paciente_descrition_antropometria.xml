@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/paciente_descrition_antropometria_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.7"
+        android:src="@color/cardview_dark_background"/>
+
+    <ScrollView
+        android:id="@+id/paciente_descrition_antropometria_scrollview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/paciente_descrition_antropometria_scrollview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:foreground="@drawable/border">
+
+            <ImageView
+                android:id="@+id/paciente_descrition_antropometria_antropometria_title_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_antropometria_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@color/teal_700" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_antropometria_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingBottom="16dp"
+                android:text="@string/antropometria_title"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!--            CIRCUMFERENCIA BRAÇO DIREITO-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_braco_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/circum_braco_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_antropometria_title_image" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_braco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_circum_braco_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_circum_braco_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_circum_braco_title"
+                tools:text="1,54 metros" />
+
+
+            <!--            CIRCUMFERENCIA COXA DIREITO-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_coxa_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/circum_coxa_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_circum_braco_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_coxa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_circum_coxa_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_circum_coxa_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_circum_coxa_title"
+                tools:text="1,54 metros" />
+
+            <!--            CIRCUMFERENCIA ABDOMEN-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_abdomen_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/circum_abdomen_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_circum_coxa_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_abdomen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_circum_abdomen_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_circum_abdomen_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_circum_abdomen_title"
+                tools:text="1,54 metros" />
+
+            <!--            CIRCUMFERENCIA CINTURA-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_cintura_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/circum_cintura_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_circum_abdomen_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_cintura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_circum_cintura_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_circum_cintura_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_circum_cintura_title"
+                tools:text="1,54 metros" />
+
+
+            <!--            CIRCUMFERENCIA QUADRIL-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_quadril_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/circum_quadril_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_circum_cintura_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_circum_quadril"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_circum_quadril_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_circum_quadril_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_circum_quadril_title"
+                tools:text="1,54 metros" />
+
+            <!--            ALTURA-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_altura_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/altura_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_circum_quadril_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_altura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_altura_title"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_altura_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_altura_title"
+                tools:text="1,54 metros" />
+
+
+            <!--            PESO-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_peso_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/peso_upper_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_altura_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_altura" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/paciente_descrition_antropometria_peso_title_sortDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paciente_descrition_antropometria_peso_title" />
+
+            <!--            PESO ATUAL-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_peso_atual_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/peso_atual_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_peso_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_peso_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_peso_atual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_peso_atual_title"
+                app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_antropometria_altura"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_peso_atual_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_peso_atual_title"
+                tools:text="58 kilogramas" />
+
+
+            <!--            PESO IDEAL-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/peso_ideal_title"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_antropometria_peso_atual_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_peso_atual_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_peso_atual_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_peso_ideal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_antropometria_peso_atual"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_peso_ideal_title"
+                tools:text="60 kilogramas" />
+
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_calculos_antropometricos_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/antropometria_calc_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_altura_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_peso_ideal" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/paciente_descrition_antropometria_calculos_antropometricos_title_sortDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paciente_descrition_antropometria_calculos_antropometricos_title" />
+
+
+            <!--            IMC-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_imc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/imc_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_calculos_antropometricos_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_calculos_antropometricos_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_imc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 kilogramas"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_imc_title" />
+
+
+            <!--            TAXA METABOLICA-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_taxa_metabolica_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/metabolica_taxa_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_imc_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_taxa_metabolica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 kilogramas"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_taxa_metabolica_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_taxa_metabolica_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_taxa_metabolica_title" />
+
+
+            <!--            VALOR METABOLICO-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_valor_metabolico_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/metabolica_valor_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_taxa_metabolica_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_valor_metabolico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 kilogramas"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_valor_metabolico_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_valor_metabolico_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_valor_metabolico_title" />
+
+
+            <!--            BOLSO-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_bolso_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/bolso_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_valor_metabolico_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_bolso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 kilogramas"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_bolso_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_bolso_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_bolso_title" />
+
+            <!--            VENTA-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_venta_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/venta_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_bolso_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_venta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 kilogramas"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_venta_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_venta_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_venta_title" />
+
+            <!--            AGUA-->
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_agua_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/agua_ideal_title"
+                app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+                app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_venta_title" />
+
+            <TextView
+                android:id="@+id/paciente_descrition_antropometria_agua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:text="58 Litros"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_agua_title"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_agua_title"
+                app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_agua_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

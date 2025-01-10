@@ -3,4 +3,5 @@
     <string name="title_pacientes">Pacientes</string>
     <string name="title_clinicas">Clinicas</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="cm_string">cm</string>
 </resources>

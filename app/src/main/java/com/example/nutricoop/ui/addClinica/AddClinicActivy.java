@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.nutricoop.R;
 import com.example.nutricoop.databinding.ActivityMainBinding;
 import com.example.nutricoop.ui.BottomMenuConfigurator;
+import com.example.nutricoop.ui.popUp.hourDatePopUp.DatePickerFragment;
+import com.example.nutricoop.ui.popUp.hourDatePopUp.HourDateFragment;
 
 public class AddClinicActivy extends AppCompatActivity {
     private ActivityMainBinding binding;

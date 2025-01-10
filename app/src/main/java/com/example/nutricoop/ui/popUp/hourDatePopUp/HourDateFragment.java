@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.addClinica;
+package com.example.nutricoop.ui.popUp.hourDatePopUp;
 
 
 import android.view.LayoutInflater;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 
 import com.example.nutricoop.R;
-
-import java.util.List;
 
 public class HourDateFragment {
     private final ViewGroup layout;

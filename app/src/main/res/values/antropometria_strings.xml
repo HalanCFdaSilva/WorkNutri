@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="antropometria_title">DADOS ANTROPOMETRICOS PACIENTE</string>
+    <string name="peso_upper_title">PESO </string>
+    <string name="circum_title">CIRCUNFERÊNCIA PACIENTE</string>
+    <string name="altura_title">Altura: </string>
+    <string name="peso_title">Peso: </string>
+    <string name="peso_atual_title">Atual:</string>
+    <string name="peso_ideal_title">Ideal: </string>
+    <string name="circum_braco_title">Circunferência Braço Direito: </string>
+    <string name="circum_coxa_title">Circunferência Coxa Direita: </string>
+    <string name="circum_cintura_title">Circunferência Cintura: </string>
+    <string name="circum_abdomen_title">Circunferência Abdômen: </string>
+    <string name="circum_quadril_title">Circunferência Quadril: </string>
+    <string name="antropometria_calc_title">CÁLCULOS ANTROPOMÉTRICOS </string>
+    <string name="metabolica_taxa_title">Taxa Metabólica Basal:</string>
+    <string name="metabolica_valor_title">Valor Metabólico:</string>
+    <string name="bolso_title">Regra De Bolso:</string>
+    <string name="venta_title">Equação de VENTA:</string>
+    <string name="agua_ideal_title">Quantidade De Agua Ideal:</string>
+    <string name="imc_title">IMC:</string>
+
+    <string name="circum_braco_title_small">Braço Direito: </string>
+    <string name="circum_coxa_title_small">Coxa Direita: </string>
+    <string name="circum_cintura_title_small">Cintura: </string>
+    <string name="circum_abdomen_title_small">Abdômen: </string>
+    <string name="circum_quadril_title_small">Quadril: </string>
+
+
+</resources>

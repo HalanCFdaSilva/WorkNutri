@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.nutricoop.ui.addClinica.AddClinicActivy;
-import com.example.nutricoop.ui.addPaciente.AddPacienteActiivie;
+import com.example.nutricoop.ui.addPaciente.AddPacienteActivy;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getExtra(Bundle bundle) {
         Intent intent = getIntent();
-        isPaciente = intent.getBooleanExtra(ExtrasActivities.PACIENTE,true);
+        isPaciente = intent.getBooleanExtra(ExtrasActivities.PACIENTE_BOOLEAN,true);
         if (!isPaciente){
 
             NavOptions navOptions = new NavOptions.Builder()
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), AddClinicActivy.class);;
                 if(isPaciente){
-                    intent = new Intent(getBaseContext(), AddPacienteActiivie.class);
+                    intent = new Intent(getBaseContext(), AddPacienteActivy.class);
                 }
 
                 startActivities(new Intent[]{intent});

@@ -23,9 +23,6 @@ public interface PacienteDao {
     @Query("SELECT * FROM paciente ORDER BY nome_paciente ASC")
     List<Paciente> getAllInOrder();
 
-    @Query("SELECT * FROM paciente ORDER BY nome_paciente ASC")
-    LiveData<List<Paciente>> getAllInOrderF();
-
     @Query("SELECT * FROM paciente WHERE id IN (:pacienteIds)")
     List<Paciente> loadAllByIds(int[] pacienteIds);
 

@@ -2,7 +2,6 @@ package com.example.nutricoop.ui.addPaciente;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,7 @@ import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class AddPacienteActiivie extends AppCompatActivity {
+public class AddPacienteActivy extends AppCompatActivity {
 
 
     @Override

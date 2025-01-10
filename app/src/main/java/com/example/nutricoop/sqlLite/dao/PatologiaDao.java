@@ -16,10 +16,12 @@ public interface PatologiaDao {
     List<Patologia> getAll();
 
     @Query("SELECT * FROM patologia_paciente WHERE id_paciente IN (:pacienteIds)")
-    List<Patologia> loadAllByIds(int[] pacienteIds);
+    List<Patologia> loadAllByIdPaciente(long pacienteIds);
     @Insert
     void insertAll(Patologia... patologias);
 
     @Delete
     void delete(Patologia patologia);
+
+
 }

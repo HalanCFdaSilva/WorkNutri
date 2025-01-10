@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.example.nutricoop.MainActivity;
-import com.example.nutricoop.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomMenuConfigurator {
@@ -26,7 +25,7 @@ public class BottomMenuConfigurator {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(ExtrasActivities.PACIENTE,isPaciente);
+                intent.putExtra(ExtrasActivities.PACIENTE_BOOLEAN,isPaciente);
                 context.startActivities(new Intent[]{intent});
                 ((Activity)context).finish();
 

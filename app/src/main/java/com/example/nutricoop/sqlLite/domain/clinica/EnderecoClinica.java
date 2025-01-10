@@ -14,6 +14,7 @@ public class EnderecoClinica {
     private int idClinica;
     private String rua;
     private int numero;
+    private int complemento;
 
     @ColumnInfo(name = "codigo_postal")
     private String codigoPostal;
@@ -83,5 +84,13 @@ public class EnderecoClinica {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(int complemento) {
+        this.complemento = complemento;
     }
 }

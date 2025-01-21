@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -56,19 +55,16 @@ public class DetailPacienteActivie extends AppCompatActivity {
 
     private void moreDetailButtonsConfig() {
 
-//        ViewGroup antropometriaView =(ViewGroup) getLayoutInflater().inflate(R.layout.paciente_descrition_antropometria, null);
-//        AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(antropometriaView,antropometria);
-//        Button buttonAntropometria = findViewById(R.id.detail_paciente_activity_button_antropometric);
-//        buttonAntropometria.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                antropometriaPopUp.getPopUpWindow().showAtLocation(findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
-//            }
-//        });
+        AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(getLayoutInflater(),antropometria,true);
+        Button buttonAntropometria = findViewById(R.id.detail_paciente_activity_button_antropometric);
+        buttonAntropometria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                antropometriaPopUp.getPopUpWindow().showAtLocation(findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
+            }
+        });
 
-
-        ViewGroup patologiaView =  (ViewGroup) getLayoutInflater().inflate(R.layout.paciente_descrition_patologia, null);
-        PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(patologiaView,patologia);
+        PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(getLayoutInflater(),patologia);
         Button buttonPatologia = findViewById(R.id.detail_paciente_activity_button_patologic);
         buttonPatologia.setOnClickListener(new View.OnClickListener() {
             @Override

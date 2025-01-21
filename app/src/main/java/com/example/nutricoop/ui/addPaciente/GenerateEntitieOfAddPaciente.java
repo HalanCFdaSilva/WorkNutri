@@ -9,6 +9,7 @@ import com.example.nutricoop.calcular.Conversor;
 import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
 import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.example.nutricoop.ui.InsertSelectViewSupport;
 
 public class GenerateEntitieOfAddPaciente {
     private final ViewGroup viewOfQuestionary;
@@ -54,37 +55,42 @@ public class GenerateEntitieOfAddPaciente {
         position = getPositionOfSpinner(R.id.add_paciente_antropometria_spinner_peso_ideal);
         String pesoIdealConvertido = Conversor.convertToGram(position,atual);
         antropometria.setPesoDesejado(pesoIdealConvertido);
+
+        antropometria.setCircumferenciaBracoDir(this.getStringOfEditText(R.id.add_paciente_antropometria_edit_text_circum_braco));
+        antropometria.setCircumferenciaCoxaDir(this.getStringOfEditText(R.id.add_paciente_antropometria_edit_text_circum_coxa));
+        antropometria.setCircumferenciaAbdomen(this.getStringOfEditText(R.id.add_paciente_antropometria_edit_text_circum_abdomen));
+        antropometria.setCircumferenciaCintura(this.getStringOfEditText(R.id.add_paciente_antropometria_edit_text_circum_cintura));
+        antropometria.setCircumferenciaQuadril(this.getStringOfEditText(R.id.add_paciente_antropometria_edit_text_circum_quadril));
         return antropometria;
     }
 
     public Paciente generatePaciente() {
         Paciente paciente = new Paciente();
 
-        paciente.setNomePaciente(this.getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_name));
+        paciente.setNomePaciente(this.getStringOfEditText(R.id.add_paciente_dados_pessoais_name));
 
 
-        paciente.setCpf(this.getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_cpf));
+        paciente.setCpf(this.getStringOfEditText(R.id.add_paciente_dados_pessoais_cpf));
 
 
-        int i = getPositionOfSpinner(R.id.add_paciente_dados_pessoais_spinner_genero);
+        int i = getPositionOfSpinner(R.id.add_paciente_dados_pessoais_genero_spinner);
         paciente.setGenero(i == 0 ? 'M' : 'F');
 
-        paciente.setIdade(Integer.parseInt(getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_idade)));
+        paciente.setIdade(InsertSelectViewSupport.getIntOfEditText(
+                viewOfQuestionary.findViewById(R.id.add_paciente_dados_pessoais_idade)));
 
-        paciente.setNascimento(getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_nascimento));
+        paciente.setNascimento(getStringOfEditText(R.id.add_paciente_dados_pessoais_nascimento));
 
-        paciente.setEmail(getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_email));
+        paciente.setEmail(getStringOfEditText(R.id.add_paciente_dados_pessoais_email));
 
-        paciente.setTelefone(getStringOfEditText(R.id.add_paciente_dados_pessoais_edit_text_fone));
+        paciente.setTelefone(getStringOfEditText(R.id.add_paciente_dados_pessoais_fone));
         paciente.setObservacoes(getStringOfEditText(R.id.add_paciente_Multiline_edit_observation));
 
         return paciente;
     }
     private String getStringOfEditText(int id){
         EditText viewById = viewOfQuestionary.findViewById(id);
-        String string = viewById.getText().toString();
-        if(string != null) return string.toUpperCase();
-        return "";
+        return InsertSelectViewSupport.getStringOfEditText(viewById);
     }
     private int getPositionOfSpinner(int id){
         Spinner spinner = viewOfQuestionary.findViewById(R.id.add_paciente_antropometria_spinner_peso_ideal);

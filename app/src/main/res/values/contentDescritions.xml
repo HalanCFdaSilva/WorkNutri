@@ -2,4 +2,5 @@
 <resources>
     <string name="nested_scroll">scroll of page</string>
     <string name="add_button">Button to add a new data to the data bank</string>
+    <string name="calendario_geral_button">Work Calendar</string>
 </resources>

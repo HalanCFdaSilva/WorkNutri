@@ -31,11 +31,11 @@ public class Antropometria{
 
     private String imc;
 
-    private int circumferenceBracoDir;
-    private int circumferenceCoxaDir;
-    private int circumferenciaCintura;
-    private int circumferenciaAbdomen;
-    private int circumferenciaQuadril;
+    private String circumferenciaBracoDir;
+    private String circumferenciaCoxaDir;
+    private String circumferenciaCintura;
+    private String circumferenciaAbdomen;
+    private String circumferenciaQuadril;
 
     private String taxaMetabolica;
     private String valorMetabolico;
@@ -57,6 +57,8 @@ public class Antropometria{
         this.imc = CalculadorAntropometrico.generateImc(Double.valueOf(peso),doubleAltura);
         this.taxaMetabolica = CalculadorAntropometrico.generateTMB(Double.valueOf(peso),(int) doubleAltura*100,
                 paciente.getGenero(),idade);
+        this.valorMetabolico = CalculadorAntropometrico.generateGET(taxaMetabolica,1,paciente.getGenero());
+        regraBolso = CalculadorAntropometrico.generateBolso(Double.parseDouble(this.peso),paciente.getPesoDesejado());
 
 
     }
@@ -93,43 +95,43 @@ public class Antropometria{
         this.imc = imc;
     }
 
-    public int getCircumferenceBracoDir() {
-        return circumferenceBracoDir;
+    public String getCircumferenciaBracoDir() {
+        return circumferenciaBracoDir;
     }
 
-    public void setCircumferenceBracoDir(int circumferenceBracoDir) {
-        this.circumferenceBracoDir = circumferenceBracoDir;
+    public void setCircumferenciaBracoDir(String circumferenciaBracoDir) {
+        this.circumferenciaBracoDir = circumferenciaBracoDir;
     }
 
-    public int getCircumferenceCoxaDir() {
-        return circumferenceCoxaDir;
+    public String getCircumferenciaCoxaDir() {
+        return circumferenciaCoxaDir;
     }
 
-    public void setCircumferenceCoxaDir(int circumferenceCoxaDir) {
-        this.circumferenceCoxaDir = circumferenceCoxaDir;
+    public void setCircumferenciaCoxaDir(String circumferenciaCoxaDir) {
+        this.circumferenciaCoxaDir = circumferenciaCoxaDir;
     }
 
-    public int getCircumferenciaCintura() {
+    public String getCircumferenciaCintura() {
         return circumferenciaCintura;
     }
 
-    public void setCircumferenciaCintura(int circumferenciaCintura) {
+    public void setCircumferenciaCintura(String circumferenciaCintura) {
         this.circumferenciaCintura = circumferenciaCintura;
     }
 
-    public int getCircumferenciaAbdomen() {
+    public String getCircumferenciaAbdomen() {
         return circumferenciaAbdomen;
     }
 
-    public void setCircumferenciaAbdomen(int circumferenciaAbdomen) {
+    public void setCircumferenciaAbdomen(String circumferenciaAbdomen) {
         this.circumferenciaAbdomen = circumferenciaAbdomen;
     }
 
-    public int getCircumferenciaQuadril() {
+    public String getCircumferenciaQuadril() {
         return circumferenciaQuadril;
     }
 
-    public void setCircumferenciaQuadril(int circumferenciaQuadril) {
+    public void setCircumferenciaQuadril(String circumferenciaQuadril) {
         this.circumferenciaQuadril = circumferenciaQuadril;
     }
 

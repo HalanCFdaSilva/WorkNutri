@@ -5,55 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <ImageView
-        android:id="@+id/paciente_descrition_patologia_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.7"
-        android:src="@color/cardview_dark_background"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
-        android:background="@color/white"
-        android:foreground="@drawable/border"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/paciente_descrition_patologia_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:paddingBottom="16dp"
-            android:text="@string/patologia_title"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/paciente_descrition_patologia_title_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:foreground="@drawable/border"
-            app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_patologia_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@color/teal_700" />
 
 
 
@@ -65,7 +17,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/patologia_atual_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_patologia_title_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/paciente_descrition_patologia_patologia_atual"
@@ -330,6 +282,6 @@
             app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
             app:layout_constraintStart_toEndOf="@+id/paciente_descrition_patologia_atividade_title"
             app:layout_constraintTop_toTopOf="@+id/paciente_descrition_patologia_atividade_title" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,15 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:id="@+id/add_paciente_dragHandle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-
+            <!--            DADOS PACIENTE-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/add_paciente_dados_pessoais_layout"
                 android:layout_width="match_parent"
@@ -53,7 +46,7 @@
                     app:layout_constraintTop_toBottomOf="@id/add_paciente_dados_pessoais" />
 
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_name"
+                    android:id="@+id/add_paciente_dados_pessoais_name_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -63,7 +56,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_sortDivider" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    android:id="@+id/add_paciente_dados_pessoais_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -72,72 +65,73 @@
                     android:hint="@string/nome_hint"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_name_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_name"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_name" />
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_name_title" />
 
                 <!--           CPF-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_cpf"
+                    android:id="@+id/add_paciente_dados_pessoais_cpf_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/cpf_title"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_name" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_cpf"
+                    android:id="@+id/add_paciente_dados_pessoais_cpf"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/cpf_hint"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_cpf"
-                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    android:maxLength="14"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_cpf_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_name" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_name" />
 
 
                 <!--           GENERO-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_genero"
+                    android:id="@+id/add_paciente_dados_pessoais_genero_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/genero_title"
-                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_cpf"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_cpf" />
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_cpf"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_cpf_title" />
 
                 <Spinner
-                    android:id="@+id/add_paciente_dados_pessoais_spinner_genero"
+                    android:id="@+id/add_paciente_dados_pessoais_genero_spinner"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="16dp"
                     android:entries="@array/genero_types"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_genero"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_genero_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_genero"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_genero" />
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_genero_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_genero_title" />
 
 
                 <!--           IDADE-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_idade"
+                    android:id="@+id/add_paciente_dados_pessoais_idade_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/idade_title"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_cpf" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_cpf" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    android:id="@+id/add_paciente_dados_pessoais_idade"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -145,24 +139,25 @@
                     android:inputType="number"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_idade"
-                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    android:maxLength="3"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_idade_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_idade_title" />
 
                 <!--           DATA NASCIMENTO-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_nascimento"
+                    android:id="@+id/add_paciente_dados_pessoais_nascimento_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/nascimento_title"
-                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_idade" />
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_idade"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_idade_title" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_nascimento"
+                    android:id="@+id/add_paciente_dados_pessoais_nascimento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -171,25 +166,26 @@
                     android:inputType="date"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    android:maxLength="10"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_idade"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_title_nascimento"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_edit_text_idade"
+                    app:layout_constraintStart_toEndOf="@+id/add_paciente_dados_pessoais_nascimento_title"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_idade"
                     app:layout_constraintVertical_bias="1.0" />
 
 
                 <!--           EMAIL-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_email"
+                    android:id="@+id/add_paciente_dados_pessoais_email_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/email_title"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_nascimento" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_nascimento" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_email"
+                    android:id="@+id/add_paciente_dados_pessoais_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -197,24 +193,24 @@
                     android:inputType="textEmailAddress"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_email"
-                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_email_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_email" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_email_title" />
 
                 <!--           TELEFONE-->
                 <TextView
-                    android:id="@+id/add_paciente_dados_pessoais_title_fone"
+                    android:id="@+id/add_paciente_dados_pessoais_fone_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/fone_title"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_title_name"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_edit_text_email" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_email" />
 
                 <EditText
-                    android:id="@+id/add_paciente_dados_pessoais_edit_text_fone"
+                    android:id="@+id/add_paciente_dados_pessoais_fone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -222,11 +218,47 @@
                     android:inputType="phone"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_title_fone"
-                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_edit_text_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_paciente_dados_pessoais_fone_title"
+                    app:layout_constraintEnd_toEndOf="@+id/add_paciente_dados_pessoais_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_edit_text_name"
-                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_title_fone" />
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_name"
+                    app:layout_constraintTop_toTopOf="@+id/add_paciente_dados_pessoais_fone_title" />
+
+
+<!--                CLINICA PACIENTE-->
+                <TextView
+                    android:id="@+id/add_paciente_dados_pessoais_clinica_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/antropometria_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_dados_pessoais_fone" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_dados_pessoais_clinica_sortDivider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_clinica_title"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_dados_pessoais_clinica_title" />
+
+                <Spinner
+                    android:id="@+id/add_paciente_dados_pessoais_clinica_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:theme="@android:style/ThemeOverlay.Material.Light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/add_paciente_dados_pessoais_clinica_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_dados_pessoais_clinica_sortDivider"
+                    android:background="@drawable/r1"
+                    android:dropDownVerticalOffset="60dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -277,7 +309,7 @@
                     android:layout_marginStart="8dp"
                     android:ems="10"
                     android:hint="@string/altura_hint"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_altura_title"
                     app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_altura_title"
@@ -306,7 +338,7 @@
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/add_paciente_antropometria_peso_sortDivider"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -399,7 +431,7 @@
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/add_paciente_antropometria_circum_sortDivider"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -530,7 +562,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_abdomen_title"/>
 
                 <EditText
-                    android:id="@+id/add_paciente_antropometria_edit_text_circum_ccintura"
+                    android:id="@+id/add_paciente_antropometria_edit_text_circum_cintura"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -592,15 +624,36 @@
                     app:layout_constraintTop_toTopOf="@+id/add_paciente_antropometria_circum_quadril_title" />
 
 
+
+                <TextView
+                    android:id="@+id/add_paciente_antropometria_calculos_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/antropometria_calc_title"
+                    app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_altura_title"
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_quadril_title" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/add_paciente_antropometria_calculos_sortDivider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/add_paciente_antropometria_calculos_title"
+                    app:layout_constraintTop_toBottomOf="@id/add_paciente_antropometria_calculos_title" />
+
+
                 <Button
-                    android:id="@+id/add_paciente_antropometria_calculos"
-                    android:layout_width="75dp"
-                    android:layout_height="40dp"
-                    android:text="Ver"
+                    android:id="@+id/add_paciente_antropometria_calculos_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/teal_200"
+                    android:text="@string/ver_button"
                     android:textSize="14sp"
                     app:cornerRadius="@dimen/cardview_default_radius"
                     app:layout_constraintStart_toEndOf="@+id/add_paciente_antropometria_edit_text_peso_ideal"
-                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_circum_quadril_cm" />
+                    app:layout_constraintTop_toBottomOf="@+id/add_paciente_antropometria_calculos_sortDivider" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -652,6 +705,7 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
+                    android:textSize="12sp"
                     android:hint="@string/patologia_atual_hint"
                     android:singleLine="false"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -666,7 +720,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/urina_title"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="@+id/paciente_descrition_patologia_patologia_atual_title"
                     app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_patologia_patologia_atual" />
 
@@ -907,6 +961,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:textSize="12sp"
+                    android:hint="@string/acucar_hint"
                     app:layout_constraintBottom_toBottomOf="@+id/add_paciente_patologia_title_acucar"
                     app:layout_constraintEnd_toEndOf="@+id/paciente_descrition_patologia_patologia_atual"
                     app:layout_constraintStart_toEndOf="@+id/add_paciente_patologia_title_acucar"
@@ -962,6 +1017,7 @@
                 android:inputType="textMultiLine"
                 android:hint="@string/observacoes_hint"
                 android:singleLine="false"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/add_paciente_title_observation"
                 app:layout_constraintTop_toBottomOf="@+id/add_paciente_title_observation"

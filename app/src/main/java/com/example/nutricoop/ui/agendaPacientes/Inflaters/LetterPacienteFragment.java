@@ -50,12 +50,14 @@ public class LetterPacienteFragment  {
     private List<Paciente> getPacientesOfLetter(char letter) {
         List<Paciente> newPacientes = new ArrayList<>();
         for (Paciente paciente : pacientes){
-            if (letter  == paciente.getNomePaciente().toUpperCase().charAt(0)){
-                newPacientes.add(paciente);
+            if (!paciente.getNomePaciente().isEmpty()){
+                if (letter  == paciente.getNomePaciente().toUpperCase().charAt(0)){
+                    newPacientes.add(paciente);
 
-            }
-            if (letter  < paciente.getNomePaciente().toUpperCase().charAt(0)){
-                break;
+                }
+                if (letter  < paciente.getNomePaciente().toUpperCase().charAt(0)){
+                    break;
+                }
             }
         }
         return newPacientes;

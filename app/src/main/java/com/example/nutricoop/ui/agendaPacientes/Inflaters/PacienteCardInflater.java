@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.dao.PacienteDao;
 import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.detailPaciente.DetailPacienteActivie;
@@ -32,7 +31,7 @@ public class PacienteCardInflater {
     public void refreshLayout(LinearLayout layout, LayoutInflater inflater){
         layout.removeAllViews();
         pacientes.forEach(paciente -> {
-            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.paciente_card_fragment,null);
+            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.card_fragment_paciente,null);
             TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
             textView.setText(paciente.getNomePaciente());
             layout.addView(view);

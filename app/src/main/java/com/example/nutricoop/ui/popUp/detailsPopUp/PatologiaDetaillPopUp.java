@@ -1,57 +1,71 @@
 package com.example.nutricoop.ui.popUp.detailsPopUp;
 
+import static com.example.nutricoop.R.*;
+
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
 import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
 
 public class PatologiaDetaillPopUp extends PopUpFragment {
-    public PatologiaDetaillPopUp(ViewGroup viewGroup, Patologia patologia) {
-        super(viewGroup, R.id.paciente_descrition_patologia_image);
+    public PatologiaDetaillPopUp(LayoutInflater inflater, Patologia patologia) {
+        super(inflater);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(layout.paciente_descrition_patologia,null);
+        this.insertView(viewGroup);
         setText(patologia);
+        this.insertTitle(R.string.patologia_title);
     }
 
     private void setText(Patologia patologia){
         ViewGroup viewGroup = getViewGroup();
 
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_patologia_atual)).
-                setText(patologia.getPatologiaAtual());
 
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_urina)).
-                setText(patologia.getUrina());
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_fezes)).
-                setText(patologia.getFezes());
+        TextView view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_patologia_atual);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getPatologiaAtual());
 
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_sono)).
-                setText(patologia.getHoraSono());
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_urina);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getUrina());
 
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_medicacao)).
-                setText(patologia.getMedicacao());
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_fezes);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getFezes());
 
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_suplemento)).
-                setText(patologia.getSuplemento());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_etilico)).
-                setText(patologia.getEtilico());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_fumante)).
-                setText(patologia.getFumante());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_alergia)).
-                setText(patologia.getAlergiaAlimentar());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_agua)).
-                setText(patologia.getConsumoAgua());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_acucar)).
-                setText(patologia.getAcucar());
-
-        ((TextView)viewGroup.findViewById(R.id.paciente_descrition_patologia_atividade)).
-                setText(patologia.getAtividadeFisica());
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_sono);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getHoraSono());
 
 
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_medicacao);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getMedicacao());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_suplemento);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getSuplemento());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_etilico);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getEtilico());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_fumante);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getFumante());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_alergia);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getAlergiaAlimentar());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_agua);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getConsumoAgua());
+
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_acucar);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getAcucar());
+
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_atividade);
+        InsertSelectViewSupport.insertInTextView(view,patologia.getAtividadeFisica());
 
 
     }

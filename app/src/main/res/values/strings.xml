@@ -4,5 +4,7 @@
     <string name="title_clinicas">Clinicas</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="cm_string">cm</string>
+    <string name="obrigatorio">*</string>
+    <string name="error_blank">Por favor preencha os campos com asteristico</string>
 
 </resources>

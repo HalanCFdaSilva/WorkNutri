@@ -1,15 +1,14 @@
-package com.example.nutricoop.ui.addPaciente;
+package com.example.nutricoop.ui.formularios.formularioPaciente;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 
 import java.util.List;

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.nutricoop.ui.formularios.formularioClinica.FormularioClinicaActivity;
-import com.example.nutricoop.ui.addPaciente.AddPacienteActivy;
+import com.example.nutricoop.ui.formularios.formularioPaciente.FormularioPacienteActivity;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_pacientes,R.id.placeholder, R.id.navigation_clinicas)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.mainActivityNavView, navController);
 
         getExtra(savedInstanceState);
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), FormularioClinicaActivity.class);;
                 if(isPaciente){
-                    intent = new Intent(getBaseContext(), AddPacienteActivy.class);
+                    intent = new Intent(getBaseContext(), FormularioPacienteActivity.class);
                 }
 
                 startActivities(new Intent[]{intent});

@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.detailPaciente;
+package com.example.nutricoop.ui.detail.detailPaciente;
 
 
 import android.content.Intent;
@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nutricoop.R;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
-import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
-import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
-import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
+import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
+import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
 import com.example.nutricoop.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
@@ -48,7 +48,7 @@ public class DetailPacienteActivie extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.detail_paciente_activity_height_paciente_descrition)).setText(antropometria.getAltura());
         ((TextView)findViewById(R.id.detail_paciente_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
-        ((TextView)findViewById(R.id.detail_paciente_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoDesejado());
+        ((TextView)findViewById(R.id.detail_paciente_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
 
         moreDetailButtonsConfig();
     }

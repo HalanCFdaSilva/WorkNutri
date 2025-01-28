@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nutricoop.MainActivity;
 import com.example.nutricoop.databinding.FragmentAgendaBinding;
-import com.example.nutricoop.sqlLite.dao.PacienteDao;
+import com.example.nutricoop.sqlLite.paciente.dao.PacienteDao;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
 import com.example.nutricoop.ui.agendaPacientes.Inflaters.LetterPacienteFragment;
 

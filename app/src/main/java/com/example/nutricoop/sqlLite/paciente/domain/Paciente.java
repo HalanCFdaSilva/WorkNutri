@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.domain.paciente;
+package com.example.nutricoop.sqlLite.paciente.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -26,8 +26,8 @@ public class Paciente implements Serializable {
 
     private String nascimento;
 
-    @ColumnInfo(name = "peso_desejado")
-    private int pesoDesejado;
+    @ColumnInfo(name = "peso_ideal")
+    private int pesoIdeal;
 
     private char genero;
 
@@ -90,12 +90,12 @@ public class Paciente implements Serializable {
         this.nascimento = nascimento;
     }
 
-    public int getPesoDesejado() {
-        return pesoDesejado;
+    public int getPesoIdeal() {
+        return pesoIdeal;
     }
 
-    public void setPesoDesejado(int pesoDesejado) {
-        this.pesoDesejado = pesoDesejado;
+    public void setPesoIdeal(int pesoIdeal) {
+        this.pesoIdeal = pesoIdeal;
     }
 
     public char getGenero() {

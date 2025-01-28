@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.addPaciente.AddPacienteActivy"/>
+        <activity android:name=".ui.formularios.formularioPaciente.FormularioPacienteActivity"/>
         <activity android:name=".ui.formularios.formularioClinica.FormularioClinicaActivity"/>
-        <activity android:name=".ui.detailPaciente.DetailPacienteActivie"/>
+        <activity android:name=".ui.detail.detailPaciente.DetailPacienteActivie"/>
 
     </application>
 

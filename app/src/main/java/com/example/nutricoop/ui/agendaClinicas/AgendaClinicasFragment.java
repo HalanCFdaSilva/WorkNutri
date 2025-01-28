@@ -17,9 +17,9 @@ import com.example.nutricoop.MainActivity;
 
 import com.example.nutricoop.R;
 import com.example.nutricoop.databinding.FragmentAgendaBinding;
-import com.example.nutricoop.sqlLite.dao.ClinicaDao;
+import com.example.nutricoop.sqlLite.clinica.dao.ClinicaDao;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
-import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 
 import java.util.List;

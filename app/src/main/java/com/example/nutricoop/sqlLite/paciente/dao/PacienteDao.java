@@ -1,18 +1,12 @@
-package com.example.nutricoop.sqlLite.dao;
+package com.example.nutricoop.sqlLite.paciente.dao;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
 
-import com.example.nutricoop.sqlLite.domain.DietasEPaciente;
-import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
 import java.util.List;
-
-import kotlinx.coroutines.flow.Flow;
 
 @Dao
 public interface PacienteDao {

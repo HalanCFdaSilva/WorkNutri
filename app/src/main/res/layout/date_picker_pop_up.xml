@@ -119,4 +119,18 @@
         app:layout_constraintStart_toStartOf="@+id/date_picker_pop_up_number_picker_week_day"
         app:layout_constraintTop_toBottomOf="@+id/date_picker_pop_up_number_picker_week_day" />
 
+    <TextView
+        android:id="@+id/date_picker_pop_up_textview_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_date_picker"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/obrigatorio"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/date_picker_pop_up_textview_hour_begin"
+        app:layout_constraintEnd_toEndOf="@+id/date_picker_pop_up_image_view_background_white"
+        app:layout_constraintStart_toStartOf="@+id/date_picker_pop_up_image_view_background_white" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

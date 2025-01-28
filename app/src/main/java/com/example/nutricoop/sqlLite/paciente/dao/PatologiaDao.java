@@ -1,12 +1,11 @@
-package com.example.nutricoop.sqlLite.dao;
+package com.example.nutricoop.sqlLite.paciente.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
-import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
 
 import java.util.List;
 

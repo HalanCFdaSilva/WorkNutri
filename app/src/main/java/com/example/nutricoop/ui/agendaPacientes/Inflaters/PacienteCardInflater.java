@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
 import com.example.nutricoop.ui.ExtrasActivities;
-import com.example.nutricoop.ui.detailPaciente.DetailPacienteActivie;
+import com.example.nutricoop.ui.detail.detailPaciente.DetailPacienteActivie;
 
 import java.io.Serializable;
 import java.util.List;

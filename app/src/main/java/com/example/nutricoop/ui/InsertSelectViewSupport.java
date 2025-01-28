@@ -1,6 +1,7 @@
 package com.example.nutricoop.ui;
 
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
@@ -28,4 +29,14 @@ public abstract class InsertSelectViewSupport {
         return !string.isEmpty() ? Integer.parseInt(string) : 0;
 
     }
+
+    public static void insertInEditText(EditText editText,String stringToInsert ){
+        if (stringToInsert != null){
+            editText.setText(stringToInsert);
+        }
+    }
+
+
+
+
 }

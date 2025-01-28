@@ -1,11 +1,12 @@
-package com.example.nutricoop.ui.editTextKeysListener;
+package com.example.nutricoop.ui.formularios.editTextKeysListener;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.core.content.ContextCompat;
+
+import com.example.nutricoop.R;
 
 public class FoneKeyListener extends EditTextKeyListener {
 
@@ -27,10 +28,16 @@ public class FoneKeyListener extends EditTextKeyListener {
             String DDD =(text.length() >= 2) ? "(".concat(text.substring(0,2)).concat(")") : text;
             String numero = (text.length() > 2) ? " ".concat(text.substring(2)) : "";
             if (text.length() > 6 && text.length() < 11) {
-                numero = " ".concat(text.substring(2,6)).concat("-").concat(text.substring(6));
+                if (text.length() == 8 && text.charAt(2) != '9'){
+                    DDD="";
+                    numero = text.substring(0,4).concat("-").concat(text.substring(4));
+                }else{
+                    numero = " ".concat(text.substring(2,6)).concat("-").concat(text.substring(6));
+                }
             } if (text.length() >= 11 ) {
                 numero = " ".concat(text.substring(2,7)).concat("-").concat(text.substring(7));
             }
+            getEditText().setTextColor(ContextCompat.getColor(getEditText().getContext(), R.color.black));
             getEditText().setText(DDD.concat(numero));
             getEditText().setSelection(getEditText().getText().length());
 

@@ -1,8 +1,12 @@
-package com.example.nutricoop.ui.editTextKeysListener;
+package com.example.nutricoop.ui.formularios.editTextKeysListener;
 
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.core.content.ContextCompat;
+
+import com.example.nutricoop.R;
 
 public class CpfKeyListener extends EditTextKeyListener{
     public CpfKeyListener(EditText editText) {
@@ -29,7 +33,10 @@ public class CpfKeyListener extends EditTextKeyListener{
                 }
                 default: editText.setText(text);
             }
+            getEditText().setTextColor(ContextCompat.getColor(getEditText().getContext(), R.color.black));
             getEditText().setSelection(getEditText().getText().length());
+
+
         }
 
         return false;

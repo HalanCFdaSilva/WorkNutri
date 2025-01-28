@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.editTextKeysListener;
+package com.example.nutricoop.ui.formularios.editTextKeysListener;
 
 import android.view.View;
 import android.widget.EditText;

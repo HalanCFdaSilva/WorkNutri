@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.domain.clinica;
+package com.example.nutricoop.sqlLite.clinica.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -8,10 +8,10 @@ import androidx.room.PrimaryKey;
 public class Clinica {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
     private String nome;
     private String telefone1;
-    private String telefone2;
+    private String email;
 
     private String rua;
     private int numero;
@@ -23,11 +23,11 @@ public class Clinica {
     private String cidade;
     private String estado;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -47,12 +47,12 @@ public class Clinica {
         this.telefone1 = telefone1;
     }
 
-    public String getTelefone2() {
-        return telefone2;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefone2(String telefone2) {
-        this.telefone2 = telefone2;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getRua() {

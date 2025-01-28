@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.domain.paciente;
+package com.example.nutricoop.sqlLite.paciente.domain;
 
 import static androidx.room.ForeignKey.CASCADE;
 
@@ -25,43 +25,38 @@ public class Antropometria{
 
     private String peso;
 
-    private String pesoDesejado;
+    @ColumnInfo(name = "peso_ideal")
+    private String pesoIdeal;
 
     private int idade;
 
     private String imc;
 
+    @ColumnInfo(name = "circum_braco")
     private String circumferenciaBracoDir;
+    @ColumnInfo(name = "circum_coxa")
     private String circumferenciaCoxaDir;
+    @ColumnInfo(name = "circum_cintura")
     private String circumferenciaCintura;
+    @ColumnInfo(name = "circum_abdomen")
     private String circumferenciaAbdomen;
+    @ColumnInfo(name = "circum_quadril")
     private String circumferenciaQuadril;
 
+
+    @ColumnInfo(name = "taxa_metabolica")
     private String taxaMetabolica;
+
+    @ColumnInfo(name = "valor_metabolico")
     private String valorMetabolico;
 
+    @ColumnInfo(name = "regra_bolso")
     private String regraBolso;
     private String venta;
 
     private String agua;
 
 
-    public Antropometria(){
-
-    }
-    public Antropometria(String peso, String altura, Paciente paciente){
-        this.peso = peso;
-        this.altura = altura;
-        this.idade = paciente.getIdade();
-        double doubleAltura = Double.valueOf(altura);
-        this.imc = CalculadorAntropometrico.generateImc(Double.valueOf(peso),doubleAltura);
-        this.taxaMetabolica = CalculadorAntropometrico.generateTMB(Double.valueOf(peso),(int) doubleAltura*100,
-                paciente.getGenero(),idade);
-        this.valorMetabolico = CalculadorAntropometrico.generateGET(taxaMetabolica,1,paciente.getGenero());
-        regraBolso = CalculadorAntropometrico.generateBolso(Double.parseDouble(this.peso),paciente.getPesoDesejado());
-
-
-    }
 
     public int getId() {
         return id;
@@ -189,11 +184,11 @@ public class Antropometria{
         this.peso = peso;
     }
 
-    public String getPesoDesejado() {
-        return pesoDesejado;
+    public String getPesoIdeal() {
+        return pesoIdeal;
     }
 
-    public void setPesoDesejado(String pesoDesejado) {
-        this.pesoDesejado = pesoDesejado;
+    public void setPesoIdeal(String pesoIdeal) {
+        this.pesoIdeal = pesoIdeal;
     }
 }

@@ -7,16 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.example.nutricoop.R;
+import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.ui.formularios.formularioClinica.GenerateDayOfWork;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DatePickerFragment  extends PopUpFragment {
 
-    public DatePickerFragment(ViewGroup viewGroup) {
+
+    private List<DayOfWork> daysOfWork;
+    public DatePickerFragment(ViewGroup viewGroup,List<DayOfWork> dayOfWorkList) {
         super(viewGroup,R.id.date_picker_pop_up_image_view_not_use);
         this.configuraBotoes();
+        daysOfWork = dayOfWorkList;
+
 
     }
 
@@ -52,36 +62,33 @@ public class DatePickerFragment  extends PopUpFragment {
 
     public void layoutGenerate(HourDateFragment hourDateFragment, ViewGroup viewGroupToInsert) {
         Button buttonConfirm = this.getViewGroup() .findViewById(R.id.date_picker_pop_up_button_confirm);
-        Context context = this.getViewGroup().getContext();
-        buttonConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonConfirm.setOnClickListener(v -> {
 
 
+            NumberPicker numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_hour_start);
+            String hourStart = numberPicker.getDisplayedValues()[numberPicker.getValue()];
+            numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_hour_end);
+            String hourEnd = numberPicker.getDisplayedValues()[numberPicker.getValue()];
+            if (Integer.parseInt(hourStart.substring(0,2)) < Integer.parseInt(hourEnd.substring(0,2)) ){
 
+                numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_week_day);
+                String dayOfWeek = numberPicker.getDisplayedValues()[numberPicker.getValue()];
 
-                NumberPicker numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_week_day);
-                String valuePicked = numberPicker.getDisplayedValues()[numberPicker.getValue()];
-
-
-                hourDateFragment.setDayOfweek(valuePicked.toUpperCase());
-
-                numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_hour_start);
-                valuePicked = numberPicker.getDisplayedValues()[numberPicker.getValue()];
-                hourDateFragment.setHourBegin(valuePicked);
-
-                numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_hour_end);
-                valuePicked = numberPicker.getDisplayedValues()[numberPicker.getValue()];
-
-
-
-
-                hourDateFragment.setHourEnd(valuePicked);
+                hourDateFragment.setDayOfweek(dayOfWeek.toUpperCase());
+                hourDateFragment.setHourBegin(hourStart);
+                hourDateFragment.setHourEnd(hourEnd);
+                newDayOfWork(hourDateFragment);
                 hourDateFragment.addLayout(viewGroupToInsert);
-                getPopUpWindow().dismiss();
 
+                getPopUpWindow().dismiss();
+            }else {
+                getViewGroup().findViewById(R.id.date_picker_pop_up_textview_error).setVisibility(View.VISIBLE);
             }
         });
+    }
 
+    private void newDayOfWork(HourDateFragment hourDateFragment){
+        DayOfWork day = GenerateDayOfWork.generateOfTimeDescritionFragment(hourDateFragment.getLayout());
+        daysOfWork.add(day);
     }
 }

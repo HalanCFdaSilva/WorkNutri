@@ -1,28 +1,38 @@
 package com.example.nutricoop.calcular;
 
-public abstract class CalculadorAntropometrico {
+public class CalculadorAntropometrico {
 
-    public static String generateImc(double peso, double altura){
+    private double peso;
+    private double altura;
+
+    public CalculadorAntropometrico(double pesoAtual, double alturaEmMetros){
+        this.peso = pesoAtual;
+        this.altura = alturaEmMetros;
+    }
+
+    public  String generateImc(){
         return String.valueOf(peso/(altura*altura));
     }
 
-    public static String generateTMB(double peso, int altura,char genero, int idade){
+    public  String generateTMB(char genero, int idade){
         String tmb = null;
         if (genero == 'M'){
-            tmb = String.valueOf(66 +(13.7*peso) + (5.0 * altura) -(6.8*idade) );
+            tmb = String.valueOf(66 +(13.7*peso) + (5 * Conversor.convertToCm(0,altura)) -(6.8*idade) );
         }else if (genero == 'F'){
-            tmb = String.valueOf(655 +(9.6*peso) + (1.8 * altura) -(4.7*idade) );
+            tmb = String.valueOf(655 +(9.6*peso) + (1.8 * Conversor.convertToCm(0,altura)) -(4.7*idade) );
         }
         return tmb;
     }
 
-    public static String generateGET(String taxaMetabolicaBasal,int nivelAtividadePaciente, char genero){
+    public  String generateGET(String taxaMetabolicaBasal,int nivelAtividadePaciente, char genero){
         double tmb = Double.valueOf(taxaMetabolicaBasal);
         if (genero == 'M'){
             switch (nivelAtividadePaciente){
-                case 2: return String.valueOf(tmb*1.78);
-                case 3: return String.valueOf(tmb*2.1);
-                default:return String.valueOf(tmb*1.55);
+                case 0: return String.valueOf(tmb*1.2);
+                case 1: return String.valueOf(tmb*1.375);
+                case 2: return String.valueOf(tmb*1.55);
+                case 3: return String.valueOf(tmb*1.725);
+                default:return String.valueOf(tmb*1.9);
             }
         } else if (genero == 'F') {
             switch (nivelAtividadePaciente){
@@ -35,22 +45,22 @@ public abstract class CalculadorAntropometrico {
 
     }
 
-    public static String generateBolso(double pesoAtual, double pesoIdeal){
-        if (pesoIdeal< pesoAtual) return String.valueOf(pesoAtual*20);
-        else if (pesoIdeal > pesoAtual) return String.valueOf(pesoAtual * 30);
+    public  String generateBolso( double pesoIdeal){
+        if (pesoIdeal< peso) return String.valueOf(peso*20);
+        else if (pesoIdeal > peso) return String.valueOf(peso * 30);
         return "0";
     }
 
-    public static double generateVenta(double gastoEnergetico, double kgAperder){
-        return (gastoEnergetico - 256.6666666666667*kgAperder);
+    public  String generateVenta(double gastoEnergetico, double kgAperder){
+        return String.valueOf((gastoEnergetico - 256.6666666666667*kgAperder));
     }
 
-    public static double generateAgua(double pesoAtual,int idade){
+    public  double generateAgua(int idade){
 
-        if (idade <= 17) return 40*pesoAtual;
-        else if (idade <= 55) return 35*pesoAtual;
-        else if (idade <= 65) return 30*pesoAtual;
-        else  return 25*pesoAtual;
+        if (idade <= 17) return 40*peso;
+        else if (idade <= 55) return 35*peso;
+        else if (idade <= 65) return 30*peso;
+        else  return 25*peso;
 
 
     }

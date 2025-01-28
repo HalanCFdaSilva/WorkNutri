@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
+import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
 
@@ -24,7 +24,7 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
         ViewGroup viewGroup = getViewGroup();
 
 
-        TextView view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_patologia_atual);
+        TextView view = (TextView) viewGroup.findViewById(R.id.formulario_paciente_patologia_patologia_atual);
         InsertSelectViewSupport.insertInTextView(view,patologia.getPatologiaAtual());
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_urina);

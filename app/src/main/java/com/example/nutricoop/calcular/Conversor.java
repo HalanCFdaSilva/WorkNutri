@@ -2,16 +2,24 @@ package com.example.nutricoop.calcular;
 
 public abstract class Conversor {
     public static String convertToGram(int currentMeasure,double weight){
-        while(currentMeasure != 3){
-            if(currentMeasure > 3){
-                weight /= 10;
-                currentMeasure--;
-            } else {
-                weight *= 10;
-                currentMeasure++;
-            }
+        while(currentMeasure != 0){
+            weight /= 10;
+            currentMeasure--;
         }
         return Double.toString(weight);
+
+    }
+    public static double convertToCm(int currentMeasure,double altura){
+        while(currentMeasure != 2){
+            if (currentMeasure < 2){
+                altura *= 10;
+                currentMeasure++;
+            }else{
+                altura /= 10;
+                currentMeasure--;
+            }
+        }
+        return altura;
 
     }
 }

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 
 import com.example.nutricoop.R;
+import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.ui.formularios.formularioClinica.GenerateDayOfWork;
 
 public class HourDateFragment {
     private final ViewGroup layout;
@@ -49,4 +51,10 @@ public class HourDateFragment {
             }
         });
     }
+
+    public ViewGroup getLayout() {
+        return layout;
+    }
+
+
 }

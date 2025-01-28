@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
+import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
 
@@ -62,13 +62,13 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaQuadril());
 
 
-        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_altura);
+        view = (TextView) viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura);
         InsertSelectViewSupport.insertInTextView(view,antropometria.getAltura());
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_atual);
         InsertSelectViewSupport.insertInTextView(view,antropometria.getPeso());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_ideal);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getPesoDesejado());
+        InsertSelectViewSupport.insertInTextView(view,antropometria.getPesoIdeal());
 
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);

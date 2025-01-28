@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="length_types">
         <item>km</item>
         <item>hm</item>
         <item>dam</item>
+        <item>m</item>
+        <item>dm</item>
+        <item>cm</item>
+        <item>mm</item>
+    </string-array>
+
+    <string-array name="length_types_small">
         <item>m</item>
         <item>dm</item>
         <item>cm</item>

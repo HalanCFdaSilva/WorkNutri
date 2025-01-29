@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
 
@@ -23,4 +24,7 @@ public interface DayOfWorkDao {
 
     @Delete
     void delete(DayOfWork dayOfWork);
+
+    @Update
+    void update(DayOfWork dayOfWork);
 }

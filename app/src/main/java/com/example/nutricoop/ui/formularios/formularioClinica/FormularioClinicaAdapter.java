@@ -87,12 +87,22 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
 
     public void saveInDataBase(ViewGroup viewGroup){
 
-        insertion.InsertInClinica(viewGroup,clinica);
-        getDataBase().clinicaDao().insertAll(clinica);
-        int id = getDataBase().clinicaDao().findIdByName(clinica.getNome());
-        for (DayOfWork dayOfWork: daysOfWork){
-            dayOfWork.setIdClinica(id);
-            getDataBase().dayOfWorkDao().insert(dayOfWork);
+        if (clinica.getId() == 0){
+            insertion.InsertInClinica(viewGroup, clinica);
+            getDataBase().clinicaDao().insertAll(clinica);
+            int id = getDataBase().clinicaDao().findIdByName(clinica.getNome());
+            for (DayOfWork dayOfWork : daysOfWork) {
+                dayOfWork.setIdClinica(id);
+                getDataBase().dayOfWorkDao().insert(dayOfWork);
+            }
+        }else {
+            insertion.InsertInClinica(viewGroup, clinica);
+            getDataBase().clinicaDao().update(clinica);
+
+            for (DayOfWork dayOfWork : daysOfWork) {
+
+                getDataBase().dayOfWorkDao().update(dayOfWork);
+            }
         }
     }
 

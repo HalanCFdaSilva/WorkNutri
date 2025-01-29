@@ -40,6 +40,9 @@ public class HourDateFragment {
         this.trashButtonConfigure(layoutWhereAdd);
         layoutWhereAdd.addView(layout);
     }
+    public void removeTrashButton(){
+        layout.findViewById(R.id.time_descrition_fragment_button_delete).setVisibility(View.GONE);
+    }
 
     private void trashButtonConfigure(ViewGroup layoutWhereAdd ) {
         ImageButton deleteButton = layout.findViewById(R.id.time_descrition_fragment_button_delete);

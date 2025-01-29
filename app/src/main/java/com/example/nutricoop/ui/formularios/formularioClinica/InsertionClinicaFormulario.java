@@ -87,8 +87,8 @@ public class InsertionClinicaFormulario {
      * @param layoutInflater Classe que será usada para inflar o layout que será inserido no viewGroup
      * @see DayOfWork*/
     public void insertDaysOfWork(ViewGroup viewGroup, List<DayOfWork> dayOfWorkList, LayoutInflater layoutInflater){
-        HourDateFragment dateFragment = new HourDateFragment(layoutInflater);
         for (DayOfWork dayOfWork : dayOfWorkList){
+            HourDateFragment dateFragment = new HourDateFragment(layoutInflater);
             dateFragment.setDayOfweek(dayOfWork.getDayOfWeek());
             dateFragment.setHourBegin(dayOfWork.getHoraInicio());
             dateFragment.setHourEnd(dayOfWork.getHoraFim());

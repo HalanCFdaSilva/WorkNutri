@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+
 import com.example.nutricoop.sqlLite.clinica.dao.DayOfWorkDao;
 import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
 import com.example.nutricoop.sqlLite.paciente.dao.AntropometriaDao;
@@ -24,7 +25,8 @@ import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
  * conforme o desejado.
  * @author Halan Silva
  * @see RoomDatabase*/
-@Database(entities = {Paciente.class, Patologia.class, Antropometria.class, Clinica.class, DayOfWork.class},exportSchema = false ,version = 1 )
+@Database(entities = {Paciente.class, Patologia.class, Antropometria.class, Clinica.class, DayOfWork.class},
+        exportSchema = true ,version = 1 )
 public abstract class AppDataBase extends RoomDatabase {
 
     /**Constante que guarda o nome que deve ser chamado o banco de dados.

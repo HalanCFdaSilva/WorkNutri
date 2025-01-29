@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.nutricoop.R;
 import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
 import com.example.nutricoop.ui.ExtrasActivities;
-import com.example.nutricoop.ui.detail.detailPaciente.DetailPacienteActivie;
+import com.example.nutricoop.ui.detail.detailPaciente.PacienteDescriptionActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -38,8 +38,8 @@ public class PacienteCardInflater {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, DetailPacienteActivie.class);
-                    intent.putExtra(ExtrasActivities.PACIENTE, (Serializable) paciente);
+                    Intent intent = new Intent(context, PacienteDescriptionActivity.class);
+                    intent.putExtra(ExtrasActivities.PACIENTE, paciente);
                     context.startActivities(new Intent[]{intent});
                 }
             });

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navegation_edit"
+        android:icon="@drawable/pen_edit"
+        android:iconTint="@color/black"
+        android:title="EDITAR" />
+
+    <item
+        android:id="@+id/navegation_delete"
+        android:icon="@drawable/delete_28dp_button_red"
+        android:title="APAGAR"/>
+</menu>

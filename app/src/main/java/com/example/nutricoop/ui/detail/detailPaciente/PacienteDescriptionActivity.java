@@ -20,7 +20,7 @@ import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
 import com.example.nutricoop.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
 
-public class DetailPacienteActivie extends AppCompatActivity {
+public class PacienteDescriptionActivity extends AppCompatActivity {
 
     private Paciente paciente;
     private Antropometria antropometria;

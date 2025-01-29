@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
 
@@ -29,8 +30,8 @@ public interface ClinicaDao {
 
 
 
-
-
+    @Update
+    void update(Clinica clinica);
     @Insert
     void insertAll(Clinica... clinicas);
 

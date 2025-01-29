@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="DADOS GERAIS CLINICA"
+                    android:text="@string/dados_gerais_clinica"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="64dp"
                     android:ems="10"
-                    android:hint="DIGITE O NOME CLINICA"
+                    android:hint="@string/clinica_hint"
                     android:inputType="text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_dados_gerais_name_title"
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="DIGITE O EMAIL"
+                    android:hint="@string/email_hint"
                     android:inputType="textEmailAddress"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="ENDERECO CLINICA"
+                    android:text="@string/endereco_clinica_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="CEP:"
+                    android:text="@string/cep_title"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_sortDivider" />
                 <EditText
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:ems="10"
-                    android:hint="DIGITE O CEP"
+                    android:hint="@string/cep_hint"
                     android:inputType="number"
                     android:textSize="12sp"
                     android:maxLength="9"
@@ -205,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Rua:"
+                    android:text="@string/rua_title"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_endereco_cep_title"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_cep" />
@@ -230,7 +230,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:ems="10"
-                    android:hint="DIGITE O NOME DA RUA"
+                    android:hint="@string/rua_hint"
                     android:inputType="text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_rua_title"
@@ -246,7 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Numero:"
+                    android:text="@string/numero_title"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_endereco_cep_title"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
@@ -270,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:ems="10"
-                    android:hint="NUMERO"
+                    android:hint="@string/numero_hint"
                     android:inputType="number"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_numero_title"
@@ -285,7 +285,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Complemento: "
+                    android:text="@string/complemento_title"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_numero"
                     app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_numero"
                     app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_numero" />
@@ -296,7 +296,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:ems="10"
-                    android:hint="DIGITE O COMPLEMENTO"
+                    android:hint="@string/complemento_hint"
                     android:inputType="text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_complemento_title"
@@ -312,7 +312,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Cidade:"
+                    android:text="@string/cidade_title"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_numero" />
 
@@ -334,7 +334,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:ems="10"
-                    android:hint="DIGITE A CIDADE"
+                    android:hint="@string/cidade_hint"
                     android:inputType="text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_cidade_title"
@@ -350,7 +350,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Bairro:"
+                    android:text="@string/bairro_title"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_cidade" />
 
@@ -366,43 +366,43 @@
                     app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_bairro_title"
                     app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro" />
 
+
+                <!--            ESTADO-->
                 <EditText
                     android:id="@+id/formulario_clinica_endereco_bairro"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
-                    android:hint="DIGITE O BAIRRO"
+                    android:hint="@string/bairro_hint"
                     android:inputType="text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_bairro_title"
+                    app:layout_constraintEnd_toStartOf="@+id/formulario_clinica_endereco_estado_title"
                     app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_bairro_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro_title" />
+                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro_title"
+                     />
 
-
-
-                <!--            ESTADO-->
                 <TextView
                     android:id="@+id/formulario_clinica_endereco_estado_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="9dp"
-                    android:text="Estado:"
+                    android:text="@string/estado_title"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_bairro"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_bairro"
+                    app:layout_constraintEnd_toStartOf="@+id/formulario_clinica_endereco_estado_spinner"
                     app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro" />
 
                 <Spinner
                     android:id="@+id/formulario_clinica_endereco_estado_spinner"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:entries="@array/estado_brasil"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_estado_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_estado_title"
                     app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_estado_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -411,13 +411,14 @@
                 android:id="@+id/formulario_clinica_horario_atendimento_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/formulario_clinica_horario_atendimento_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="HORÁRIOS DE ATENDIMENTO NA CLINICA"
+                    android:text="@string/atendimento_clinica"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -447,7 +448,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="ADICIONAR HORÁRIO"
+                    android:text="@string/add_dia_atendimento"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_horario_atendimento_layout"
                     app:layout_constraintStart_toStartOf="@+id/formulario_clinica_horario_atendimento_layout"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_horario_atendimento_layout" />

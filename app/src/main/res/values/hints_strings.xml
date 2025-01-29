@@ -32,5 +32,14 @@
     <string name="acucar_hint">DIGITE SOBRE O CONSUME DE AÇUCAR PELO PACIENTE</string>
     <string name="atividade_hint">DIGITE COMO É A VIDA ATIVA DO PACIENTE</string>
 
+    <string name="clinica_hint">DIGITE O NOME DA CLINICA</string>
+    <string name="cep_hint">DIGITE O CEP</string>
+    <string name="rua_hint">DIGITE O NOME DA RUA</string>
+    <string name="numero_hint">NUMERO</string>
+    <string name="complemento_hint">DIGITE O COMPLEMENTO</string>
+    <string name="cidade_hint">DIGITE A CIDADE</string>
+    <string name="bairro_hint">DIGITE O BAIRRO</string>
+
+
 
 </resources>

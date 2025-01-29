@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dados_gerais_clinica">DADOS GERAIS CLINICA</string>
+    <string name="atendimento_clinica">HORÁRIOS DE ATENDIMENTO NA CLINICA</string>
+    <string name="add_dia_atendimento">ADICIONAR HORÁRIO</string>
+    <string name="endereco_clinica_title">ENDERECO CLINICA</string>
+    <string name="cep_title">CEP:</string>
+    <string name="rua_title">Rua:</string>
+    <string name="numero_title">Numero:</string>
+    <string name="complemento_title">Complemento:</string>
+    <string name="bairro_title">Bairro:</string>
+    <string name="cidade_title">Cidade:</string>
+    <string name="estado_title">Estado:</string>
+</resources>

@@ -101,7 +101,8 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
 
             for (DayOfWork dayOfWork : daysOfWork) {
 
-                getDataBase().dayOfWorkDao().update(dayOfWork);
+                getDataBase().dayOfWorkDao().updateDayOfWork(dayOfWork.getDayOfWeek(),dayOfWork.getHoraInicio(),
+                        dayOfWork.getHoraFim(), dayOfWork.getId());
             }
         }
     }

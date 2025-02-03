@@ -44,10 +44,7 @@ public class FormularioPacienteActivity extends AppCompatActivity {
     }
 
     private void insertKeyListeners() {
-        EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_cpf);
-        editText.setOnKeyListener(new CpfKeyListener(editText));
-
-        editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
         editText.setOnKeyListener(new FoneKeyListener(editText));
 
         editText = findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);

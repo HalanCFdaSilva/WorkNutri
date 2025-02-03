@@ -24,7 +24,7 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
         ViewGroup viewGroup = getViewGroup();
 
 
-        TextView view = (TextView) viewGroup.findViewById(R.id.formulario_paciente_patologia_patologia_atual);
+        TextView view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_patologia_atual);
         InsertSelectViewSupport.insertInTextView(view,patologia.getPatologiaAtual());
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_patologia_urina);

@@ -39,7 +39,6 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
         super.onStart();
         setTitle(paciente.getNomePaciente().toUpperCase());
         ((TextView)findViewById(R.id.detail_paciente_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
-        ((TextView)findViewById(R.id.detail_paciente_activity_cpf_paciente_descrition)).setText(paciente.getCpf());
         ((TextView)findViewById(R.id.detail_paciente_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
         ((TextView)findViewById(R.id.detail_paciente_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
         ((TextView)findViewById(R.id.detail_paciente_activity_email_paciente_descrition)).setText(paciente.getEmail());

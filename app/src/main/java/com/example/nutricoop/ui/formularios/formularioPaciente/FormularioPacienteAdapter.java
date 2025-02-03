@@ -71,10 +71,6 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
                 textViewError)){
             validado = false;
         }
-        if (validado && !ValidaFormulario.validaCpf(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_cpf),
-                textViewError)){
-            validado = false;
-        }
         if (validado && !ValidaFormulario.validaEmail(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_email),
                 textViewError)){
             validado = false;

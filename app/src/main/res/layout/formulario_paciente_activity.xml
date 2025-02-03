@@ -89,31 +89,7 @@
                     app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_name_obrigatorio"
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_name_title" />
 
-                <!--           CPF-->
-                <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_cpf_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/cpf_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_name" />
 
-                <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_cpf"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/cpf_hint"
-                    android:inputType="number"
-                    android:maxLength="14"
-                    android:textAlignment="viewStart"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_cpf_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_cpf_title" />
 
 
                 <!--           GENERO-->
@@ -121,20 +97,21 @@
                     android:id="@+id/formulario_paciente_dados_pessoais_genero_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/genero_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_cpf"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_cpf_title" />
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_name" />
 
 
                 <Spinner
                     android:id="@+id/formulario_paciente_dados_pessoais_genero_spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:entries="@array/genero_types"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_genero_title"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_genero_title"
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
 
@@ -144,10 +121,10 @@
                     android:id="@+id/formulario_paciente_dados_pessoais_idade_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/idade_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_cpf" />
+                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_genero_spinner"
+                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_genero_spinner" />
 
                 <TextView
                     android:id="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
@@ -163,8 +140,10 @@
 
                 <EditText
                     android:id="@+id/formulario_paciente_dados_pessoais_idade"
-                    android:layout_width="50dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="@string/idade_hint"
                     android:inputType="number"
@@ -172,9 +151,9 @@
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_idade_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
+                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_idade_title" />
 
                 <!--           DATA NASCIMENTO-->
@@ -182,16 +161,17 @@
                     android:id="@+id/formulario_paciente_dados_pessoais_nascimento_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/nascimento_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_idade"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_idade_title" />
+                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name_title"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
 
                 <EditText
                     android:id="@+id/formulario_paciente_dados_pessoais_nascimento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/nascimento_hint"
@@ -199,11 +179,11 @@
                     android:maxLength="10"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_idade"
+                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_idade"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
+                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_nascimento_title" />
 
 
                 <!--           EMAIL-->

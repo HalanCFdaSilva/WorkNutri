@@ -18,6 +18,11 @@ public interface DayOfWorkDao {
     List<DayOfWork> getAll();
     @Query("SELECT * FROM day_of_work WHERE id_clinica == (:clinicaId)")
     List<DayOfWork> getDaysforClinicaId(long clinicaId);
+    @Query("UPDATE day_of_work SET day_of_week = :dayOfWeek" +
+            " AND hora_inicio = :hourBegin " +
+            "AND hora_fim = :hourEnd " +
+            "WHERE id == :id")
+    void updateDayOfWork(String dayOfWeek,String hourBegin,String hourEnd, long id);
 
     @Insert
     void insert(DayOfWork dayOfWork);
@@ -25,6 +30,4 @@ public interface DayOfWorkDao {
     @Delete
     void delete(DayOfWork dayOfWork);
 
-    @Update
-    void update(DayOfWork dayOfWork);
 }

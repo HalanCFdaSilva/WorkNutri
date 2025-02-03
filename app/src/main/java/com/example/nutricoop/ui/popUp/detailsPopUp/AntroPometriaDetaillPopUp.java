@@ -62,7 +62,7 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaQuadril());
 
 
-        view = (TextView) viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura);
+        view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_altura);
         InsertSelectViewSupport.insertInTextView(view,antropometria.getAltura());
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_atual);

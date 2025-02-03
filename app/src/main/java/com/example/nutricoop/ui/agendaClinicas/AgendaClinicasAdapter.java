@@ -32,6 +32,7 @@ public class AgendaClinicasAdapter {
         linearLayout.removeAllViews();
         for (Clinica clinica : clinicaList){
             ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.card_fragment_clinica, null);
+            viewGroup.setForeground(context.getDrawable(R.drawable.border_small));
 
             TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
             InsertSelectViewSupport.insertInTextView(textView,clinica.getNome());

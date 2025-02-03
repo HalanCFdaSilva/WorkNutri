@@ -111,8 +111,6 @@ public class InsertionPacienteFormulario {
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)));
 
 
-        paciente.setCpf(InsertSelectViewSupport.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_cpf)));
 
 
         int i = getPositionOfSpinner(
@@ -143,8 +141,6 @@ public class InsertionPacienteFormulario {
     public void insertPaciente(ViewGroup viewGroup, Paciente paciente){
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_cpf)
-                , paciente.getCpf());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade)
                 , String.valueOf(paciente.getIdade()));
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)

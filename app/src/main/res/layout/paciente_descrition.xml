@@ -40,38 +40,17 @@
         app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_picture_paciente"
         app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_picture_paciente"
         app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/detail_paciente_activity_name_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/detail_paciente_activity_cpf_paciente_title"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_name_paciente_title"
         app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_name_paciente_title"
         app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_name_paciente_title"
         app:layout_constraintVertical_bias="0.0"
         tools:text="José Carlos Araujo" />
-
-
-<!--CPF PACIENTE-->
-    <TextView
-        android:id="@+id/detail_paciente_activity_cpf_paciente_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/cpf_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_name_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_name_paciente_title" />
-    <TextView
-        android:id="@+id/detail_paciente_activity_cpf_paciente_descrition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_cpf_paciente_title"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_cpf_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_cpf_paciente_title"
-        tools:text="155.253.452-38" />
 
 
 <!--IDADE PACIENTE-->
@@ -82,7 +61,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/idade_title"
         app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_name_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_cpf_paciente_title" />
+        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_name_paciente_title" />
     <TextView
         android:id="@+id/detail_paciente_activity_idade_paciente_descrition"
         android:layout_width="wrap_content"

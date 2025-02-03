@@ -22,9 +22,7 @@ public interface PacienteDao {
 
     @Query("SELECT * FROM paciente WHERE nome_paciente LIKE :nomePaciente")
     List<Paciente> findByName(String nomePaciente);
-
-    @Query("SELECT * FROM paciente WHERE cpf LIKE :cpfPaciente LIMIT 1")
-    Paciente findByCpf(String cpfPaciente);
+    
 
 //    @Transaction
 //    @Query("SELECT * FROM paciente WHERE cpf LIKE :cpfPaciente")

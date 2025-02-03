@@ -16,7 +16,7 @@ public class Paciente implements Serializable {
 
     private String nomePaciente;
 
-    private String cpf;
+
 
     private int idade;
 
@@ -34,14 +34,6 @@ public class Paciente implements Serializable {
     private String clinica;
 
     private String observacoes;
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getNomePaciente(){
         return this.nomePaciente;

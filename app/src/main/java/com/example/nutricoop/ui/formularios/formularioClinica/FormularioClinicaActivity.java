@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

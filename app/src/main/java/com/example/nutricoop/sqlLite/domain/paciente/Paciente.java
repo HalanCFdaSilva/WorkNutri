@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.paciente.domain;
+package com.example.nutricoop.sqlLite.domain.paciente;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -31,7 +31,7 @@ public class Paciente implements Serializable {
 
     private char genero;
 
-    private String clinica;
+    private long clinicaId;
 
     private String observacoes;
 
@@ -98,12 +98,12 @@ public class Paciente implements Serializable {
         this.genero = genero;
     }
 
-    public String getClinica() {
-        return clinica;
+    public long getClinicaId() {
+        return clinicaId;
     }
 
-    public void setClinica(String clinica) {
-        this.clinica = clinica;
+    public void setClinicaId(long clinicaId) {
+        this.clinicaId = clinicaId;
     }
 
     public String getObservacoes() {

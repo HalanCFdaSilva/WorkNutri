@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.agendaPacientes;
+package com.example.nutricoop.ui.agendasFragment.agendaPacientes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,15 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nutricoop.MainActivity;
 import com.example.nutricoop.databinding.FragmentAgendaBinding;
-import com.example.nutricoop.sqlLite.paciente.dao.PacienteDao;
-import com.example.nutricoop.sqlLite.database.AppDataBase;
-import com.example.nutricoop.ui.agendaPacientes.Inflaters.LetterPacienteFragment;
 
 
 public class AgendaPacienteFragment extends Fragment {
 
 
     private FragmentAgendaBinding binding;
+    private AgendaPacienteAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -29,6 +27,7 @@ public class AgendaPacienteFragment extends Fragment {
         View root = binding.getRoot();
         MainActivity.isPaciente = true;
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome do paciente");
+        adapter = new AgendaPacienteAdapter(getContext());
         return root;
     }
 
@@ -37,9 +36,8 @@ public class AgendaPacienteFragment extends Fragment {
         super.onStart();
 
         binding.agendaFragmentLinearLayout.removeAllViews();
-        PacienteDao pacienteDao = AppDataBase.getInstance(getContext()).pacienteDao();
-        LetterPacienteFragment letterPacienteFragment = new LetterPacienteFragment(getLayoutInflater(),pacienteDao.getAllInOrder());
-        letterPacienteFragment.generateAgenda(binding.agendaFragmentLinearLayout);
+        adapter.inflateAgenda(getLayoutInflater(),binding.agendaFragmentLinearLayout);
+
 
 
 

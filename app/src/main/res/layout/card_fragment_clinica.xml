@@ -9,7 +9,7 @@
         android:id="@+id/card_fragment_clinica_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:alpha="0.7"
         android:textAllCaps="true"
@@ -28,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:textAllCaps="true"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinica_name"
         app:layout_constraintTop_toBottomOf="@+id/card_fragment_clinica_name"
         tools:text="rua" />
 
@@ -65,6 +65,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/card_fragment_clinica_bairro"
         app:layout_constraintStart_toEndOf="@+id/card_fragment_clinica_bairro"
         app:layout_constraintTop_toTopOf="@+id/card_fragment_clinica_bairro" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/card_fragment_clinica_sortdivider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinica_name"
+        app:layout_constraintTop_toBottomOf="@id/card_fragment_clinica_cidade"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,16 +7,16 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 
-import com.example.nutricoop.sqlLite.clinica.dao.DayOfWorkDao;
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
-import com.example.nutricoop.sqlLite.paciente.dao.AntropometriaDao;
-import com.example.nutricoop.sqlLite.clinica.dao.ClinicaDao;
-import com.example.nutricoop.sqlLite.paciente.dao.PacienteDao;
-import com.example.nutricoop.sqlLite.paciente.dao.PatologiaDao;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
-import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
-import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
+import com.example.nutricoop.sqlLite.dao.clinica.DayOfWorkDao;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
+import com.example.nutricoop.sqlLite.dao.paciente.AntropometriaDao;
+import com.example.nutricoop.sqlLite.dao.clinica.ClinicaDao;
+import com.example.nutricoop.sqlLite.dao.paciente.PacienteDao;
+import com.example.nutricoop.sqlLite.dao.paciente.PatologiaDao;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
 
 
 /**Classe que cria e faz a manutenção do banco de dados.

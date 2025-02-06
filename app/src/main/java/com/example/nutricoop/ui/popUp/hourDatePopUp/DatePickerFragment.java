@@ -1,20 +1,17 @@
 package com.example.nutricoop.ui.popUp.hourDatePopUp;
 
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
 import com.example.nutricoop.ui.formularios.formularioClinica.GenerateDayOfWork;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

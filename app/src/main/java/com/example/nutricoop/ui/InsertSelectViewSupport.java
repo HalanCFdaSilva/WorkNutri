@@ -1,5 +1,6 @@
 package com.example.nutricoop.ui;
 
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -8,6 +9,13 @@ import com.example.nutricoop.R;
 
 public abstract class InsertSelectViewSupport {
 
+    public static void insertInTextViewOrGone(TextView textView,String stringToInsert ){
+        if (!stringToInsert.isBlank()){
+            textView.setText(stringToInsert);
+        }else{
+            textView.setVisibility(View.GONE);
+        }
+    }
     public static void insertInTextView(TextView textView,String stringToInsert ){
         if (stringToInsert != null){
             textView.setText(stringToInsert);
@@ -36,7 +44,10 @@ public abstract class InsertSelectViewSupport {
         }
     }
 
-
+    public static String getStringOfSpinner(Spinner spinner,String[] arrayOfStringgSpinner){
+        int i = spinner.getSelectedItemPosition();
+        return arrayOfStringgSpinner[i];
+    }
 
 
 }

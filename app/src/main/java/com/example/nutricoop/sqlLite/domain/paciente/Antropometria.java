@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.paciente.domain;
+package com.example.nutricoop.sqlLite.domain.paciente;
 
 import static androidx.room.ForeignKey.CASCADE;
 
@@ -6,8 +6,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import com.example.nutricoop.calcular.CalculadorAntropometrico;
 
 @Entity(tableName = "antropometrias",
         foreignKeys = {@ForeignKey(

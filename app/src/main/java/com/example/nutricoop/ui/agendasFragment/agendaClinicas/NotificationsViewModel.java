@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.agendaClinicas;
+package com.example.nutricoop.ui.agendasFragment.agendaClinicas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

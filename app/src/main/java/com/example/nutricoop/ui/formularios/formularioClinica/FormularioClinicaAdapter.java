@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.example.nutricoop.R;
 
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
 import com.example.nutricoop.ui.formularios.FormularioAdapter;
 import com.example.nutricoop.ui.formularios.ValidaFormulario;
 import com.example.nutricoop.ui.formularios.editTextKeysListener.CepKeyListener;

@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
+import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.popUp.PopUpFragment;
 

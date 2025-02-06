@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.clinica.domain;
+package com.example.nutricoop.sqlLite.domain.clinica;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

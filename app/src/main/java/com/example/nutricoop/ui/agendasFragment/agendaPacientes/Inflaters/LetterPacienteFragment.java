@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.agendaPacientes.Inflaters;
+package com.example.nutricoop.ui.agendasFragment.agendaPacientes.Inflaters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 
 import java.util.ArrayList;
 import java.util.List;

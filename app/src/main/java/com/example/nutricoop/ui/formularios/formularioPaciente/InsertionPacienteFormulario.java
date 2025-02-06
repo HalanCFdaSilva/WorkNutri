@@ -12,10 +12,10 @@ import android.widget.Spinner;
 import com.example.nutricoop.R;
 import com.example.nutricoop.calcular.CalculadorAntropometrico;
 import com.example.nutricoop.calcular.Conversor;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
-import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
-import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class InsertionPacienteFormulario {
 
 
-    public Patologia generatePatologia(ViewGroup viewGroup,Patologia patologia) {
+    public Patologia insertViewGroupInPatologia(ViewGroup viewGroup, Patologia patologia) {
 
 
         patologia.setPatologiaAtual(getStringOfEditText(
@@ -55,7 +55,7 @@ public class InsertionPacienteFormulario {
         return patologia;
     }
 
-    public Antropometria generateAntropometria(ViewGroup viewGroup, Antropometria antropometria,Paciente paciente) {
+    public Antropometria insertViewGroupInAntropometria(ViewGroup viewGroup, Antropometria antropometria, Paciente paciente) {
 
 
         double pesoAtual = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(
@@ -104,14 +104,11 @@ public class InsertionPacienteFormulario {
         return antropometria;
     }
 
-    public Paciente generatePaciente(ViewGroup viewGroup,Paciente paciente) {
+    public Paciente insertViewGroupInPaciente(ViewGroup viewGroup, Paciente paciente) {
 
 
         paciente.setNomePaciente(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)));
-
-
-
 
         int i = getPositionOfSpinner(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner));
@@ -134,11 +131,17 @@ public class InsertionPacienteFormulario {
         return paciente;
     }
 
+    public void insertClinicaInPaciente(Spinner spinner, Paciente paciente, List<Clinica> clinicasInOrder){
+        int i = getPositionOfSpinner(spinner);
+        Clinica clinica = clinicasInOrder.get(i);
+        paciente.setClinicaId(clinica.getId());
+    }
+
     /**Método que preenche o viewGroup de Paciente do FormularioPaciente com os dados que recebe da classe Paciente
      * com a ajuda da classe InsertSelectViewSupport.
      * @see Paciente
      * @see InsertSelectViewSupport*/
-    public void insertPaciente(ViewGroup viewGroup, Paciente paciente){
+    public void insertPacienteInViewGroup(ViewGroup viewGroup, Paciente paciente){
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade)
@@ -213,10 +216,10 @@ public class InsertionPacienteFormulario {
 
 
     }
-    public void SelectClinica(Spinner spinnerClinica, String nomeClinica, List<Clinica> clinicas){
+    public void SelectClinica(Spinner spinnerClinica, long clinicaId, List<Clinica> clinicas){
         int i = 0;
         for (Clinica clinica : clinicas){
-            if (nomeClinica == clinica.getNome()){
+            if (clinicaId == clinica.getId()){
                 break;
             }
             i++;

@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.agendaClinicas;
+package com.example.nutricoop.ui.agendasFragment.agendaClinicas;
 
 
 
@@ -32,7 +32,7 @@ public class AgendaClinicasFragment extends Fragment {
 
 
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome da clinica");
-        binding.agendaFragmentFabCalendario.setVisibility(View.VISIBLE);
+//        binding.agendaFragmentFabCalendario.setVisibility(View.VISIBLE);
 
 
         return root;

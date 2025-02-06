@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/navigation_pacientes"
-        android:name="com.example.nutricoop.ui.agendaPacientes.AgendaPacienteFragment"
+        android:name="com.example.nutricoop.ui.agendasFragment.agendaPacientes.AgendaPacienteFragment"
         android:label="@string/title_pacientes"
         tools:layout="@layout/fragment_agenda" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_clinicas"
-        android:name="com.example.nutricoop.ui.agendaClinicas.AgendaClinicasFragment"
+        android:name="com.example.nutricoop.ui.agendasFragment.agendaClinicas.AgendaClinicasFragment"
         android:label="@string/title_clinicas"
         tools:layout="@layout/fragment_agenda" />
 

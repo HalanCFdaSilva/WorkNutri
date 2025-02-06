@@ -12,25 +12,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
-import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.formularios.FormularioAdapter;
 import com.example.nutricoop.ui.formularios.ValidaFormulario;
 import com.example.nutricoop.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
+
+import java.util.List;
 
 public class FormularioPacienteAdapter extends FormularioAdapter {
 
     private Patologia patologia;
     private Antropometria antropometria;
     private Paciente paciente;
+    private List<Clinica> clinicasInOrder;
 
     public FormularioPacienteAdapter(Context context) {
         super(context);
         paciente = new Paciente();
         antropometria = new Antropometria();
         patologia = new Patologia();
+        clinicasInOrder = getDataBase().clinicaDao().getAllInOrder();
     }
 
     public void insertInFormulario(Intent intent,ViewGroup viewRootFormulario){
@@ -39,20 +44,21 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             antropometria = getDataBase().antropometriaDao().loadAllByIdPaciente(paciente.getId()).get(0);
             patologia = getDataBase().patologiaDao().loadAllByIdPaciente(paciente.getId()).get(0);
             InsertionPacienteFormulario insertion =  new InsertionPacienteFormulario();
-            insertion.insertPaciente(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout),paciente);
+            insertion.insertPacienteInViewGroup(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout),paciente);
             insertion.insertAntropometria(viewRootFormulario.findViewById(R.id.formulario_paciente_antropometria_layout),antropometria);
             insertion.InsertPatologia(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout),patologia);
             insertion.SelectClinica(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),
-                    paciente.getClinica(),getDataBase().clinicaDao().getAllInOrder());
+                    paciente.getClinicaId(),getDataBase().clinicaDao().getAllInOrder());
         }
     }
 
 
     public void savePaciente(ViewGroup viewGroup){
         InsertionPacienteFormulario generator = new InsertionPacienteFormulario();
-            generator.generatePaciente(viewGroup,paciente);
-            generator.generateAntropometria(viewGroup,antropometria,paciente);
-            generator.generatePatologia(viewGroup,patologia);
+            generator.insertViewGroupInPaciente(viewGroup,paciente);
+            generator.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),paciente,clinicasInOrder);
+            generator.insertViewGroupInAntropometria(viewGroup,antropometria,paciente);
+            generator.insertViewGroupInPatologia(viewGroup,patologia);
 
 
             getDataBase().pacienteDao().insertAll(paciente);
@@ -62,7 +68,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
 
     public void setClinicas(Spinner spinner) {
 
-        spinner.setAdapter(new ClinicaArrayAdapter(getContext(),getDataBase().clinicaDao().getAllInOrder()));
+        spinner.setAdapter(new ClinicaArrayAdapter(getContext(),clinicasInOrder));
     }
 
     public boolean validaFormulario(ViewGroup viewRoot, TextView textViewError) {
@@ -114,8 +120,8 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             ViewGroup layout = viewGroup.findViewById(
                     R.id.formulario_paciente_activity_constraint_layout);
             InsertionPacienteFormulario generator = new InsertionPacienteFormulario();
-            generator.generatePaciente(layout,paciente);
-            generator.generateAntropometria(layout,antropometria,paciente);
+            generator.insertViewGroupInPaciente(layout,paciente);
+            generator.insertViewGroupInAntropometria(layout,antropometria,paciente);
             AntroPometriaDetaillPopUp popUp = new AntroPometriaDetaillPopUp(inflater,antropometria,false);
             popUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(
                     R.id.formulario_paciente_activity_constraint_layout), Gravity.CENTER, -1, -1);

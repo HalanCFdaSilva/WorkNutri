@@ -5,26 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
 import com.example.nutricoop.ui.BottomMenuConfigurator;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.formularios.formularioClinica.FormularioClinicaActivity;
-import com.example.nutricoop.ui.formularios.formularioClinica.FormularioClinicaAdapter;
 import com.example.nutricoop.ui.popUp.hourDatePopUp.HourDateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClinicaDescriptionAdapter {

@@ -1,15 +1,15 @@
 package com.example.nutricoop.ui.formularios.formularioClinica;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.Clinica;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
 import com.example.nutricoop.ui.InsertSelectViewSupport;
 import com.example.nutricoop.ui.popUp.hourDatePopUp.HourDateFragment;
 
@@ -44,6 +44,14 @@ public class InsertionClinicaFormulario {
         clinica.setBairro(stringOfEditText);
         stringOfEditText = InsertSelectViewSupport.getStringOfEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cidade));
         clinica.setCidade(stringOfEditText);
+
+        String stringOfSpinner = InsertSelectViewSupport.getStringOfSpinner(viewGroup.findViewById(R.id.formulario_clinica_endereco_estado_spinner),
+                context.getResources().getStringArray(R.array.estado_brasil));
+        clinica.setEstado(stringOfSpinner);
+
+
+
+
     }
 
     public void InsertInFormulario(ViewGroup viewGroup, Clinica clinica){
@@ -65,16 +73,17 @@ public class InsertionClinicaFormulario {
 
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cidade),clinica.getCidade());
 
-        if (clinica.getEstado() != null){
+        if (!clinica.getEstado().isBlank()){
             Spinner spinner = viewGroup.findViewById(R.id.formulario_clinica_endereco_estado_spinner);
 
             String[] stringArray = context.getResources().getStringArray(R.array.estado_brasil);
             int i = 0;
             for (String estado : stringArray){
-                if (estado == clinica.getEstado()) break;
+                if (estado.equals(clinica.getEstado())){
+                    break;
+                }
                 i++;
             }
-
             spinner.setSelection(i);
         }
     }

@@ -1,13 +1,10 @@
 package com.example.nutricoop.ui.formularios.formularioClinica;
 
-import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.clinica.domain.Clinica;
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
 
 /**Classe que gera uma instância da classe DayOfWork
  * @see DayOfWork*/

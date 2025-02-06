@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nutricoop.R;
 import com.example.nutricoop.sqlLite.database.AppDataBase;
-import com.example.nutricoop.sqlLite.paciente.domain.Antropometria;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
-import com.example.nutricoop.sqlLite.paciente.domain.Patologia;
+import com.example.nutricoop.sqlLite.domain.paciente.Antropometria;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Patologia;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
 import com.example.nutricoop.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;

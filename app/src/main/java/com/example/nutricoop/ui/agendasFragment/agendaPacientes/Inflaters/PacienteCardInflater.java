@@ -1,4 +1,4 @@
-package com.example.nutricoop.ui.agendaPacientes.Inflaters;
+package com.example.nutricoop.ui.agendasFragment.agendaPacientes.Inflaters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.nutricoop.R;
-import com.example.nutricoop.sqlLite.paciente.domain.Paciente;
+import com.example.nutricoop.sqlLite.domain.paciente.Paciente;
 import com.example.nutricoop.ui.ExtrasActivities;
 import com.example.nutricoop.ui.detail.detailPaciente.PacienteDescriptionActivity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class PacienteCardInflater {

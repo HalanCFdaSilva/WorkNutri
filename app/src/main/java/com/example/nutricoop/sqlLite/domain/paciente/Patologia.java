@@ -1,4 +1,4 @@
-package com.example.nutricoop.sqlLite.paciente.domain;
+package com.example.nutricoop.sqlLite.domain.paciente;
 
 import static androidx.room.ForeignKey.CASCADE;
 

@@ -1,12 +1,11 @@
-package com.example.nutricoop.sqlLite.clinica.dao;
+package com.example.nutricoop.sqlLite.dao.clinica;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
-import com.example.nutricoop.sqlLite.clinica.domain.DayOfWork;
+import com.example.nutricoop.sqlLite.domain.clinica.DayOfWork;
 
 import java.util.List;
 

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.nutricoop"
+    namespace = "com.example.worknutri"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.nutricoop"
+        applicationId = "com.example.worknutri"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

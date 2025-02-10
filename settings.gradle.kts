@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NutriCoop"
+rootProject.name = "worknutri"
 include(":app")
  

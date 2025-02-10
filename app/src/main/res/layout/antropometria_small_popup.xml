@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tool:text="@string/metabolica_taxa_title"
+        android:text="@string/metabolica_taxa_title"
         app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
         app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_imc_title" />
 

@@ -80,15 +80,18 @@ public class InsertionPacienteFormulario {
         antropometria.setPesoIdeal(Conversor.convertToGram(position,pesoIdeal));
         pesoIdeal = Double.parseDouble(antropometria.getPesoIdeal());
 
+        int positionOfAtivity = ((Spinner)viewGroup.findViewById(
+                R.id.formulario_paciente_antropometria_calculos_atividade_spinner)).getSelectedItemPosition();
+
         CalculadorAntropometrico calculador = new CalculadorAntropometrico(pesoAtual,altura);
         antropometria.setImc(calculador.generateImc());
         antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(),paciente.getIdade()));
         antropometria.setValorMetabolico(calculador.generateGET(antropometria.getTaxaMetabolica(),
-                1, paciente.getGenero()));
+                positionOfAtivity, paciente.getGenero()));
         antropometria.setRegraBolso(calculador.generateBolso(pesoIdeal));
         double valorAPerder = 1;
         antropometria.setVenta(calculador.generateVenta(Double.parseDouble(antropometria.getValorMetabolico()),valorAPerder));
-        antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade())));
+        antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade(),pesoAtual)));
 
         antropometria.setCircumferenciaBracoDir(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)));

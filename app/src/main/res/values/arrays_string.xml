@@ -28,6 +28,14 @@
         <item>mg</item>
     </string-array>
 
+    <string-array name="atividade_array">
+        <item>Sedentário</item>
+        <item>Leve</item>
+        <item>Moderado</item>
+        <item>Muito</item>
+        <item>Extremo</item>
+    </string-array>
+
     <string-array name="genero_types">
         <item>M</item>
         <item>F</item>

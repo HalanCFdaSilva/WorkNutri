@@ -46,22 +46,28 @@ public class CalculadorAntropometrico {
     }
 
     public  String generateBolso( double pesoIdeal){
-        if (pesoIdeal< peso) return String.valueOf(peso*20);
+        if (pesoIdeal< peso) return String.valueOf(peso*20*-1);
         else if (pesoIdeal > peso) return String.valueOf(peso * 30);
         return "0";
     }
 
     public  String generateVenta(double gastoEnergetico, double kgAperder){
-        return String.valueOf((gastoEnergetico - 256.6666666666667*kgAperder));
+        return String.valueOf((gastoEnergetico - (256*(2/3))*kgAperder));
     }
 
-    public  double generateAgua(int idade){
+    public  int generateAgua(int idade, double peso){
 
-        if (idade <= 17) return 40*peso;
-        else if (idade <= 55) return 35*peso;
-        else if (idade <= 65) return 30*peso;
-        else  return 25*peso;
+        int kg = (int)peso;
+        int aguaInMl = 0;
+        if (idade <= 17) aguaInMl =  40*kg;
+        else if (idade <= 55) aguaInMl = 35*kg;
+        else if (idade <= 65) aguaInMl = 30*kg;
+        else  aguaInMl = 25*kg;
 
-
+        kg = (int) ((peso-kg)%10)*10;
+        if ( kg> 0){
+            aguaInMl += this.generateAgua(idade,kg);
+        }
+            return aguaInMl;
     }
 }

@@ -28,16 +28,15 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         TextView view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_imc);
         InsertSelectViewSupport.insertInTextView(view,antropometria.getImc());
         view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getTaxaMetabolica());
+        insertWithKcal(view,antropometria.getTaxaMetabolica());
         view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_valor_metabolico);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getValorMetabolico());
+        insertWithKcal(view,antropometria.getValorMetabolico());
         view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_bolso);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getRegraBolso());
+        insertWithKcal(view,antropometria.getRegraBolso());
         view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_venta);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getVenta());
+        this.insertWithKcalDia(view,antropometria.getVenta());
         view = (TextView) viewGroup.findViewById(R.id.antropometria_small_popup_agua);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getAgua());
-
+        insertWithMl(view,antropometria.getAgua());
     }
 
     private void generateComplete(LayoutInflater layoutInflater, Antropometria antropometria) {
@@ -51,39 +50,58 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         ViewGroup viewGroup = getViewGroup();
 
         TextView view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_braco);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaBracoDir());
+        insertWithCm(view,antropometria.getCircumferenciaBracoDir());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_coxa);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaCoxaDir());
+        insertWithCm(view,antropometria.getCircumferenciaCoxaDir());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_abdomen);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaAbdomen());
+        insertWithCm(view,antropometria.getCircumferenciaAbdomen());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_cintura);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaCintura());
+        insertWithCm(view,antropometria.getCircumferenciaCintura());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_quadril);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getCircumferenciaQuadril());
+        insertWithCm(view,antropometria.getCircumferenciaQuadril());
 
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_altura);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getAltura());
+        insertWithM(view,antropometria.getAltura());
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_atual);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getPeso());
+        insertWithKg(view,antropometria.getPeso());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_ideal);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getPesoIdeal());
+        insertWithKg(view,antropometria.getPesoIdeal());
 
 
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
         InsertSelectViewSupport.insertInTextView(view,antropometria.getImc());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_taxa_metabolica);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getTaxaMetabolica());
+        insertWithKcal(view,antropometria.getTaxaMetabolica());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_valor_metabolico);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getValorMetabolico());
+        insertWithKcal(view,antropometria.getValorMetabolico());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_bolso);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getRegraBolso());
+        insertWithKcal(view,antropometria.getRegraBolso());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_venta);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getVenta());
+        insertWithKcalDia(view,antropometria.getVenta());
         view = (TextView) viewGroup.findViewById(R.id.paciente_descrition_antropometria_agua);
-        InsertSelectViewSupport.insertInTextView(view,antropometria.getAgua());
+        insertWithMl(view,antropometria.getAgua());
+    }
 
+    private void insertWithKcal(TextView textView, String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" Kcal"));
+    }
+
+    private void insertWithCm(TextView textView, String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" cm"));
+    }
+    private void insertWithKg(TextView textView,String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" kg"));
+    }
+    private void insertWithM(TextView textView,String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" m"));
+    }
+    private void insertWithMl(TextView textView,String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" ml"));
+    }
+    private void insertWithKcalDia(TextView textView, String string){
+        InsertSelectViewSupport.insertInTextView(textView,string.concat(" Kcal/Dia"));
     }
 
 

@@ -18,8 +18,6 @@ public class Dietas {
     private String enderecoDieta;
 
 
-
-
     public int getId() {
         return id;
     }

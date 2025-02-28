@@ -4,11 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
-import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
-import com.example.worknutri.ui.ExtrasActivities;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
@@ -17,6 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.worknutri.databinding.ActivityMainBinding;
+import com.example.worknutri.ui.ExtrasActivities;
+import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
+import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_pacientes,R.id.placeholder, R.id.navigation_clinicas)
+                R.id.navigation_pacientes, R.id.placeholder, R.id.navigation_clinicas)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.mainActivityNavView, navController);
@@ -50,29 +48,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void getExtra(Bundle bundle) {
         Intent intent = getIntent();
-        isPaciente = intent.getBooleanExtra(ExtrasActivities.PACIENTE_BOOLEAN,true);
-        if (!isPaciente){
+        isPaciente = intent.getBooleanExtra(ExtrasActivities.PACIENTE_BOOLEAN, true);
+        if (!isPaciente) {
 
             NavOptions navOptions = new NavOptions.Builder()
-                    .setPopUpTo(R.id.navigation_clinicas, true)
+                    .setPopUpTo(R.id.navigation_clinicas, false)
                     .build();
 
-            Navigation.findNavController(this, R.id.nav_host_fragment_activity_main)
-                    .navigate(R.id.action_navigation_pacientes_to_navigation_clinicas,
-                            bundle, navOptions);
-
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+            navController.navigate(R.id.action_navigation_pacientes_to_navigation_clinicas,
+                    bundle, navOptions);
 
 
         }
     }
 
-    private void configurefab(){
+    private void configurefab() {
         FloatingActionButton floatBottom = this.findViewById(R.id.main_activity_fab);
         floatBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), FormularioClinicaActivity.class);;
-                if(isPaciente){
+                Intent intent = new Intent(getBaseContext(), FormularioClinicaActivity.class);
+                if (isPaciente) {
                     intent = new Intent(getBaseContext(), FormularioPacienteActivity.class);
                 }
 
@@ -83,13 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
-
-
-
-
-
-
 
 
 }

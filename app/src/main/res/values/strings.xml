@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NutriCoop</string>
+    <string name="app_name">WorkNutri</string>
     <string name="title_pacientes">Pacientes</string>
     <string name="title_clinicas">Clinicas</string>
     <string name="title_activity_main">MainActivity</string>

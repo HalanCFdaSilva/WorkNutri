@@ -15,7 +15,7 @@ import java.util.List;
 
 public class LetterClinicaFragment {
 
-    private LayoutInflater layoutInflater;
+    private final LayoutInflater layoutInflater;
     private final List<Clinica> clinicas;
 
     public LetterClinicaFragment(LayoutInflater inflater, List<Clinica> clinicasInOrder) {
@@ -24,20 +24,20 @@ public class LetterClinicaFragment {
     }
 
 
-    public void generateAgenda(ViewGroup viewGroup,Context context){
+    public void generateAgenda(ViewGroup viewGroup, Context context) {
 
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
-        for (char letter: alphabet) {
+        for (char letter : alphabet) {
             List<Clinica> pacientestoAdd = getPacientesOfLetter(letter);
             pacientestoAdd.forEach(paciente -> clinicas.remove(paciente));
-            if (!pacientestoAdd.isEmpty()){
-                ViewGroup letterLayout =(ViewGroup) layoutInflater.inflate(R.layout.agenda_letter_fragment,null);
+            if (!pacientestoAdd.isEmpty()) {
+                ViewGroup letterLayout = (ViewGroup) layoutInflater.inflate(R.layout.agenda_letter_fragment, null);
 
                 TextView textView = letterLayout.findViewById(R.id.agenda_letter_fragment_agenda_textview);
                 textView.setText(String.valueOf(letter));
 
                 LinearLayout linearLayout = letterLayout.findViewById(R.id.agenda_letter_fragment_linear_layout);
-                inflateLetterPacienteCard(linearLayout,pacientestoAdd,context);
+                inflateLetterPacienteCard(linearLayout, pacientestoAdd, context);
 
                 viewGroup.addView(letterLayout);
             }
@@ -46,13 +46,13 @@ public class LetterClinicaFragment {
 
     private List<Clinica> getPacientesOfLetter(char letter) {
         List<Clinica> newPacientes = new ArrayList<>();
-        for (Clinica clinica : clinicas){
-            if (!clinica.getNome().isEmpty()){
-                if (letter  == clinica.getNome().toUpperCase().charAt(0)){
+        for (Clinica clinica : clinicas) {
+            if (!clinica.getNome().isEmpty()) {
+                if (letter == clinica.getNome().toUpperCase().charAt(0)) {
                     newPacientes.add(clinica);
 
                 }
-                if (letter  < clinica.getNome().toUpperCase().charAt(0)){
+                if (letter < clinica.getNome().toUpperCase().charAt(0)) {
                     break;
                 }
             }
@@ -61,9 +61,8 @@ public class LetterClinicaFragment {
     }
 
 
-
-    private void inflateLetterPacienteCard(LinearLayout layout, List<Clinica>clinicasToAdd, Context context){
-        ClinicaCardInflater cardInflater = new ClinicaCardInflater(clinicasToAdd,context);
-        cardInflater.refreshLayout(layout );
+    private void inflateLetterPacienteCard(LinearLayout layout, List<Clinica> clinicasToAdd, Context context) {
+        ClinicaCardInflater cardInflater = new ClinicaCardInflater(clinicasToAdd, context);
+        cardInflater.refreshLayout(layout);
     }
 }

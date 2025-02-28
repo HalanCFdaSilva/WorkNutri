@@ -3,7 +3,6 @@ package com.example.worknutri.ui.formularios.formularioClinica;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
 import android.widget.Spinner;
 
 import com.example.worknutri.R;
@@ -17,13 +16,13 @@ import java.util.List;
 
 public class InsertionClinicaFormulario {
 
-    private Context context;
+    private final Context context;
 
     public InsertionClinicaFormulario(Context context) {
         this.context = context;
     }
 
-    public void InsertInClinica(ViewGroup viewGroup, Clinica clinica){
+    public void InsertInClinica(ViewGroup viewGroup, Clinica clinica) {
         String stringOfEditText = InsertSelectViewSupport.getStringOfEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_gerais_name));
         clinica.setNome(stringOfEditText);
 
@@ -49,36 +48,34 @@ public class InsertionClinicaFormulario {
         clinica.setEstado(stringOfSpinner);
 
 
-
-
     }
 
-    public void InsertInFormulario(ViewGroup viewGroup, Clinica clinica){
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_gerais_name),clinica.getNome());
+    public void InsertInFormulario(ViewGroup viewGroup, Clinica clinica) {
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_gerais_name), clinica.getNome());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_email),clinica.getEmail());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_email), clinica.getEmail());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_fone),clinica.getTelefone1());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_fone), clinica.getTelefone1());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cep),clinica.getCodigoPostal());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cep), clinica.getCodigoPostal());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_rua),clinica.getRua());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_rua), clinica.getRua());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_numero),String.valueOf(clinica.getNumero()));
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_numero), String.valueOf(clinica.getNumero()));
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_complemento),clinica.getComplemento());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_complemento), clinica.getComplemento());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_bairro),clinica.getBairro());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_bairro), clinica.getBairro());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cidade),clinica.getCidade());
+        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cidade), clinica.getCidade());
 
-        if (!clinica.getEstado().isBlank()){
+        if (!clinica.getEstado().isBlank()) {
             Spinner spinner = viewGroup.findViewById(R.id.formulario_clinica_endereco_estado_spinner);
 
             String[] stringArray = context.getResources().getStringArray(R.array.estado_brasil);
             int i = 0;
-            for (String estado : stringArray){
-                if (estado.equals(clinica.getEstado())){
+            for (String estado : stringArray) {
+                if (estado.equals(clinica.getEstado())) {
                     break;
                 }
                 i++;
@@ -88,14 +85,17 @@ public class InsertionClinicaFormulario {
     }
 
 
-    /**Método que insere os dados de dias de trabalho de uma clinica especifica em uma activity.
-     * @param viewGroup  View onde serão inseridos os dados dos DayOfWork.
-     * @param dayOfWorkList List de DayOfWork cuja classe serve para quardar asinformações de um dia especifico
-     *                     de trabalho para uma clinica
+    /**
+     * Método que insere os dados de dias de trabalho de uma clinica especifica em uma activity.
+     *
+     * @param viewGroup      View onde serão inseridos os dados dos DayOfWork.
+     * @param dayOfWorkList  List de DayOfWork cuja classe serve para quardar asinformações de um dia especifico
+     *                       de trabalho para uma clinica
      * @param layoutInflater Classe que será usada para inflar o layout que será inserido no viewGroup
-     * @see DayOfWork*/
-    public void insertDaysOfWork(ViewGroup viewGroup, List<DayOfWork> dayOfWorkList, LayoutInflater layoutInflater){
-        for (DayOfWork dayOfWork : dayOfWorkList){
+     * @see DayOfWork
+     */
+    public void insertDaysOfWork(ViewGroup viewGroup, List<DayOfWork> dayOfWorkList, LayoutInflater layoutInflater) {
+        for (DayOfWork dayOfWork : dayOfWorkList) {
             HourDateFragment dateFragment = new HourDateFragment(layoutInflater);
             dateFragment.setDayOfweek(dayOfWork.getDayOfWeek());
             dateFragment.setHourBegin(dayOfWork.getHoraInicio());

@@ -4,7 +4,6 @@ import static com.example.worknutri.ui.InsertSelectViewSupport.getStringOfEditTe
 
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -62,14 +61,14 @@ public class InsertionPacienteFormulario {
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)));
         int position = getPositionOfSpinner(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual_spinner));
-        antropometria.setPeso(Conversor.convertToGram(position,pesoAtual));
+        antropometria.setPeso(Conversor.convertToGram(position, pesoAtual));
         pesoAtual = Double.parseDouble(antropometria.getPeso());
 
         double altura = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)));
         position = getPositionOfSpinner(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura));
-        antropometria.setAltura(Conversor.convertToGram(position,altura));
+        antropometria.setAltura(Conversor.convertToGram(position, altura));
         altura = Double.parseDouble(antropometria.getAltura());
 
         double pesoIdeal = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(
@@ -77,21 +76,21 @@ public class InsertionPacienteFormulario {
         position = getPositionOfSpinner(viewGroup.findViewById(
                 R.id.formulario_paciente_antropometria_peso_ideal_spinner));
 
-        antropometria.setPesoIdeal(Conversor.convertToGram(position,pesoIdeal));
+        antropometria.setPesoIdeal(Conversor.convertToGram(position, pesoIdeal));
         pesoIdeal = Double.parseDouble(antropometria.getPesoIdeal());
 
-        int positionOfAtivity = ((Spinner)viewGroup.findViewById(
+        int positionOfAtivity = ((Spinner) viewGroup.findViewById(
                 R.id.formulario_paciente_antropometria_calculos_atividade_spinner)).getSelectedItemPosition();
 
-        CalculadorAntropometrico calculador = new CalculadorAntropometrico(pesoAtual,altura);
+        CalculadorAntropometrico calculador = new CalculadorAntropometrico(pesoAtual, altura);
         antropometria.setImc(calculador.generateImc());
-        antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(),paciente.getIdade()));
+        antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(), paciente.getIdade()));
         antropometria.setValorMetabolico(calculador.generateGET(antropometria.getTaxaMetabolica(),
                 positionOfAtivity, paciente.getGenero()));
         antropometria.setRegraBolso(calculador.generateBolso(pesoIdeal));
-        double valorAPerder = 1;
-        antropometria.setVenta(calculador.generateVenta(Double.parseDouble(antropometria.getValorMetabolico()),valorAPerder));
-        antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade(),pesoAtual)));
+        int valorAPerder = ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_peso_a_perder_spinner)).getSelectedItemPosition();
+        antropometria.setVenta(calculador.generateVenta(Double.parseDouble(antropometria.getValorMetabolico()), valorAPerder));
+        antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade(), pesoAtual)));
 
         antropometria.setCircumferenciaBracoDir(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)));
@@ -134,17 +133,20 @@ public class InsertionPacienteFormulario {
         return paciente;
     }
 
-    public void insertClinicaInPaciente(Spinner spinner, Paciente paciente, List<Clinica> clinicasInOrder){
+    public void insertClinicaInPaciente(Spinner spinner, Paciente paciente, List<Clinica> clinicasInOrder) {
         int i = getPositionOfSpinner(spinner);
         Clinica clinica = clinicasInOrder.get(i);
         paciente.setClinicaId(clinica.getId());
     }
 
-    /**Método que preenche o viewGroup de Paciente do FormularioPaciente com os dados que recebe da classe Paciente
+    /**
+     * Método que preenche o viewGroup de Paciente do FormularioPaciente com os dados que recebe da classe Paciente
      * com a ajuda da classe InsertSelectViewSupport.
+     *
      * @see Paciente
-     * @see InsertSelectViewSupport*/
-    public void insertPacienteInViewGroup(ViewGroup viewGroup, Paciente paciente){
+     * @see InsertSelectViewSupport
+     */
+    public void insertPacienteInViewGroup(ViewGroup viewGroup, Paciente paciente) {
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade)
@@ -163,11 +165,14 @@ public class InsertionPacienteFormulario {
         }
     }
 
-    /**Método que preenche o viewGroup de Antropometria do FormularioPaciente com os dados que recebe da classe Antropometria
-     *  com a ajuda da classe InsertSelectViewSupport.
+    /**
+     * Método que preenche o viewGroup de Antropometria do FormularioPaciente com os dados que recebe da classe Antropometria
+     * com a ajuda da classe InsertSelectViewSupport.
+     *
      * @see Antropometria
-     * @see InsertSelectViewSupport*/
-    public void insertAntropometria(ViewGroup viewGroup, Antropometria antropometria){
+     * @see InsertSelectViewSupport
+     */
+    public void insertAntropometria(ViewGroup viewGroup, Antropometria antropometria) {
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)
                 , antropometria.getAltura());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)
@@ -187,11 +192,14 @@ public class InsertionPacienteFormulario {
     }
 
 
-    /**Método que preenche o viewGroup de patologia do FormularioPaciente com os dados que recebe da classe Patologia com
+    /**
+     * Método que preenche o viewGroup de patologia do FormularioPaciente com os dados que recebe da classe Patologia com
      * a ajuda da classe InsertSelectViewSupport.
+     *
      * @see Patologia
-     * @see InsertSelectViewSupport*/
-    public void InsertPatologia(ViewGroup viewGroup, Patologia patologia){
+     * @see InsertSelectViewSupport
+     */
+    public void InsertPatologia(ViewGroup viewGroup, Patologia patologia) {
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_patologia_atual)
                 , patologia.getPatologiaAtual());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_urina)
@@ -206,40 +214,41 @@ public class InsertionPacienteFormulario {
                 , patologia.getAcucar());
 
         insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao),patologia.getMedicacao());
+                viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao), patologia.getMedicacao());
         insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento),patologia.getSuplemento());
+                viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento), patologia.getSuplemento());
         insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico),patologia.getEtilico());
+                viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico), patologia.getEtilico());
         insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante),patologia.getFumante());
+                viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante), patologia.getFumante());
         insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia),patologia.getAlergiaAlimentar());
-
+                viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia), patologia.getAlergiaAlimentar());
 
 
     }
-    public void SelectClinica(Spinner spinnerClinica, long clinicaId, List<Clinica> clinicas){
+
+    public void SelectClinica(Spinner spinnerClinica, long clinicaId, List<Clinica> clinicas) {
         int i = 0;
-        for (Clinica clinica : clinicas){
-            if (clinicaId == clinica.getId()){
+        for (Clinica clinica : clinicas) {
+            if (clinicaId == clinica.getId()) {
                 break;
             }
             i++;
         }
-        if (i < clinicas.size()){
+        if (i < clinicas.size()) {
             spinnerClinica.setSelection(i);
         }
     }
 
-    private void insertInCheckBox(CheckBox checkbox, EditText editText, String string){
-        if (string.isBlank()){
+    private void insertInCheckBox(CheckBox checkbox, EditText editText, String string) {
+        if (string.isBlank()) {
             checkbox.setChecked(true);
             editText.setVisibility(View.VISIBLE);
             InsertSelectViewSupport.insertInEditText(editText, string);
         }
     }
-    private int getPositionOfSpinner(Spinner spinner){
+
+    private int getPositionOfSpinner(Spinner spinner) {
         return spinner.getSelectedItemPosition();
     }
 }

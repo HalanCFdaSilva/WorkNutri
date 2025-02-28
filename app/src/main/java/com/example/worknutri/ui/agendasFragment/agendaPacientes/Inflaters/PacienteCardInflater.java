@@ -16,21 +16,21 @@ import com.example.worknutri.ui.detail.detailPaciente.PacienteDescriptionActivit
 import java.util.List;
 
 public class PacienteCardInflater {
-    private List<Paciente> pacientes;
-    private Context context;
+    private final List<Paciente> pacientes;
+    private final Context context;
 
 
     public PacienteCardInflater(List<Paciente> pacienteDao, Context context) {
 
-        pacientes  = pacienteDao;
+        pacientes = pacienteDao;
         this.context = context;
 
     }
 
-    public void refreshLayout(LinearLayout layout, LayoutInflater inflater){
+    public void refreshLayout(LinearLayout layout, LayoutInflater inflater) {
         layout.removeAllViews();
         pacientes.forEach(paciente -> {
-            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.card_fragment_paciente,null);
+            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.card_fragment_paciente, null);
             TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
             textView.setText(paciente.getNomePaciente());
             layout.addView(view);
@@ -45,7 +45,6 @@ public class PacienteCardInflater {
         });
 
     }
-
 
 
 }

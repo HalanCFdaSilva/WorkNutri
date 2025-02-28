@@ -7,14 +7,17 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.worknutri.R;
 import com.example.worknutri.ui.formularios.editTextKeysListener.CalendarioKeyListener;
 import com.example.worknutri.ui.formularios.editTextKeysListener.FoneKeyListener;
+import com.example.worknutri.ui.formularios.editTextKeysListener.PesoKeyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FormularioPacienteActivity extends AppCompatActivity {
 
     private FormularioPacienteAdapter adapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +26,10 @@ public class FormularioPacienteActivity extends AppCompatActivity {
         verCalculos();
         adapter.setClinicas(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
         adapter.configuraBottomNav(findViewById(R.id.formulario_paciente_activity_nav_view));
-        adapter.insertInFormulario(getIntent(),findViewById(R.id.formulario_paciente_activity_constraint_layout));
+        adapter.insertInFormulario(getIntent(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
+        adapter.OpenNivelAtividadePopUpOnClick(findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview),
+                getLayoutInflater(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
+
         this.configurePatologiaCheckBox();
         this.insertKeyListeners();
         FloatingActionButton button = findViewById(R.id.formulario_paciente_activity_fab);
@@ -34,19 +40,27 @@ public class FormularioPacienteActivity extends AppCompatActivity {
     }
 
     private void configurePatologiaCheckBox() {
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_medicacao_checkbox),findViewById(R.id.formulario_paciente_patologia_medicacao));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_suplemento_checkbox),findViewById(R.id.formulario_paciente_patologia_suplemento));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_etilico_checkbox),findViewById(R.id.formulario_paciente_patologia_etilico));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_fumante_checkbox),findViewById(R.id.formulario_paciente_patologia_fumante));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_alergia_checkbox),findViewById(R.id.formulario_paciente_patologia_alergia));
+        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_medicacao_checkbox), findViewById(R.id.formulario_paciente_patologia_medicacao));
+        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_suplemento_checkbox), findViewById(R.id.formulario_paciente_patologia_suplemento));
+        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_etilico_checkbox), findViewById(R.id.formulario_paciente_patologia_etilico));
+        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_fumante_checkbox), findViewById(R.id.formulario_paciente_patologia_fumante));
+        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_alergia_checkbox), findViewById(R.id.formulario_paciente_patologia_alergia));
     }
 
     private void insertKeyListeners() {
         EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
-        editText.setOnKeyListener(new FoneKeyListener(editText));
+        editText.setOnKeyListener(new FoneKeyListener());
 
         editText = findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
-        editText.setOnKeyListener(new CalendarioKeyListener(editText));
+        editText.setOnKeyListener(new CalendarioKeyListener());
+
+        PesoKeyListener keyListener = new PesoKeyListener();
+        keyListener.setSpinnerAltura(findViewById(R.id.formulario_paciente_antropometria_spinner_altura));
+        keyListener.setPesoIdeal(findViewById(R.id.formulario_paciente_antropometria_peso_ideal_spinner),
+                findViewById(R.id.formulario_paciente_antropometria_peso_ideal));
+        editText = findViewById(R.id.formulario_paciente_antropometria_altura);
+        editText.setOnKeyListener(keyListener);
+
 
     }
 
@@ -62,12 +76,14 @@ public class FormularioPacienteActivity extends AppCompatActivity {
     private void saveLayout() {
         ViewGroup viewGroup = findViewById(R.id.formulario_paciente_activity_constraint_layout);
 
-        if (adapter.validaFormulario(viewGroup,findViewById(R.id.formulario_paciente_activity_error))){
+        if (adapter.validaFormulario(viewGroup, findViewById(R.id.formulario_paciente_activity_error))) {
             adapter.savePaciente(viewGroup);
             finish();
         }
 
     }
+
+
 
 
 }

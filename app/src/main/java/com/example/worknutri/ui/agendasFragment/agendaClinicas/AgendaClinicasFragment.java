@@ -1,19 +1,15 @@
 package com.example.worknutri.ui.agendasFragment.agendaClinicas;
 
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-
 import com.example.worknutri.MainActivity;
-
 import com.example.worknutri.databinding.FragmentAgendaBinding;
 
 public class AgendaClinicasFragment extends Fragment {
@@ -41,7 +37,7 @@ public class AgendaClinicasFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapter.inflateAgenda(getLayoutInflater(),binding.agendaFragmentLinearLayout);
+        adapter.inflateAgenda(getLayoutInflater(), binding.agendaFragmentLinearLayout);
     }
 
     @Override

@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+
 import java.util.List;
 
 @Dao
@@ -22,7 +23,7 @@ public interface PacienteDao {
 
     @Query("SELECT * FROM paciente WHERE nome_paciente LIKE :nomePaciente")
     List<Paciente> findByName(String nomePaciente);
-    
+
 
 //    @Transaction
 //    @Query("SELECT * FROM paciente WHERE cpf LIKE :cpfPaciente")

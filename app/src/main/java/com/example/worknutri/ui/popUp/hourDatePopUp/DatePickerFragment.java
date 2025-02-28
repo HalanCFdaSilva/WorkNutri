@@ -15,12 +15,13 @@ import com.example.worknutri.ui.popUp.PopUpFragment;
 import java.util.List;
 
 
-public class DatePickerFragment  extends PopUpFragment {
+public class DatePickerFragment extends PopUpFragment {
 
 
-    private List<DayOfWork> daysOfWork;
-    public DatePickerFragment(ViewGroup viewGroup,List<DayOfWork> dayOfWorkList) {
-        super(viewGroup,R.id.date_picker_pop_up_image_view_not_use);
+    private final List<DayOfWork> daysOfWork;
+
+    public DatePickerFragment(ViewGroup viewGroup, List<DayOfWork> dayOfWorkList) {
+        super(viewGroup, R.id.date_picker_pop_up_image_view_not_use);
         this.configuraBotoes();
         daysOfWork = dayOfWorkList;
 
@@ -42,7 +43,6 @@ public class DatePickerFragment  extends PopUpFragment {
         this.getViewGroup().setAlpha(1.0f);
 
 
-
         beginPicker.setMinValue(0);
         beginPicker.setMaxValue(23);
         beginPicker.setDisplayedValues(resources.getStringArray(R.array.hours_total));
@@ -52,13 +52,11 @@ public class DatePickerFragment  extends PopUpFragment {
         endPicker.setDisplayedValues(resources.getStringArray(R.array.hours_total));
 
 
-
     }
 
 
-
     public void layoutGenerate(HourDateFragment hourDateFragment, ViewGroup viewGroupToInsert) {
-        Button buttonConfirm = this.getViewGroup() .findViewById(R.id.date_picker_pop_up_button_confirm);
+        Button buttonConfirm = this.getViewGroup().findViewById(R.id.date_picker_pop_up_button_confirm);
         buttonConfirm.setOnClickListener(v -> {
 
 
@@ -66,7 +64,7 @@ public class DatePickerFragment  extends PopUpFragment {
             String hourStart = numberPicker.getDisplayedValues()[numberPicker.getValue()];
             numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_hour_end);
             String hourEnd = numberPicker.getDisplayedValues()[numberPicker.getValue()];
-            if (Integer.parseInt(hourStart.substring(0,2)) < Integer.parseInt(hourEnd.substring(0,2)) ){
+            if (Integer.parseInt(hourStart.substring(0, 2)) < Integer.parseInt(hourEnd.substring(0, 2))) {
 
                 numberPicker = getViewGroup().findViewById(R.id.date_picker_pop_up_number_picker_week_day);
                 String dayOfWeek = numberPicker.getDisplayedValues()[numberPicker.getValue()];
@@ -78,13 +76,13 @@ public class DatePickerFragment  extends PopUpFragment {
                 hourDateFragment.addLayout(viewGroupToInsert);
 
                 getPopUpWindow().dismiss();
-            }else {
+            } else {
                 getViewGroup().findViewById(R.id.date_picker_pop_up_textview_error).setVisibility(View.VISIBLE);
             }
         });
     }
 
-    private void newDayOfWork(HourDateFragment hourDateFragment){
+    private void newDayOfWork(HourDateFragment hourDateFragment) {
         DayOfWork day = GenerateDayOfWork.generateOfTimeDescritionFragment(hourDateFragment.getLayout());
         daysOfWork.add(day);
     }

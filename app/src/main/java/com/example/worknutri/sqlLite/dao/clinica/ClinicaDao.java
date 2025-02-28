@@ -29,9 +29,9 @@ public interface ClinicaDao {
     int findIdByName(String nomeClinica);
 
 
-
     @Update
     void update(Clinica clinica);
+
     @Insert
     void insertAll(Clinica... clinicas);
 

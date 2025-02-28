@@ -17,7 +17,6 @@ public class Paciente implements Serializable {
     private String nomePaciente;
 
 
-
     private int idade;
 
     private String telefone;
@@ -35,26 +34,28 @@ public class Paciente implements Serializable {
 
     private String observacoes;
 
-    public String getNomePaciente(){
+    public String getNomePaciente() {
         return this.nomePaciente;
     }
-    public void setNomePaciente(String nomePaciente){
+
+    public void setNomePaciente(String nomePaciente) {
         this.nomePaciente = nomePaciente;
     }
 
-    public int getIdade(){
+    public int getIdade() {
         return this.idade;
     }
-    public void setIdade(int idade){
+
+    public void setIdade(int idade) {
         this.idade = idade;
     }
-
 
 
     public void setId(long id) {
         this.id = id;
     }
-    public long getId(){
+
+    public long getId() {
         return this.id;
     }
 

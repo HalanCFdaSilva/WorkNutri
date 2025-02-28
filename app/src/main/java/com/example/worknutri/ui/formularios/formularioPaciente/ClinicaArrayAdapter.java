@@ -40,6 +40,6 @@ public class ClinicaArrayAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Clinica clinica = clinicas.get(position);
-        return ClinicaCardInflater.generateClinicaCard(parent,clinica,context);
+        return ClinicaCardInflater.generateClinicaCardForSpinner(parent, clinica, context);
     }
 }

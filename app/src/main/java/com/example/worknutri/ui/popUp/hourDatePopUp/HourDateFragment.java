@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
 import com.example.worknutri.R;
 
 public class HourDateFragment {
     private final ViewGroup layout;
 
 
-    public HourDateFragment(LayoutInflater layoutInflater ){
-        layout = (ViewGroup) layoutInflater.inflate(R.layout.time_descrition_fragment,null,false);
+    public HourDateFragment(LayoutInflater layoutInflater) {
+        layout = (ViewGroup) layoutInflater.inflate(R.layout.time_descrition_fragment, null, false);
 
     }
 
@@ -24,7 +23,7 @@ public class HourDateFragment {
         textView.setText(dayOfweek);
     }
 
-    public void setHourBegin(String hourBegin){
+    public void setHourBegin(String hourBegin) {
         TextView textView = layout.findViewById(R.id.time_descrition_fragment_textView_hour_begin);
         textView.setText(hourBegin);
     }
@@ -34,15 +33,16 @@ public class HourDateFragment {
         textView.setText(hourEnd);
     }
 
-    public void addLayout(ViewGroup layoutWhereAdd ) {
+    public void addLayout(ViewGroup layoutWhereAdd) {
         this.trashButtonConfigure(layoutWhereAdd);
         layoutWhereAdd.addView(layout);
     }
-    public void removeTrashButton(){
+
+    public void removeTrashButton() {
         layout.findViewById(R.id.time_descrition_fragment_button_delete).setVisibility(View.GONE);
     }
 
-    private void trashButtonConfigure(ViewGroup layoutWhereAdd ) {
+    private void trashButtonConfigure(ViewGroup layoutWhereAdd) {
         ImageButton deleteButton = layout.findViewById(R.id.time_descrition_fragment_button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

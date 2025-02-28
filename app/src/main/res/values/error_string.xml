@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_blank">Por favor preencha os campos com asteristico</string>
+    <string name="error_blank">Por favor preencha os campos com um asteristico</string>
     <string name="error_fone">Por favor preencha o campo telefone corretamente</string>
     <string name="error_email">Por favor preencha o campo email corretamente</string>
     <string name="error_data">Por favor preencha o campo nascimento corretamente</string>

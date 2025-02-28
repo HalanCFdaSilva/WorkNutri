@@ -6,17 +6,22 @@ import android.widget.TextView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 
-/**Classe que gera uma instância da classe DayOfWork
- * @see DayOfWork*/
+/**
+ * Classe que gera uma instância da classe DayOfWork
+ *
+ * @see DayOfWork
+ */
 public class GenerateDayOfWork {
 
-    /**Método que gera uma instância da classe DayOfWork apartir de uma viewgroup oriunda do arquivo
+    /**
+     * Método que gera uma instância da classe DayOfWork apartir de uma viewgroup oriunda do arquivo
      * time_descrition_fragment.xml.
+     *
      * @param viewGroup instância inflada do layout time_descrition_fragment
-     * @see DayOfWork*/
-    public static DayOfWork generateOfTimeDescritionFragment( ViewGroup viewGroup){
+     * @see DayOfWork
+     */
+    public static DayOfWork generateOfTimeDescritionFragment(ViewGroup viewGroup) {
         DayOfWork dayOfWork = new DayOfWork();
-
 
 
         TextView textView = viewGroup.findViewById(R.id.time_descrition_fragment_textView_day_of_week);

@@ -25,22 +25,22 @@ public class BottomMenuConfigurator {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(ExtrasActivities.PACIENTE_BOOLEAN,isPaciente);
+                intent.putExtra(ExtrasActivities.PACIENTE_BOOLEAN, isPaciente);
                 context.startActivities(new Intent[]{intent});
-                ((Activity)context).finish();
+                ((Activity) context).finish();
 
                 return false;
             }
         });
     }
 
-    public void onClickInBottomAppBar(int idItemMenu, Intent intent){
+    public void onClickInBottomAppBar(int idItemMenu, Intent intent) {
         navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
 
                 context.startActivities(new Intent[]{intent});
-                ((Activity)context).finish();
+                ((Activity) context).finish();
 
                 return false;
             }

@@ -22,7 +22,6 @@ public class AgendaPacienteFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-
         binding = FragmentAgendaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         MainActivity.isPaciente = true;
@@ -36,9 +35,7 @@ public class AgendaPacienteFragment extends Fragment {
         super.onStart();
 
         binding.agendaFragmentLinearLayout.removeAllViews();
-        adapter.inflateAgenda(getLayoutInflater(),binding.agendaFragmentLinearLayout);
-
-
+        adapter.inflateAgenda(getLayoutInflater(), binding.agendaFragmentLinearLayout);
 
 
     }

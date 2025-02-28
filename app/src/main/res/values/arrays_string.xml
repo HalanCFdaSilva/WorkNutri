@@ -32,8 +32,7 @@
         <item>Sedentário</item>
         <item>Leve</item>
         <item>Moderado</item>
-        <item>Muito</item>
-        <item>Extremo</item>
+        <item>Intenso</item>
     </string-array>
 
     <string-array name="genero_types">
@@ -69,5 +68,16 @@
         <item>SP</item>
         <item>SE</item>
         <item>TO</item>
+    </string-array>
+
+    <string-array name="venta_array">
+        <item>1,0Kg</item>
+        <item>1,5Kg</item>
+        <item>2,0Kg</item>
+        <item>2,5Kg</item>
+        <item>3,0Kg</item>
+        <item>3,5Kg</item>
+        <item>4,0Kg</item>
+        <item>4,5Kg</item>
     </string-array>
 </resources>

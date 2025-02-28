@@ -9,16 +9,16 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "patologia_paciente",
         foreignKeys = {@ForeignKey(
-        entity = Paciente.class,
-        parentColumns = {"id"},
-        childColumns = {"id_paciente"},
-        onDelete = CASCADE, onUpdate = CASCADE)})
+                entity = Paciente.class,
+                parentColumns = {"id"},
+                childColumns = {"id_paciente"},
+                onDelete = CASCADE, onUpdate = CASCADE)})
 public class Patologia {
 
     private int id;
     @ColumnInfo(name = "id_paciente")
-        @PrimaryKey(autoGenerate = true)
-        private int idPaciente;
+    @PrimaryKey(autoGenerate = true)
+    private int idPaciente;
     @ColumnInfo(name = "patologia_atual")
     private String patologiaAtual;
     private String Urina;

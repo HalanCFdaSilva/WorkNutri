@@ -7,7 +7,6 @@ import androidx.room.Query;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 
-
 import java.util.List;
 
 @Dao
@@ -15,10 +14,12 @@ public interface AntropometriaDao {
 
     @Query("SELECT * FROM antropometrias")
     List<Antropometria> getAll();
-//    @Query("SELECT peso,altura FROM antropometrias WHERE id_paciente IN (:pacienteIds)")
+
+    //    @Query("SELECT peso,altura FROM antropometrias WHERE id_paciente IN (:pacienteIds)")
 //    List<Antropometria> loadMinimusByIdPaciente(int[] pacienteIds);
     @Query("SELECT * FROM antropometrias WHERE id_paciente IN (:pacienteIds)")
     List<Antropometria> loadAllByIdPaciente(long pacienteIds);
+
     @Insert
     void insertAll(Antropometria... antropometrias);
 

@@ -13,12 +13,12 @@ import androidx.room.PrimaryKey;
                 parentColumns = {"id"},
                 childColumns = {"id_paciente"},
                 onDelete = CASCADE, onUpdate = CASCADE)})
-public class Antropometria{
+public class Antropometria {
 
     private int id;
     @ColumnInfo(name = "id_paciente")
-        @PrimaryKey(autoGenerate = true)
-        private int idPaciente;
+    @PrimaryKey(autoGenerate = true)
+    private int idPaciente;
     private String altura;
 
     private String peso;
@@ -53,7 +53,6 @@ public class Antropometria{
     private String venta;
 
     private String agua;
-
 
 
     public int getId() {
@@ -168,16 +167,18 @@ public class Antropometria{
         this.agua = agua;
     }
 
-    public String getAltura(){
+    public String getAltura() {
         return this.altura;
     }
-    public void setAltura(String altura){
+
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
-    public String getPeso(){
+    public String getPeso() {
         return this.peso;
     }
+
     public void setPeso(String peso) {
         this.peso = peso;
     }

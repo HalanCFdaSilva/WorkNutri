@@ -8,7 +8,8 @@ import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import java.util.List;
 
 public class DietasEPaciente {
-    @Embedded public Paciente paciente;
-    @Relation(parentColumn = "cpf",entityColumn = "cpf_paciente")
+    @Embedded
+    public Paciente paciente;
+    @Relation(parentColumn = "cpf", entityColumn = "cpf_paciente")
     public List<Dietas> dietas;
 }

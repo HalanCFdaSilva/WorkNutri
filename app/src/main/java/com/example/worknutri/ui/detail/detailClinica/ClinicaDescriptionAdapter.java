@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
-import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.InsertSelectViewSupport;
@@ -28,46 +28,47 @@ public class ClinicaDescriptionAdapter {
     private List<DayOfWork> dayOfWorkList;
     private AppDataBase dataBase;
     private Context context;
-    public ClinicaDescriptionAdapter(Intent intent,Context context) {
-        if (intent.hasExtra(ExtrasActivities.CLINICA)){
+
+    public ClinicaDescriptionAdapter(Intent intent, Context context) {
+        if (intent.hasExtra(ExtrasActivities.CLINICA)) {
             this.clinica = (Clinica) intent.getSerializableExtra(ExtrasActivities.CLINICA);
             dataBase = AppDataBase.getInstance(context);
             dayOfWorkList = dataBase.dayOfWorkDao().getDaysforClinicaId(clinica.getId());
             this.context = context;
-        }else ((Activity)context).finish();
+        } else ((Activity) context).finish();
 
 
     }
 
     public void insertClinicaInLayout(ViewGroup viewGroup) {
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_name),clinica.getNome());
+                R.id.clinica_description_activity_dados_gerais_name), clinica.getNome());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_fone),clinica.getTelefone1());
+                R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone1());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_email),clinica.getEmail());
+                R.id.clinica_description_activity_dados_gerais_email), clinica.getEmail());
 
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cep),clinica.getCodigoPostal());
+                R.id.clinica_description_activity_endereco_cep), clinica.getCodigoPostal());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_rua),clinica.getRua());
+                R.id.clinica_description_activity_endereco_rua), clinica.getRua());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_numero),String.valueOf(clinica.getNumero()));
+                R.id.clinica_description_activity_endereco_numero), String.valueOf(clinica.getNumero()));
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_complemento),clinica.getComplemento());
+                R.id.clinica_description_activity_endereco_complemento), clinica.getComplemento());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cidade),clinica.getCidade());
+                R.id.clinica_description_activity_endereco_cidade), clinica.getCidade());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_bairro),clinica.getBairro());
+                R.id.clinica_description_activity_endereco_bairro), clinica.getBairro());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cep),clinica.getEstado());
+                R.id.clinica_description_activity_endereco_cep), clinica.getEstado());
 
     }
 
     public void insertDaysOfWorkInLayout(LinearLayout linearLayout, LayoutInflater inflater) {
 
 
-        for (DayOfWork dayOfWork : dayOfWorkList){
+        for (DayOfWork dayOfWork : dayOfWorkList) {
             HourDateFragment dateFragment = new HourDateFragment(inflater);
             dateFragment.removeTrashButton();
             dateFragment.setHourBegin(dayOfWork.getHoraInicio());
@@ -78,21 +79,21 @@ public class ClinicaDescriptionAdapter {
     }
 
     public void configureNavButton(BottomNavigationView navigationView) {
-        BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context,navigationView);
+        BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, FormularioClinicaActivity.class);
-        intent.putExtra(ExtrasActivities.CLINICA,clinica);
-        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit,intent);
+        intent.putExtra(ExtrasActivities.CLINICA, clinica);
+        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 
 
         navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 dataBase.clinicaDao().delete(clinica);
-                for (DayOfWork dayOfWork : dayOfWorkList){
+                for (DayOfWork dayOfWork : dayOfWorkList) {
                     dataBase.dayOfWorkDao().delete(dayOfWork);
                 }
-                ((Activity)context).finish();
+                ((Activity) context).finish();
 
                 return false;
             }

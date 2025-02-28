@@ -17,11 +17,11 @@ public class FormularioAdapter {
         dataBase = AppDataBase.getInstance(context);
     }
 
-    public void configuraBottomNav(BottomNavigationView navigationView){
+    public void configuraBottomNav(BottomNavigationView navigationView) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context,
                 navigationView);
-        menuConfigurator.onClickInBottomAppBar(R.id.navigation_pacientes,true);
-        menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinicas,false);
+        menuConfigurator.onClickInBottomAppBar(R.id.navigation_pacientes, true);
+        menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinicas, false);
     }
 
     public Context getContext() {

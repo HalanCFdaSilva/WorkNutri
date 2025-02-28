@@ -30,9 +30,9 @@ public class FormularioClinicaActivity extends AppCompatActivity {
     }
 
     private void getClinicaOfIntent() {
-        if (getIntent().hasExtra(ExtrasActivities.CLINICA)){
+        if (getIntent().hasExtra(ExtrasActivities.CLINICA)) {
             Clinica clinica = (Clinica) getIntent().getSerializableExtra(ExtrasActivities.CLINICA);
-            adapter.insertClinicaInlayout(clinica,findViewById(R.id.formulario_clinica_linear_layout),getLayoutInflater());
+            adapter.insertClinicaInlayout(clinica, findViewById(R.id.formulario_clinica_linear_layout), getLayoutInflater());
         }
 
 
@@ -43,19 +43,19 @@ public class FormularioClinicaActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.newDay(getLayoutInflater(),findViewById(R.id.formulario_clinica_linear_layout));
+                adapter.newDay(getLayoutInflater(), findViewById(R.id.formulario_clinica_linear_layout));
             }
         });
     }
 
-    private void save(){
+    private void save() {
 
         FloatingActionButton button = findViewById(R.id.formulario_clinica_activy_fab);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (  adapter.validaFormulario(findViewById(R.id.formulario_clinica_linear_layout),
-                        findViewById(R.id.formulario_clinica_activy_error))){
+                if (adapter.validaFormulario(findViewById(R.id.formulario_clinica_linear_layout),
+                        findViewById(R.id.formulario_clinica_activy_error))) {
 
                     adapter.saveInDataBase(findViewById(R.id.formulario_clinica_linear_layout));
                     finish();
@@ -66,8 +66,6 @@ public class FormularioClinicaActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 }

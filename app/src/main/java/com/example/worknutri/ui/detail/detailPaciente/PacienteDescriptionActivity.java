@@ -38,23 +38,23 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         setTitle(paciente.getNomePaciente().toUpperCase());
-        ((TextView)findViewById(R.id.detail_paciente_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
-        ((TextView)findViewById(R.id.detail_paciente_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
-        ((TextView)findViewById(R.id.detail_paciente_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
-        ((TextView)findViewById(R.id.detail_paciente_activity_email_paciente_descrition)).setText(paciente.getEmail());
-        ((TextView)findViewById(R.id.detail_paciente_activity_observation_paciente_descrition)).setText(paciente.getObservacoes());
+        ((TextView) findViewById(R.id.detail_paciente_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
+        ((TextView) findViewById(R.id.detail_paciente_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
+        ((TextView) findViewById(R.id.detail_paciente_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
+        ((TextView) findViewById(R.id.detail_paciente_activity_email_paciente_descrition)).setText(paciente.getEmail());
+        ((TextView) findViewById(R.id.detail_paciente_activity_observation_paciente_descrition)).setText(paciente.getObservacoes());
 
 
-        ((TextView)findViewById(R.id.detail_paciente_activity_height_paciente_descrition)).setText(antropometria.getAltura());
-        ((TextView)findViewById(R.id.detail_paciente_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
-        ((TextView)findViewById(R.id.detail_paciente_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
+        ((TextView) findViewById(R.id.detail_paciente_activity_height_paciente_descrition)).setText(antropometria.getAltura());
+        ((TextView) findViewById(R.id.detail_paciente_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
+        ((TextView) findViewById(R.id.detail_paciente_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
 
         moreDetailButtonsConfig();
     }
 
     private void moreDetailButtonsConfig() {
 
-        AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(getLayoutInflater(),antropometria,true);
+        AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(getLayoutInflater(), antropometria, true);
         Button buttonAntropometria = findViewById(R.id.detail_paciente_activity_button_antropometric);
         buttonAntropometria.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
             }
         });
 
-        PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(getLayoutInflater(),patologia);
+        PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(getLayoutInflater(), patologia);
         Button buttonPatologia = findViewById(R.id.detail_paciente_activity_button_patologic);
         buttonPatologia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,13 +76,13 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
 
     private void getExtrasIntent() {
         Intent intent = getIntent();
-        if (intent.hasExtra(ExtrasActivities.PACIENTE)){
+        if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
             paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE);
             AppDataBase db = AppDataBase.getInstance(this);
             antropometria = db.antropometriaDao().loadAllByIdPaciente(paciente.getId()).get(0);
             patologia = db.patologiaDao().loadAllByIdPaciente(paciente.getId()).get(0);
 
-        }else {
+        } else {
             finish();
         }
     }

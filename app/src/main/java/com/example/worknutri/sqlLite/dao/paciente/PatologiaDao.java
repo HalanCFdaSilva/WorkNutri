@@ -16,6 +16,7 @@ public interface PatologiaDao {
 
     @Query("SELECT * FROM patologia_paciente WHERE id_paciente IN (:pacienteIds)")
     List<Patologia> loadAllByIdPaciente(long pacienteIds);
+
     @Insert
     void insertAll(Patologia... patologias);
 

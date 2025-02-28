@@ -690,20 +690,7 @@
                     app:layout_constraintStart_toStartOf="@id/formulario_paciente_antropometria_calculos_title"
                     app:layout_constraintTop_toBottomOf="@id/formulario_paciente_antropometria_calculos_title" />
 
-                <TextView
-                    android:id="@+id/formulario_paciente_antropometria_calculos_error"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/error_antropometria"
-                    android:textColor="@color/obrigatorio"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_spinner"
-                    tools:visibility="visible" />
+
 
                 <TextView
                     android:id="@+id/formulario_paciente_antropometria_calculos_atividade_title"
@@ -723,16 +710,52 @@
                     app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_atividade_title" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/formulario_paciente_antropometria_calculos_atividade_info_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/info_24dp"
-                    android:theme="@android:style/ThemeOverlay.Material.Light"
+                    android:backgroundTint="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
                     app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_atividade_spinner"
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_atividade_title" />
+
+
+
+                <TextView
+                    android:id="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/peso_a_perder"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"/>
+
+                <Spinner
+                    android:id="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/venta_array"
+                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title" />
+
+
+
+                <TextView
+                    android:id="@+id/formulario_paciente_antropometria_calculos_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/error_antropometria"
+                    android:textColor="@color/obrigatorio"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    tools:visibility="visible" />
 
                 <Button
                     android:id="@+id/formulario_paciente_antropometria_calculos_button"
@@ -743,7 +766,8 @@
                     android:text="@string/ver_button"
                     android:textSize="14sp"
                     app:cornerRadius="@dimen/cardview_default_radius"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_ideal"
+                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_calculos_error"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_error"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_error" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -799,6 +823,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_patologia_atual_title" />
@@ -826,6 +852,8 @@
                     android:hint="@string/urina_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_urina_title" />
@@ -852,6 +880,8 @@
                     android:hint="@string/fezes_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_fezes_title" />
@@ -877,6 +907,8 @@
                     android:hint="@string/sono_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_sono_title" />
@@ -912,6 +944,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_medicacao_title"
@@ -949,6 +983,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_title"
@@ -986,6 +1022,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_etilico_title"
@@ -1023,6 +1061,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_fumante_title"
@@ -1060,6 +1100,8 @@
                     android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_alergia_title"
@@ -1086,6 +1128,8 @@
                     android:hint="@string/agua_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_agua_title" />
@@ -1112,6 +1156,8 @@
                     android:hint="@string/acucar_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_acucar_title" />
@@ -1137,6 +1183,8 @@
                     android:hint="@string/atividade_hint"
                     android:inputType="textMultiLine"
                     android:textSize="12sp"
+                    android:background="@drawable/border"
+                    android:padding="@dimen/multilined_padding"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_atividade_title" />
@@ -1167,6 +1215,8 @@
                 android:inputType="textMultiLine"
                 android:singleLine="false"
                 android:textSize="12sp"
+                android:background="@drawable/border"
+                android:padding="@dimen/multilined_padding"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/formulario_paciente_observation_title"

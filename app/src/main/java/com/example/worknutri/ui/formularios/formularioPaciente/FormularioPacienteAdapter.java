@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
+import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
+import com.example.worknutri.sqlLite.dao.paciente.PatologiaDao;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
@@ -62,10 +65,17 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         generator.insertViewGroupInAntropometria(viewGroup, antropometria, paciente);
         generator.insertViewGroupInPatologia(viewGroup, patologia);
 
+        PacienteDao pacienteDao = getDataBase().pacienteDao();
+        if (paciente.getId() == 0) pacienteDao.insertAll(paciente);
+        else pacienteDao.update(paciente);
 
-        getDataBase().pacienteDao().insertAll(paciente);
-        getDataBase().antropometriaDao().insertAll(antropometria);
-        getDataBase().patologiaDao().insertAll(patologia);
+        AntropometriaDao antropometriaDao = getDataBase().antropometriaDao();
+        if (antropometria.getIdPaciente()== 0) antropometriaDao.insertAll(antropometria);
+        else antropometriaDao.update(antropometria);
+
+        PatologiaDao patologiaDao = getDataBase().patologiaDao();
+        if (patologia.getIdPaciente() == 0) patologiaDao.insertAll(patologia);
+        else patologiaDao.update(patologia);
     }
 
     public void setClinicas(Spinner spinner) {

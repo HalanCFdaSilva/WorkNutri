@@ -36,30 +36,46 @@
             android:background="@color/white"
             android:foreground="@drawable/border">
 
-            <ImageView
-                android:id="@+id/popup_base_layout_title_image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:foreground="@drawable/border"
-                app:layout_constraintBottom_toBottomOf="@+id/popup_base_layout_title_textview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@color/teal_700" />
 
-            <TextView
-                android:id="@+id/popup_base_layout_title_textview"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/popup_base_layout_scrollview_layout_header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:paddingBottom="16dp"
-                android:text="@string/antropometria_title"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:foreground="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ImageView
+                    android:id="@+id/popup_base_layout_title_image_header"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:foreground="@drawable/border"
+                    app:layout_constraintBottom_toBottomOf="@+id/popup_base_layout_title_textview_header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@color/teal_700" />
+
+                <TextView
+                    android:id="@+id/popup_base_layout_title_textview_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/antropometria_title"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <LinearLayout
                 android:id="@+id/popup_base_layout_layout_intern"
@@ -70,7 +86,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/popup_base_layout_title_image" />
+                app:layout_constraintTop_toBottomOf="@+id/popup_base_layout_scrollview_layout_header" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

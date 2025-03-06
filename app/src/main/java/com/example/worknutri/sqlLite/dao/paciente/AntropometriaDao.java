@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 
@@ -23,6 +24,8 @@ public interface AntropometriaDao {
     @Insert
     void insertAll(Antropometria... antropometrias);
 
+    @Update
+    void update(Antropometria antropometria);
     @Delete
     void delete(Antropometria antropometria);
 }

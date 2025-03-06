@@ -46,7 +46,7 @@ public class PopUpFragment {
     }
 
     protected void insertTitle(int resId) {
-        TextView textView = viewGroup.findViewById(R.id.popup_base_layout_title_textview);
+        TextView textView = viewGroup.findViewById(R.id.popup_base_layout_title_textview_header);
         if (textView != null) {
             textView.setText(resId);
         }

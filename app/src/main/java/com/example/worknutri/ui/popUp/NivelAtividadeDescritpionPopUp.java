@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.popUp;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,7 @@ public class NivelAtividadeDescritpionPopUp extends PopUpFragment {
         super(layoutInflater);
 
         ViewGroup viewGroup = getViewGroup();
-        viewGroup.findViewById(R.id.popup_base_layout_title_textview).setVisibility(View.GONE);
-        viewGroup.findViewById(R.id.popup_base_layout_title_image).setVisibility(View.GONE);
+        viewGroup.findViewById(R.id.popup_base_layout_scrollview_layout_header).setVisibility(View.GONE);
 
 
         ImageView imageView = new ImageView(layoutInflater.getContext());

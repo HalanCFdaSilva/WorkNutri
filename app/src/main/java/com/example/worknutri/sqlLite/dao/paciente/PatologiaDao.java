@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 
@@ -19,6 +20,9 @@ public interface PatologiaDao {
 
     @Insert
     void insertAll(Patologia... patologias);
+
+    @Update
+    void update(Patologia patologia);
 
     @Delete
     void delete(Patologia patologia);

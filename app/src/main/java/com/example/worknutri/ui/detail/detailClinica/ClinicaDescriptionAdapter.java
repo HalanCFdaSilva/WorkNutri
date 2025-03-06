@@ -3,6 +3,7 @@ package com.example.worknutri.ui.detail.detailClinica;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.InsertSelectViewSupport;
 import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
+import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.hourDatePopUp.HourDateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -78,7 +80,7 @@ public class ClinicaDescriptionAdapter {
         }
     }
 
-    public void configureNavButton(BottomNavigationView navigationView) {
+    public void configureNavButton(BottomNavigationView navigationView,ViewGroup viewGroup) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, FormularioClinicaActivity.class);
@@ -89,11 +91,16 @@ public class ClinicaDescriptionAdapter {
         navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
-                dataBase.clinicaDao().delete(clinica);
-                for (DayOfWork dayOfWork : dayOfWorkList) {
-                    dataBase.dayOfWorkDao().delete(dayOfWork);
-                }
-                ((Activity) context).finish();
+                RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
+                removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton ->{
+                    dataBase.clinicaDao().delete(clinica);
+                    for (DayOfWork dayOfWork : dayOfWorkList) {
+                        dataBase.dayOfWorkDao().delete(dayOfWork);
+                    }
+                    ((Activity) context).finish();
+                });
+                removeConfirmPopUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER,0,0);
+
 
                 return false;
             }

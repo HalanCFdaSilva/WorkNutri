@@ -17,7 +17,8 @@ public class ClinicaDescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clinica_description);
         adapter = new ClinicaDescriptionAdapter(getIntent(), this);
-        adapter.configureNavButton(findViewById(R.id.clinica_description_activity_nav_view));
+        adapter.configureNavButton(findViewById(R.id.clinica_description_activity_nav_view),
+                findViewById(R.id.clinica_description_activity_root));
     }
 
     @Override

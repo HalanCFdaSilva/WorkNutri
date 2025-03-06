@@ -19,8 +19,8 @@ public interface ClinicaDao {
     @Query("SELECT * FROM clinica ORDER BY nome ASC")
     List<Clinica> getAllInOrder();
 
-    @Query("SELECT * FROM clinica WHERE id IN (:clinicaIds)")
-    List<Clinica> loadAllByIds(int[] clinicaIds);
+    @Query("SELECT * FROM clinica WHERE id IN (:clinicaId)")
+    Clinica getById(long clinicaId);
 
     @Query("SELECT * FROM clinica WHERE nome LIKE :nomeClinica")
     List<Clinica> findByName(String nomeClinica);

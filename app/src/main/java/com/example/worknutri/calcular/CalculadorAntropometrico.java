@@ -61,8 +61,6 @@ public class CalculadorAntropometrico {
 
     public String generateVenta(double gastoEnergetico, int kgExtraAPerder) {
         double valorKg = (double) 770 / 3;
-        Log.i("TESTE", String.valueOf(gastoEnergetico - valorKg));
-        Log.i("TESTE", String.valueOf(gastoEnergetico - valorKg - ((valorKg / 2) * kgExtraAPerder)));
         return String.valueOf((gastoEnergetico - valorKg - ((valorKg / 2) * kgExtraAPerder)));
     }
 

@@ -26,7 +26,11 @@ public class AgendaPacienteFragment extends Fragment {
         View root = binding.getRoot();
         MainActivity.isPaciente = true;
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome do paciente");
+
         adapter = new AgendaPacienteAdapter(getContext());
+//        PacienteSearchKeyListener keyListener = new PacienteSearchKeyListener(adapter,binding.agendaFragmentLinearLayout);
+//        binding.agendaFragmentEditTextSearch.setOnKeyListener(keyListener);
+        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaPaciente(adapter,binding.agendaFragmentLinearLayout));
         return root;
     }
 

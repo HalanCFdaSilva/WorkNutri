@@ -1,0 +1,50 @@
+package com.example.worknutri.ui.agendasFragment.agendaClinicas;
+
+import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.LinearLayout;
+
+import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteAdapter;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class TextWatcherAgendaClinica implements TextWatcher {
+    private final AgendaClinicasAdapter adapter;
+    private LinearLayout layoutToInsert;
+
+    public TextWatcherAgendaClinica(AgendaClinicasAdapter adapter, LinearLayout layoutToInsert) {
+        this.adapter = adapter;
+        this.layoutToInsert = layoutToInsert;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+        List<Clinica> clinicasFiltradas = isEquals(s.toString());
+        adapter.inflateAgenda(((Activity)adapter.getContext()).getLayoutInflater(),layoutToInsert,clinicasFiltradas);
+
+    }
+
+    private List<Clinica> isEquals(String string){
+        Stream<Clinica> pacienteStream = adapter.getClinicaList().stream().filter(clinica -> clinica.getNome().contains(string));
+        return pacienteStream.collect(Collectors.toList());
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+}

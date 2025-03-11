@@ -12,8 +12,8 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.ValidaFormulario;
-import com.example.worknutri.ui.formularios.editTextKeysListener.CepKeyListener;
-import com.example.worknutri.ui.formularios.editTextKeysListener.FoneKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.CepKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.FoneKeyListener;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DatePickerFragment;
 import com.example.worknutri.ui.popUp.hourDatePopUp.HourDateFragment;
 

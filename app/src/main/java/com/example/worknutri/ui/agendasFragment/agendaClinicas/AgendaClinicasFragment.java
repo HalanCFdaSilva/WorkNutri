@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.worknutri.MainActivity;
 import com.example.worknutri.databinding.FragmentAgendaBinding;
 
+
 public class AgendaClinicasFragment extends Fragment {
 
     private FragmentAgendaBinding binding;
@@ -28,6 +29,8 @@ public class AgendaClinicasFragment extends Fragment {
 
 
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome da clinica");
+        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaClinica(adapter,binding.agendaFragmentLinearLayout));
+
 //        binding.agendaFragmentFabCalendario.setVisibility(View.VISIBLE);
 
 

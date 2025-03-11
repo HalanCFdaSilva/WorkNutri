@@ -29,4 +29,20 @@ public class AgendaClinicasAdapter {
         letterClinicaFragment.generateAgenda(linearLayout, context);
 
     }
+
+    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout,List<Clinica> clinicaList) {
+
+        linearLayout.removeAllViews();
+
+        LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaList);
+        letterClinicaFragment.generateAgenda(linearLayout, context);
+
+    }
+
+    public Context getContext() {
+        return context;
+    }
+    public List<Clinica> getClinicaList(){
+        return dao.getAllInOrder();
+    }
 }

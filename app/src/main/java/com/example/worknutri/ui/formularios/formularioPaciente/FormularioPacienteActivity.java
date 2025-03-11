@@ -9,9 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.worknutri.R;
-import com.example.worknutri.ui.formularios.editTextKeysListener.CalendarioKeyListener;
-import com.example.worknutri.ui.formularios.editTextKeysListener.FoneKeyListener;
-import com.example.worknutri.ui.formularios.editTextKeysListener.PesoKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.CalendarioKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.FoneKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.PesoKeyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FormularioPacienteActivity extends AppCompatActivity {

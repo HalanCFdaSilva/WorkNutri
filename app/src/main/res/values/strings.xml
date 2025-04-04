@@ -5,8 +5,9 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="cm_string">cm</string>
     <string name="obrigatorio">*</string>
-    <string name="confirm_remove_text">Você realmente deseja deletar o registro?</string>
+    <string name="confirm_remove_text">Você realmente deseja apagar o registro?</string>
     <string name="confirmar">CONFIRMAR</string>
     <string name="cancelar">Cancelar</string>
-
+    <string name="sim">sim</string>
+    <string name="nao">não</string>
 </resources>

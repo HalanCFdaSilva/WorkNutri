@@ -1232,6 +1232,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="@color/teal_200"
+        app:contentInsetStart="0dp"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="10dp"
         app:fabCradleVerticalOffset="10dp">
@@ -1241,6 +1242,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:elevation="0dp"
             android:background="@android:color/transparent"
             app:menu="@menu/bottom_nav_menu" />
 
@@ -1250,7 +1252,7 @@
         android:id="@+id/formulario_paciente_activity_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
+        android:contentDescription="@string/salvar_formulario"
         android:src="@drawable/save_48dp_000000_fill0_wght400_grad0_opsz64"
         app:fabSize="auto"
         app:layout_anchor="@id/formulario_paciente_activity_nav_app_bar" />

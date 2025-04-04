@@ -4,6 +4,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.worknutri.R;
 
@@ -14,6 +19,13 @@ public class RemoveConfirmPopUp extends PopUpFragment{
         viewGroup.findViewById(R.id.popup_base_layout_scrollview_layout_header).setVisibility(View.GONE);
         ViewGroup viewToInsert = generateView(layoutInflater);
         insertView(viewToInsert);
+
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone((ConstraintLayout) viewGroup);
+        constraintSet.setMargin(R.id.popup_base_layout_scrollview,ConstraintSet.END,32);
+        constraintSet.setMargin(R.id.popup_base_layout_scrollview,ConstraintSet.START,32);
+        constraintSet.applyTo((ConstraintLayout) viewGroup
+        );
 
     }
 

@@ -107,6 +107,7 @@ public class DetailPacienteAdapter {
         buttonAntropometria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                antropometriaPopUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()),layoutInflater.getContext());
                 antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
             }
         });

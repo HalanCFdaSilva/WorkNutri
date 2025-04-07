@@ -2,21 +2,40 @@ package com.example.worknutri.ui.popUp.detailsPopUp;
 
 
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+
 import com.example.worknutri.R;
+import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.ui.InsertSelectViewSupport;
 import com.example.worknutri.ui.TextInViewSupport;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 
 public class AntroPometriaDetaillPopUp extends PopUpFragment {
+    private int constraintId;
     public AntroPometriaDetaillPopUp(LayoutInflater layoutInflater, Antropometria antropometria, boolean isComplete) {
         super(layoutInflater);
-        if (isComplete) generateComplete(layoutInflater, antropometria);
-        else generateSmall(layoutInflater, antropometria);
+        if (isComplete){
+            generateComplete(layoutInflater, antropometria);
+            constraintId = R.id.popup_antropometria_description;
+        }
+        else{
+            generateSmall(layoutInflater, antropometria);
+            constraintId = R.id.popup_antropometria_description_small;
+        }
     }
 
     private void generateSmall(LayoutInflater layoutInflater, Antropometria antropometria) {
@@ -28,7 +47,7 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
 
     private void setSmallText(Antropometria antropometria) {
         ViewGroup viewGroup = getViewGroup();
-        TextView view = viewGroup.findViewById(R.id.antropometria_small_popup_imc);
+        TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
         InsertSelectViewSupport.insertInTextView(view, TextInViewSupport.formatDouble(antropometria.getImc()));
         view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
         insertWithKcal(view, antropometria.getTaxaMetabolica());
@@ -73,7 +92,7 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         insertWithKg(view, antropometria.getPesoIdeal());
 
 
-        view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
+        view = viewGroup.findViewById(R.id.antropometria_popup_imc);
         InsertSelectViewSupport.insertInTextView(view, TextInViewSupport.formatDouble(antropometria.getImc()));
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_taxa_metabolica);
         insertWithKcal(view, antropometria.getTaxaMetabolica());
@@ -112,6 +131,32 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
     }
 
 
+    public void generateClassificacaoImc(double imc,Context context){
+
+        ClassificacaoImc classificacaoImc = ClassificacaoImc.tipoImc(imc);
+        TextView textView = new TextView(context);
+        textView.setContentDescription(context.getText(R.string.tipo_imc));
+        textView.setId(R.id.classificacao_imc_textview);
+        textView.setText(classificacaoImc.toString().replaceAll("_"," "));
+
+        textView.setBackgroundResource(R.color.white);
+        textView.setBackgroundColor(ContextCompat.getColor(context,classificacaoImc.getColor()));
+
+        textView.setPadding(5,0,5,0);
+        ConstraintLayout layout = getViewGroup().findViewById(constraintId);
+        layout.addView(textView);
+
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(layout);
+        constraintSet.connect(textView.getId(),ConstraintSet.START,R.id.antropometria_popup_imc,ConstraintSet.END,8);
+        constraintSet.connect(textView.getId(),ConstraintSet.TOP,R.id.antropometria_popup_imc,ConstraintSet.TOP);
+        constraintSet.connect(textView.getId(),ConstraintSet.BOTTOM,R.id.antropometria_popup_imc,ConstraintSet.BOTTOM);
+        constraintSet.applyTo(layout);
+
+
+
+
+    }
 
 
 }

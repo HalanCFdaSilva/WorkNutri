@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/popup_antropometria_description_small"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
 
@@ -17,17 +18,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/antropometria_small_popup_imc"
+        android:id="@+id/antropometria_popup_imc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:ems="10"
-        tool:text="58 kilogramas"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/antropometria_small_popup_imc_title"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/antropometria_small_popup_imc_title"
-        app:layout_constraintTop_toTopOf="@+id/antropometria_small_popup_imc_title" />
+        app:layout_constraintTop_toTopOf="@+id/antropometria_small_popup_imc_title"
+        tool:text="58 kilogramas" />
 
 
     <!--            TAXA METABOLICA-->
@@ -146,5 +145,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/antropometria_small_popup_agua_title"
         app:layout_constraintTop_toTopOf="@+id/antropometria_small_popup_agua_title" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

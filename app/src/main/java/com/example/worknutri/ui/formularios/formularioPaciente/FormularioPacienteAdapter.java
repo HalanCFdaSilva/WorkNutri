@@ -135,6 +135,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             generator.insertViewGroupInPaciente(layout, paciente);
             generator.insertViewGroupInAntropometria(layout, antropometria, paciente);
             AntroPometriaDetaillPopUp popUp = new AntroPometriaDetaillPopUp(inflater, antropometria, false);
+            popUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()), inflater.getContext());
             popUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(
                     R.id.formulario_paciente_activity_constraint_layout), Gravity.CENTER, -1, -1);
         } else {

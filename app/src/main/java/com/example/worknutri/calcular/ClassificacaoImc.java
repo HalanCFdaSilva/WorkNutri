@@ -1,12 +1,27 @@
 package com.example.worknutri.calcular;
 
+import android.graphics.Color;
+
+import com.example.worknutri.R;
+
 public enum ClassificacaoImc {
-    DEFICIT,
-    NORMAL,
-    SOBRE_PESO,
-    OBESIDADE_LEVE,
-    OBESIDADE_MEDIA,
-    OBESIDADE_MORBIDA;
+    DEFICIT(R.color.yellow_alert),
+    NORMAL(R.color.green_alert),
+    SOBRE_PESO(R.color.yellow_alert),
+    OBESIDADE_LEVE(R.color.orange_alert),
+    OBESIDADE_MEDIA(R.color.red_alert),
+    OBESIDADE_MORBIDA(R.color.magenta_alert);
+
+    private int color;
+
+    ClassificacaoImc(int color) {
+        this.color = color;
+    }
+
+
+    public int getColor() {
+        return color;
+    }
 
     public static ClassificacaoImc tipoImc(double valor) {
 

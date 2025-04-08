@@ -8,9 +8,7 @@ import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters.LetterPacienteFragment;
-import com.google.android.material.textfield.TextInputEditText;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public class AgendaPacienteAdapter {
@@ -29,7 +27,8 @@ public class AgendaPacienteAdapter {
 
 
     }
-    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout,List<Paciente> pacientes) {
+
+    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout, List<Paciente> pacientes) {
         linearLayout.removeAllViews();
         LetterPacienteFragment letterPacienteFragment = new LetterPacienteFragment(inflater, pacientes);
         letterPacienteFragment.generateAgenda(linearLayout);
@@ -37,11 +36,11 @@ public class AgendaPacienteAdapter {
 
     }
 
-    public List<Paciente> getPacientes(){
+    public List<Paciente> getPacientes() {
         return pacienteDao.getAllInOrder();
     }
 
-    public Context getContext(){
+    public Context getContext() {
         return this.context;
     }
 }

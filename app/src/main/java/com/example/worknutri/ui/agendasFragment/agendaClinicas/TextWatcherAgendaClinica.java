@@ -6,9 +6,6 @@ import android.text.TextWatcher;
 import android.widget.LinearLayout;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteAdapter;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
 
 public class TextWatcherAgendaClinica implements TextWatcher {
     private final AgendaClinicasAdapter adapter;
-    private LinearLayout layoutToInsert;
+    private final LinearLayout layoutToInsert;
 
     public TextWatcherAgendaClinica(AgendaClinicasAdapter adapter, LinearLayout layoutToInsert) {
         this.adapter = adapter;
@@ -33,11 +30,11 @@ public class TextWatcherAgendaClinica implements TextWatcher {
 
 
         List<Clinica> clinicasFiltradas = isEquals(s.toString());
-        adapter.inflateAgenda(((Activity)adapter.getContext()).getLayoutInflater(),layoutToInsert,clinicasFiltradas);
+        adapter.inflateAgenda(((Activity) adapter.getContext()).getLayoutInflater(), layoutToInsert, clinicasFiltradas);
 
     }
 
-    private List<Clinica> isEquals(String string){
+    private List<Clinica> isEquals(String string) {
         Stream<Clinica> pacienteStream = adapter.getClinicaList().stream().filter(clinica -> clinica.getNome().contains(string));
         return pacienteStream.collect(Collectors.toList());
 

@@ -33,10 +33,7 @@ public class FormularioPacienteActivity extends AppCompatActivity {
         this.configurePatologiaCheckBox();
         this.insertKeyListeners();
         FloatingActionButton button = findViewById(R.id.formulario_paciente_activity_fab);
-        button.setOnClickListener(v -> {
-            saveLayout();
-
-        });
+        button.setOnClickListener(v -> saveLayout());
     }
 
     private void configurePatologiaCheckBox() {
@@ -67,10 +64,8 @@ public class FormularioPacienteActivity extends AppCompatActivity {
 
     private void verCalculos() {
         Button button = findViewById(R.id.formulario_paciente_antropometria_calculos_button);
-        button.setOnClickListener(v -> {
-            adapter.getCalculosAntropometricos(getLayoutInflater(),
-                    findViewById(R.id.formulario_paciente_activity_constraint_layout));
-        });
+        button.setOnClickListener(v -> adapter.getCalculosAntropometricos(getLayoutInflater(),
+                    findViewById(R.id.formulario_paciente_activity_constraint_layout)));
     }
 
     private void saveLayout() {
@@ -82,8 +77,6 @@ public class FormularioPacienteActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }

@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
 
 import com.example.worknutri.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,7 +21,7 @@ public class BottomMenuConfigurator {
 
         navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(item -> {
             MainActivity.isPaciente = isPaciente;
-            Log.i("TESTE",MainActivity.isPaciente + "");
+            Log.i("TESTE", MainActivity.isPaciente + "");
             ((Activity) context).finish();
 
 

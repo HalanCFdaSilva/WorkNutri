@@ -29,7 +29,7 @@ public class AgendaClinicasFragment extends Fragment {
 
 
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome da clinica");
-        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaClinica(adapter,binding.agendaFragmentLinearLayout));
+        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaClinica(adapter, binding.agendaFragmentLinearLayout));
 
 //        binding.agendaFragmentFabCalendario.setVisibility(View.VISIBLE);
 

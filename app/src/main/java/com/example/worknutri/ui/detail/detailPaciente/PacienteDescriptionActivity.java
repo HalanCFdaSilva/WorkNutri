@@ -1,8 +1,10 @@
 package com.example.worknutri.ui.detail.detailPaciente;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.worknutri.R;
 
 
@@ -16,7 +18,7 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paciente_descrition);
-        adapter = new DetailPacienteAdapter(getIntent(),this);
+        adapter = new DetailPacienteAdapter(getIntent(), this);
 
     }
 
@@ -26,12 +28,10 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
         adapter.refreshData();
         setTitle(adapter.getPaciente().getNomePaciente().toUpperCase());
         adapter.insertTextInLayout(findViewById(R.id.detail_paciente_activity_layout));
-        adapter.moreDetailButtonsConfig(findViewById(R.id.detail_paciente_activity_layout),getLayoutInflater());
-        adapter.configureNavButtom(findViewById(R.id.detail_paciente_activity_nav_view),findViewById(R.id.detail_paciente_activity_layout));
+        adapter.moreDetailButtonsConfig(findViewById(R.id.detail_paciente_activity_layout), getLayoutInflater());
+        adapter.configureNavButtom(findViewById(R.id.detail_paciente_activity_nav_view), findViewById(R.id.detail_paciente_activity_layout));
 
     }
-
-
 
 
 }

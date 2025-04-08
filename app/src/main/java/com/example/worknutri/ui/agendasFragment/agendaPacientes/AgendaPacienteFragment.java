@@ -30,7 +30,7 @@ public class AgendaPacienteFragment extends Fragment {
         adapter = new AgendaPacienteAdapter(getContext());
 //        PacienteSearchKeyListener keyListener = new PacienteSearchKeyListener(adapter,binding.agendaFragmentLinearLayout);
 //        binding.agendaFragmentEditTextSearch.setOnKeyListener(keyListener);
-        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaPaciente(adapter,binding.agendaFragmentLinearLayout));
+        binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaPaciente(adapter, binding.agendaFragmentLinearLayout));
         return root;
     }
 

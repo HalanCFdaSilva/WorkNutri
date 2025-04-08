@@ -70,7 +70,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         else pacienteDao.update(paciente);
 
         AntropometriaDao antropometriaDao = getDataBase().antropometriaDao();
-        if (antropometria.getIdPaciente()== 0) antropometriaDao.insertAll(antropometria);
+        if (antropometria.getIdPaciente() == 0) antropometriaDao.insertAll(antropometria);
         else antropometriaDao.update(antropometria);
 
         PatologiaDao patologiaDao = getDataBase().patologiaDao();
@@ -159,7 +159,6 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     }
 
     public void OpenNivelAtividadePopUpOnClick(ImageView button, LayoutInflater inflater, ViewGroup viewGroup) {
-
 
 
         button.setOnClickListener(onClick -> {

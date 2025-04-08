@@ -2,12 +2,14 @@ package com.example.worknutri;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+
 import com.example.worknutri.databinding.ActivityMainBinding;
 import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
 import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        ActivityMainBinding  binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             }
             controller.setGraph(navGraph);
         }
-
 
 
     }

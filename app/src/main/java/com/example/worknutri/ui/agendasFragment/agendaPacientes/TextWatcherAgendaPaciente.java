@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class TextWatcherAgendaPaciente implements TextWatcher {
     private final AgendaPacienteAdapter adapter;
-    private LinearLayout layoutToInsert;
+    private final LinearLayout layoutToInsert;
 
     public TextWatcherAgendaPaciente(AgendaPacienteAdapter adapter, LinearLayout layoutToInsert) {
         this.adapter = adapter;
@@ -30,13 +30,12 @@ public class TextWatcherAgendaPaciente implements TextWatcher {
 
 
         List<Paciente> pacientesFiltrados = isEquals(s.toString());
-        adapter.inflateAgenda(((Activity)adapter.getContext()).getLayoutInflater(),layoutToInsert,pacientesFiltrados);
-
+        adapter.inflateAgenda(((Activity) adapter.getContext()).getLayoutInflater(), layoutToInsert, pacientesFiltrados);
 
 
     }
 
-    private List<Paciente> isEquals(String string){
+    private List<Paciente> isEquals(String string) {
         Stream<Paciente> pacienteStream = adapter.getPacientes().stream().filter(paciente -> paciente.getNomePaciente().contains(string));
         return pacienteStream.collect(Collectors.toList());
 

@@ -1,7 +1,5 @@
 package com.example.worknutri.calcular;
 
-import android.graphics.Color;
-
 import com.example.worknutri.R;
 
 public enum ClassificacaoImc {
@@ -12,7 +10,7 @@ public enum ClassificacaoImc {
     OBESIDADE_MEDIA(R.color.red_alert),
     OBESIDADE_MORBIDA(R.color.magenta_alert);
 
-    private int color;
+    private final int color;
 
     ClassificacaoImc(int color) {
         this.color = color;

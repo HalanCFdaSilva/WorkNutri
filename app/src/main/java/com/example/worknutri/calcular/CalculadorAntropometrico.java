@@ -1,7 +1,5 @@
 package com.example.worknutri.calcular;
 
-import android.util.Log;
-
 public class CalculadorAntropometrico {
 
     private final double peso;
@@ -27,7 +25,7 @@ public class CalculadorAntropometrico {
     }
 
     public String generateGET(String taxaMetabolicaBasal, int nivelAtividadePaciente, char genero) {
-        double tmb = Double.valueOf(taxaMetabolicaBasal);
+        double tmb = Double.parseDouble(taxaMetabolicaBasal);
         if (genero == 'M') {
             switch (nivelAtividadePaciente) {
                 case 0:

@@ -80,7 +80,7 @@ public class ClinicaDescriptionAdapter {
         }
     }
 
-    public void configureNavButton(BottomNavigationView navigationView,ViewGroup viewGroup) {
+    public void configureNavButton(BottomNavigationView navigationView, ViewGroup viewGroup) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, FormularioClinicaActivity.class);
@@ -88,22 +88,19 @@ public class ClinicaDescriptionAdapter {
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 
 
-        navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem item) {
-                RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
-                removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton ->{
-                    dataBase.clinicaDao().delete(clinica);
-                    for (DayOfWork dayOfWork : dayOfWorkList) {
-                        dataBase.dayOfWorkDao().delete(dayOfWork);
-                    }
-                    ((Activity) context).finish();
-                });
-                removeConfirmPopUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER,0,0);
+        navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(item -> {
+            RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
+            removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton -> {
+                dataBase.clinicaDao().delete(clinica);
+                for (DayOfWork dayOfWork : dayOfWorkList) {
+                    dataBase.dayOfWorkDao().delete(dayOfWork);
+                }
+                ((Activity) context).finish();
+            });
+            removeConfirmPopUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, 0, 0);
 
 
-                return false;
-            }
+            return false;
         });
     }
 }

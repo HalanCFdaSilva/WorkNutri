@@ -39,11 +39,11 @@ public class DetailPacienteAdapter {
     private PatologiaDao patologiaDao;
 
     private ClinicaDao clinicaDao;
-    private  Context context;
+    private final Context context;
 
     public DetailPacienteAdapter(Intent intent, Context context) {
 
-        
+
         if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
             paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE);
             AppDataBase db = AppDataBase.getInstance(context);
@@ -54,44 +54,45 @@ public class DetailPacienteAdapter {
 
 
         } else {
-            ((Activity)context).finish();
+            ((Activity) context).finish();
         }
         this.context = context;
     }
 
-    public void refreshData(){
+    public void refreshData() {
         antropometria = antropometriaDao.getByPacienteId(paciente.getId());
         patologia = patologiaDao.loadAllByIdPaciente(paciente.getId()).get(0);
         clinica = clinicaDao.getById(paciente.getClinicaId());
         paciente = pacienteDao.getById(paciente.getId());
     }
-    public void configureNavButtom(BottomNavigationView bottomNavigationView,ViewGroup viewGroup){
-        BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context,bottomNavigationView);
+
+    public void configureNavButtom(BottomNavigationView bottomNavigationView, ViewGroup viewGroup) {
+        BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, bottomNavigationView);
         Intent intent = new Intent(context, FormularioPacienteActivity.class);
-        intent.putExtra(ExtrasActivities.PACIENTE,paciente);
-        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit,intent);
-        
+        intent.putExtra(ExtrasActivities.PACIENTE, paciente);
+        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
+
         intent = new Intent(context, ClinicaDescriptionActivity.class);
-        intent.putExtra(ExtrasActivities.CLINICA,clinica);
-        menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente,intent);
-        
+        intent.putExtra(ExtrasActivities.CLINICA, clinica);
+        menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
+
         bottomNavigationView.getMenu().findItem(R.id.navegation_delete).
-                setOnMenuItemClickListener(onClick ->{
-                    RemoveConfirmPopUp popUp = new RemoveConfirmPopUp(((Activity)context).getLayoutInflater());
-                    popUp.getConfirmButton().setOnClickListener(onClickButton ->{
+                setOnMenuItemClickListener(onClick -> {
+                    RemoveConfirmPopUp popUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
+                    popUp.getConfirmButton().setOnClickListener(onClickButton -> {
                         pacienteDao.delete(paciente);
                         patologiaDao.delete(patologia);
                         antropometriaDao.delete(antropometria);
-                        ((Activity)context).finish();
+                        ((Activity) context).finish();
                     });
-                    popUp.getPopUpWindow().showAtLocation(viewGroup,Gravity.CENTER,0,0);
+                    popUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, 0, 0);
 
-            return false;
-        });
+                    return false;
+                });
     }
 
     public void insertTextInLayout(ViewGroup viewGroup) {
-        
+
         ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
         ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
         ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
@@ -112,22 +113,14 @@ public class DetailPacienteAdapter {
 
         AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(layoutInflater, antropometria, true);
         Button buttonAntropometria = viewGroup.findViewById(R.id.detail_paciente_activity_button_antropometric);
-        buttonAntropometria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                antropometriaPopUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()),layoutInflater.getContext());
-                antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
-            }
+        buttonAntropometria.setOnClickListener(v -> {
+            antropometriaPopUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()), layoutInflater.getContext());
+            antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
         });
 
         PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(layoutInflater, patologia);
         Button buttonPatologia = viewGroup.findViewById(R.id.detail_paciente_activity_button_patologic);
-        buttonPatologia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                patologiaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
-            }
-        });
+        buttonPatologia.setOnClickListener(v -> patologiaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1));
 
     }
 }

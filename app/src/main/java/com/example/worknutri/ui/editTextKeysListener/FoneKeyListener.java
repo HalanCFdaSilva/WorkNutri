@@ -11,8 +11,6 @@ import com.example.worknutri.R;
 public class FoneKeyListener implements View.OnKeyListener {
 
 
-
-
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         EditText editText = ((EditText) v);

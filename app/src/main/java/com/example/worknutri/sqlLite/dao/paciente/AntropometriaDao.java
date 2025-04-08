@@ -26,6 +26,7 @@ public interface AntropometriaDao {
 
     @Update
     void update(Antropometria antropometria);
+
     @Delete
     void delete(Antropometria antropometria);
 }

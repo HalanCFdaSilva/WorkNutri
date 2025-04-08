@@ -15,12 +15,12 @@ public class PesoKeyListener implements View.OnKeyListener {
     private Spinner spinnerPesoIdeal;
 
 
-    public void setSpinnerAltura(Spinner spinnerAltura){
+    public void setSpinnerAltura(Spinner spinnerAltura) {
 
         this.spinnerAltura = spinnerAltura;
     }
 
-    public void setPesoIdeal(Spinner spinnerPesoIdeal,EditText editTextPesoIdeal){
+    public void setPesoIdeal(Spinner spinnerPesoIdeal, EditText editTextPesoIdeal) {
         this.editTextPesoIdeal = editTextPesoIdeal;
         this.spinnerPesoIdeal = spinnerPesoIdeal;
     }
@@ -31,9 +31,9 @@ public class PesoKeyListener implements View.OnKeyListener {
         if (!stringAltura.isBlank()) {
             double editTextText = Double.parseDouble(stringAltura);
             int positionSpinner = spinnerAltura.getSelectedItemPosition();
-            double altura = Double.parseDouble(Conversor.convertToGram(positionSpinner,editTextText));
+            double altura = Double.parseDouble(Conversor.convertToGram(positionSpinner, editTextText));
 
-            double pesoIdeal = altura*altura*21.75;
+            double pesoIdeal = altura * altura * 21.75;
             editTextPesoIdeal.setText(TextInViewSupport.formatDouble(String.valueOf(pesoIdeal)));
             spinnerPesoIdeal.setSelection(0);
         }

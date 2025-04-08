@@ -30,7 +30,7 @@ public class AgendaClinicasAdapter {
 
     }
 
-    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout,List<Clinica> clinicaList) {
+    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout, List<Clinica> clinicaList) {
 
         linearLayout.removeAllViews();
 
@@ -42,7 +42,8 @@ public class AgendaClinicasAdapter {
     public Context getContext() {
         return context;
     }
-    public List<Clinica> getClinicaList(){
+
+    public List<Clinica> getClinicaList() {
         return dao.getAllInOrder();
     }
 }

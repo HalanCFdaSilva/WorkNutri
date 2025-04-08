@@ -18,8 +18,8 @@ public interface AntropometriaDao {
 
     //    @Query("SELECT peso,altura FROM antropometrias WHERE id_paciente IN (:pacienteIds)")
 //    List<Antropometria> loadMinimusByIdPaciente(int[] pacienteIds);
-    @Query("SELECT * FROM antropometrias WHERE id_paciente IN (:pacienteIds)")
-    List<Antropometria> loadAllByIdPaciente(long pacienteIds);
+    @Query("SELECT * FROM antropometrias WHERE id_paciente IN (:pacienteId)")
+    Antropometria getByPacienteId(long pacienteId);
 
     @Insert
     void insertAll(Antropometria... antropometrias);

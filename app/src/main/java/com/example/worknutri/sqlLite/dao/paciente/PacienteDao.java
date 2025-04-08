@@ -19,8 +19,8 @@ public interface PacienteDao {
     @Query("SELECT * FROM paciente ORDER BY nome_paciente ASC")
     List<Paciente> getAllInOrder();
 
-    @Query("SELECT * FROM paciente WHERE id IN (:pacienteIds)")
-    List<Paciente> loadAllByIds(int[] pacienteIds);
+    @Query("SELECT * FROM paciente WHERE id IN (:pacienteId)")
+    Paciente getById(long pacienteId);
 
     @Query("SELECT * FROM paciente WHERE nome_paciente LIKE :nomePaciente")
     List<Paciente> findByName(String nomePaciente);

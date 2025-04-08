@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
 import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.dao.paciente.PatologiaDao;
@@ -36,6 +37,8 @@ public class DetailPacienteAdapter {
     private PacienteDao pacienteDao;
     private AntropometriaDao antropometriaDao;
     private PatologiaDao patologiaDao;
+
+    private ClinicaDao clinicaDao;
     private  Context context;
 
     public DetailPacienteAdapter(Intent intent, Context context) {
@@ -46,10 +49,9 @@ public class DetailPacienteAdapter {
             AppDataBase db = AppDataBase.getInstance(context);
             pacienteDao = db.pacienteDao();
             antropometriaDao = db.antropometriaDao();
-            antropometria = antropometriaDao.loadAllByIdPaciente(paciente.getId()).get(0);
             patologiaDao = db.patologiaDao();
-            patologia = patologiaDao.loadAllByIdPaciente(paciente.getId()).get(0);
-            clinica = db.clinicaDao().getById(paciente.getClinicaId());
+            clinicaDao = db.clinicaDao();
+
 
         } else {
             ((Activity)context).finish();
@@ -57,6 +59,12 @@ public class DetailPacienteAdapter {
         this.context = context;
     }
 
+    public void refreshData(){
+        antropometria = antropometriaDao.getByPacienteId(paciente.getId());
+        patologia = patologiaDao.loadAllByIdPaciente(paciente.getId()).get(0);
+        clinica = clinicaDao.getById(paciente.getClinicaId());
+        paciente = pacienteDao.getById(paciente.getId());
+    }
     public void configureNavButtom(BottomNavigationView bottomNavigationView,ViewGroup viewGroup){
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context,bottomNavigationView);
         Intent intent = new Intent(context, FormularioPacienteActivity.class);

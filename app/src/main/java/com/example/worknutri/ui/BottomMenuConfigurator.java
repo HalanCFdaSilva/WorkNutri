@@ -3,6 +3,7 @@ package com.example.worknutri.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -21,34 +22,21 @@ public class BottomMenuConfigurator {
 
     public void onClickInBottomAppBar(int idItemMenu, boolean isPaciente) {
 
-        navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem item) {
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(ExtrasActivities.PACIENTE_BOOLEAN, isPaciente);
-                context.startActivities(new Intent[]{intent});
-                ((Activity) context).finish();
+        navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(item -> {
+            MainActivity.isPaciente = isPaciente;
+            Log.i("TESTE",MainActivity.isPaciente + "");
+            ((Activity) context).finish();
 
-                return false;
-            }
+
+            return false;
         });
     }
 
     public void onClickInBottomAppBar(int idItemMenu, Intent intent) {
-        navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem item) {
-
-                context.startActivities(new Intent[]{intent});
-                ((Activity) context).finish();
-
-                return false;
-            }
+        navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(item -> {
+            context.startActivities(new Intent[]{intent});
+            return false;
         });
-    }
-
-    public BottomNavigationView getNavView() {
-        return navView;
     }
 
     public Context getContext() {

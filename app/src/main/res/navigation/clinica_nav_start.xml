@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clinica_nav_start"
+    app:startDestination="@+id/navigation_clinicas">
+
+    <fragment
+        android:id="@+id/navigation_clinicas"
+        android:name="com.example.worknutri.ui.agendasFragment.agendaClinicas.AgendaClinicasFragment"
+        android:label="@string/title_clinicas"
+        tools:layout="@layout/fragment_agenda" >
+        <action
+            android:id="@+id/action_navigation_clinicas_to_navigation_pacientes"
+            app:destination="@id/navigation_pacientes" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_pacientes"
+        android:name="com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteFragment"
+        android:label="@string/title_pacientes"
+        tools:layout="@layout/fragment_agenda">
+        <action
+            android:id="@+id/action_navigation_pacientes_to_navigation_clinicas"
+            app:destination="@id/navigation_clinicas" />
+    </fragment>
+
+
+
+</navigation>

@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation" />
+        app:navGraph="@navigation/paciente_nav_start" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/main_activity_nav_app_bar"

@@ -22,7 +22,11 @@
         android:id="@+id/navigation_clinicas"
         android:name="com.example.worknutri.ui.agendasFragment.agendaClinicas.AgendaClinicasFragment"
         android:label="@string/title_clinicas"
-        tools:layout="@layout/fragment_agenda" />
+        tools:layout="@layout/fragment_agenda" >
+        <action
+            android:id="@+id/action_navigation_clinicas_to_navigation_pacientes"
+            app:destination="@id/navigation_pacientes" />
+    </fragment>
 
 
 </navigation>

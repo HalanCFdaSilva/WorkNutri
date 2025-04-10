@@ -2,6 +2,7 @@ package com.example.worknutri.ui.popUp.detailsPopUp;
 
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -131,6 +132,7 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
         textView.setContentDescription(context.getText(R.string.tipo_imc));
         textView.setId(R.id.classificacao_imc_textview);
         textView.setText(classificacaoImc.toString().replaceAll("_", " "));
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
 
         textView.setBackgroundResource(R.color.white);
         textView.setBackgroundColor(ContextCompat.getColor(context, classificacaoImc.getColor()));

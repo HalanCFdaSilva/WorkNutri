@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.worknutri.databinding.ActivityMainBinding;
+import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
 import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.mainActivityNavView, navController);
+        MainActivity.isPaciente=getIntent().getBooleanExtra(ExtrasActivities.PACIENTE_BOOLEAN,true);
 
     }
+
+
 
     @Override
     protected void onStart() {

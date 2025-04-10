@@ -22,7 +22,7 @@ public class FormularioClinicaActivity extends AppCompatActivity {
 
         adapter = new FormularioClinicaAdapter(this);
         getClinicaOfIntent();
-        adapter.configuraBottomNav(findViewById(R.id.formulario_clinica_activy_activity_nav_view));
+        adapter.configuraBottomNav(findViewById(R.id.formulario_clinica_activy_activity_nav_view), getIntent());
         adapter.configureKeyListeners(findViewById(R.id.formulario_clinica_linear_layout));
         this.addHour();
 

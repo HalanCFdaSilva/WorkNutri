@@ -25,7 +25,7 @@ public class FormularioPacienteActivity extends AppCompatActivity {
         adapter = new FormularioPacienteAdapter(this);
         verCalculos();
         adapter.setClinicas(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
-        adapter.configuraBottomNav(findViewById(R.id.formulario_paciente_activity_nav_view));
+        adapter.configuraBottomNav(findViewById(R.id.formulario_paciente_activity_nav_view),getIntent());
         adapter.insertInFormulario(getIntent(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
         adapter.OpenNivelAtividadePopUpOnClick(findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview),
                 getLayoutInflater(), findViewById(R.id.formulario_paciente_activity_constraint_layout));

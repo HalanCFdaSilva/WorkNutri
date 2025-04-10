@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.worknutri.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ClinicaDescriptionActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class ClinicaDescriptionActivity extends AppCompatActivity {
         adapter = new ClinicaDescriptionAdapter(getIntent(), this);
         adapter.configureNavButton(findViewById(R.id.clinica_description_activity_nav_view),
                 findViewById(R.id.clinica_description_activity_root));
+        FloatingActionButton fab = findViewById(R.id.clinica_description_activity_fab_back);
+        fab.setOnClickListener(onClick -> this.finish());
     }
 
     @Override

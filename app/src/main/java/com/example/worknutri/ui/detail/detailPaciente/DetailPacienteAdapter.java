@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -93,16 +92,16 @@ public class DetailPacienteAdapter {
 
     public void insertTextInLayout(ViewGroup viewGroup) {
 
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_email_paciente_descrition)).setText(paciente.getEmail());
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_observation_paciente_descrition)).setText(paciente.getObservacoes());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_email_paciente_descrition)).setText(paciente.getEmail());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_observation_paciente_descrition)).setText(paciente.getObservacoes());
 
 
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_height_paciente_descrition)).setText(antropometria.getAltura());
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
-        ((TextView) viewGroup.findViewById(R.id.detail_paciente_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_height_paciente_descrition)).setText(antropometria.getAltura());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
     }
 
     public Paciente getPaciente() {
@@ -112,15 +111,15 @@ public class DetailPacienteAdapter {
     public void moreDetailButtonsConfig(ViewGroup viewGroup, LayoutInflater layoutInflater) {
 
         AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(layoutInflater, antropometria, true);
-        Button buttonAntropometria = viewGroup.findViewById(R.id.detail_paciente_activity_button_antropometric);
+        Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
         buttonAntropometria.setOnClickListener(v -> {
             antropometriaPopUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()), layoutInflater.getContext());
-            antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1);
+            antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1);
         });
 
         PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(layoutInflater, patologia);
-        Button buttonPatologia = viewGroup.findViewById(R.id.detail_paciente_activity_button_patologic);
-        buttonPatologia.setOnClickListener(v -> patologiaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.detail_paciente_activity_layout), Gravity.CENTER, -1, -1));
+        Button buttonPatologia = viewGroup.findViewById(R.id.paciente_description_activity_button_patologic);
+        buttonPatologia.setOnClickListener(v -> patologiaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
 
     }
 }

@@ -351,6 +351,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/clinica_description_activity_fab_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:foreground="@drawable/border_round"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/clinica_description_activity_nav_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/icons8_left_100" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/clinica_description_activity_nav_view"
         android:layout_width="0dp"

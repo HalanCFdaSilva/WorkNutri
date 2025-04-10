@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/detail_paciente_activity_layout"
+    android:id="@+id/paciente_description_activity_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,11 +12,10 @@
 
 <!--CORPO-->
     <ImageView
-        android:id="@+id/detail_paciente_activity_picture_paciente"
+        android:id="@+id/paciente_description_activity_picture_paciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,162 +28,162 @@
 
 <!--NOME PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_name_paciente_title"
+        android:id="@+id/paciente_description_activity_name_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/nome_title"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_picture_paciente"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_description_activity_picture_paciente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_picture_paciente"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_picture_paciente"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_picture_paciente"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_picture_paciente"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/detail_paciente_activity_name_paciente_descrition"
+        android:id="@+id/paciente_description_activity_name_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_name_paciente_title"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_name_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_name_paciente_title"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_description_activity_name_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_name_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_name_paciente_title"
         app:layout_constraintVertical_bias="0.0"
         tools:text="José Carlos Araujo" />
 
 
 <!--IDADE PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_idade_paciente_title"
+        android:id="@+id/paciente_description_activity_idade_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/idade_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_name_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_name_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_name_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_name_paciente_title" />
     <TextView
-        android:id="@+id/detail_paciente_activity_idade_paciente_descrition"
+        android:id="@+id/paciente_description_activity_idade_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_idade_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_idade_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_idade_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_idade_paciente_title"
         tools:text="72 anos" />
 
 
 <!--ALTURA PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_height_paciente_title"
+        android:id="@+id/paciente_description_activity_height_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/altura_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_picture_paciente" />
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_picture_paciente" />
     <TextView
-        android:id="@+id/detail_paciente_activity_height_paciente_descrition"
+        android:id="@+id/paciente_description_activity_height_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_height_paciente_title"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_height_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_height_paciente_title"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_description_activity_height_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_height_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_height_paciente_title"
         tools:text="1,86m" />
 
 
 <!--   PESO PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_peso_paciente_title"
+        android:id="@+id/paciente_description_activity_peso_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/peso_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_height_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_height_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_height_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_height_paciente_title" />
     <TextView
-        android:id="@+id/detail_paciente_activity_peso_paciente_descrition"
+        android:id="@+id/paciente_description_activity_peso_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_peso_paciente_title"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_peso_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_peso_paciente_title"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_description_activity_peso_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_peso_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_peso_paciente_title"
         tools:text="95 Kg" />
 
 
 <!--  PESO IDEAL PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_peso_ideal_paciente_title"
+        android:id="@+id/paciente_description_activity_peso_ideal_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/peso_ideal_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_peso_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_peso_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_peso_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_peso_paciente_title" />
     <TextView
-        android:id="@+id/detail_paciente_activity_peso_ideal_paciente_descrition"
+        android:id="@+id/paciente_description_activity_peso_ideal_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_paciente_activity_peso_ideal_paciente_title"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_peso_ideal_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_peso_ideal_paciente_title"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_description_activity_peso_ideal_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_peso_ideal_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_peso_ideal_paciente_title"
         tools:text="69 Kg" />
 
 
 <!--TELEFONE PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_fone_paciente_title"
+        android:id="@+id/paciente_description_activity_fone_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/fone_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_peso_ideal_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_peso_ideal_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_peso_ideal_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_peso_ideal_paciente_title" />
 
     <TextView
-        android:id="@+id/detail_paciente_activity_fone_paciente_descrition"
+        android:id="@+id/paciente_description_activity_fone_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_fone_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_fone_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_fone_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_fone_paciente_title"
         tools:text="(021)99999-9999" />
 
 
 <!--EMAIL PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_email_paciente_title"
+        android:id="@+id/paciente_description_activity_email_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/email_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_height_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_fone_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_height_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_fone_paciente_title" />
 
     <TextView
-        android:id="@+id/detail_paciente_activity_email_paciente_descrition"
+        android:id="@+id/paciente_description_activity_email_paciente_descrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_email_paciente_title"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_email_paciente_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_email_paciente_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_email_paciente_title"
         tools:text="teste@tst.com.br" />
 
 <!-- OBSERVAÇÕES PACIENTE-->
     <TextView
-        android:id="@+id/detail_paciente_activity_observation_paciente_title"
+        android:id="@+id/paciente_description_activity_observation_paciente_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/observacao_title"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_email_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_email_paciente_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_email_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_email_paciente_title" />
 
     <TextView
-        android:id="@+id/detail_paciente_activity_observation_paciente_descrition"
+        android:id="@+id/paciente_description_activity_observation_paciente_descrition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -194,41 +193,41 @@
         android:inputType="textMultiLine"
         android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_observation_paciente_title"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_observation_paciente_title"
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_observation_paciente_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_observation_paciente_title"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
 
 
     <Button
-        android:id="@+id/detail_paciente_activity_button_antropometric"
+        android:id="@+id/paciente_description_activity_button_antropometric"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="@string/button_antropometric"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/detail_paciente_activity_observation_paciente_descrition"
+        app:layout_constraintEnd_toEndOf="@+id/paciente_description_activity_observation_paciente_descrition"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/detail_paciente_activity_observation_paciente_descrition"
-        app:layout_constraintTop_toBottomOf="@+id/detail_paciente_activity_observation_paciente_descrition"
+        app:layout_constraintStart_toStartOf="@+id/paciente_description_activity_observation_paciente_descrition"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_description_activity_observation_paciente_descrition"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/detail_paciente_activity_button_patologic"
+        android:id="@+id/paciente_description_activity_button_patologic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/button_patologic"
-        app:layout_constraintBottom_toBottomOf="@id/detail_paciente_activity_button_antropometric"
-        app:layout_constraintEnd_toEndOf="@+id/detail_paciente_activity_observation_paciente_descrition"
+        app:layout_constraintBottom_toBottomOf="@id/paciente_description_activity_button_antropometric"
+        app:layout_constraintEnd_toEndOf="@+id/paciente_description_activity_observation_paciente_descrition"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/detail_paciente_activity_button_antropometric"
-        app:layout_constraintTop_toTopOf="@+id/detail_paciente_activity_button_antropometric" />
+        app:layout_constraintStart_toEndOf="@+id/paciente_description_activity_button_antropometric"
+        app:layout_constraintTop_toTopOf="@+id/paciente_description_activity_button_antropometric" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/detail_paciente_activity_nav_view"
+        android:id="@+id/paciente_description_activity_nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -239,7 +238,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu_paciente_detail" />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/paciente_description_activity_fab_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:foreground="@drawable/border_round"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/paciente_description_activity_nav_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/icons8_left_100" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

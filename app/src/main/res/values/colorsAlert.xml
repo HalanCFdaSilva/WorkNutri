@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green_alert">#349b10</color>
-    <color name="yellow_alert">#ffb300</color>
-    <color name="orange_alert">#ff8800</color>
-    <color name="red_alert">#f5061d</color>
-    <color name="magenta_alert">#90009d</color>
+    <color name="green_alert">#28F469</color>
+    <color name="yellow_alert">#F0EE26</color>
+    <color name="orange_alert">#F56B0D</color>
+    <color name="red_alert">#F01100</color>
+    <color name="magenta_alert">#b203e9</color>
 </resources>

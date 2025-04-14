@@ -27,19 +27,19 @@ public enum ClassificacaoImc {
             return ClassificacaoImc.DEFICIT;
         }
 
-        if (18.5 <= valor & valor <= 24.9) {
+        if (18.5 <= valor & valor < 25) {
             return ClassificacaoImc.NORMAL;
         }
 
-        if (25 <= valor & valor <= 29.9) {
+        if (25 <= valor & valor < 30) {
             return ClassificacaoImc.SOBRE_PESO;
         }
 
-        if (30 <= valor & valor <= 34.9) {
+        if (30 <= valor & valor < 35) {
             return ClassificacaoImc.OBESIDADE_LEVE;
         }
 
-        if (35 <= valor & valor <= 39.9) {
+        if (35 <= valor & valor < 40) {
             return ClassificacaoImc.OBESIDADE_MEDIA;
         }
 

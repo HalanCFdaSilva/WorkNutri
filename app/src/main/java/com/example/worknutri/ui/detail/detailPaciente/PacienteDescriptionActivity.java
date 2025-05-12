@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.detail.detailPaciente;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -32,8 +31,8 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
         adapter.refreshData();
         setTitle(adapter.getPaciente().getNomePaciente().toUpperCase());
         adapter.insertTextInLayout(findViewById(R.id.paciente_description_activity_layout));
-        adapter.moreDetailButtonsConfig(findViewById(R.id.paciente_description_activity_layout), getLayoutInflater());
-        adapter.configureNavButtom(findViewById(R.id.paciente_description_activity_nav_view), findViewById(R.id.paciente_description_activity_layout));
+        adapter.generateAntropometriaAndPatologiaPopUp(findViewById(R.id.paciente_description_activity_layout), getLayoutInflater());
+        adapter.configureNavButtom(findViewById(R.id.paciente_description_activity_nav_view));
 
     }
 

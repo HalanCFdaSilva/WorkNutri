@@ -1,23 +1,21 @@
 package com.example.worknutri.ui.formularios.formularioClinica;
 
+import android.app.Activity;
 import android.content.Context;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.editTextKeysListener.CepKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.FoneKeyListener;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.ValidaFormulario;
-import com.example.worknutri.ui.popUp.hourDatePopUp.DatePickerFragment;
-import com.example.worknutri.ui.popUp.hourDatePopUp.HourDateFragment;
+import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FormularioClinicaAdapter extends FormularioAdapter {
@@ -25,23 +23,26 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
 
     private final InsertionClinicaFormulario insertion;
     private Clinica clinica;
-    private List<DayOfWork> daysOfWork;
-
-
+    private DayOfWorkUiService dayOfWorkUiService;
     public FormularioClinicaAdapter(Context context) {
         super(context);
+        dayOfWorkUiService = new DayOfWorkUiService(((Activity) context).findViewById(R.id.formulario_clinica_linear_layout),
+                ((Activity) context).findViewById(R.id.formulario_clinica_horario_atendimento_layout));
         insertion = new InsertionClinicaFormulario(context);
         this.clinica = new Clinica();
-        daysOfWork = new ArrayList<>();
+
     }
 
-    public void insertClinicaInlayout(Clinica clinica, ViewGroup viewGroup, LayoutInflater inflater) {
+    public void insertClinicaInlayout(Clinica clinica) {
         this.clinica = clinica;
-        insertion.InsertInFormulario(viewGroup, clinica);
-        daysOfWork = getDataBase().dayOfWorkDao().getDaysforClinicaId(clinica.getId());
-        insertion.insertDaysOfWork(viewGroup.findViewById(R.id.formulario_clinica_horario_atendimento_layout),
-                daysOfWork, inflater);
+        insertion.InsertInFormulario(dayOfWorkUiService.getPickerDayOfWorkGenerate().getViewGroupOfActivity(), clinica);
+        DayOfWorkDao dayOfWorkDao = getDataBase().dayOfWorkDao();
+        dayOfWorkUiService.insertAllDayOfWork(dayOfWorkDao,clinica.getId());
+
+
     }
+
+
 
 
     public boolean validaFormulario(ViewGroup viewGroup, TextView textViewError) {
@@ -82,24 +83,30 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
 
 
     public void saveInDataBase(ViewGroup viewGroup) {
-
+        List<DayOfWork> dayOfWorks = dayOfWorkUiService.getAllDayOfWork();
         if (clinica.getId() == 0) {
             insertion.InsertInClinica(viewGroup, clinica);
             getDataBase().clinicaDao().insertAll(clinica);
             int id = getDataBase().clinicaDao().findIdByName(clinica.getNome());
-            for (DayOfWork dayOfWork : daysOfWork) {
-                dayOfWork.setIdClinica(id);
-                getDataBase().dayOfWorkDao().insert(dayOfWork);
-            }
+            saveDayofWork(dayOfWorks,id);
         } else {
             insertion.InsertInClinica(viewGroup, clinica);
             getDataBase().clinicaDao().update(clinica);
+            saveDayofWork(dayOfWorks,clinica.getId());
+        }
+    }
 
-            for (DayOfWork dayOfWork : daysOfWork) {
+    private void saveDayofWork(List<DayOfWork> dayOfWorkList, long clinicaId){
+        for (DayOfWork dayOfWork : dayOfWorkList) {
 
+            if (dayOfWork.getId()!= 0){
                 getDataBase().dayOfWorkDao().updateDayOfWork(dayOfWork.getDayOfWeek(), dayOfWork.getHoraInicio(),
                         dayOfWork.getHoraFim(), dayOfWork.getId());
+            }else {
+                dayOfWork.setIdClinica(clinicaId);
+                getDataBase().dayOfWorkDao().insert(dayOfWork);
             }
+
         }
     }
 
@@ -111,13 +118,7 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
         viewById.setOnKeyListener(new CepKeyListener());
     }
 
-    public void newDay(LayoutInflater inflater, ViewGroup viewGroupOfActivity) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.popup_date_picker, null);
-        DatePickerFragment datePickerFragment = new DatePickerFragment(view, daysOfWork);
-        HourDateFragment hourDateFragment = new HourDateFragment(inflater);
-        datePickerFragment.layoutGenerate(hourDateFragment, viewGroupOfActivity.findViewById(R.id.formulario_clinica_horario_atendimento_layout));
-        datePickerFragment.getPopUpWindow().showAtLocation(viewGroupOfActivity, Gravity.CENTER, -1, -1);
-
+    public DayOfWorkUiService getDayOfWorkUiSave() {
+        return dayOfWorkUiService;
     }
-
 }

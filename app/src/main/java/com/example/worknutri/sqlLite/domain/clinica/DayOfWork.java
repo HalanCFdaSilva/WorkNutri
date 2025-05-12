@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.worknutri.util.StringsUtil;
+
 @Entity(tableName = "day_of_work")
 public class DayOfWork {
 
@@ -21,6 +23,14 @@ public class DayOfWork {
 
     @ColumnInfo(name = "hora_fim")
     private String horaFim;
+
+    public DayOfWork() {
+        id = 0;
+        dayOfWeek = "";
+        horaInicio = "";
+        horaFim = "";
+
+    }
 
     public long getId() {
         return id;
@@ -61,4 +71,28 @@ public class DayOfWork {
     public void setHoraFim(String horaFim) {
         this.horaFim = horaFim;
     }
+
+    public boolean isDaysOfWorkColidde(DayOfWork dayOfWork){
+        if (this.id != dayOfWork.id || this.id == 0){
+            if (dayOfWork.getDayOfWeek().equals(this.getDayOfWeek())){
+                int horaFimAnother = StringsUtil.convertHourStringInInt(dayOfWork.getHoraFim());
+                if (this.horaEntreIntervalo(horaFimAnother)) return true;
+
+                int horaInicioAnother = StringsUtil.convertHourStringInInt(dayOfWork.getHoraInicio());
+                if ( this.horaEntreIntervalo(horaInicioAnother)) return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean horaEntreIntervalo(int hora) {
+        int horaInicioThis = StringsUtil.convertHourStringInInt(this.getHoraInicio());
+        int horaFimThis = StringsUtil.convertHourStringInInt(this.getHoraFim());
+        return hora < horaFimThis && hora > horaInicioThis;
+
+
+
+    }
+
+
 }

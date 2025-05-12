@@ -13,9 +13,11 @@ import com.example.worknutri.R;
 public class PopUpFragment {
 
     private final PopupWindow pw;
-    private final ViewGroup viewGroup;
+    private ViewGroup viewGroup;
     private final int width = LinearLayout.LayoutParams.MATCH_PARENT;
     private final int heigth = LinearLayout.LayoutParams.MATCH_PARENT;
+
+    private LayoutInflater inflater;
 
 
     public PopUpFragment(LayoutInflater layoutInflater) {
@@ -23,6 +25,7 @@ public class PopUpFragment {
         this.pw = new PopupWindow(this.viewGroup,
                 width, heigth, true);
 
+        this.inflater = layoutInflater;
         encerrarAoClicarFora(R.id.popup_base_layout_image_out);
     }
 
@@ -34,7 +37,7 @@ public class PopUpFragment {
     }
 
 
-    private void encerrarAoClicarFora(int idView) {
+    protected void encerrarAoClicarFora(int idView) {
         ImageView imageViewBackground = this.viewGroup.findViewById(idView);
         imageViewBackground.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +66,14 @@ public class PopUpFragment {
 
     public ViewGroup getViewGroup() {
         return viewGroup;
+    }
+
+    public LayoutInflater getInflater() {
+        return inflater;
+    }
+
+    protected void setViewGroup(ViewGroup viewGroup) {
+        this.viewGroup = viewGroup;
+        pw.setContentView(viewGroup);
     }
 }

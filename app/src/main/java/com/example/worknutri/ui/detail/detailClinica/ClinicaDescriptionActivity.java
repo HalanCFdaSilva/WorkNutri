@@ -2,6 +2,8 @@ package com.example.worknutri.ui.detail.detailClinica;
 
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +20,7 @@ public class ClinicaDescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clinica_description);
         adapter = new ClinicaDescriptionAdapter(getIntent(), this);
-        adapter.configureNavButton(findViewById(R.id.clinica_description_activity_nav_view),
-                findViewById(R.id.clinica_description_activity_root));
+        adapter.configureNavButton(findViewById(R.id.clinica_description_activity_nav_view));
         FloatingActionButton fab = findViewById(R.id.clinica_description_activity_fab_back);
         fab.setOnClickListener(onClick -> this.finish());
     }
@@ -27,9 +28,10 @@ public class ClinicaDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        adapter.insertClinicaInLayout(findViewById(R.id.clinica_description_activity_root));
-        adapter.insertDaysOfWorkInLayout(findViewById(R.id.clinica_description_activity_horario_atendimento_layout),
-                getLayoutInflater());
+        adapter.insertClinicaInLayout(findViewById(R.id.clinica_description_activity_root_layout));
+        ViewGroup horarioAtendimentoLayout = findViewById(R.id.clinica_description_activity_horario_atendimento_layout);
+        horarioAtendimentoLayout.removeAllViews();
+        adapter.insertDaysOfWorkInLayout(horarioAtendimentoLayout);
     }
 
 

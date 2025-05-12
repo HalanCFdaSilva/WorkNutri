@@ -14,15 +14,15 @@ import com.example.worknutri.ui.popUp.PopUpFragment;
 public class PatologiaDetaillPopUp extends PopUpFragment {
     private final LayoutInflater inflater;
 
-    public PatologiaDetaillPopUp(LayoutInflater inflater, Patologia patologia) {
+    public PatologiaDetaillPopUp(LayoutInflater inflater) {
         super(inflater);
         this.insertTitle(R.string.patologia_title);
         this.inflater = inflater;
-        this.setMarginBottom();
-        setText(patologia);
+
     }
 
-    private void setMarginBottom() {
+    /**Método que remove a margem do bottom do layout base.*/
+    public void removeMarginBottom() {
         ConstraintSet constraintSet = new ConstraintSet();
         ConstraintLayout constraintLayout = getViewGroup().findViewById(R.id.popup_base_layout_scrollview_layout);
         constraintSet.clone(constraintLayout);
@@ -30,7 +30,7 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
         constraintSet.applyTo(constraintLayout);
     }
 
-    private void setText(Patologia patologia) {
+    public void setText(Patologia patologia) {
         insertView(generateView("PATOLOGIA ATUAL", patologia.getPatologiaAtual()));
         insertView(generateView("URINA", patologia.getUrina()));
         insertView(generateView("fezes", patologia.getFezes()));
@@ -47,6 +47,10 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
 
     }
 
+
+    /**Método que apartir da classe PatologiaPopUpFragment gera o layout de cada atributo da classe Patologia
+     * @see PatologiaPopUpFragment
+     * @see Patologia*/
     private ViewGroup generateView(String title, String description) {
         PatologiaPopUpFragment popUpFragment = new PatologiaPopUpFragment(inflater);
         popUpFragment.setTitle(title);

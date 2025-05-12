@@ -5,7 +5,9 @@
     <string name="error_email">Por favor preencha o campo email corretamente</string>
     <string name="error_data">Por favor preencha o campo nascimento corretamente</string>
     <string name="error_cpf">Por favor preencha o campo cpf corretamente</string>
-    <string name="error_date_picker">Hora de inicio do expediente está menor que hora fim.</string>
     <string name="error_antropometria">Por Favor Preencha a idade, peso e altura</string>
+
+    <string name="error_date_picker_hour_period_not_exist">Hora de inicio do expediente está menor que hora fim.</string>
+    <string name="error_date_picker_anotherDay">Horário de Trabalho coincide com outro horário</string>
 
 </resources>

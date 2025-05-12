@@ -24,7 +24,7 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.ValidaFormulario;
 import com.example.worknutri.ui.popUp.NivelAtividadeDescritpionPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
+import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 
 import java.util.List;
 
@@ -134,10 +134,8 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             InsertionPacienteFormulario generator = new InsertionPacienteFormulario();
             generator.insertViewGroupInPaciente(layout, paciente);
             generator.insertViewGroupInAntropometria(layout, antropometria, paciente);
-            AntroPometriaDetaillPopUp popUp = new AntroPometriaDetaillPopUp(inflater, antropometria, false);
-            popUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()), inflater.getContext());
-            popUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(
-                    R.id.formulario_paciente_activity_constraint_layout), Gravity.CENTER, -1, -1);
+            new PopUpFactoryImpl(inflater).generateSmallAntropometriaPopUp(antropometria).getPopUpWindow().
+                    showAtLocation(viewGroup.findViewById(R.id.formulario_paciente_activity_constraint_layout), Gravity.CENTER, -1, -1);
         } else {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.VISIBLE);
         }
@@ -159,8 +157,6 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     }
 
     public void OpenNivelAtividadePopUpOnClick(ImageView button, LayoutInflater inflater, ViewGroup viewGroup) {
-
-
         button.setOnClickListener(onClick -> {
             NivelAtividadeDescritpionPopUp popUp = new NivelAtividadeDescritpionPopUp(inflater);
             popUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, -1, -1);

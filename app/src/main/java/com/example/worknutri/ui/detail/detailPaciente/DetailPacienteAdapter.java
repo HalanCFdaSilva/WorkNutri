@@ -24,8 +24,7 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
 import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
+import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DetailPacienteAdapter {
@@ -41,8 +40,6 @@ public class DetailPacienteAdapter {
     private final Context context;
 
     public DetailPacienteAdapter(Intent intent, Context context) {
-
-
         if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
             paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE);
             AppDataBase db = AppDataBase.getInstance(context);
@@ -50,8 +47,6 @@ public class DetailPacienteAdapter {
             antropometriaDao = db.antropometriaDao();
             patologiaDao = db.patologiaDao();
             clinicaDao = db.clinicaDao();
-
-
         } else {
             ((Activity) context).finish();
         }
@@ -65,7 +60,7 @@ public class DetailPacienteAdapter {
         paciente = pacienteDao.getById(paciente.getId());
     }
 
-    public void configureNavButtom(BottomNavigationView bottomNavigationView, ViewGroup viewGroup) {
+    public void configureNavButtom(BottomNavigationView bottomNavigationView) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, bottomNavigationView);
         Intent intent = new Intent(context, FormularioPacienteActivity.class);
         intent.putExtra(ExtrasActivities.PACIENTE, paciente);
@@ -77,14 +72,14 @@ public class DetailPacienteAdapter {
 
         bottomNavigationView.getMenu().findItem(R.id.navegation_delete).
                 setOnMenuItemClickListener(onClick -> {
-                    RemoveConfirmPopUp popUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
+                    RemoveConfirmPopUp popUp = new PopUpFactoryImpl(((Activity) context).getLayoutInflater()).generateRemoveConfirmPopUp();
                     popUp.getConfirmButton().setOnClickListener(onClickButton -> {
                         pacienteDao.delete(paciente);
                         patologiaDao.delete(patologia);
                         antropometriaDao.delete(antropometria);
                         ((Activity) context).finish();
                     });
-                    popUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, 0, 0);
+                    popUp.getPopUpWindow().showAtLocation(((Activity)context).findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, 0, 0);
 
                     return false;
                 });
@@ -108,18 +103,26 @@ public class DetailPacienteAdapter {
         return paciente;
     }
 
-    public void moreDetailButtonsConfig(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+    public void generateAntropometriaAndPatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
 
-        AntroPometriaDetaillPopUp antropometriaPopUp = new AntroPometriaDetaillPopUp(layoutInflater, antropometria, true);
-        Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
-        buttonAntropometria.setOnClickListener(v -> {
-            antropometriaPopUp.generateClassificacaoImc(Double.parseDouble(antropometria.getImc()), layoutInflater.getContext());
-            antropometriaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1);
-        });
+        generateAntropometriaPopUp(viewGroup, layoutInflater);
+        generatePatologiaPopUp(viewGroup, layoutInflater);
 
-        PatologiaDetaillPopUp patologiaPopUp = new PatologiaDetaillPopUp(layoutInflater, patologia);
+    }
+
+    private void generatePatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
         Button buttonPatologia = viewGroup.findViewById(R.id.paciente_description_activity_button_patologic);
-        buttonPatologia.setOnClickListener(v -> patologiaPopUp.getPopUpWindow().showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
+        buttonPatologia.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
+                generatePatologiaDetailPopUp(patologia).
+                getPopUpWindow().
+                showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
+    }
 
+    private void generateAntropometriaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+        Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
+        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
+                generateFullAntropometriaPopUp(antropometria).
+                getPopUpWindow().
+                showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
     }
 }

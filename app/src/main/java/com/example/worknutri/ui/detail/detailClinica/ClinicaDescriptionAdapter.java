@@ -4,12 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
-import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.database.AppDataBase;
@@ -20,7 +16,7 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.InsertSelectViewSupport;
 import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
-import com.example.worknutri.ui.popUp.hourDatePopUp.HourDateFragment;
+import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -43,13 +39,21 @@ public class ClinicaDescriptionAdapter {
     }
 
     public void insertClinicaInLayout(ViewGroup viewGroup) {
+        insertDadosGerais(viewGroup);
+        InsertEndereco(viewGroup);
+
+    }
+
+    private void insertDadosGerais(ViewGroup viewGroup) {
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_name), clinica.getNome());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone1());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_email), clinica.getEmail());
+    }
 
+    private void InsertEndereco(ViewGroup viewGroup) {
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_cep), clinica.getCodigoPostal());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
@@ -63,24 +67,16 @@ public class ClinicaDescriptionAdapter {
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_bairro), clinica.getBairro());
         InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cep), clinica.getEstado());
+                R.id.clinica_description_activity_endereco_estado), clinica.getEstado());
+    }
+
+    public void insertDaysOfWorkInLayout(ViewGroup linearLayout) {
+        DayOfWorkUiService dayOfWorkUiService = new DayOfWorkUiService(linearLayout);
+        dayOfWorkUiService.insertAllDayOfWorkWithNotRemoveButton(dataBase.dayOfWorkDao(), clinica.getId());
 
     }
 
-    public void insertDaysOfWorkInLayout(LinearLayout linearLayout, LayoutInflater inflater) {
-
-
-        for (DayOfWork dayOfWork : dayOfWorkList) {
-            HourDateFragment dateFragment = new HourDateFragment(inflater);
-            dateFragment.removeTrashButton();
-            dateFragment.setHourBegin(dayOfWork.getHoraInicio());
-            dateFragment.setHourEnd(dayOfWork.getHoraFim());
-            dateFragment.setDayOfweek(dayOfWork.getDayOfWeek());
-            dateFragment.addLayout(linearLayout);
-        }
-    }
-
-    public void configureNavButton(BottomNavigationView navigationView, ViewGroup viewGroup) {
+    public void configureNavButton(BottomNavigationView navigationView) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, FormularioClinicaActivity.class);
@@ -88,6 +84,10 @@ public class ClinicaDescriptionAdapter {
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 
 
+        configureDeleteButton(navigationView);
+    }
+
+    private void configureDeleteButton(BottomNavigationView navigationView) {
         navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(item -> {
             RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
             removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton -> {
@@ -97,10 +97,11 @@ public class ClinicaDescriptionAdapter {
                 }
                 ((Activity) context).finish();
             });
-            removeConfirmPopUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, 0, 0);
-
-
+            removeConfirmPopUp.getPopUpWindow().showAtLocation(((Activity) context).
+                    findViewById(R.id.clinica_description_activity_root_layout), Gravity.CENTER, 0, 0);
             return false;
         });
     }
+
+
 }

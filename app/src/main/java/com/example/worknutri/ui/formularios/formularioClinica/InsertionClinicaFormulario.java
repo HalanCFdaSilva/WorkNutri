@@ -1,17 +1,12 @@
 package com.example.worknutri.ui.formularios.formularioClinica;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.InsertSelectViewSupport;
-import com.example.worknutri.ui.popUp.hourDatePopUp.HourDateFragment;
-
-import java.util.List;
 
 
 public class InsertionClinicaFormulario {
@@ -85,23 +80,6 @@ public class InsertionClinicaFormulario {
     }
 
 
-    /**
-     * Método que insere os dados de dias de trabalho de uma clinica especifica em uma activity.
-     *
-     * @param viewGroup      View onde serão inseridos os dados dos DayOfWork.
-     * @param dayOfWorkList  List de DayOfWork cuja classe serve para quardar asinformações de um dia especifico
-     *                       de trabalho para uma clinica
-     * @param layoutInflater Classe que será usada para inflar o layout que será inserido no viewGroup
-     * @see DayOfWork
-     */
-    public void insertDaysOfWork(ViewGroup viewGroup, List<DayOfWork> dayOfWorkList, LayoutInflater layoutInflater) {
-        for (DayOfWork dayOfWork : dayOfWorkList) {
-            HourDateFragment dateFragment = new HourDateFragment(layoutInflater);
-            dateFragment.setDayOfweek(dayOfWork.getDayOfWeek());
-            dateFragment.setHourBegin(dayOfWork.getHoraInicio());
-            dateFragment.setHourEnd(dayOfWork.getHoraFim());
-            dateFragment.addLayout(viewGroup);
-        }
-    }
+
 
 }

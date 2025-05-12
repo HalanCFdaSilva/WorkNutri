@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.hourDatePopUp;
+package com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork;
 
 
 import android.view.LayoutInflater;
@@ -8,14 +8,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 
 public class HourDateFragment {
-    private final ViewGroup layout;
+    private  ViewGroup layout;
 
-
-    public HourDateFragment(LayoutInflater layoutInflater) {
+    public void generateNewLayout(LayoutInflater layoutInflater){
         layout = (ViewGroup) layoutInflater.inflate(R.layout.time_descrition_fragment, null, false);
-
     }
 
     public void setDayOfweek(String dayOfweek) {
@@ -34,28 +33,26 @@ public class HourDateFragment {
     }
 
     public void addLayout(ViewGroup layoutWhereAdd) {
-        this.trashButtonConfigure(layoutWhereAdd);
         layoutWhereAdd.addView(layout);
     }
 
-    public void removeTrashButton() {
-        layout.findViewById(R.id.time_descrition_fragment_button_delete).setVisibility(View.GONE);
+    public ImageButton getTrashButton(){
+        return layout.findViewById(R.id.time_descrition_fragment_button_delete);
     }
 
-    private void trashButtonConfigure(ViewGroup layoutWhereAdd) {
-        ImageButton deleteButton = layout.findViewById(R.id.time_descrition_fragment_button_delete);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                layoutWhereAdd.removeView(layout);
-
-            }
-        });
+    public void removeButtonDelete(){
+        getTrashButton().setVisibility(View.GONE);
     }
 
     public ViewGroup getLayout() {
         return layout;
     }
 
+    public void setFromDayOfWork(DayOfWork dayOfWork) {
+        setDayOfweek(dayOfWork.getDayOfWeek());
+        setHourBegin(dayOfWork.getHoraInicio());
+        setHourEnd(dayOfWork.getHoraFim());
+
+    }
 
 }

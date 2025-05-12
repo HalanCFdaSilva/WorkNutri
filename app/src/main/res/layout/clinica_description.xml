@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clinica_description_activity_root"
+    android:id="@+id/clinica_description_activity_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -295,7 +295,7 @@
             app:layout_constraintTop_toTopOf="@+id/clinica_description_activity_endereco_bairro" />
 
         <TextView
-            android:id="@+id/clinica_description_activity_endereco_estado_spinner"
+            android:id="@+id/clinica_description_activity_endereco_estado"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

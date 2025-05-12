@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.worknutri.R;
 
+/**Classe de suporte para a PatologiaDetailPopUp que gera o icone usado pelo PatologiaDetailPopUp.*/
 public class PatologiaPopUpFragment {
     private final LayoutInflater inflater;
     private ViewGroup viewGroup;

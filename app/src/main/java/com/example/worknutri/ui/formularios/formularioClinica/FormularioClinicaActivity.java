@@ -12,7 +12,6 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
-import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.PickerDayOfWorkGenerate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FormularioClinicaActivity extends AppCompatActivity {
@@ -35,7 +34,7 @@ public class FormularioClinicaActivity extends AppCompatActivity {
     private void getClinicaOfIntent() {
         if (getIntent().hasExtra(ExtrasActivities.CLINICA)) {
             Clinica clinica = (Clinica) getIntent().getSerializableExtra(ExtrasActivities.CLINICA);
-            adapter.insertClinicaInlayout(clinica);
+            adapter.insertClinicaInlayout(clinica,findViewById(R.id.formulario_clinica_linear_layout));
         }
 
 
@@ -45,8 +44,7 @@ public class FormularioClinicaActivity extends AppCompatActivity {
         Button button = findViewById(R.id.formulario_clinica_horario_atendimento_button_add);
         button.setOnClickListener(onClick -> {
             DayOfWorkUiService dayOfWorkUiService = adapter.getDayOfWorkUiSave();
-            PickerDayOfWorkGenerate pickerDayOfWorkGenerate = dayOfWorkUiService.getPickerDayOfWorkGenerate();
-            pickerDayOfWorkGenerate.modifyDay(new DayOfWork());
+            dayOfWorkUiService.generatePopUpOfDatePickerToNewDayOfWork();
             dayOfWorkUiService.onPickerDayOfWorkClickInSaveButton();
 
         });

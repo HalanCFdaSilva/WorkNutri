@@ -1,6 +1,7 @@
 package com.example.worknutri.ui.popUp.hourDatePopUp.datePicker;
 
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +19,30 @@ import java.util.List;
 
 public class DatePickerPopUp extends PopUpFragment {
 
+    private final LayoutInflater inflater;
     private DayOfWork dayOfWork;
+    private ViewGroup viewGroupRootOfActivity;
 
 
-    public DatePickerPopUp(LayoutInflater inflater) {
+    public DatePickerPopUp(LayoutInflater inflater, ViewGroup viewGroupRootOfActivity) {
         super((ViewGroup) inflater.inflate(R.layout.popup_date_picker, null),
                 R.id.date_picker_pop_up_image_view_not_use);
+        this.inflater = inflater;
         dayOfWork = new DayOfWork();
-
+        this.viewGroupRootOfActivity = viewGroupRootOfActivity;
 
     }
 
-    public void newLayout(LayoutInflater inflater){
+    public void modifyDay( DayOfWork dayOfWork) {
+
+        newLayout();
+        encerrarAoClicarFora();
+        configuraBotoes(dayOfWork);
+        getPopUpWindow().showAtLocation(viewGroupRootOfActivity, Gravity.CENTER, -1, -1);
+
+    }
+
+    public void newLayout(){
         setViewGroup((ViewGroup) inflater.inflate(R.layout.popup_date_picker, null));
     }
 
@@ -103,7 +116,8 @@ public class DatePickerPopUp extends PopUpFragment {
 
     private boolean collideWithDayOfWorkOfClass(List<DayOfWork> listOfDayToWorkAdded) {
         for (DayOfWork dayOfWorkAdded : listOfDayToWorkAdded)
-            if (dayOfWorkAdded.isDaysOfWorkColidde(dayOfWork)) return true;
+            if (dayOfWorkAdded.isDaysOfWorkColidde(dayOfWork))
+                return true;
 
         return false;
     }

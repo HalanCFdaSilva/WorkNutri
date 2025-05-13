@@ -1,13 +1,15 @@
 package com.example.worknutri.ui.popUp.hourDatePopUp;
 
+import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
+import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
-import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.PickerDayOfWorkGenerate;
 import com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork.HourDateFragment;
 import com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork.HourDateFragmentInserter;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DayOfWorkUiService {
-    private PickerDayOfWorkGenerate pickerDayOfWorkGenerate;
+    private DatePickerPopUp datePickerPopUp;
     private final List<HourDateFragmentInserter> hourDateFragmentInserterList;
 
     private final ViewGroup viewGroupToInsertHourDateFragment;
@@ -23,7 +25,8 @@ public class DayOfWorkUiService {
 
 
     public DayOfWorkUiService(ViewGroup viewGroupRoot, ViewGroup viewGroupToInsertHourDateFragment) {
-        this.pickerDayOfWorkGenerate = new PickerDayOfWorkGenerate(viewGroupRoot);
+        LayoutInflater layoutInflater = ((Activity)viewGroupRoot.getContext()).getLayoutInflater();
+        this.datePickerPopUp = new PopUpFactoryImpl(layoutInflater).generateDatePickerPopUp(viewGroupRoot);
         this.viewGroupToInsertHourDateFragment = viewGroupToInsertHourDateFragment;
         this.hourDateFragmentInserterList = new ArrayList<>();
     }
@@ -34,13 +37,13 @@ public class DayOfWorkUiService {
     }
 
     public void onPickerDayOfWorkClickInSaveButton(){
-        DatePickerPopUp datePickerFragment = pickerDayOfWorkGenerate.getDatePickerPopUp();
-        Button buttonSave = datePickerFragment.getButtonSave();
+
+        Button buttonSave = datePickerPopUp.getButtonSave();
         buttonSave.setOnClickListener(v -> {
-            if (datePickerFragment.DatePickerIsCorrect(getAllDayOfWork())){
-                datePickerFragment.convertToDayOfWork();
-                saveinHourDateFragment(datePickerFragment.getDayOfWork());
-                datePickerFragment.getPopUpWindow().dismiss();
+            datePickerPopUp.convertToDayOfWork();
+            if (datePickerPopUp.DatePickerIsCorrect(getAllDayOfWork())){
+                saveinHourDateFragment(datePickerPopUp.getDayOfWork());
+                datePickerPopUp.getPopUpWindow().dismiss();
             }
 
         });
@@ -103,7 +106,7 @@ public class DayOfWorkUiService {
         HourDateFragment hourDateFragment = hourDateFragmentInserter.getHourDateFragment();
         ViewGroup layout = hourDateFragment.getLayout();
         layout.setOnClickListener(v -> {
-            pickerDayOfWorkGenerate.modifyDay(dayOfWork);
+            datePickerPopUp.modifyDay(dayOfWork);
             onPickerDayOfWorkClickInSaveButton();
         });
     }
@@ -116,8 +119,8 @@ public class DayOfWorkUiService {
         return dayOfWorkList;
     }
 
-    public PickerDayOfWorkGenerate getPickerDayOfWorkGenerate() {
-        return pickerDayOfWorkGenerate;
+    public void generatePopUpOfDatePickerToNewDayOfWork() {
+        datePickerPopUp.modifyDay(new DayOfWork());
     }
 
 

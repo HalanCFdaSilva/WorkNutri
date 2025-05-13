@@ -1,5 +1,7 @@
 package com.example.worknutri.sqlLite.domain.clinica;
 
+import android.util.Log;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -88,7 +90,7 @@ public class DayOfWork {
     private boolean horaEntreIntervalo(int hora) {
         int horaInicioThis = StringsUtil.convertHourStringInInt(this.getHoraInicio());
         int horaFimThis = StringsUtil.convertHourStringInInt(this.getHoraFim());
-        return hora < horaFimThis && hora > horaInicioThis;
+        return hora>horaInicioThis && hora<horaFimThis;
 
 
 

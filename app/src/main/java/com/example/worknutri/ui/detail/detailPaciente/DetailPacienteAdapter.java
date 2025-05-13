@@ -39,17 +39,14 @@ public class DetailPacienteAdapter {
     private ClinicaDao clinicaDao;
     private final Context context;
 
-    public DetailPacienteAdapter(Intent intent, Context context) {
-        if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
-            paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE);
-            AppDataBase db = AppDataBase.getInstance(context);
-            pacienteDao = db.pacienteDao();
-            antropometriaDao = db.antropometriaDao();
-            patologiaDao = db.patologiaDao();
-            clinicaDao = db.clinicaDao();
-        } else {
-            ((Activity) context).finish();
-        }
+    public DetailPacienteAdapter(Paciente paciente, Context context) {
+
+        this.paciente = paciente;
+        AppDataBase db = AppDataBase.getInstance(context);
+        pacienteDao = db.pacienteDao();
+        antropometriaDao = db.antropometriaDao();
+        patologiaDao = db.patologiaDao();
+        clinicaDao = db.clinicaDao();
         this.context = context;
     }
 
@@ -62,14 +59,27 @@ public class DetailPacienteAdapter {
 
     public void configureNavButtom(BottomNavigationView bottomNavigationView) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, bottomNavigationView);
+        bottomNavEditIcon(menuConfigurator);
+        bottomNavClinicaIcon(menuConfigurator);
+        bottomNavDeleteIcon(bottomNavigationView);
+    }
+
+    private void bottomNavEditIcon(BottomMenuConfigurator menuConfigurator) {
         Intent intent = new Intent(context, FormularioPacienteActivity.class);
         intent.putExtra(ExtrasActivities.PACIENTE, paciente);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
+    }
 
-        intent = new Intent(context, ClinicaDescriptionActivity.class);
-        intent.putExtra(ExtrasActivities.CLINICA, clinica);
-        menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
+    private void bottomNavClinicaIcon(BottomMenuConfigurator menuConfigurator) {
+        Intent intent;
+        if (clinica != null){
+            intent = new Intent(context, ClinicaDescriptionActivity.class);
+            intent.putExtra(ExtrasActivities.CLINICA, clinica);
+            menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
+        }
+    }
 
+    private void bottomNavDeleteIcon(BottomNavigationView bottomNavigationView) {
         bottomNavigationView.getMenu().findItem(R.id.navegation_delete).
                 setOnMenuItemClickListener(onClick -> {
                     RemoveConfirmPopUp popUp = new PopUpFactoryImpl(((Activity) context).getLayoutInflater()).generateRemoveConfirmPopUp();
@@ -99,15 +109,19 @@ public class DetailPacienteAdapter {
         ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
     public void generateAntropometriaAndPatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
 
         generateAntropometriaPopUp(viewGroup, layoutInflater);
         generatePatologiaPopUp(viewGroup, layoutInflater);
 
+    }
+
+    private void generateAntropometriaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+        Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
+        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
+                generateFullAntropometriaPopUp(antropometria).
+                getPopUpWindow().
+                showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
     }
 
     private void generatePatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
@@ -118,11 +132,7 @@ public class DetailPacienteAdapter {
                 showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
     }
 
-    private void generateAntropometriaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
-        Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
-        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
-                generateFullAntropometriaPopUp(antropometria).
-                getPopUpWindow().
-                showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
+    public String getNomePaciente(){
+        return paciente.getNomePaciente();
     }
 }

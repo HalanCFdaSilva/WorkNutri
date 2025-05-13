@@ -33,9 +33,9 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
 
     }
 
-    public void insertClinicaInlayout(Clinica clinica) {
+    public void insertClinicaInlayout(Clinica clinica,ViewGroup viewGroup) {
         this.clinica = clinica;
-        insertion.InsertInFormulario(dayOfWorkUiService.getPickerDayOfWorkGenerate().getViewGroupOfActivity(), clinica);
+        insertion.InsertInFormulario(viewGroup, clinica);
         DayOfWorkDao dayOfWorkDao = getDataBase().dayOfWorkDao();
         dayOfWorkUiService.insertAllDayOfWork(dayOfWorkDao,clinica.getId());
 
@@ -100,8 +100,7 @@ public class FormularioClinicaAdapter extends FormularioAdapter {
         for (DayOfWork dayOfWork : dayOfWorkList) {
 
             if (dayOfWork.getId()!= 0){
-                getDataBase().dayOfWorkDao().updateDayOfWork(dayOfWork.getDayOfWeek(), dayOfWork.getHoraInicio(),
-                        dayOfWork.getHoraFim(), dayOfWork.getId());
+                getDataBase().dayOfWorkDao().update(dayOfWork);
             }else {
                 dayOfWork.setIdClinica(clinicaId);
                 getDataBase().dayOfWorkDao().insert(dayOfWork);

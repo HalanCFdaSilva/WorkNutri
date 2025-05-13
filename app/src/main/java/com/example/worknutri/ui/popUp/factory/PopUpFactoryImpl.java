@@ -1,6 +1,7 @@
 package com.example.worknutri.ui.popUp.factory;
 
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
@@ -44,7 +45,7 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public DatePickerPopUp generateDatePickerPopUp() {
-        return new DatePickerPopUp(layoutInflater);
+    public DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity) {
+        return new DatePickerPopUp(layoutInflater,viewGroupRootOfActivity);
     }
 }

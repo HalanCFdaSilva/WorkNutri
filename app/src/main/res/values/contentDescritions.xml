@@ -6,4 +6,6 @@
     <string name="salvar_formulario">Save form</string>
     <string name="tipo_imc">BMI rating</string>
     <string name="imagem_seta">Arrow image that expands or contracts a category in the layout </string>
+    <string name="fundo_cinza_do_pop_up">fundo cinza do pop up</string>
+    <string name="fundo_branco_do_pop_up">Fundo branco do pop up</string>
 </resources>

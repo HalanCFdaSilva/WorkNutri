@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="alimento_umidade">Umidade:</string>
+    <string name="alimento_proteina">Proteina:</string>
+    <string name="alimento_colesterol">Colesterol:</string>
+    <string name="alimento_carboidrato">Carboidrato:</string>
+    <string name="alimento_fibra_alimentar">Fibra Alimentar:</string>
+    <string name="alimento_calcio">Calcio:</string>
+    <string name="alimento_sodio">Sodio:</string>
+    <string name="alimento_potassio">Potassio:</string>
+    <string name="alimento_vitamina_c">VitaminaC:</string>
+</resources>

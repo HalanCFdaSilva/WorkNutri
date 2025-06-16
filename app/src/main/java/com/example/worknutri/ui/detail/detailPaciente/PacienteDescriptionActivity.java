@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.detail.detailPaciente;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 

@@ -1,7 +1,5 @@
 package com.example.worknutri.sqlLite.domain.clinica;
 
-import android.util.Log;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -32,6 +30,13 @@ public class DayOfWork {
         horaInicio = "";
         horaFim = "";
 
+    }
+
+    public void insertDate(DayOfWork dayOfWork) {
+
+        setDayOfWeek(dayOfWork.getDayOfWeek());
+        setHoraInicio(dayOfWork.getHoraInicio());
+        setHoraFim(dayOfWork.getHoraFim());
     }
 
     public long getId() {
@@ -78,10 +83,13 @@ public class DayOfWork {
         if (this.id != dayOfWork.id || this.id == 0){
             if (dayOfWork.getDayOfWeek().equals(this.getDayOfWeek())){
                 int horaFimAnother = StringsUtil.convertHourStringInInt(dayOfWork.getHoraFim());
-                if (this.horaEntreIntervalo(horaFimAnother)) return true;
+                if (this.horaEntreIntervalo(horaFimAnother))
+                    return true;
 
                 int horaInicioAnother = StringsUtil.convertHourStringInInt(dayOfWork.getHoraInicio());
-                if ( this.horaEntreIntervalo(horaInicioAnother)) return true;
+                if(horaEntreIntervalo(horaInicioAnother))
+                    return true;
+                return isHoraThisInclusoInHourPeriod(horaInicioAnother,horaFimAnother);
             }
         }
         return false;
@@ -96,5 +104,10 @@ public class DayOfWork {
 
     }
 
+    private boolean isHoraThisInclusoInHourPeriod(int horaInicio, int horaFim){
+        int horaInicioThis = StringsUtil.convertHourStringInInt(this.getHoraInicio());
+        int horaFimThis = StringsUtil.convertHourStringInInt(this.getHoraFim());
+        return horaInicioThis>horaInicio && horaFimThis<horaFim;
+    }
 
 }

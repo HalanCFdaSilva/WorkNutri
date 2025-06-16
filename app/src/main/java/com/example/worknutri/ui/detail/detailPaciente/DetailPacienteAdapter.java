@@ -32,11 +32,11 @@ public class DetailPacienteAdapter {
     private Patologia patologia;
     private Antropometria antropometria;
     private Clinica clinica;
-    private PacienteDao pacienteDao;
-    private AntropometriaDao antropometriaDao;
-    private PatologiaDao patologiaDao;
+    private final PacienteDao pacienteDao;
+    private final AntropometriaDao antropometriaDao;
+    private final PatologiaDao patologiaDao;
 
-    private ClinicaDao clinicaDao;
+    private final ClinicaDao clinicaDao;
     private final Context context;
 
     public DetailPacienteAdapter(Paciente paciente, Context context) {

@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.formularios.formularioClinica;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -9,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,17 +51,11 @@ public class FormularioClinicaActivity extends AppCompatActivity {
     private void save() {
 
         FloatingActionButton button = findViewById(R.id.formulario_clinica_activy_fab);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (adapter.validaFormulario(findViewById(R.id.formulario_clinica_linear_layout),
-                        findViewById(R.id.formulario_clinica_activy_error))) {
-
-                    adapter.saveInDataBase(findViewById(R.id.formulario_clinica_linear_layout));
-                    finish();
-
-                }
-
+        button.setOnClickListener( v ->{
+            if (adapter.validaFormulario(findViewById(R.id.formulario_clinica_linear_layout),
+                    findViewById(R.id.formulario_clinica_activy_error))) {
+                adapter.saveInDataBase(findViewById(R.id.formulario_clinica_linear_layout));
+                finish();
             }
         });
 

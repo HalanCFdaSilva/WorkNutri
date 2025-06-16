@@ -21,7 +21,7 @@ public class DatePickerPopUp extends PopUpFragment {
 
     private final LayoutInflater inflater;
     private DayOfWork dayOfWork;
-    private ViewGroup viewGroupRootOfActivity;
+    private final ViewGroup viewGroupRootOfActivity;
 
 
     public DatePickerPopUp(LayoutInflater inflater, ViewGroup viewGroupRootOfActivity) {
@@ -51,10 +51,16 @@ public class DatePickerPopUp extends PopUpFragment {
     }
     public void configuraBotoes(DayOfWork dayOfWork) {
 
-        this.dayOfWork = dayOfWork;
+        setDayOfWork(dayOfWork);
         this.configureWeekPicker();
         this.configureBeginHourPicker();
         this.configureEndHourPicker();
+    }
+
+    private void setDayOfWork(DayOfWork dayOfWork) {
+        if (dayOfWork.getId()!= 0){
+            this.dayOfWork.insertDate(dayOfWork);
+        }
     }
 
     private void configureEndHourPicker() {
@@ -141,4 +147,6 @@ public class DatePickerPopUp extends PopUpFragment {
     public Button getButtonSave(){
         return this.getViewGroup().findViewById(R.id.date_picker_pop_up_button_confirm);
     }
+
+
 }

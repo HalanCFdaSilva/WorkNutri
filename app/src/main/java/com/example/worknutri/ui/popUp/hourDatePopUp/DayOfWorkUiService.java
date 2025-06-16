@@ -86,7 +86,7 @@ public class DayOfWorkUiService {
                 if (inserter.dayOfWorkEquals(dayOfWork)) return inserter;
 
         }
-        HourDateFragmentInserter inserter = new HourDateFragmentInserter(viewGroupToInsertHourDateFragment);
+        HourDateFragmentInserter inserter = new HourDateFragmentInserter(viewGroupToInsertHourDateFragment,dayOfWork);
         hourDateFragmentInserterList.add(inserter);
 
         return inserter;

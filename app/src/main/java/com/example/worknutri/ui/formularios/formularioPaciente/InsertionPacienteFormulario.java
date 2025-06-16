@@ -61,14 +61,14 @@ public class InsertionPacienteFormulario {
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)));
         int position = getPositionOfSpinner(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual_spinner));
-        antropometria.setPeso(Conversor.convertToGram(position, pesoAtual));
+        antropometria.setPeso(Conversor.convertToGramOrMeters(position, pesoAtual));
         pesoAtual = Double.parseDouble(antropometria.getPeso());
 
         double altura = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)));
         position = getPositionOfSpinner(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura));
-        antropometria.setAltura(Conversor.convertToGram(position, altura));
+        antropometria.setAltura(Conversor.convertToGramOrMeters(position, altura));
         altura = Double.parseDouble(antropometria.getAltura());
 
         double pesoIdeal = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(
@@ -76,7 +76,7 @@ public class InsertionPacienteFormulario {
         position = getPositionOfSpinner(viewGroup.findViewById(
                 R.id.formulario_paciente_antropometria_peso_ideal_spinner));
 
-        antropometria.setPesoIdeal(Conversor.convertToGram(position, pesoIdeal));
+        antropometria.setPesoIdeal(Conversor.convertToGramOrMeters(position, pesoIdeal));
         pesoIdeal = Double.parseDouble(antropometria.getPesoIdeal());
 
         int positionOfAtivity = ((Spinner) viewGroup.findViewById(
@@ -85,7 +85,7 @@ public class InsertionPacienteFormulario {
         CalculadorAntropometrico calculador = new CalculadorAntropometrico(pesoAtual, altura);
         antropometria.setImc(calculador.generateImc());
         antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(), paciente.getIdade()));
-        antropometria.setValorMetabolico(calculador.generateGET(antropometria.getTaxaMetabolica(),
+        antropometria.setValorMetabolico(calculador.generateGET(Double.parseDouble(antropometria.getTaxaMetabolica()),
                 positionOfAtivity, paciente.getGenero()));
         antropometria.setRegraBolso(calculador.generateBolso(pesoIdeal));
         int valorAPerder = ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_peso_a_perder_spinner)).getSelectedItemPosition();

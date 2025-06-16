@@ -1,9 +1,11 @@
 package com.example.worknutri.calcular;
 
+import com.example.worknutri.MainActivity;
+
 public class CalculadorAntropometrico {
 
-    private final double peso;
-    private final double altura;
+    private double peso;
+    private double altura;
 
     public CalculadorAntropometrico(double pesoAtual, double alturaEmMetros) {
         this.peso = pesoAtual;
@@ -24,27 +26,28 @@ public class CalculadorAntropometrico {
         return tmb;
     }
 
-    public String generateGET(String taxaMetabolicaBasal, int nivelAtividadePaciente, char genero) {
-        double tmb = Double.parseDouble(taxaMetabolicaBasal);
+    public String generateGET(double taxaMetabolicaBasal, int nivelAtividadePaciente, char genero) {
         if (genero == 'M') {
             switch (nivelAtividadePaciente) {
                 case 0:
-                    return String.valueOf(tmb * 1.2);
+                    return String.valueOf(taxaMetabolicaBasal * 1.2);
                 case 1:
-                    return String.valueOf(tmb * 1.375);
+                    return String.valueOf(taxaMetabolicaBasal * 1.375);
                 case 2:
-                    return String.valueOf(tmb * 1.55);
+                    return String.valueOf(taxaMetabolicaBasal * 1.55);
                 default:
-                    return String.valueOf(tmb * 1.9);
+                    return String.valueOf(taxaMetabolicaBasal * 1.9);
             }
         } else if (genero == 'F') {
             switch (nivelAtividadePaciente) {
+                case 0:
+                    return String.valueOf(taxaMetabolicaBasal * 1.2);
+                case 1:
+                    return String.valueOf(taxaMetabolicaBasal * 1.56);
                 case 2:
-                    return String.valueOf(tmb * 1.64);
-                case 3:
-                    return String.valueOf(tmb * 1.82);
+                    return String.valueOf(taxaMetabolicaBasal * 1.64);
                 default:
-                    return String.valueOf(tmb * 1.56);
+                    return String.valueOf(taxaMetabolicaBasal * 1.82);
             }
         }
         return null;
@@ -52,8 +55,8 @@ public class CalculadorAntropometrico {
     }
 
     public String generateBolso(double pesoIdeal) {
-        if (pesoIdeal < peso) return String.valueOf(peso * 20 * -1);
-        else if (pesoIdeal > peso) return String.valueOf(peso * 30);
+        if (pesoIdeal + 1 < peso ) return String.valueOf(peso * 20 * -1);
+        else if (pesoIdeal - 1 > peso) return String.valueOf(peso * 30);
         return "0";
     }
 
@@ -76,5 +79,17 @@ public class CalculadorAntropometrico {
             aguaInMl += this.generateAgua(idade, kg);
         }
         return aguaInMl;
+    }
+
+    public static double generatePesoIdeal(double alturaEmMetros){
+        return alturaEmMetros * alturaEmMetros * 21.75;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
     }
 }

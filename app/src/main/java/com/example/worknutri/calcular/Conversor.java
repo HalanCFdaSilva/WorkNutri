@@ -1,7 +1,7 @@
 package com.example.worknutri.calcular;
 
 public abstract class Conversor {
-    public static String convertToGram(int currentMeasure, double weight) {
+    public static String convertToGramOrMeters(int currentMeasure, double weight) {
         while (currentMeasure != 0) {
             weight /= 10;
             currentMeasure--;

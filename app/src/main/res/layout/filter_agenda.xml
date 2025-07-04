@@ -2,12 +2,13 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottomSheetParent"
+    android:id="@+id/filter_bottomSheetParent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.themeFilter">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottomSheet"
+        android:id="@+id/filter_bottomSheet"
         style="@style/Widget.Material3.BottomSheet.Modal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,7 @@
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/dragHandle"
+            android:id="@+id/filter_dragHandle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,150 +25,101 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/lblTitle"
+            android:id="@+id/filter_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="countries_filter_title"
+            android:text="@string/filter_title"
             android:textAppearance="?textAppearanceTitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dragHandle" />
+            app:layout_constraintTop_toBottomOf="@id/filter_dragHandle" />
 
         <TextView
-            android:id="@+id/lblSortBy"
+            android:id="@+id/filter_sort_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="filter_sheet_label_sort_by"
+            android:text="@string/order_by"
+            android:textAllCaps="true"
             android:textAppearance="?textAppearanceLabelLarge"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblTitle" />
+            app:layout_constraintTop_toBottomOf="@id/filter_title" />
 
         <HorizontalScrollView
-            android:id="@+id/layoutSorts"
+            android:id="@+id/filter_layout_sort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblSortBy">
+            app:layout_constraintTop_toBottomOf="@id/filter_sort_title">
 
             <com.google.android.material.chip.ChipGroup
-                android:id="@+id/cg_sort_types"
+                android:id="@+id/filter_sort_chipgroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:selectionRequired="false"
                 app:singleSelection="true">
 
-<!--                <com.google.android.material.chip.Chip-->
-<!--                    android:id="@+id/chipAlphabeticalSort"-->
-<!--                    style="@style/Widget.Material3.Chip.Filter"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="filter_sheet_sort_alphabetical_order"-->
-<!--                    tools:checked="true" />-->
+                <!--                <com.google.android.material.chip.Chip-->
+                <!--                    android:id="@+id/chipAlphabeticalSort"-->
+                <!--                    style="@style/Widget.Material3.Chip.Filter"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="filter_sheet_sort_alphabetical_order"-->
+                <!--                    tools:checked="true" />-->
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chipByPopulationSort"
+                    android:id="@+id/filter_sort_by_name"
                     style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="filter_sheet_sort_population" />
+                    android:text="@string/sort_by_name_asc" />
 
             </com.google.android.material.chip.ChipGroup>
 
         </HorizontalScrollView>
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/sortDivider"
+            android:id="@+id/sort_material_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutSorts" />
+            app:layout_constraintTop_toBottomOf="@id/filter_layout_sort" />
 
-        <TextView
-            android:id="@+id/lblSubregion"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/filter_layout_categories"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="filter_sheet_label_subregion"
-            android:textAppearance="?textAppearanceLabelLarge"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sortDivider" />
+            app:layout_constraintTop_toBottomOf="@+id/sort_material_divider"/>
 
-<!--        <com.google.android.material.chip.ChipGroup-->
-<!--            android:id="@+id/cgSubregion"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginHorizontal="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:chipSpacingVertical="0dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/lblSubregion"-->
-<!--            app:selectionRequired="false"-->
-<!--            app:singleSelection="false">-->
 
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Northern Europe"-->
-<!--                tools:checked="true" />-->
-
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Western Europe" />-->
-
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Southern Europe" />-->
-
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Southeast Europe" />-->
-
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Central Europe" />-->
-
-<!--            <com.google.android.material.chip.Chip-->
-<!--                style="@style/Widget.Material3.Chip.Filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Eastern Europe" />-->
-
-<!--        </com.google.android.material.chip.ChipGroup>-->
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/dividerFilter"
+            android:id="@+id/filter_category_material_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblSubregion" />
+            app:layout_constraintTop_toBottomOf="@+id/filter_layout_categories"
+            tools:layout_editor_absoluteY="218dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnApply"
+            android:id="@+id/filter_buton_confirm"
             style="@style/Widget.Material3.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="action_apply"
+            android:text="@string/confirmar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/frameLayout"
-            app:layout_constraintTop_toBottomOf="@id/dividerFilter" />
+            app:layout_constraintTop_toBottomOf="@id/filter_category_material_divider" />
 
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -176,16 +128,17 @@
             android:layout_marginEnd="8dp"
             android:clipChildren="false"
             android:clipToPadding="false"
-            app:layout_constraintEnd_toStartOf="@id/btnApply"
+            app:layout_constraintEnd_toStartOf="@id/filter_buton_confirm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btnApply">
+            app:layout_constraintTop_toTopOf="@id/filter_buton_confirm">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnResetAll"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="action_rest_all" />
+                android:text="@string/clear_filter"
+                android:textAllCaps="true" />
 
         </FrameLayout>
 

@@ -8,8 +8,10 @@ Futuramente pretendo adicionar funcionalidades que vão permitir ao nutricionist
 
 - [x] Agenda de pacientes
   - [ ] Registro de data dos atendimentos
+  - [ ] Filtros de Pesquisa
 - [x] Agenda de clínicas
   - [ ] Agenda semanal das clínicas
+  - [ ] Filtros de Pesquisa
 - [ ] Calculadora antropométrica
 - [ ] Tabela TACO para consulta
 - [ ] Criar dieta

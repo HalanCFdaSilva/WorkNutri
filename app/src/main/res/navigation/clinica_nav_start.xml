@@ -6,24 +6,35 @@
     app:startDestination="@+id/navigation_clinicas">
 
     <fragment
+        android:id="@+id/navigation_pacientes"
+        android:name="com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteFragment"
+        android:label="@string/title_pacientes"
+        tools:layout="@layout/fragment_agenda" >
+        <action
+            android:id="@+id/action_navigation_pacientes_to_filter"
+            app:destination="@id/navigation_filter_pacientes" />
+    </fragment>
+    <dialog
+        android:id="@+id/navigation_filter_pacientes"
+        android:name="com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteFilterFragment"
+        tools:layout="@layout/filter_agenda"/>
+
+
+    <fragment
         android:id="@+id/navigation_clinicas"
         android:name="com.example.worknutri.ui.agendasFragment.agendaClinicas.AgendaClinicasFragment"
         android:label="@string/title_clinicas"
         tools:layout="@layout/fragment_agenda" >
         <action
-            android:id="@+id/action_navigation_clinicas_to_navigation_pacientes"
-            app:destination="@id/navigation_pacientes" />
+            android:id="@+id/action_navigation_clinicas_to_filter"
+            app:destination="@id/navigation_filter_clinica" />
     </fragment>
+    <dialog
+        android:id="@+id/navigation_filter_clinica"
+        android:name="com.example.worknutri.ui.agendasFragment.filter.clinicaFilter.ClinicaFilterFragment"
+        tools:layout="@layout/filter_agenda"/>
 
-    <fragment
-        android:id="@+id/navigation_pacientes"
-        android:name="com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteFragment"
-        android:label="@string/title_pacientes"
-        tools:layout="@layout/fragment_agenda">
-        <action
-            android:id="@+id/action_navigation_pacientes_to_navigation_clinicas"
-            app:destination="@id/navigation_clinicas" />
-    </fragment>
+
 
 
 

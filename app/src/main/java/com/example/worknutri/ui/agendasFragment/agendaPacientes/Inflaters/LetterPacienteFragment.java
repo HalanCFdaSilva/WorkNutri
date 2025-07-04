@@ -1,6 +1,7 @@
 package com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -20,7 +21,8 @@ public class LetterPacienteFragment {
 
     public LetterPacienteFragment(LayoutInflater inflater, List<Paciente> pacientesInOrder) {
         layoutInflater = inflater;
-        this.pacientes = pacientesInOrder;
+        this.pacientes = new ArrayList<>(pacientesInOrder);
+        Log.d("android runtime", pacientes.toString());
     }
 
 

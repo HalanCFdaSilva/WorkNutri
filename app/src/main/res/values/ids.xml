@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="classificacao_imc_textview" type="id"/>
+
+    <item name="filter_category_chipgroup" type="id"/>
 </resources>

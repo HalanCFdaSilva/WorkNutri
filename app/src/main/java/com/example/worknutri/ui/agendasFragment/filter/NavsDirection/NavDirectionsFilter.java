@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter;
+package com.example.worknutri.ui.agendasFragment.filter.NavsDirection;
 
 import androidx.navigation.NavDirections;
 

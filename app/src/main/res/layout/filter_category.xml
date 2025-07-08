@@ -16,17 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Category" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/filter_category_chipgroup"
+    <LinearLayout
+        android:id="@+id/filter_category_intern_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
         app:chipSpacingVertical="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_category_title"
-        app:selectionRequired="false"
-        app:singleSelection="false" />
+        app:layout_constraintTop_toBottomOf="@id/filter_category_title" />
 
 
     <com.google.android.material.divider.MaterialDivider
@@ -36,6 +35,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_category_chipgroup" />
+        app:layout_constraintTop_toBottomOf="@id/filter_category_intern_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

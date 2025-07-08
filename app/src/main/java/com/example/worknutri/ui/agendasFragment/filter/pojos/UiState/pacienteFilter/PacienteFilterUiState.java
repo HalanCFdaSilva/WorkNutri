@@ -1,15 +1,17 @@
-package com.example.worknutri.ui.agendasFragment.filter.pacientesFilter;
+package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter;
 
-import java.io.Serializable;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.UiState;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UiState implements Serializable {
+public class PacienteFilterUiState extends UiState {
     private String generoSelected = "NONE";
     private int clinicaIdSelected = -1;
     private List<String> patologiasSelected = new ArrayList<>();
-    private boolean inOrder = true;
-    private String OrderBy = "NONE";
+
+    private PacienteFilterOrderBy OrderBy = PacienteFilterOrderBy.NONE;
+
 
 
 
@@ -36,13 +38,12 @@ public class UiState implements Serializable {
     public void setPatologiasSelected(List<String> patologiasSelected) {
         this.patologiasSelected = patologiasSelected;
     }
-
-    public boolean isInOrder() {
-        return inOrder;
+    public PacienteFilterOrderBy getOrderBy() {
+        return OrderBy;
     }
 
-    public void setInOrder(boolean inOrder) {
-        this.inOrder = inOrder;
+    public void setOrderBy(PacienteFilterOrderBy orderBy) {
+        OrderBy = orderBy;
     }
 
 }

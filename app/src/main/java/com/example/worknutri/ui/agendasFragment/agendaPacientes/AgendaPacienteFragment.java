@@ -4,7 +4,6 @@ import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.P
 import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.PACIENTE_FILTER_POJO;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,8 @@ import androidx.navigation.Navigation;
 import com.example.worknutri.MainActivity;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.FragmentAgendaBinding;
-import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.NavDirectionPacienteFilter;
-import com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteFilterPojo;
-
-import java.util.List;
+import com.example.worknutri.ui.agendasFragment.filter.NavsDirection.NavDirectionPacienteFilter;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 
 
 public class AgendaPacienteFragment extends Fragment {

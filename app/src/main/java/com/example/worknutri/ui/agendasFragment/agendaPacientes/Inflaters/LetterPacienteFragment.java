@@ -22,7 +22,6 @@ public class LetterPacienteFragment {
     public LetterPacienteFragment(LayoutInflater inflater, List<Paciente> pacientesInOrder) {
         layoutInflater = inflater;
         this.pacientes = new ArrayList<>(pacientesInOrder);
-        Log.d("android runtime", pacientes.toString());
     }
 
 
@@ -31,7 +30,7 @@ public class LetterPacienteFragment {
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
         for (char letter : alphabet) {
             List<Paciente> pacientestoAdd = getPacientesOfLetter(letter);
-            pacientestoAdd.forEach(paciente -> pacientes.remove(paciente));
+            pacientestoAdd.forEach(pacientes::remove);
             if (!pacientestoAdd.isEmpty()) {
                 ViewGroup layoutInflate = (ViewGroup) layoutInflater.inflate(R.layout.agenda_letter_fragment, null);
 

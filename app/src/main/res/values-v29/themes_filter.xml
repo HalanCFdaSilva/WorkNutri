@@ -15,4 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:forceDarkAllowed">false</item>
     </style>
+
+    <style name="Theme.themeFilter.Chip" parent="@style/Widget.Material3.Chip.Filter"/>
+
 </resources>

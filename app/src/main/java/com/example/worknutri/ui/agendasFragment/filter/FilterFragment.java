@@ -1,10 +1,8 @@
 package com.example.worknutri.ui.agendasFragment.filter;
 
-
-
-import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.PACIENTE_FILTER_POJO;
-
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,37 +11,55 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.example.worknutri.databinding.FilterAgendaBinding;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGeneratorUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.util.Collections;
+import java.util.List;
 
 public abstract class FilterFragment extends BottomSheetDialogFragment {
 
 
 
     private FilterAgendaBinding binding;
-    protected AgendaFilter agendaFilter;
+    protected List<CategoriesGenerator> categories;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         binding = FilterAgendaBinding.inflate(inflater, container, false);
-        agendaFilter = new AgendaFilter(binding.filterBottomSheetParent.getContext());
-        generateFilter();
+        categories = Collections.emptyList();
 
-
+        generateFilter(binding.filterBottomSheetParent.getContext());
         onClickSaveButton();
 
         return binding.filterBottomSheetParent;
     }
-    protected abstract void generateFilter();
+
+    protected abstract void generateFilter(Context context);
+
+    protected void insertCategotyInLayout(CategoriesGenerator categoryGenerate) {
+        ViewGroup viewGroup = categoryGenerate.generateCategory(getLayoutInflater());
+        binding.filterLayoutCategories.addView(viewGroup);
+        categories.add(categoryGenerate);
+    }
+
+
 
     private void onClickSaveButton(){
         binding.filterButonConfirm.setOnClickListener(v -> {
+
+            orderListOfSelecteds();
             getParentFragmentManager().setFragmentResult(getRequestKey(),generateBundle());
             dismiss();
         });
     }
 
+    protected abstract void getAllCategories(ViewGroup viewGroup);
+    protected abstract  void orderListOfSelecteds();
     protected abstract Bundle generateBundle();
     protected abstract String getRequestKey();
 
@@ -69,12 +85,6 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
         });
     }
 
-    protected void setFilterTitle(String title) {
-        binding.filterTitle.setText(title);
-    }
 
-    protected ViewGroup getLayoutToCategories() {
-        return binding.filterLayoutCategories;
-    }
 
 }

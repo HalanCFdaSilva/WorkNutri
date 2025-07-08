@@ -61,20 +61,20 @@
                 app:selectionRequired="false"
                 app:singleSelection="true">
 
-                <!--                <com.google.android.material.chip.Chip-->
-                <!--                    android:id="@+id/chipAlphabeticalSort"-->
-                <!--                    style="@style/Widget.Material3.Chip.Filter"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:text="filter_sheet_sort_alphabetical_order"-->
-                <!--                    tools:checked="true" />-->
-
                 <com.google.android.material.chip.Chip
                     android:id="@+id/filter_sort_by_name"
                     style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sort_by_name_asc" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_sort_by_name_desc"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome Z-A"
+                    tools:checked="true" />
 
             </com.google.android.material.chip.ChipGroup>
 

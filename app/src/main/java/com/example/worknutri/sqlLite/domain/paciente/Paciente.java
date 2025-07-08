@@ -1,6 +1,7 @@
 package com.example.worknutri.sqlLite.domain.paciente;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -120,5 +121,10 @@ public class Paciente implements Serializable {
     @Override
     public String toString() {
         return nomePaciente;
+    }
+
+    @Override
+    public boolean equals(@NonNull Object obj) {
+        return id == ((Paciente) obj).getId();
     }
 }

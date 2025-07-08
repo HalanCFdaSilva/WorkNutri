@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.pacientesFilter;
+package com.example.worknutri.ui.agendasFragment.filter.NavsDirection;
 
 import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.PACIENTE_FILTER_POJO;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.example.worknutri.ui.agendasFragment.filter.NavDirectionsFilter;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 
 import java.io.Serializable;
 

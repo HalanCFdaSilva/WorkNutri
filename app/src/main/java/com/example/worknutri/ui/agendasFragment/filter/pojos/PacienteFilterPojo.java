@@ -1,17 +1,15 @@
-package com.example.worknutri.ui.agendasFragment.filter.pacientesFilter;
-
-import android.util.Log;
+package com.example.worknutri.ui.agendasFragment.filter.pojos;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter.PacienteFilterUiState;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 
 public class PacienteFilterPojo implements Serializable {
@@ -21,7 +19,7 @@ public class PacienteFilterPojo implements Serializable {
     private List<Antropometria> antropometriaList;
     private List<Patologia> patologiaList;
     private List<Clinica> clinicas;
-    private final UiState state;
+    private final PacienteFilterUiState state;
 
     public PacienteFilterPojo(List<Paciente> pacientes, List<Antropometria> antropometriaList,
                               List<Patologia> patologiaList, List<Clinica> clinicas) {
@@ -31,11 +29,11 @@ public class PacienteFilterPojo implements Serializable {
         this.antropometriaList = antropometriaList;
         this.patologiaList = patologiaList;
         this.clinicas = clinicas;
-        state = new UiState();
+        state = new PacienteFilterUiState();
     }
 
     public void resetPacienteSelected() {
-        setPacienteSelected(new ArrayList<Paciente>(pacientes));
+        setPacienteSelected(new ArrayList<>(pacientes));
     }
 
     public List<Paciente> getPacientes() {
@@ -78,7 +76,7 @@ public class PacienteFilterPojo implements Serializable {
         this.pacienteSelected = pacienteSelected;
     }
 
-    public UiState getState() {
+    public PacienteFilterUiState getState() {
         return state;
     }
 }

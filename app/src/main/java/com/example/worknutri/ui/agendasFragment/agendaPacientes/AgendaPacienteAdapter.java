@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.agendasFragment.agendaPacientes;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
@@ -12,11 +11,8 @@ import com.example.worknutri.sqlLite.dao.paciente.PatologiaDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters.LetterPacienteFragment;
-import com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteFilterPojo;
-
-import java.util.Comparator;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AgendaPacienteAdapter {
     private final Context context;
@@ -38,8 +34,7 @@ public class AgendaPacienteAdapter {
     }
 
     public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout) {
-        if (!pacienteFilterPojo.getState().isInOrder()){
-        }
+
         linearLayout.removeAllViews();
         LetterPacienteFragment letterPacienteFragment = new LetterPacienteFragment(inflater, pacienteFilterPojo.getPacienteSelected());
         letterPacienteFragment.generateAgenda(linearLayout);

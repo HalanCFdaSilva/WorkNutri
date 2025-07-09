@@ -2,7 +2,6 @@ package com.example.worknutri.ui.agendasFragment.filter;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.example.worknutri.databinding.FilterAgendaBinding;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGeneratorUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class FilterFragment extends BottomSheetDialogFragment {
@@ -31,7 +29,7 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         binding = FilterAgendaBinding.inflate(inflater, container, false);
-        categories = Collections.emptyList();
+        categories = new ArrayList<>();
 
         generateFilter(binding.filterBottomSheetParent.getContext());
         onClickSaveButton();
@@ -52,13 +50,14 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
     private void onClickSaveButton(){
         binding.filterButonConfirm.setOnClickListener(v -> {
 
+            getAllCategories();
             orderListOfSelecteds();
             getParentFragmentManager().setFragmentResult(getRequestKey(),generateBundle());
             dismiss();
         });
     }
 
-    protected abstract void getAllCategories(ViewGroup viewGroup);
+    protected abstract void getAllCategories();
     protected abstract  void orderListOfSelecteds();
     protected abstract Bundle generateBundle();
     protected abstract String getRequestKey();

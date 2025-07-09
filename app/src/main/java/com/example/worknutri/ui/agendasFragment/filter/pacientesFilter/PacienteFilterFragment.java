@@ -6,11 +6,11 @@ import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.P
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.ViewGroup;
+import android.util.Log;
+
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories.GenderCategoryGenerator;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories.PacientesCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import java.util.Comparator;
@@ -26,19 +26,19 @@ public class PacienteFilterFragment extends FilterFragment {
     protected void generateFilter(Context context) {
         getPacientes();
 
-        PacientesCategoryFactory pacientesCategoryFactory = new PacientesCategoryFactory(context);
-
-        insertCategotyInLayout(pacientesCategoryFactory.generateGenderCategory(pojo));
-        insertCategotyInLayout(pacientesCategoryFactory.generateYearCategory(pojo));
-
-
+        insertCategotyInLayout(PacientesCategoryFactory.generateGenderCategory(context, pojo));
+        insertCategotyInLayout(PacientesCategoryFactory.generateYearCategory(context, pojo));
+        insertCategotyInLayout(PacientesCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
     }
 
-    protected void getAllCategories(ViewGroup viewGroup) {
+    @Override
+    protected void getAllCategories() {
         pojo.getPacienteSelected().removeAll(pojo.getPacienteSelected());
         for (Paciente paciente : pojo.getPacientes()) {
             boolean isSelected = true;
             for (CategoriesGenerator category : categories) {
+                Log.d("PacienteFilterFragment", "getAllCategories: " + paciente.getNomePaciente() + " isSelected: " + !category.getSelecteds().contains(paciente));
+
                 if (!category.getSelecteds().contains(paciente)){
                     isSelected = false;
                     break;
@@ -98,9 +98,6 @@ public class PacienteFilterFragment extends FilterFragment {
         return PACIENTE_FILTER_BUNDLE;
     }
 
-    protected void setSeletedsPacientes(){
-
-    }
 
 
 }

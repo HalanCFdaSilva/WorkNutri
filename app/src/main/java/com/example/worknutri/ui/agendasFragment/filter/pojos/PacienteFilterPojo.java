@@ -8,8 +8,9 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFil
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-
+import java.util.Optional;
 
 
 public class PacienteFilterPojo implements Serializable {
@@ -29,7 +30,12 @@ public class PacienteFilterPojo implements Serializable {
         this.antropometriaList = antropometriaList;
         this.patologiaList = patologiaList;
         this.clinicas = clinicas;
-        state = new PacienteFilterUiState();
+
+        Optional<Paciente> max = pacientes.stream().max(Comparator.comparing(Paciente::getIdade));
+        int maxValueSelected = max.map(Paciente::getIdade).orElse(0);
+        Optional<Paciente> min = pacientes.stream().min(Comparator.comparing(Paciente::getIdade));
+        int minValueSelected = min.map(Paciente::getIdade).orElse(0);
+        state = new PacienteFilterUiState(minValueSelected, maxValueSelected);
     }
 
     public void resetPacienteSelected() {

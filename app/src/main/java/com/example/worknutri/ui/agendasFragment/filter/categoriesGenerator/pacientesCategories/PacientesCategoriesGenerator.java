@@ -19,15 +19,12 @@ public abstract class PacientesCategoriesGenerator implements CategoriesGenerato
     public PacientesCategoriesGenerator(Context context, PacienteFilterPojo pacienteFilterPojo) {
         agendaFilter = new CategoriesGeneratorUtil(context);
         pojo = pacienteFilterPojo;
-        pacientesInsideFilter = new ArrayList<>(pojo.getPacienteSelected());
+        pacientesInsideFilter = new ArrayList<>(pojo.getPacientes());
     }
 
-
-
-
-
-
-
-
+    @Override
+    public <T> List<Paciente> getSelecteds() {
+        return pacientesInsideFilter;
+    }
 }
 

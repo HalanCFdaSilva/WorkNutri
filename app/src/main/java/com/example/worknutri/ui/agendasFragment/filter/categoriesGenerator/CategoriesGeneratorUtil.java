@@ -33,16 +33,26 @@ public class CategoriesGeneratorUtil {
         return chip;
     }
 
-    public ViewGroup GenerateCategoryWithChipGroup(LayoutInflater inflater) {
+    public ViewGroup GenerateCategoryWithChipGroup(LayoutInflater inflater,
+                                                   String title) {
         ViewGroup viewGroup =  (ViewGroup) inflater.inflate(R.layout.filter_category, null);
+
+        TextView text = viewGroup.findViewById(R.id.filter_category_title);
+        text.setText(title);
+
         ChipGroup chipGroup = new ChipGroup(context);
         chipGroup.setSelectionRequired(false);
         chipGroup.setId(R.id.filter_category_chipgroup);
         ViewGroup linearlayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
         linearlayout.addView(chipGroup);
+
         return viewGroup;
     }
-    public ViewGroup generateCategory(LayoutInflater inflater){
-        return (ViewGroup) inflater.inflate(R.layout.filter_category, null);
+    public ViewGroup generateCategory(LayoutInflater inflater,
+                                      String title){
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.filter_category, null);
+        TextView text = viewGroup.findViewById(R.id.filter_category_title);
+        text.setText(title);
+        return viewGroup;
     }
 }

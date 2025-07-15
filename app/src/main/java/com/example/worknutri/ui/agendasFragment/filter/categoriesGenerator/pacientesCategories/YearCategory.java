@@ -69,7 +69,7 @@ public class YearCategory extends PacientesFilterCategories {
                 pacientesInsideFilter.add(paciente);
             }
         }
-        PojoUtil.setValuesOfFloatTuple(pojo.getState().getValuesOfYearSlider(), minValue, maxValue);
+        PojoUtil.setValuesOfFloatTuple(pojo.getState().getTupleOfYearSlider(), minValue, maxValue);
     }
 
     private void setValuesOfRangeSlider(RangeSlider slider) {
@@ -83,7 +83,7 @@ public class YearCategory extends PacientesFilterCategories {
         slider.setValueTo(maxValue);
         slider.setStepSize(1);
 
-        float[] valuesSelected = pojo.getState().getValuesOfYearSlider();
+        float[] valuesSelected = pojo.getState().getTupleOfYearSlider();
         slider.setValues(valuesSelected[0], valuesSelected[1]);
         extracted(valuesSelected[0], valuesSelected[1]);
     }

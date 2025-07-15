@@ -6,7 +6,11 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 
 public abstract class AntropometriaCategoryFactory {
 
-    public static WeigthCategory createPesoCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        return new WeigthCategory(context, pacienteFilterPojo);
+    public static WeightCategory createWeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+        return new WeightCategory(context, pacienteFilterPojo);
+    }
+
+    public static HeightCategory createHeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+        return new HeightCategory(context, pacienteFilterPojo);
     }
 }

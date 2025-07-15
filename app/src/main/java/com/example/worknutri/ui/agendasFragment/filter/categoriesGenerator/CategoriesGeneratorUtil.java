@@ -65,4 +65,12 @@ public class CategoriesGeneratorUtil {
         slider.setStepSize(1);
         return slider;
     }
+
+    public RangeSlider generateRangeSlider(float min, float max) {
+        RangeSlider slider = new RangeSlider(context);
+        slider.setTickVisible(false);
+        slider.setValueFrom(min);
+        slider.setValueTo(max);
+        return slider;
+    }
 }

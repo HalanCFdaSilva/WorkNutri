@@ -30,7 +30,8 @@ public class PacienteFilterFragment extends FilterFragment {
         insertCategotyInLayout(PacientesCategoryFactory.generateGenderCategory(context, pojo));
         insertCategotyInLayout(PacientesCategoryFactory.generateYearCategory(context, pojo));
         insertCategotyInLayout(PacientesCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
-        insertCategotyInLayout(AntropometriaCategoryFactory.createPesoCategory(context, pojo));
+        insertCategotyInLayout(AntropometriaCategoryFactory.createWeightCategory(context, pojo));
+        insertCategotyInLayout(AntropometriaCategoryFactory.createHeightCategory(context, pojo));
     }
 
     @Override

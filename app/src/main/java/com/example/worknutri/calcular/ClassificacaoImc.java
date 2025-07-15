@@ -1,5 +1,7 @@
 package com.example.worknutri.calcular;
 
+import androidx.annotation.NonNull;
+
 import com.example.worknutri.R;
 
 public enum ClassificacaoImc {
@@ -49,5 +51,11 @@ public enum ClassificacaoImc {
 
 
         return null;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString().replace("_", " ");
     }
 }

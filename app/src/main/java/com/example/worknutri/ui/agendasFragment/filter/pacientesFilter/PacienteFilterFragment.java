@@ -11,6 +11,7 @@ import android.util.Log;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.antropometriaCategories.AntropometriaCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories.PacientesCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import java.util.Comparator;
@@ -29,6 +30,7 @@ public class PacienteFilterFragment extends FilterFragment {
         insertCategotyInLayout(PacientesCategoryFactory.generateGenderCategory(context, pojo));
         insertCategotyInLayout(PacientesCategoryFactory.generateYearCategory(context, pojo));
         insertCategotyInLayout(PacientesCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
+        insertCategotyInLayout(AntropometriaCategoryFactory.createPesoCategory(context, pojo));
     }
 
     @Override

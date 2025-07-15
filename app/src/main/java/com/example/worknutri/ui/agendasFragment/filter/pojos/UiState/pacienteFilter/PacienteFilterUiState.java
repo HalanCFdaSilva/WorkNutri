@@ -10,13 +10,15 @@ public class PacienteFilterUiState extends UiState {
     private List<Integer> clinicaIdSelected = new ArrayList<>();
     private List<String> patologiasSelected = new ArrayList<>();
 
-    private float[] valuesOfRangeSlider; // Default values for age range slider
+    private float[] valuesOfYearSlider;
+    private float[] valuesOfWeightSlider; // Default height range from 0 to 200 cm
 
     private PacienteFilterOrderBy OrderBy = PacienteFilterOrderBy.NONE;
 
 
     public PacienteFilterUiState(int minValue, int maxValue) {
-        valuesOfRangeSlider = new float[]{minValue,maxValue}; // Default age range from 0 to 100
+        valuesOfYearSlider = new float[]{minValue,maxValue};
+        valuesOfWeightSlider = new float[]{0,0};
     }
 
     public char getGeneroSelected() {
@@ -48,12 +50,11 @@ public class PacienteFilterUiState extends UiState {
         OrderBy = orderBy;
     }
 
-    public float[] getValuesOfRangeSlider() {
-        return valuesOfRangeSlider;
+    public float[] getValuesOfYearSlider() {
+        return valuesOfYearSlider;
     }
 
-    public void setValuesOfRangeSlider(float minValue, float maxValue) {
-        this.valuesOfRangeSlider[0] = minValue;
-        this.valuesOfRangeSlider[1] = maxValue;
+    public float[] getValuesOfWeightSlider() {
+        return valuesOfWeightSlider;
     }
 }

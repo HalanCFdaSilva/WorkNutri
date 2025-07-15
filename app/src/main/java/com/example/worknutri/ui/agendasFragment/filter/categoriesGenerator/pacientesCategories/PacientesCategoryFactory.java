@@ -9,14 +9,14 @@ public abstract class PacientesCategoryFactory {
 
 
 
-    public static GenderCategoryGenerator generateGenderCategory(Context context,PacienteFilterPojo pojo) {
-        return new GenderCategoryGenerator(context, pojo);
+    public static GenderCategory generateGenderCategory(Context context, PacienteFilterPojo pojo) {
+        return new GenderCategory(context, pojo);
     }
-    public static YearCategoryGenerator generateYearCategory(Context context,PacienteFilterPojo pojo) {
-        return new YearCategoryGenerator(context, pojo);
+    public static YearCategory generateYearCategory(Context context, PacienteFilterPojo pojo) {
+        return new YearCategory(context, pojo);
     }
 
-    public static PacienteInClinicaCategoryGenerator generatePacienteInClinicaCategory(Context context,PacienteFilterPojo pojo) {
-        return new PacienteInClinicaCategoryGenerator(context, pojo);
+    public static PacienteInClinicaCategory generatePacienteInClinicaCategory(Context context, PacienteFilterPojo pojo) {
+        return new PacienteInClinicaCategory(context, pojo);
     }
 }

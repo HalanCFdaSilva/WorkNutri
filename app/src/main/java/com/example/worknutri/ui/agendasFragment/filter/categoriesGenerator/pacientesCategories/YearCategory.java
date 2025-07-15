@@ -3,13 +3,14 @@ package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.paci
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
 
 
@@ -17,14 +18,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class YearCategoryGenerator extends PacientesCategoriesGenerator{
+public class YearCategory extends PacientesFilterCategories {
 
-    private final Context context;
 
-    public YearCategoryGenerator(Context context, PacienteFilterPojo pacienteFilterPojo) {
+
+    public YearCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         super(context, pacienteFilterPojo);
-        this.context = context;
-
     }
 
     public ViewGroup generateCategory(LayoutInflater layoutInflater) {
@@ -70,7 +69,7 @@ public class YearCategoryGenerator extends PacientesCategoriesGenerator{
                 pacientesInsideFilter.add(paciente);
             }
         }
-        pojo.getState().setValuesOfRangeSlider(minValue, maxValue);
+        PojoUtil.setValuesOfFloatTuple(pojo.getState().getValuesOfYearSlider(), minValue, maxValue);
     }
 
     private void setValuesOfRangeSlider(RangeSlider slider) {
@@ -84,7 +83,7 @@ public class YearCategoryGenerator extends PacientesCategoriesGenerator{
         slider.setValueTo(maxValue);
         slider.setStepSize(1);
 
-        float[] valuesSelected = pojo.getState().getValuesOfRangeSlider();
+        float[] valuesSelected = pojo.getState().getValuesOfYearSlider();
         slider.setValues(valuesSelected[0], valuesSelected[1]);
         extracted(valuesSelected[0], valuesSelected[1]);
     }

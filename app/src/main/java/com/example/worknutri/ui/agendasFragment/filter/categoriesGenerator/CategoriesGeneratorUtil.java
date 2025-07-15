@@ -10,6 +10,7 @@ import com.example.worknutri.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.slider.RangeSlider;
 
 
 public class CategoriesGeneratorUtil {
@@ -33,7 +34,7 @@ public class CategoriesGeneratorUtil {
         return chip;
     }
 
-    public ViewGroup GenerateCategoryWithChipGroup(LayoutInflater inflater,
+    public ViewGroup generateCategoryWithChipGroup(LayoutInflater inflater,
                                                    String title) {
         ViewGroup viewGroup =  (ViewGroup) inflater.inflate(R.layout.filter_category, null);
 
@@ -54,5 +55,14 @@ public class CategoriesGeneratorUtil {
         TextView text = viewGroup.findViewById(R.id.filter_category_title);
         text.setText(title);
         return viewGroup;
+    }
+
+    public RangeSlider generateRangeSlider(int min, int max) {
+        RangeSlider slider = new RangeSlider(context);
+        slider.setTickVisible(false);
+        slider.setValueFrom(min);
+        slider.setValueTo(max);
+        slider.setStepSize(1);
+        return slider;
     }
 }

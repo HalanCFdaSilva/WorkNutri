@@ -4,6 +4,8 @@ package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
@@ -41,11 +43,13 @@ public class CategoriesGeneratorUtil {
         TextView text = viewGroup.findViewById(R.id.filter_category_title);
         text.setText(title);
 
+        HorizontalScrollView scrollView = new HorizontalScrollView(context);
         ChipGroup chipGroup = new ChipGroup(context);
         chipGroup.setSelectionRequired(false);
         chipGroup.setId(R.id.filter_category_chipgroup);
+        scrollView.addView(chipGroup);
         ViewGroup linearlayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
-        linearlayout.addView(chipGroup);
+        linearlayout.addView(scrollView);
 
         return viewGroup;
     }

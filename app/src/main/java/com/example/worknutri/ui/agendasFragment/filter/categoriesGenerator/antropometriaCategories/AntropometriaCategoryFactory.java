@@ -13,4 +13,7 @@ public abstract class AntropometriaCategoryFactory {
     public static HeightCategory createHeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         return new HeightCategory(context, pacienteFilterPojo);
     }
+    public static IMCCategory createIMCCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+        return new IMCCategory(context, pacienteFilterPojo);
+    }
 }

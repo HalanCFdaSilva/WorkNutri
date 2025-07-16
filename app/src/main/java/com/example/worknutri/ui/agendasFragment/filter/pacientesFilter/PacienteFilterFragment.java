@@ -32,6 +32,8 @@ public class PacienteFilterFragment extends FilterFragment {
         insertCategotyInLayout(PacientesCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
         insertCategotyInLayout(AntropometriaCategoryFactory.createWeightCategory(context, pojo));
         insertCategotyInLayout(AntropometriaCategoryFactory.createHeightCategory(context, pojo));
+        insertCategotyInLayout(AntropometriaCategoryFactory.createIMCCategory(context, pojo));
+
     }
 
     @Override
@@ -58,11 +60,17 @@ public class PacienteFilterFragment extends FilterFragment {
 
     @Override
     protected void orderListOfSelecteds() {
-        if (pojo.getState().isInOrder()){
+        if (!pojo.getState().isInOrder()){
             switch (pojo.getState().getOrderBy()){
                 case NOME_ASC:{
                     pojo.setPacienteSelected(pojo.getPacienteSelected().stream()
                             .sorted(Comparator.comparing(Paciente::getNomePaciente))
+                            .collect(Collectors.toList()));
+                    break;
+                }
+                case NOME_DESC:{
+                    pojo.setPacienteSelected(pojo.getPacienteSelected().stream()
+                            .sorted(Comparator.comparing(Paciente::getNomePaciente).reversed())
                             .collect(Collectors.toList()));
                     break;
                 }

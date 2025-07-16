@@ -87,27 +87,36 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/filter_layout_sort" />
+            app:layout_constraintTop_toBottomOf="@id/filter_layout_sort"
+            app:layout_constraintBottom_toTopOf="@+id/filter_layout_categories_scroll"/>
 
-        <LinearLayout
-            android:id="@+id/filter_layout_categories"
+        <ScrollView
+            android:id="@+id/filter_layout_categories_scroll"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="400dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/filter_category_material_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sort_material_divider"/>
+            app:layout_constraintTop_toBottomOf="@+id/sort_material_divider">
 
+            <LinearLayout
+                android:id="@+id/filter_layout_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
 
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/filter_category_material_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/filter_buton_confirm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filter_layout_categories"
-            tools:layout_editor_absoluteY="218dp" />
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/filter_buton_confirm"
@@ -115,11 +124,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:text="@string/confirmar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/frameLayout"
-            app:layout_constraintTop_toBottomOf="@id/filter_category_material_divider" />
+            app:layout_constraintStart_toEndOf="@id/frameLayout" />
 
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -128,6 +136,7 @@
             android:layout_marginEnd="8dp"
             android:clipChildren="false"
             android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/filter_buton_confirm"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/filter_buton_confirm">

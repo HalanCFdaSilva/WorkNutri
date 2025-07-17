@@ -52,7 +52,7 @@ public class YearCategory extends PacientesFilterCategories {
             @Override
             public void onStopTrackingTouch(@NonNull RangeSlider slider) {
                 List<Float> values = slider.getValues();
-                extracted(values.get(0), values.get(1));
+                selectPacienteInsideRange(values.get(0), values.get(1));
             }
         });
 
@@ -61,7 +61,7 @@ public class YearCategory extends PacientesFilterCategories {
         return slider;
     }
 
-    private void extracted(float minValue, float maxValue) {
+    private void selectPacienteInsideRange(float minValue, float maxValue) {
         for(Paciente paciente : pojo.getPacientes()) {
             if (paciente.getIdade() < minValue || paciente.getIdade() > maxValue) {
                 pacientesInsideFilter.remove(paciente);
@@ -73,10 +73,10 @@ public class YearCategory extends PacientesFilterCategories {
     }
 
     private void setValuesOfRangeSlider(RangeSlider slider) {
-        Optional<Paciente> max = pacientesInsideFilter.stream().max(Comparator.comparing(Paciente::getIdade));
+        Optional<Paciente> max = pojo.getPacientes().stream().max(Comparator.comparing(Paciente::getIdade));
         int maxValue = max.map(Paciente::getIdade).orElse(0);
 
-        Optional <Paciente> min = pacientesInsideFilter.stream().min(Comparator.comparing(Paciente::getIdade));
+        Optional <Paciente> min = pojo.getPacientes().stream().min(Comparator.comparing(Paciente::getIdade));
         int minValue = min.map(Paciente::getIdade).orElse(0);
 
         slider.setValueFrom(minValue);
@@ -85,7 +85,7 @@ public class YearCategory extends PacientesFilterCategories {
 
         float[] valuesSelected = pojo.getState().getTupleOfYearSlider();
         slider.setValues(valuesSelected[0], valuesSelected[1]);
-        extracted(valuesSelected[0], valuesSelected[1]);
+        selectPacienteInsideRange(valuesSelected[0], valuesSelected[1]);
     }
 
 

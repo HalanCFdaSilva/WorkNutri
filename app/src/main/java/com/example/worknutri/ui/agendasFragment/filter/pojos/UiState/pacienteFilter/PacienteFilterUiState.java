@@ -1,5 +1,6 @@
 package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter;
 
+import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.UiState;
 
 import java.util.ArrayList;
@@ -7,9 +8,10 @@ import java.util.List;
 
 public class PacienteFilterUiState extends UiState {
     private char generoSelected = 'N';
-    private final List<Integer> clinicaIdSelected = new ArrayList<>();
+    private final List<Long> clinicaIdSelected = new ArrayList<>();
     private List<String> patologiasSelected = new ArrayList<>();
 
+    private List<ClassificacaoImc> classificacaoImcs = new ArrayList<>();
     private final float[] tupleOfYearSlider;
     private final float[] tupleOfWeightSlider;
 
@@ -32,7 +34,7 @@ public class PacienteFilterUiState extends UiState {
         this.generoSelected = generoSelected;
     }
 
-    public List<Integer> getClinicaIdSelected() {
+    public List<Long> getClinicaIdSelected() {
         return clinicaIdSelected;
     }
 
@@ -63,5 +65,9 @@ public class PacienteFilterUiState extends UiState {
 
     public float[] getTupleOfHeightSlider() {
         return tupleOfHeightSlider;
+    }
+
+    public List<ClassificacaoImc> getClassificacaoImcs() {
+        return classificacaoImcs;
     }
 }

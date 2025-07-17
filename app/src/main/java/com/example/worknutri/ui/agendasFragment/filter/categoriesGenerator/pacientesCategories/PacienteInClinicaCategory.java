@@ -34,42 +34,39 @@ public class PacienteInClinicaCategory extends PacientesFilterCategories {
     private void generateAllChips(ChipGroup chipGroup) {
 
         for (Clinica clinica : pojo.getClinicas()) {
-            List<Paciente> pacientesInClinica = pojo.getPacientes().stream()
-                    .filter(paciente -> paciente.getClinicaId() == clinica.getId())
-                    .collect(Collectors.toList());
-
-            if (!pacientesInClinica.isEmpty()) {
-                Chip chip = generateChip(clinica, pacientesInClinica);
+            if (pojo.getPacientes().stream().anyMatch(paciente -> paciente.getClinicaId() == clinica.getId())) {
+                Chip chip = generateChip(clinica);
                 chipGroup.addView(chip);
             }
         }
     }
 
-    private Chip generateChip(Clinica clinica, List<Paciente> pacientesInClinica) {
+    private Chip generateChip(Clinica clinica) {
         Chip chip = agendaFilter.generateChip(clinica.getNome());
-        chip.setId((int) clinica.getId());
-
-        onClickInChip(chip,pacientesInClinica);
-        chip.setChecked(pojo.getState().getClinicaIdSelected().contains(Integer.valueOf(chip.getId())));
+        onClickInChip(chip,clinica);
+        chip.setChecked(pojo.getState().getClinicaIdSelected().contains(clinica.getId()));
         return chip;
     }
 
-    private void onClickInChip(Chip chip, List<Paciente> pacientesInClinica) {
+    private void onClickInChip(Chip chip, Clinica clinica) {
         chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-            List<Integer> clinicaIdSelected = pojo.getState().getClinicaIdSelected();
-            Integer chipId = Integer.valueOf(chip.getId());
+            List<Paciente> pacientesInClinica = pojo.getPacientes().stream()
+                    .filter(paciente -> paciente.getClinicaId() == clinica.getId())
+                    .collect(Collectors.toList());
+
+            List<Long> clinicaIdSelected = pojo.getState().getClinicaIdSelected();
 
             if (isChecked){
 
                 insertPacientesInFilter(pacientesInClinica);
-                if (!clinicaIdSelected.contains(chipId)){
-                    clinicaIdSelected.add(chipId);
+                if (!clinicaIdSelected.contains(clinica.getId())){
+                    clinicaIdSelected.add(clinica.getId());
                 }
             }else {
 
                 pacientesInsideFilter.removeAll(pacientesInClinica);
-                clinicaIdSelected.remove(chipId);
+                clinicaIdSelected.remove(clinica.getId());
 
                 returnToStartIfHasNoFilterActive();
             }

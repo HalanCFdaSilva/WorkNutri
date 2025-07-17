@@ -11,7 +11,7 @@ public class PacienteFilterUiState extends UiState {
     private final List<Long> clinicaIdSelected = new ArrayList<>();
     private List<String> patologiasSelected = new ArrayList<>();
 
-    private List<ClassificacaoImc> classificacaoImcs = new ArrayList<>();
+    private final List<ClassificacaoImc> classificacaoImcs = new ArrayList<>();
     private final float[] tupleOfYearSlider;
     private final float[] tupleOfWeightSlider;
 

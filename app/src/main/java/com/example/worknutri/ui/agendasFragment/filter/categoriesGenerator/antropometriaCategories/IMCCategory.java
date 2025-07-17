@@ -78,10 +78,8 @@ public class IMCCategory extends PacientesFilterCategories {
                         tipoImc(Double.parseDouble(antropometria.getImc())) == classificacaoImc)
                 .collect(Collectors.toList());
         Stream<Paciente> pacienteStream = pojo.getPacientes().stream();
-        List<Paciente> collect = pacienteStream.filter(paciente -> antropometriaSelected.stream().anyMatch(antropometria -> antropometria.getIdPaciente() == paciente.getId()))
+        return pacienteStream.filter(paciente -> antropometriaSelected.stream().anyMatch(antropometria -> antropometria.getIdPaciente() == paciente.getId()))
                 .collect(Collectors.toList());
-        return collect;
-
     }
 
 }

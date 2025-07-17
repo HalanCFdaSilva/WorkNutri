@@ -93,11 +93,12 @@
         <ScrollView
             android:id="@+id/filter_layout_categories_scroll"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:contentDescription="@string/scroll_filter"
             app:layout_constraintBottom_toTopOf="@+id/filter_category_material_divider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="400dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sort_material_divider">
 

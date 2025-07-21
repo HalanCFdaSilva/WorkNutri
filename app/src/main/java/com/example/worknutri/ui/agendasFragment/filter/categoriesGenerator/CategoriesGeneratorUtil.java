@@ -60,17 +60,10 @@ public class CategoriesGeneratorUtil {
         return viewGroup;
     }
 
-    public RangeSlider generateRangeSlider(int min, int max) {
-        RangeSlider slider = new RangeSlider(context);
-        slider.setTickVisible(false);
-        slider.setValueFrom(min);
-        slider.setValueTo(max);
-        slider.setStepSize(1);
-        return slider;
-    }
 
     public RangeSlider generateRangeSlider(float min, float max) {
         RangeSlider slider = new RangeSlider(context);
+        slider.setId(R.id.filter_category_rangeslider);
         slider.setTickVisible(false);
         slider.setValueFrom(min);
         slider.setValueTo(max);

@@ -11,5 +11,6 @@ public interface CategoriesGenerator {
 
     ViewGroup generateCategory(LayoutInflater layoutInflater);
     <T> List<Paciente> getSelecteds();
+    void resetCategory();
 
 }

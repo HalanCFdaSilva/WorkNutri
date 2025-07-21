@@ -2,14 +2,12 @@ package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFi
 
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.UiState;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteFilterUiState extends UiState {
     private char generoSelected = 'N';
     private final List<Long> clinicaIdSelected = new ArrayList<>();
-    private List<String> patologiasSelected = new ArrayList<>();
 
     private final List<ClassificacaoImc> classificacaoImcs = new ArrayList<>();
     private final float[] tupleOfYearSlider;
@@ -39,14 +37,6 @@ public class PacienteFilterUiState extends UiState {
     }
 
 
-
-    public List<String> getPatologiasSelected() {
-        return patologiasSelected;
-    }
-
-    public void setPatologiasSelected(List<String> patologiasSelected) {
-        this.patologiasSelected = patologiasSelected;
-    }
     public PacienteFilterOrderBy getOrderBy() {
         return OrderBy;
     }

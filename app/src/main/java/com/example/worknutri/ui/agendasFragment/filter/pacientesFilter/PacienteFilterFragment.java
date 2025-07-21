@@ -6,13 +6,11 @@ import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.P
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.antropometriaCategories.AntropometriaCategoryFactory;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories.PacientesCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories.AntropometriaCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories.PacientesCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -38,12 +36,10 @@ public class PacienteFilterFragment extends FilterFragment {
 
     @Override
     protected void getAllCategories() {
-        pojo.getPacienteSelected().removeAll(pojo.getPacienteSelected());
+        pojo.getPacienteSelected().clear();
         for (Paciente paciente : pojo.getPacientes()) {
             boolean isSelected = true;
             for (CategoriesGenerator category : categories) {
-                Log.d("PacienteFilterFragment", "getAllCategories: " + paciente.getNomePaciente() + " isSelected: " + !category.getSelecteds().contains(paciente));
-
                 if (!category.getSelecteds().contains(paciente)){
                     isSelected = false;
                     break;

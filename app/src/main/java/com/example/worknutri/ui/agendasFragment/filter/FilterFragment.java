@@ -32,7 +32,6 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
         categories = new ArrayList<>();
 
         generateFilter(binding.filterBottomSheetParent.getContext());
-        onClickSaveButton();
 
         return binding.filterBottomSheetParent;
     }
@@ -47,16 +46,6 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
 
 
 
-    private void onClickSaveButton(){
-        binding.filterButonConfirm.setOnClickListener(v -> {
-
-            getAllCategories();
-            orderListOfSelecteds();
-            getParentFragmentManager().setFragmentResult(getRequestKey(),generateBundle());
-            dismiss();
-        });
-    }
-
     protected abstract void getAllCategories();
     protected abstract  void orderListOfSelecteds();
     protected abstract Bundle generateBundle();
@@ -68,6 +57,8 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         correctExpandedBottomSheet();
+        onClickSaveButton();
+        onClickInResetButton();
     }
 
     private void correctExpandedBottomSheet() {
@@ -81,6 +72,26 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
 
             behavior.setPeekHeight(coordinatorLayout.getHeight());
             coordinatorLayout.getParent().requestLayout();
+        });
+    }
+
+    private void onClickSaveButton(){
+        binding.filterButonConfirm.setOnClickListener(v -> {
+
+            getAllCategories();
+            orderListOfSelecteds();
+            getParentFragmentManager().setFragmentResult(getRequestKey(),generateBundle());
+            dismiss();
+        });
+    }
+
+    private void onClickInResetButton() {
+        binding.btnResetAll.setOnClickListener(onClick -> {
+            for (CategoriesGenerator category : categories) {
+                category.resetCategory();
+
+            }
+            binding.filterButonConfirm.callOnClick();
         });
     }
 

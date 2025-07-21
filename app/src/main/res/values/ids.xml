@@ -2,5 +2,6 @@
 <resources>
     <item name="classificacao_imc_textview" type="id"/>
 
+    <item name="filter_category_rangeslider" type="id"/>
     <item name="filter_category_chipgroup" type="id"/>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
@@ -24,7 +24,7 @@ public class WeightCategory extends PacientesFilterCategories {
     }
 
     @Override
-    public ViewGroup generateCategory(LayoutInflater layoutInflater) {
+    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = agendaFilter.generateCategory(layoutInflater, "Peso:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
@@ -36,18 +36,19 @@ public class WeightCategory extends PacientesFilterCategories {
 
     private RangeSlider generateRangeSlider() {
 
-        int maxValue = (int)getValue(pojo.getAntropometriaList().stream()
+        float maxValue = (int)getValue(pojo.getAntropometriaList().stream()
                 .max(Comparator.comparing(Antropometria::getPeso)));
 
-        int minValue =(int) getValue(pojo.getAntropometriaList().stream()
+        float minValue = (int)getValue(pojo.getAntropometriaList().stream()
                 .min(Comparator.comparing(Antropometria::getPeso)));
 
 
         RangeSlider slider = agendaFilter.generateRangeSlider(minValue, maxValue);
+        slider.setStepSize(1);
 
         onClickInSlider(slider);
 
-        setInitialValue(slider, (float) minValue, (float) maxValue);
+        setInitialValue(slider,  minValue, maxValue);
 
 
         return slider;
@@ -115,5 +116,8 @@ private void selectPacientesInRange(float[] values) {
     }
 
 
-
+    @Override
+    public void resetCategory() {
+       resetSlider(pojo.getState().getTupleOfWeightSlider());
+    }
 }

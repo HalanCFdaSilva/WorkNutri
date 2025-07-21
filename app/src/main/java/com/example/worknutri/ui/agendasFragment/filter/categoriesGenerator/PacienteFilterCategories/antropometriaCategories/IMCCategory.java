@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -26,7 +26,7 @@ public class IMCCategory extends PacientesFilterCategories {
     }
 
     @Override
-    public ViewGroup generateCategory(LayoutInflater layoutInflater) {
+    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
 
         ViewGroup viewGroup = agendaFilter.generateCategoryWithChipGroup(layoutInflater, "IMC:");
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
@@ -47,6 +47,7 @@ public class IMCCategory extends PacientesFilterCategories {
 
     private void onSelectChip(Chip chip,ClassificacaoImc classificacaoImc) {
         chip.setOnCheckedChangeListener((v, isChecked) -> {
+            List<ClassificacaoImc> imcCategories = pojo.getState().getClassificacaoImcs();
             if (firstTime){
                 pacientesInsideFilter.clear();
                 firstTime = false;
@@ -67,6 +68,7 @@ public class IMCCategory extends PacientesFilterCategories {
             } else {
                 pacientesInsideFilter.removeAll(pacientesInsideCategory);
                 classificacaoImcs.remove(classificacaoImc);
+                returnToStartIfHasNoFilterActive();
             }
         });
     }
@@ -82,4 +84,18 @@ public class IMCCategory extends PacientesFilterCategories {
                 .collect(Collectors.toList());
     }
 
+    private void returnToStartIfHasNoFilterActive() {
+        if (pacientesInsideFilter.isEmpty()){
+            resetCategory();
+
+        }
+    }
+
+    @Override
+    public void resetCategory() {
+
+        firstTime = true;
+        pojo.getState().getClassificacaoImcs().clear();
+        resetChipGroup();
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,10 @@ import android.view.ViewGroup;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +21,8 @@ public class PacienteInClinicaCategory extends PacientesFilterCategories {
         super(context, pacienteFilterPojo);
     }
 
-    @Override
-    public ViewGroup generateCategory(LayoutInflater layoutInflater) {
+
+    protected ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = agendaFilter.generateCategoryWithChipGroup(layoutInflater,"Clínica:");
         generateAllChips(viewGroup.findViewById(R.id.filter_category_chipgroup));
 
@@ -74,19 +72,27 @@ public class PacienteInClinicaCategory extends PacientesFilterCategories {
     }
 
     private void insertPacientesInFilter(List<Paciente> pacientesInClinica) {
-        if (hasNoFilterActive) {
-            hasNoFilterActive = false;
-            pacientesInsideFilter = new ArrayList<>(pacientesInClinica);
-        } else {
-            pacientesInsideFilter.addAll(pacientesInClinica);
+        if (hasNoFilterActive)
+            pacientesInsideFilter.clear();
+        hasNoFilterActive = false;
+
+        for (Paciente paciente : pacientesInClinica) {
+            if (!pacientesInsideFilter.contains(paciente)) {
+                pacientesInsideFilter.add(paciente);
+            }
         }
     }
     private void returnToStartIfHasNoFilterActive() {
         if (pacientesInsideFilter.isEmpty()){
-            pacientesInsideFilter.addAll(pojo.getPacientes());
-            hasNoFilterActive = true;
+            resetCategory();
+
         }
     }
 
-
+    @Override
+    public void resetCategory() {
+        hasNoFilterActive = true;
+        pojo.getState().getClinicaIdSelected().clear();
+        resetChipGroup();
+    }
 }

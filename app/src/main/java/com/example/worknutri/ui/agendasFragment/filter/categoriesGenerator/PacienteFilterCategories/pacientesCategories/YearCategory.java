@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
@@ -26,7 +26,7 @@ public class YearCategory extends PacientesFilterCategories {
         super(context, pacienteFilterPojo);
     }
 
-    public ViewGroup generateCategory(LayoutInflater layoutInflater) {
+    protected ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
 
         ViewGroup viewGroup = agendaFilter.generateCategory(layoutInflater, "Idade:");
 
@@ -40,8 +40,13 @@ public class YearCategory extends PacientesFilterCategories {
 
 
     private RangeSlider generateRangeSlider() {
-        RangeSlider slider = new RangeSlider(context);
-        slider.setTickVisible(false);
+        Optional<Paciente> max = pojo.getPacientes().stream().max(Comparator.comparing(Paciente::getIdade));
+        int maxValue = max.map(Paciente::getIdade).orElse(0);
+
+        Optional <Paciente> min = pojo.getPacientes().stream().min(Comparator.comparing(Paciente::getIdade));
+        int minValue = min.map(Paciente::getIdade).orElse(0);
+        RangeSlider slider = agendaFilter.generateRangeSlider(minValue,maxValue);
+        slider.setStepSize(1);
 
         slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
             @Override
@@ -56,7 +61,7 @@ public class YearCategory extends PacientesFilterCategories {
             }
         });
 
-        setValuesOfRangeSlider(slider);
+        setValuesifHasOldValues(slider);
 
         return slider;
     }
@@ -72,21 +77,19 @@ public class YearCategory extends PacientesFilterCategories {
         PojoUtil.setValuesOfFloatTuple(pojo.getState().getTupleOfYearSlider(), minValue, maxValue);
     }
 
-    private void setValuesOfRangeSlider(RangeSlider slider) {
-        Optional<Paciente> max = pojo.getPacientes().stream().max(Comparator.comparing(Paciente::getIdade));
-        int maxValue = max.map(Paciente::getIdade).orElse(0);
-
-        Optional <Paciente> min = pojo.getPacientes().stream().min(Comparator.comparing(Paciente::getIdade));
-        int minValue = min.map(Paciente::getIdade).orElse(0);
-
-        slider.setValueFrom(minValue);
-        slider.setValueTo(maxValue);
-        slider.setStepSize(1);
-
+    private void setValuesifHasOldValues(RangeSlider slider) {
         float[] valuesSelected = pojo.getState().getTupleOfYearSlider();
-        slider.setValues(valuesSelected[0], valuesSelected[1]);
-        selectPacienteInsideRange(valuesSelected[0], valuesSelected[1]);
+        if (valuesSelected[0] != 0 && valuesSelected[1] != 0) {
+            slider.setValues(valuesSelected[0], valuesSelected[1]);
+            selectPacienteInsideRange(valuesSelected[0], valuesSelected[1]);
+        }
     }
 
 
+    @Override
+    public void resetCategory() {
+        resetSlider(pojo.getState().getTupleOfYearSlider());
+
+
+    }
 }

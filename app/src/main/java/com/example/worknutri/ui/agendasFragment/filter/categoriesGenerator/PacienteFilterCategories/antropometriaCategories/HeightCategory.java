@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacientesFilterCategories;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
@@ -23,7 +23,7 @@ public class HeightCategory extends PacientesFilterCategories {
         super(context, pacienteFilterPojo);
     }
 
-    public ViewGroup generateCategory(LayoutInflater layoutInflater) {
+    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = agendaFilter.generateCategory(layoutInflater, "Altura:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
@@ -60,7 +60,7 @@ public class HeightCategory extends PacientesFilterCategories {
                 .orElse(0f);
     }
 
-    private void onClickInSlider(RangeSlider slider) {
+    private void onClickInSlider(@NonNull RangeSlider slider) {
         slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
             @Override
             public void onStartTrackingTouch(@NonNull RangeSlider slider) {
@@ -111,5 +111,10 @@ public class HeightCategory extends PacientesFilterCategories {
             slider.setValues(valuesOfWeightSlider[0], valuesOfWeightSlider[1]);
             selectPacientesInRange(valuesOfWeightSlider);
         }
+    }
+
+    @Override
+    public void resetCategory() {
+        resetSlider(pojo.getState().getTupleOfHeightSlider());
     }
 }

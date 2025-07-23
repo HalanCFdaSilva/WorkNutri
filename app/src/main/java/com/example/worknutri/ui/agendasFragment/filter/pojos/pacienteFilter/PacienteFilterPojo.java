@@ -1,10 +1,8 @@
-package com.example.worknutri.ui.agendasFragment.filter.pojos;
+package com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.sqlLite.domain.paciente.Patologia;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter.PacienteFilterUiState;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,17 +16,16 @@ public class PacienteFilterPojo implements Serializable {
     private List<Paciente> pacientes;
     private List<Paciente> pacienteSelected;
     private List<Antropometria> antropometriaList;
-    private List<Patologia> patologiaList;
     private List<Clinica> clinicas;
     private final PacienteFilterUiState state;
 
     public PacienteFilterPojo(List<Paciente> pacientes, List<Antropometria> antropometriaList,
-                              List<Patologia> patologiaList, List<Clinica> clinicas) {
+                              List<Clinica> clinicas) {
 
         this.pacientes = pacientes;
         resetPacienteSelected();
         this.antropometriaList = antropometriaList;
-        this.patologiaList = patologiaList;
+
         this.clinicas = clinicas;
 
         Optional<Paciente> max = pacientes.stream().max(Comparator.comparing(Paciente::getIdade));
@@ -56,14 +53,6 @@ public class PacienteFilterPojo implements Serializable {
 
     public void setAntropometriaList(List<Antropometria> antropometriaList) {
         this.antropometriaList = antropometriaList;
-    }
-
-    public List<Patologia> getPatologiaList() {
-        return patologiaList;
-    }
-
-    public void setPatologiaList(List<Patologia> patologiaList) {
-        this.patologiaList = patologiaList;
     }
 
     public List<Clinica> getClinicas() {

@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
 
@@ -18,14 +18,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class WeightCategory extends PacientesFilterCategories {
+public class WeightCategory extends PacientesFilterCategory {
     protected WeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         super(context, pacienteFilterPojo);
     }
 
     @Override
     public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
-        ViewGroup viewGroup = agendaFilter.generateCategory(layoutInflater, "Peso:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Peso:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
@@ -43,7 +43,7 @@ public class WeightCategory extends PacientesFilterCategories {
                 .min(Comparator.comparing(Antropometria::getPeso)));
 
 
-        RangeSlider slider = agendaFilter.generateRangeSlider(minValue, maxValue);
+        RangeSlider slider = categoriesGeneratorUtil.generateRangeSlider(minValue, maxValue);
         slider.setStepSize(1);
 
         onClickInSlider(slider);

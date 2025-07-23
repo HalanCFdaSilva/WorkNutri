@@ -10,26 +10,23 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.example.worknutri.databinding.FilterAgendaBinding;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class FilterFragment extends BottomSheetDialogFragment {
 
 
 
     private FilterAgendaBinding binding;
-    protected List<CategoriesGenerator> categories;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         binding = FilterAgendaBinding.inflate(inflater, container, false);
-        categories = new ArrayList<>();
+
 
         generateFilter(binding.filterBottomSheetParent.getContext());
 
@@ -38,10 +35,9 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
 
     protected abstract void generateFilter(Context context);
 
-    protected void insertCategotyInLayout(CategoriesGenerator categoryGenerate) {
+    protected void insertCategotyInLayout(FilterCategories categoryGenerate) {
         ViewGroup viewGroup = categoryGenerate.generateCategory(getLayoutInflater());
         binding.filterLayoutCategories.addView(viewGroup);
-        categories.add(categoryGenerate);
     }
 
 
@@ -87,13 +83,12 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
 
     private void onClickInResetButton() {
         binding.btnResetAll.setOnClickListener(onClick -> {
-            for (CategoriesGenerator category : categories) {
-                category.resetCategory();
-
-            }
+            resetAllCategories();
             binding.filterButonConfirm.callOnClick();
         });
     }
+
+    protected abstract void resetAllCategories();
 
 
 

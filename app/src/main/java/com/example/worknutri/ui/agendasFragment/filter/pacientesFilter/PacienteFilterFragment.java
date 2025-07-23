@@ -6,19 +6,25 @@ import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.P
 
 import android.content.Context;
 import android.os.Bundle;
+
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.CategoriesGenerator;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories.AntropometriaCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories.PacientesCategoryFactory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class PacienteFilterFragment extends FilterFragment {
 
     private PacienteFilterPojo pojo;
+
+    private final List<PacientesFilterCategory> categories = new ArrayList<>();
 
 
     @Override
@@ -34,12 +40,18 @@ public class PacienteFilterFragment extends FilterFragment {
 
     }
 
+
+    protected void insertCategotyInLayout(PacientesFilterCategory categoryGenerate) {
+        super.insertCategotyInLayout(categoryGenerate);
+        categories.add(categoryGenerate);
+    }
+
     @Override
     protected void getAllCategories() {
         pojo.getPacienteSelected().clear();
         for (Paciente paciente : pojo.getPacientes()) {
             boolean isSelected = true;
-            for (CategoriesGenerator category : categories) {
+            for (PacientesFilterCategory category : categories) {
                 if (!category.getSelecteds().contains(paciente)){
                     isSelected = false;
                     break;
@@ -105,6 +117,12 @@ public class PacienteFilterFragment extends FilterFragment {
         return PACIENTE_FILTER_BUNDLE;
     }
 
+    @Override
+    protected void resetAllCategories() {
+        for (PacientesFilterCategory category : categories) {
+            category.resetCategory();
+        }
+    }
 
 
 }

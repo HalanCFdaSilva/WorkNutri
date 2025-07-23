@@ -14,7 +14,7 @@ import com.example.worknutri.MainActivity;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.FragmentAgendaBinding;
 import com.example.worknutri.ui.agendasFragment.filter.NavsDirection.NavDirectionPacienteFilter;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
 
 public class AgendaPacienteFragment extends Fragment {

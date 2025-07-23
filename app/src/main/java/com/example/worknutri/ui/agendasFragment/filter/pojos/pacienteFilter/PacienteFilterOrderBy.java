@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter;
+package com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter;
 
 public enum PacienteFilterOrderBy {
     NONE("NONE"),

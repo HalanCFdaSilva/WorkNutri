@@ -2,7 +2,7 @@ package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.Paci
 
 import android.content.Context;
 
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
 public abstract class AntropometriaCategoryFactory {
 

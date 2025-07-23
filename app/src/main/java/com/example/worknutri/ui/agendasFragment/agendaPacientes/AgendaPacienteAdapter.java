@@ -7,18 +7,17 @@ import android.widget.LinearLayout;
 import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
 import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
-import com.example.worknutri.sqlLite.dao.paciente.PatologiaDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters.LetterPacienteFragment;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import java.util.List;
 
 public class AgendaPacienteAdapter {
     private final Context context;
     private final PacienteDao pacienteDao;
     private final AntropometriaDao antropometriaDao;
-    private final PatologiaDao patologiaDao;
+
     private final ClinicaDao clinicaDao;
     private PacienteFilterPojo pacienteFilterPojo;
 
@@ -27,10 +26,8 @@ public class AgendaPacienteAdapter {
         AppDataBase appDB = AppDataBase.getInstance(context);
         pacienteDao = appDB.pacienteDao();
         antropometriaDao = appDB.antropometriaDao();
-        patologiaDao = appDB.patologiaDao();
         clinicaDao = appDB.clinicaDao();
-        pacienteFilterPojo =  new PacienteFilterPojo(getPacientes(), antropometriaDao.getAll(),
-                patologiaDao.getAll(), clinicaDao.getAllInOrder());
+        pacienteFilterPojo =  new PacienteFilterPojo(getPacientes(), antropometriaDao.getAll(), clinicaDao.getAllInOrder());
     }
 
     public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout) {
@@ -68,7 +65,6 @@ public class AgendaPacienteAdapter {
     public void updatePojo(){
         pacienteFilterPojo.setPacientes(getPacientes());
         pacienteFilterPojo.setAntropometriaList(antropometriaDao.getAll());
-        pacienteFilterPojo.setPatologiaList(patologiaDao.getAll());
         pacienteFilterPojo.setClinicas(clinicaDao.getAllInOrder());
     }
 }

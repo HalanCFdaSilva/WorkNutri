@@ -5,14 +5,14 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GenderCategory extends PacientesFilterCategories {
+public class GenderCategory extends PacientesFilterCategory {
 
 
     protected GenderCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
@@ -20,7 +20,7 @@ public class GenderCategory extends PacientesFilterCategories {
     }
 
     protected ViewGroup generateViewGroup(LayoutInflater layoutInflater){
-        ViewGroup viewGroup = agendaFilter.generateCategoryWithChipGroup(layoutInflater,"Gênero:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater,"Gênero:");
 
         ChipGroup group = viewGroup.findViewById(R.id.filter_category_chipgroup);
         group.setSingleSelection(true);
@@ -37,7 +37,7 @@ public class GenderCategory extends PacientesFilterCategories {
 
 
     public Chip generateChip(String genero) {
-        Chip chip = agendaFilter.generateChip(genero);
+        Chip chip = categoriesGeneratorUtil.generateChip(genero);
 
         chip.setChecked(pojo.getState().getGeneroSelected() == genero.charAt(0));
         if (chip.isChecked())

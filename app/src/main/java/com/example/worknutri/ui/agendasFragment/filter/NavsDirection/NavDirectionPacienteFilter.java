@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
 import java.io.Serializable;
 
@@ -24,11 +24,8 @@ public class NavDirectionPacienteFilter extends NavDirectionsFilter {
     public Bundle getArguments() {
         Bundle bundle = new Bundle();
 
-        if (Serializable.class.isAssignableFrom(PacienteFilterPojo.class)) {
-            bundle.putSerializable(PACIENTE_FILTER_POJO, pacientePojo);
-        }else {
-            throw new UnsupportedOperationException("Serializable is not supported for this type of List");
-        }
+        Serializable.class.isAssignableFrom(PacienteFilterPojo.class);
+        bundle.putSerializable(PACIENTE_FILTER_POJO, pacientePojo);
         return bundle;
     }
 }

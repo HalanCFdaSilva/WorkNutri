@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
 
@@ -18,7 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class YearCategory extends PacientesFilterCategories {
+public class YearCategory extends PacientesFilterCategory {
 
 
 
@@ -28,7 +28,7 @@ public class YearCategory extends PacientesFilterCategories {
 
     protected ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
 
-        ViewGroup viewGroup = agendaFilter.generateCategory(layoutInflater, "Idade:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Idade:");
 
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
@@ -45,7 +45,7 @@ public class YearCategory extends PacientesFilterCategories {
 
         Optional <Paciente> min = pojo.getPacientes().stream().min(Comparator.comparing(Paciente::getIdade));
         int minValue = min.map(Paciente::getIdade).orElse(0);
-        RangeSlider slider = agendaFilter.generateRangeSlider(minValue,maxValue);
+        RangeSlider slider = categoriesGeneratorUtil.generateRangeSlider(minValue,maxValue);
         slider.setStepSize(1);
 
         slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {

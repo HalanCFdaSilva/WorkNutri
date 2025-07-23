@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
+package com.example.worknutri.ui.agendasFragment.filter.pojos;
 
 import java.io.Serializable;
 

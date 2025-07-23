@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PacienteInClinicaCategory extends PacientesFilterCategories {
+public class PacienteInClinicaCategory extends PacientesFilterCategory {
 
     private boolean hasNoFilterActive = true;
     protected PacienteInClinicaCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
@@ -23,7 +23,7 @@ public class PacienteInClinicaCategory extends PacientesFilterCategories {
 
 
     protected ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
-        ViewGroup viewGroup = agendaFilter.generateCategoryWithChipGroup(layoutInflater,"Clínica:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater,"Clínica:");
         generateAllChips(viewGroup.findViewById(R.id.filter_category_chipgroup));
 
         return viewGroup;
@@ -40,7 +40,7 @@ public class PacienteInClinicaCategory extends PacientesFilterCategories {
     }
 
     private Chip generateChip(Clinica clinica) {
-        Chip chip = agendaFilter.generateChip(clinica.getNome());
+        Chip chip = categoriesGeneratorUtil.generateChip(clinica.getNome());
         onClickInChip(chip,clinica);
         chip.setChecked(pojo.getState().getClinicaIdSelected().contains(clinica.getId()));
         return chip;

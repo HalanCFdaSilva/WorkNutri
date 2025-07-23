@@ -8,8 +8,8 @@ import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class IMCCategory extends PacientesFilterCategories {
+public class IMCCategory extends PacientesFilterCategory {
 
     boolean firstTime = true;
     public IMCCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
@@ -28,11 +28,11 @@ public class IMCCategory extends PacientesFilterCategories {
     @Override
     public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
 
-        ViewGroup viewGroup = agendaFilter.generateCategoryWithChipGroup(layoutInflater, "IMC:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater, "IMC:");
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
         List<ClassificacaoImc> classificacaoImcs = pojo.getState().getClassificacaoImcs();
         for (ClassificacaoImc classificacaoImc : ClassificacaoImc.values()) {
-            Chip chip = agendaFilter.generateChip(classificacaoImc.toString());
+            Chip chip = categoriesGeneratorUtil.generateChip(classificacaoImc.toString());
             chip.setBackgroundColor(classificacaoImc.getColor());
             onSelectChip(chip, classificacaoImc);
             chipGroup.addView(chip);

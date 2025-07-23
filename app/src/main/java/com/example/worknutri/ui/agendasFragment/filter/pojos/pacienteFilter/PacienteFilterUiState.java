@@ -1,7 +1,7 @@
-package com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.pacienteFilter;
+package com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter;
 
 import com.example.worknutri.calcular.ClassificacaoImc;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState.UiState;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import java.util.ArrayList;
 import java.util.List;
 

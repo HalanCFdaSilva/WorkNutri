@@ -42,8 +42,7 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
 
 
 
-    protected abstract void getAllCategories();
-    protected abstract  void orderListOfSelecteds();
+
     protected abstract Bundle generateBundle();
     protected abstract String getRequestKey();
 
@@ -80,6 +79,9 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
             dismiss();
         });
     }
+
+    protected abstract void getAllCategories();
+    protected abstract  void orderListOfSelecteds();
 
     private void onClickInResetButton() {
         binding.btnResetAll.setOnClickListener(onClick -> {

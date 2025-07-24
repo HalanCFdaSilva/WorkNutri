@@ -15,7 +15,7 @@ public class PacienteFilterUiState extends UiState {
 
     private final float[] tupleOfHeightSlider;
 
-    private PacienteFilterOrderBy OrderBy = PacienteFilterOrderBy.NONE;
+
 
 
     public PacienteFilterUiState(int minValue, int maxValue) {
@@ -36,14 +36,6 @@ public class PacienteFilterUiState extends UiState {
         return clinicaIdSelected;
     }
 
-
-    public PacienteFilterOrderBy getOrderBy() {
-        return OrderBy;
-    }
-
-    public void setOrderBy(PacienteFilterOrderBy orderBy) {
-        OrderBy = orderBy;
-    }
 
     public float[] getTupleOfYearSlider() {
         return tupleOfYearSlider;

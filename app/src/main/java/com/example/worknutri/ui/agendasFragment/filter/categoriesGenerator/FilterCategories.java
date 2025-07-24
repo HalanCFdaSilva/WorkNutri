@@ -13,15 +13,14 @@ public abstract class FilterCategories {
     }
 
     public ViewGroup generateCategory(LayoutInflater layoutInflater) {
-        this.viewGroup = generateViewGroup(layoutInflater);
+        this.viewGroup = generateView(layoutInflater);
         return viewGroup;
     }
-    protected abstract ViewGroup generateViewGroup(LayoutInflater layoutInflater);
+    protected abstract ViewGroup generateView(LayoutInflater layoutInflater);
 
-    public abstract void resetCategory();
-    protected abstract void resetChipGroup();
+    public abstract void reset();
 
-    protected abstract void resetSlider(float[] values);
+
 
 
 

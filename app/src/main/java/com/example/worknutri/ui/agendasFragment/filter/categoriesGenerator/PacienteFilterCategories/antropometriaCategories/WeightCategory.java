@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
@@ -24,7 +26,7 @@ public class WeightCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
+    public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Peso:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
@@ -117,7 +119,9 @@ private void selectPacientesInRange(float[] values) {
 
 
     @Override
-    public void resetCategory() {
-       resetSlider(pojo.getState().getTupleOfWeightSlider());
+    public void reset() {
+        super.reset();
+        ReseterOfCategory.resetSlider(viewGroup.findViewById(R.id.filter_category_rangeslider)
+                ,pojo.getState().getTupleOfWeightSlider());
     }
 }

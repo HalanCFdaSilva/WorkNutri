@@ -8,6 +8,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -22,7 +23,7 @@ public class PacienteInClinicaCategory extends PacientesFilterCategory {
     }
 
 
-    protected ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
+    protected ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater,"Clínica:");
         generateAllChips(viewGroup.findViewById(R.id.filter_category_chipgroup));
 
@@ -84,15 +85,17 @@ public class PacienteInClinicaCategory extends PacientesFilterCategory {
     }
     private void returnToStartIfHasNoFilterActive() {
         if (pacientesInsideFilter.isEmpty()){
-            resetCategory();
+            reset();
 
         }
     }
 
     @Override
-    public void resetCategory() {
+    public void reset() {
+        super.reset();
         hasNoFilterActive = true;
         pojo.getState().getClinicaIdSelected().clear();
-        resetChipGroup();
+        ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));
+
     }
 }

@@ -9,6 +9,7 @@ import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -26,7 +27,7 @@ public class IMCCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
+    public ViewGroup generateView(LayoutInflater layoutInflater) {
 
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater, "IMC:");
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
@@ -86,16 +87,16 @@ public class IMCCategory extends PacientesFilterCategory {
 
     private void returnToStartIfHasNoFilterActive() {
         if (pacientesInsideFilter.isEmpty()){
-            resetCategory();
+            reset();
 
         }
     }
 
     @Override
-    public void resetCategory() {
-
+    public void reset() {
+        super.reset();
         firstTime = true;
         pojo.getState().getClassificacaoImcs().clear();
-        resetChipGroup();
+        ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));
     }
 }

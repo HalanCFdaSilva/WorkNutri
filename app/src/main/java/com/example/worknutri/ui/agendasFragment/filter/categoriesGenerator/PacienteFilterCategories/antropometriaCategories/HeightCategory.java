@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
@@ -23,7 +25,7 @@ public class HeightCategory extends PacientesFilterCategory {
         super(context, pacienteFilterPojo);
     }
 
-    public ViewGroup generateViewGroup(LayoutInflater layoutInflater) {
+    public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Altura:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
@@ -114,7 +116,10 @@ public class HeightCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public void resetCategory() {
-        resetSlider(pojo.getState().getTupleOfHeightSlider());
+    public void reset() {
+        super.reset();
+        ReseterOfCategory.resetSlider(viewGroup.findViewById(R.id.filter_category_rangeslider)
+                ,pojo.getState().getTupleOfHeightSlider());
+
     }
 }

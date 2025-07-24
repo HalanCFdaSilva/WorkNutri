@@ -27,18 +27,11 @@ public abstract class PacientesFilterCategory extends FilterCategories {
     }
 
     @Override
-    protected  void resetChipGroup() {
-        ReseterOfPacientesFilterCategories reseter = new ReseterOfPacientesFilterCategories(pojo, pacientesInsideFilter);
-        reseter.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));
-
+    public void reset() {
+        pacientesInsideFilter.clear();
+        pacientesInsideFilter.addAll(pojo.getPacientes());
     }
 
-    @Override
-    protected  void resetSlider(float[] values) {
-        ReseterOfPacientesFilterCategories reseter = new ReseterOfPacientesFilterCategories(pojo, pacientesInsideFilter);
-        reseter.resetSlider(viewGroup.findViewById(R.id.filter_category_rangeslider),values);
-
-    }
 
 
 }

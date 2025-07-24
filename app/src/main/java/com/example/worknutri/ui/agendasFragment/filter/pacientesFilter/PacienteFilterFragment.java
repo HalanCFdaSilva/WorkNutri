@@ -29,7 +29,7 @@ public class PacienteFilterFragment extends FilterFragment {
 
     @Override
     protected void generateFilter(Context context) {
-        getPacientes();
+        getPojo();
 
         insertCategotyInLayout(PacientesCategoryFactory.generateGenderCategory(context, pojo));
         insertCategotyInLayout(PacientesCategoryFactory.generateYearCategory(context, pojo));
@@ -38,6 +38,17 @@ public class PacienteFilterFragment extends FilterFragment {
         insertCategotyInLayout(AntropometriaCategoryFactory.createHeightCategory(context, pojo));
         insertCategotyInLayout(AntropometriaCategoryFactory.createIMCCategory(context, pojo));
 
+    }
+
+    private void getPojo() {
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            if (arguments.containsKey(PACIENTE_FILTER_POJO)) {
+                pojo = (PacienteFilterPojo) arguments.getSerializable(PACIENTE_FILTER_POJO);
+            } else {
+                dismiss();
+            }
+        }
     }
 
 
@@ -87,16 +98,7 @@ public class PacienteFilterFragment extends FilterFragment {
     }
 
 
-    private void getPacientes() {
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            if (arguments.containsKey(PACIENTE_FILTER_POJO)) {
-                pojo = (PacienteFilterPojo) arguments.getSerializable(PACIENTE_FILTER_POJO);
-            } else {
-                dismiss();
-            }
-        }
-    }
+
 
 
     @Override
@@ -120,7 +122,7 @@ public class PacienteFilterFragment extends FilterFragment {
     @Override
     protected void resetAllCategories() {
         for (PacientesFilterCategory category : categories) {
-            category.resetCategory();
+            category.reset();
         }
     }
 

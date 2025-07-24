@@ -5,24 +5,35 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
+import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
+import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.LetterClinicaFragment;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 import java.util.List;
 
 public class AgendaClinicasAdapter {
 
-    private final ClinicaDao dao;
+    private final ClinicaDao clinicaDao;
+    private final PacienteDao pacienteDao;
+    private final DayOfWorkDao dayOfWorkDao;
     private final Context context;
+    private ClinicaFilterPojo clinicaFilterPojo;
 
     public AgendaClinicasAdapter(Context context) {
-        dao = AppDataBase.getInstance(context).clinicaDao();
         this.context = context;
+        AppDataBase appDataBase = AppDataBase.getInstance(context);
+        clinicaDao = appDataBase.clinicaDao();
+        pacienteDao = appDataBase.pacienteDao();
+        dayOfWorkDao = appDataBase.dayOfWorkDao();
+        clinicaFilterPojo = new ClinicaFilterPojo();
+        updatePojo();
     }
 
     public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout) {
-        List<Clinica> clinicaList = dao.getAllInOrder();
+        List<Clinica> clinicaList = clinicaDao.getAllInOrder();
         linearLayout.removeAllViews();
 
         LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaList);
@@ -44,6 +55,21 @@ public class AgendaClinicasAdapter {
     }
 
     public List<Clinica> getClinicaList() {
-        return dao.getAllInOrder();
+        return clinicaDao.getAllInOrder();
+    }
+
+    public ClinicaFilterPojo getClinicaFilterPojo() {
+        return clinicaFilterPojo;
+    }
+
+    public void setClinicaFilterPojo(ClinicaFilterPojo clinicaFilterPojo) {
+        this.clinicaFilterPojo = clinicaFilterPojo;
+    }
+
+    public void updatePojo() {
+        clinicaFilterPojo.setClinicas(clinicaDao.getAll());
+        clinicaFilterPojo.setPacientes(pacienteDao.getAll());
+        clinicaFilterPojo.setDayOfWorkList(dayOfWorkDao.getAll());
+
     }
 }

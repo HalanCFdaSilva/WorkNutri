@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories;
 
 import android.content.Context;
-import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;

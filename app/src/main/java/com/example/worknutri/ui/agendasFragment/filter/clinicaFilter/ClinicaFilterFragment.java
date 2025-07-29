@@ -16,11 +16,7 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import kotlin.NotImplementedError;
 
 public class ClinicaFilterFragment extends FilterFragment {
 
@@ -42,8 +38,8 @@ public class ClinicaFilterFragment extends FilterFragment {
     @Override
     protected List<OrderFilterSelectedsBy> getListOfSortChips() {
         return List.of(
-                OrderFilterSelectedsBy.NOME_ASC,
-                OrderFilterSelectedsBy.NOME_DESC,
+                OrderFilterSelectedsBy.NAME_ASC,
+                OrderFilterSelectedsBy.NAME_DESC,
                 OrderFilterSelectedsBy.BAIRRO,
                 OrderFilterSelectedsBy.CITY,
                 OrderFilterSelectedsBy.DAY_OF_WEEK,
@@ -102,39 +98,7 @@ public class ClinicaFilterFragment extends FilterFragment {
 
     }
 
-    @Override
-    protected void orderListOfSelecteds() {
-        if (!clinicaFilterPojo.getUiState().isInOrder()){
-            switch (clinicaFilterPojo.getUiState().getOrderBy()){
-                case NOME_ASC:{
-                    clinicaFilterPojo.setClinicasSelected(clinicaFilterPojo.getClinicasSelected().stream()
-                            .sorted(Comparator.comparing(Clinica::getNome))
-                            .collect(Collectors.toList()));
-                    break;
-                }
-                case NOME_DESC:{
-                    clinicaFilterPojo.setClinicasSelected(clinicaFilterPojo.getClinicasSelected().stream()
-                            .sorted(Comparator.comparing(Clinica::getNome).reversed())
-                            .collect(Collectors.toList()));
-                    break;
-                }
-                case CITY:{
-                    clinicaFilterPojo.setClinicasSelected(clinicaFilterPojo.getClinicasSelected().stream()
-                            .sorted(Comparator.comparing(Clinica::getCidade).reversed())
-                            .collect(Collectors.toList()));
-                    break;
-                }
-                case BAIRRO:{
-                    clinicaFilterPojo.setClinicasSelected(clinicaFilterPojo.getClinicasSelected().stream()
-                            .sorted(Comparator.comparing(Clinica::getBairro).reversed())
-                            .collect(Collectors.toList()));
-                    break;
-                }
-                case DAY_OF_WEEK: throw new NotImplementedError("Order by DAY_OF_WEEK is not implemented yet.");
-                case NUMBER_OF_PATIENTS: throw new NotImplementedError("Order by NUMBER_OF_PATIENTS is not implemented yet.");
-            }
-        }
-    }
+
 
     @Override
     protected void resetAllCategories() {

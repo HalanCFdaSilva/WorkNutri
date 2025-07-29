@@ -50,12 +50,12 @@ public class PacienteFilterFragment extends FilterFragment {
     @Override
     protected List<OrderFilterSelectedsBy> getListOfSortChips() {
         return List.of(
-                OrderFilterSelectedsBy.NOME_ASC,
-                OrderFilterSelectedsBy.NOME_DESC,
+                OrderFilterSelectedsBy.NAME_ASC,
+                OrderFilterSelectedsBy.NAME_DESC,
                 OrderFilterSelectedsBy.IMC_CATEGORY,
                 OrderFilterSelectedsBy.HEIGHT,
                 OrderFilterSelectedsBy.WEIGHT,
-                OrderFilterSelectedsBy.YEAR
+                OrderFilterSelectedsBy.AGE
         );
     }
 
@@ -93,31 +93,6 @@ public class PacienteFilterFragment extends FilterFragment {
         }
 
     }
-
-
-
-    @Override
-    protected void orderListOfSelecteds() {
-        if (!pojo.getState().isInOrder()){
-            switch (pojo.getState().getOrderBy()){
-                case NOME_ASC:{
-                    pojo.setPacienteSelected(pojo.getPacienteSelected().stream()
-                            .sorted(Comparator.comparing(Paciente::getNomePaciente))
-                            .collect(Collectors.toList()));
-                    break;
-                }
-                case NOME_DESC:{
-                    pojo.setPacienteSelected(pojo.getPacienteSelected().stream()
-                            .sorted(Comparator.comparing(Paciente::getNomePaciente).reversed())
-                            .collect(Collectors.toList()));
-                    break;
-                }
-            }
-        }
-    }
-
-
-
 
 
     @Override

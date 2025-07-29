@@ -5,22 +5,28 @@ import androidx.annotation.NonNull;
 import com.example.worknutri.R;
 
 public enum ClassificacaoImc {
-    DEFICIT(R.color.yellow_alert),
-    NORMAL(R.color.green_alert),
-    SOBRE_PESO(R.color.yellow_alert),
-    OBESIDADE_LEVE(R.color.orange_alert),
-    OBESIDADE_MEDIA(R.color.red_alert),
-    OBESIDADE_MORBIDA(R.color.magenta_alert);
+    DEFICIT(R.color.yellow_alert, -1),
+    NORMAL(R.color.green_alert, 0),
+    SOBRE_PESO(R.color.yellow_alert, 1),
+    OBESIDADE_LEVE(R.color.orange_alert, 2),
+    OBESIDADE_MEDIA(R.color.red_alert, 3),
+    OBESIDADE_MORBIDA(R.color.magenta_alert, 4);
 
     private final int color;
+    private final int priority;
 
-    ClassificacaoImc(int color) {
+    ClassificacaoImc(int color, int priority) {
         this.color = color;
+        this.priority = priority;
     }
 
 
     public int getColor() {
         return color;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public static ClassificacaoImc tipoImc(double valor) {

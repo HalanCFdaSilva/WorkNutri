@@ -86,14 +86,13 @@ public abstract class FilterFragment extends BottomSheetDialogFragment {
         binding.filterButonConfirm.setOnClickListener(v -> {
 
             getAllCategories();
-            orderListOfSelecteds();
             getParentFragmentManager().setFragmentResult(getRequestKey(),generateBundle());
             dismiss();
         });
     }
 
     protected abstract void getAllCategories();
-    protected abstract  void orderListOfSelecteds();
+
 
     private void onClickInResetButton() {
         binding.btnResetAll.setOnClickListener(onClick -> {

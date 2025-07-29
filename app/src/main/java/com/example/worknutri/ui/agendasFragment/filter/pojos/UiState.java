@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public abstract class UiState implements Serializable {
     private boolean inOrder = true;
-    private OrderFilterSelectedsBy OrderBy = OrderFilterSelectedsBy.NOME_ASC;
+    private OrderFilterSelectedsBy OrderBy = OrderFilterSelectedsBy.NAME_ASC;
 
 
     public boolean isInOrder() {

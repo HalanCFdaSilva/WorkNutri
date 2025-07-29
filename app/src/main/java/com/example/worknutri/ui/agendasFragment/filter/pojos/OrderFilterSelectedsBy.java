@@ -3,14 +3,14 @@ package com.example.worknutri.ui.agendasFragment.filter.pojos;
 import org.jetbrains.annotations.Nullable;
 
 public enum OrderFilterSelectedsBy {
-    NOME_ASC("NOME_ASC"),
-    NOME_DESC("NOME_DESC"),
+    NAME_ASC("NOME_ASC"),
+    NAME_DESC("NOME_DESC"),
 
     // For PacienteFilter
     IMC_CATEGORY("IMC_CATEGORY"),
     HEIGHT("ALTURA"),
     WEIGHT("PESO"),
-    YEAR("ANO"),
+    AGE("IDADE"),
 
     // For ClinicaFilter
     BAIRRO("BAIRRO"),

@@ -45,40 +45,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/filter_title" />
 
-        <HorizontalScrollView
+        <LinearLayout
             android:id="@+id/filter_layout_sort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/filter_sort_title">
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/filter_sort_chipgroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:selectionRequired="false"
-                app:singleSelection="true">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_sort_by_name"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sort_by_name_asc" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_sort_by_name_desc"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sort_by_name_desc"
-                    tools:checked="true" />
-
-            </com.google.android.material.chip.ChipGroup>
-
-        </HorizontalScrollView>
+            app:layout_constraintTop_toBottomOf="@id/filter_sort_title"/>
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/sort_material_divider"

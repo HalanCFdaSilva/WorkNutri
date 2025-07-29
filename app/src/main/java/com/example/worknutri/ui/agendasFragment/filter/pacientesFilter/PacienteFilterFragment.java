@@ -12,6 +12,8 @@ import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories.AntropometriaCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories.PacientesCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
 import java.util.ArrayList;
@@ -38,6 +40,23 @@ public class PacienteFilterFragment extends FilterFragment {
         insertCategotyInLayout(AntropometriaCategoryFactory.createHeightCategory(context, pojo));
         insertCategotyInLayout(AntropometriaCategoryFactory.createIMCCategory(context, pojo));
 
+    }
+
+    @Override
+    protected UiState getUiState() {
+        return pojo.getState();
+    }
+
+    @Override
+    protected List<OrderFilterSelectedsBy> getListOfSortChips() {
+        return List.of(
+                OrderFilterSelectedsBy.NOME_ASC,
+                OrderFilterSelectedsBy.NOME_DESC,
+                OrderFilterSelectedsBy.IMC_CATEGORY,
+                OrderFilterSelectedsBy.HEIGHT,
+                OrderFilterSelectedsBy.WEIGHT,
+                OrderFilterSelectedsBy.YEAR
+        );
     }
 
     private void getPojo() {

@@ -11,6 +11,8 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.FilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories.ClinicaFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories.ClinicaFilterCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 import java.util.ArrayList;
@@ -32,6 +34,24 @@ public class ClinicaFilterFragment extends FilterFragment {
         insertCategotyInLayout(ClinicaFilterCategoryFactory.generateHourWorkCategory(context, clinicaFilterPojo));
     }
 
+    @Override
+    protected UiState getUiState() {
+        return clinicaFilterPojo.getUiState();
+    }
+
+    @Override
+    protected List<OrderFilterSelectedsBy> getListOfSortChips() {
+        return List.of(
+                OrderFilterSelectedsBy.NOME_ASC,
+                OrderFilterSelectedsBy.NOME_DESC,
+                OrderFilterSelectedsBy.BAIRRO,
+                OrderFilterSelectedsBy.CITY,
+                OrderFilterSelectedsBy.DAY_OF_WEEK,
+                OrderFilterSelectedsBy.NUMBER_OF_PATIENTS
+        );
+    }
+
+
     protected void insertCategotyInLayout(ClinicaFilterCategory categoryGenerate) {
         super.insertCategotyInLayout(categoryGenerate);
         categories.add(categoryGenerate);
@@ -49,11 +69,27 @@ public class ClinicaFilterFragment extends FilterFragment {
     }
 
     @Override
+    protected Bundle generateBundle() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(CLINICA_FILTER_POJO, clinicaFilterPojo);
+        return bundle;
+
+    }
+
+    @Override
+    protected String getRequestKey() {
+        return CLINICA_FILTER_BUNDLE;
+    }
+
+
+    @Override
     protected void getAllCategories() {
         clinicaFilterPojo.getClinicasSelected().clear();
         for (Clinica clinica : clinicaFilterPojo.getClinicas()) {
             boolean isSelected = true;
             for (ClinicaFilterCategory category : categories) {
+
+
                 if (!category.getSelecteds().contains(clinica)){
                     isSelected = false;
                     break;
@@ -98,19 +134,6 @@ public class ClinicaFilterFragment extends FilterFragment {
                 case NUMBER_OF_PATIENTS: throw new NotImplementedError("Order by NUMBER_OF_PATIENTS is not implemented yet.");
             }
         }
-    }
-
-    @Override
-    protected Bundle generateBundle() {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(CLINICA_FILTER_POJO, clinicaFilterPojo);
-        return bundle;
-
-    }
-
-    @Override
-    protected String getRequestKey() {
-        return CLINICA_FILTER_BUNDLE;
     }
 
     @Override

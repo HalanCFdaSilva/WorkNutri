@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.worknutri.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
@@ -42,16 +44,23 @@ public class CategoriesGeneratorUtil {
         TextView text = viewGroup.findViewById(R.id.filter_category_title);
         text.setText(title);
 
-        HorizontalScrollView scrollView = new HorizontalScrollView(context);
-        ChipGroup chipGroup = new ChipGroup(context);
-        chipGroup.setSelectionRequired(false);
-        chipGroup.setId(R.id.filter_category_chipgroup);
-        scrollView.addView(chipGroup);
+        HorizontalScrollView scrollView = generateChipGroup();
         ViewGroup linearlayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
         linearlayout.addView(scrollView);
 
         return viewGroup;
     }
+
+    @NonNull
+    public HorizontalScrollView generateChipGroup() {
+        HorizontalScrollView scrollView = new HorizontalScrollView(context);
+        ChipGroup chipGroup = new ChipGroup(context);
+        chipGroup.setSelectionRequired(false);
+        chipGroup.setId(R.id.filter_category_chipgroup);
+        scrollView.addView(chipGroup);
+        return scrollView;
+    }
+
     public ViewGroup generateCategory(LayoutInflater inflater,
                                       String title){
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.filter_category, null);

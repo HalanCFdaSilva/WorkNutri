@@ -8,15 +8,15 @@ public enum OrderFilterSelectedsBy {
 
     // For PacienteFilter
     IMC_CATEGORY("IMC_CATEGORY"),
-    HEIGHT("HEIGHT"),
-    WEIGHT("WEIGHT"),
-    YEAR("YEAR"),
+    HEIGHT("ALTURA"),
+    WEIGHT("PESO"),
+    YEAR("ANO"),
 
     // For ClinicaFilter
     BAIRRO("BAIRRO"),
-    CITY("CITY"),
-    DAY_OF_WEEK("DAY_OF_WEEK"),
-    NUMBER_OF_PATIENTS("NUMBER_OF_PATIENTS");
+    CITY("CIDADE"),
+    DAY_OF_WEEK("DIA_DA_SEMANA"),
+    NUMBER_OF_PATIENTS("NUMERO_DE_PACIENTES");
 
 
 

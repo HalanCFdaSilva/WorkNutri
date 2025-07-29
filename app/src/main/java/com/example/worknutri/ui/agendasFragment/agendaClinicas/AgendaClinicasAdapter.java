@@ -29,14 +29,14 @@ public class AgendaClinicasAdapter {
         pacienteDao = appDataBase.pacienteDao();
         dayOfWorkDao = appDataBase.dayOfWorkDao();
         clinicaFilterPojo = new ClinicaFilterPojo();
+        clinicaFilterPojo.setClinicasSelected(clinicaDao.getAllInOrder());
         updatePojo();
     }
 
     public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout) {
-        List<Clinica> clinicaList = clinicaDao.getAllInOrder();
-        linearLayout.removeAllViews();
 
-        LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaList);
+        linearLayout.removeAllViews();
+        LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaFilterPojo.getClinicasSelected());
         letterClinicaFragment.generateAgenda(linearLayout, context);
 
     }
@@ -44,7 +44,6 @@ public class AgendaClinicasAdapter {
     public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout, List<Clinica> clinicaList) {
 
         linearLayout.removeAllViews();
-
         LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaList);
         letterClinicaFragment.generateAgenda(linearLayout, context);
 

@@ -11,6 +11,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,12 +27,20 @@ public class DayInClinicaCategory extends ClinicaFilterCategory {
     public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater,"Dia na Clinica:");
         String[] diasSemana = context.getResources().getStringArray(R.array.dias_semana);
+        ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
         for (String dia : diasSemana){
             Chip chip = categoriesGeneratorUtil.generateChip(dia);
             onClickInChip(chip);
-            viewGroup.addView(chip);
+            selectChip(chip);
+            chipGroup.addView(chip);
         }
         return viewGroup;
+    }
+
+    private void selectChip(Chip chip) {
+        String dayOfWeek = chip.getText().toString();
+        if (clinicaFilterPojo.getUiState().getDaysOfWeekSelected().contains(dayOfWeek))
+            chip.setChecked(true);
     }
 
     private void onClickInChip(Chip chip) {
@@ -85,8 +94,9 @@ public class DayInClinicaCategory extends ClinicaFilterCategory {
 
     @Override
     public void reset() {
-        clinicasSelecteds.addAll(clinicaFilterPojo.getClinicas());
+        super.reset();
         isFirstTime = true;
+        clinicaFilterPojo.getUiState().getDaysOfWeekSelected().clear();
 
     }
 }

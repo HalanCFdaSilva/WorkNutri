@@ -62,7 +62,7 @@ public class AgendaClinicasFragment extends Fragment {
 
             adapter.updatePojo();
             NavDirectionClinicaFilter filter = new NavDirectionClinicaFilter(
-                    R.id.action_navigation_pacientes_to_filter,
+                    R.id.action_navigation_clinicas_to_filter,
                     adapter.getClinicaFilterPojo());
             Navigation.findNavController(v).navigate(filter);
         });

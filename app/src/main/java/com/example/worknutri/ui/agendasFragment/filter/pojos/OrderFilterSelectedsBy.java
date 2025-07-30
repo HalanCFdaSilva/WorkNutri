@@ -13,7 +13,7 @@ public enum OrderFilterSelectedsBy {
     AGE("IDADE"),
 
     // For ClinicaFilter
-    BAIRRO("BAIRRO"),
+    DISTRICT("BAIRRO"),
     CITY("CIDADE"),
     DAY_OF_WEEK("DIA_DA_SEMANA"),
     NUMBER_OF_PATIENTS("NUMERO_DE_PACIENTES");

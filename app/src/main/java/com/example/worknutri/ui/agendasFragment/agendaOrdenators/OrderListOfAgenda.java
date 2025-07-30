@@ -17,7 +17,7 @@ public class OrderListOfAgenda {
 
             case NAME_DESC: return clinicaOrder.byName(true);
 
-            case BAIRRO: return clinicaOrder.byBairro();
+            case DISTRICT: return clinicaOrder.byBairro();
 
             case CITY: return clinicaOrder.byCidade();
 

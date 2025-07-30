@@ -17,41 +17,34 @@ import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
 import java.util.List;
 
 public class ClinicaCardInflater {
-    private final List<Clinica> clinicas;
     private final Context context;
 
 
-    public ClinicaCardInflater(List<Clinica> clinicas, Context context) {
+    public ClinicaCardInflater( Context context) {
 
-        this.clinicas = clinicas;
+
         this.context = context;
 
     }
 
-    public void refreshLayout(LinearLayout layout) {
-        layout.removeAllViews();
-        ViewGroup viewGroup = null;
-        for (Clinica clinica : clinicas) {
-            viewGroup = generateClinicaCard(layout, clinica, context);
-            viewGroup.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.VISIBLE);
+    public ViewGroup generateClinicaCard(ViewGroup layoutWereAddCard,Clinica clinica) {
 
-            viewGroup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ClinicaDescriptionActivity.class);
-                    intent.putExtra(ExtrasActivities.CLINICA, clinica);
-                    context.startActivities(new Intent[]{intent});
-                }
-            });
-            layout.addView(viewGroup);
-        }
-        if (viewGroup != null) {
-            viewGroup.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.GONE);
-        }
+        ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
+        viewGroup.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.VISIBLE);
+
+        viewGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ClinicaDescriptionActivity.class);
+                intent.putExtra(ExtrasActivities.CLINICA, clinica);
+                context.startActivities(new Intent[]{intent});
+            }
+        });
+        return viewGroup;
     }
 
-    public static ViewGroup generateClinicaCard(ViewGroup layout, Clinica clinica, Context context) {
-        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout, false);
+    private ViewGroup inflateClinicaCard(ViewGroup layout, Clinica clinica, Context context) {
+        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
         InsertSelectViewSupport.insertInTextView(textView, clinica.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);

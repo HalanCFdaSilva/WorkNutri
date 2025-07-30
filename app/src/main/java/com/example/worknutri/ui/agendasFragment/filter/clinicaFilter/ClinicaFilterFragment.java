@@ -40,7 +40,7 @@ public class ClinicaFilterFragment extends FilterFragment {
         return List.of(
                 OrderFilterSelectedsBy.NAME_ASC,
                 OrderFilterSelectedsBy.NAME_DESC,
-                OrderFilterSelectedsBy.BAIRRO,
+                OrderFilterSelectedsBy.DISTRICT,
                 OrderFilterSelectedsBy.CITY,
                 OrderFilterSelectedsBy.DAY_OF_WEEK,
                 OrderFilterSelectedsBy.NUMBER_OF_PATIENTS

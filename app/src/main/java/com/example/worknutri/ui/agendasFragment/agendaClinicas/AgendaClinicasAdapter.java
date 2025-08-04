@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.agendasFragment.agendaClinicas;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
@@ -9,6 +8,8 @@ import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater.ClinicaScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaOrdenators.OrderListOfAgenda;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 import java.util.List;
@@ -32,19 +33,20 @@ public class AgendaClinicasAdapter {
         updatePojo();
     }
 
-    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout) {
-
+    public void inflateAgenda(LinearLayout linearLayout) {
         linearLayout.removeAllViews();
-        LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaFilterPojo.getClinicasSelected());
-        letterClinicaFragment.generateAgenda(linearLayout, context);
+
+        OrderListOfAgenda orderListOfAgenda = new OrderListOfAgenda();
+        orderListOfAgenda.orderToAgendaClinicas(clinicaFilterPojo);
+        
+        ClinicaScheduleInflater clinicaScheduleInflater = new ClinicaScheduleInflater(clinicaFilterPojo);
+        clinicaScheduleInflater.inflateSchedule(linearLayout, context);
 
     }
 
-    public void inflateAgenda(LayoutInflater inflater, LinearLayout linearLayout, List<Clinica> clinicaList) {
-
-        linearLayout.removeAllViews();
-        LetterClinicaFragment letterClinicaFragment = new LetterClinicaFragment(inflater, clinicaList);
-        letterClinicaFragment.generateAgenda(linearLayout, context);
+    public void inflateAgenda(LinearLayout linearLayout, List<Clinica> clinicaList) {
+        clinicaFilterPojo.setClinicasSelected(clinicaList);
+        inflateAgenda(linearLayout);
 
     }
 

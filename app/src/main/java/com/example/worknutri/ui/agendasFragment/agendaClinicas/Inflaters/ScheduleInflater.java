@@ -1,6 +1,7 @@
 package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater.ClinicaCardInflater;
 
 import java.util.List;
 
@@ -26,24 +28,23 @@ public abstract class ScheduleInflater<T> {
 
         while (!elementsToAdd.isEmpty()){
 
-            ViewGroup categoryViewGroup = generateCategory(viewGroup, elementsToAdd.get(0));
+            ViewGroup categoryViewGroup = generateCategory(elementsToAdd.get(0));
+            viewGroup.addView(categoryViewGroup);
             List<T> collect = filterElements(elementsToAdd);
-            elementsToAdd.removeAll(collect);
             inflateCard(categoryViewGroup.findViewById(R.id.agenda_letter_fragment_linear_layout), collect);
+            elementsToAdd.removeAll(collect);
         }
 
     }
 
     protected abstract List<T> filterElements(List<T> elementsToAdd);
 
-    ;
-
-    protected ViewGroup generateCategory(ViewGroup viewToInsert, T firstElementOfCategory) {
+    protected ViewGroup generateCategory(T firstElementOfCategory) {
         ViewGroup categoryViewGroup = (ViewGroup) LayoutInflater.from(context).inflate(
-                com.example.worknutri.R.layout.agenda_letter_fragment, viewToInsert);
+                com.example.worknutri.R.layout.agenda_letter_fragment, null);
 
         TextView textView = categoryViewGroup.findViewById(R.id.agenda_letter_fragment_agenda_textview);
-        textView.setText(getCategoryTitle(firstElementOfCategory));
+        textView.setText(getCategoryTitle(firstElementOfCategory).toUpperCase());
 
         return categoryViewGroup;
     }

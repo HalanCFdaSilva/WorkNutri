@@ -1,9 +1,8 @@
-package com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters;
+package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,17 +29,13 @@ public class PacienteCardInflater {
     public void refreshLayout(LinearLayout layout, LayoutInflater inflater) {
         layout.removeAllViews();
         pacientes.forEach(paciente -> {
-            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.card_fragment_paciente, null);
+            ViewGroup view = (ViewGroup) inflater.inflate(R.layout.card_fragment_paciente, layout);
             TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
             textView.setText(paciente.getNomePaciente());
-            layout.addView(view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, PacienteDescriptionActivity.class);
-                    intent.putExtra(ExtrasActivities.PACIENTE, paciente);
-                    context.startActivities(new Intent[]{intent});
-                }
+            view.setOnClickListener( onClick ->{
+                Intent intent = new Intent(context, PacienteDescriptionActivity.class);
+                intent.putExtra(ExtrasActivities.PACIENTE, paciente);
+                context.startActivities(new Intent[]{intent});
             });
         });
 

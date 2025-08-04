@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.ClinicScheduleInflater;
+package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater;
 
 import android.content.Context;
 
@@ -24,9 +24,8 @@ public class WeekClinicScheduleInflater extends ScheduleInflater<Clinica> {
     protected List<Clinica> filterElements(List<Clinica> elementsToAdd) {
         List<Clinica> clinicas = new ArrayList<>(elementsToAdd);
         daysOfWork.stream().filter( dayOfWork -> dayOfWork.getDayOfWeek().equals(daysOfWeek[currentDayIndex]))
-                .forEach(dayOfWork -> {
-                    clinicas.removeIf(clinica -> clinica.getId() != dayOfWork.getIdClinica());
-                });
+                .forEach(dayOfWork -> clinicas
+                        .removeIf(clinica -> clinica.getId() != dayOfWork.getIdClinica()));
 
         return clinicas;
     }

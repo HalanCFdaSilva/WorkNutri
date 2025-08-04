@@ -49,7 +49,7 @@ public class AgendaClinicasFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapter.inflateAgenda(getLayoutInflater(), binding.agendaFragmentLinearLayout);
+        adapter.inflateAgenda(binding.agendaFragmentLinearLayout);
         configureFilter();
     }
     private void configureFilter() {
@@ -74,7 +74,7 @@ public class AgendaClinicasFragment extends Fragment {
             if (result.containsKey(CLINICA_FILTER_POJO)) {
                 ClinicaFilterPojo clinicaFilterPojo = (ClinicaFilterPojo) result.getSerializable(CLINICA_FILTER_POJO);
                 adapter.setClinicaFilterPojo(clinicaFilterPojo);
-                adapter.inflateAgenda(getLayoutInflater(), binding.agendaFragmentLinearLayout);
+                adapter.inflateAgenda(binding.agendaFragmentLinearLayout);
             }
         });
     }

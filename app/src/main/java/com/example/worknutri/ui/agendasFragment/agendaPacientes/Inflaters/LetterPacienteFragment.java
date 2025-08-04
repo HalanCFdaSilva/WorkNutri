@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater.PacienteCardInflater;
 
 import java.util.ArrayList;
 import java.util.List;

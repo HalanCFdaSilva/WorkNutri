@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaPacientes;
+package com.example.worknutri.ui.agendasFragment.fragments.agendaPacientes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaPacientes.Inflaters.LetterPacienteFragment;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import java.util.List;
 

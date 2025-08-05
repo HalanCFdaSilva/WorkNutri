@@ -1,9 +1,9 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater;
+package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes;
 
 import android.content.Context;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.ScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.ScheduleInflater;
 
 import java.util.List;
 import java.util.stream.Collectors;

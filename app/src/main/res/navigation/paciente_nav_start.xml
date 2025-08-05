@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/navigation_pacientes"
-        android:name="com.example.worknutri.ui.agendasFragment.agendaPacientes.AgendaPacienteFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.fragments.agendaPacientes.AgendaPacienteFragment"
         android:label="@string/title_pacientes"
         tools:layout="@layout/fragment_agenda" >
         <action
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/navigation_clinicas"
-        android:name="com.example.worknutri.ui.agendasFragment.agendaClinicas.AgendaClinicasFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas.AgendaClinicasFragment"
         android:label="@string/title_clinicas"
         tools:layout="@layout/fragment_agenda" >
         <action

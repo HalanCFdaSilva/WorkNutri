@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas;
+package com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

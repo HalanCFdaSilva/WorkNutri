@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas;
+package com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas;
 
 import android.text.Editable;
 import android.text.TextWatcher;

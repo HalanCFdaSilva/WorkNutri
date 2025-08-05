@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater;
+package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes;
 
 import static java.util.stream.Collectors.toList;
 
@@ -6,14 +6,14 @@ import android.content.Context;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.ScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.ScheduleInflater;
 
 import java.util.List;
 
 public class PatientsClinicScheduleInflater extends ScheduleInflater<Clinica> {
 
     private final List<Paciente> pacientes;
-    protected PatientsClinicScheduleInflater(Context context, List<Paciente> pacientes) {
+    public PatientsClinicScheduleInflater(Context context, List<Paciente> pacientes) {
         super(context);
         this.pacientes = pacientes;
     }

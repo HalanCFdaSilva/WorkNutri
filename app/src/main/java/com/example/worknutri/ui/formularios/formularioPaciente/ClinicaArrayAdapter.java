@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater.ClinicaCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicaCardInflater;
 
 import java.util.List;
 

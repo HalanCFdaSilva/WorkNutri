@@ -1,11 +1,11 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater;
+package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes;
 
 import android.content.Context;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.ScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.ScheduleInflater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class WeekClinicScheduleInflater extends ScheduleInflater<Clinica> {
     private final String[] daysOfWeek;
     private int currentDayIndex = 0;
     private final List<DayOfWork> daysOfWork;
-    protected WeekClinicScheduleInflater(Context context, List<DayOfWork> daysOfWork) {
+    public WeekClinicScheduleInflater(Context context, List<DayOfWork> daysOfWork) {
         super(context);
         daysOfWeek = context.getResources().getStringArray(R.array.dias_semana);
         this.daysOfWork = daysOfWork;

@@ -1,10 +1,14 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater;
+package com.example.worknutri.ui.agendasFragment.agendaInflater;
 
 import android.content.Context;
 import android.view.ViewGroup;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.ScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.NameScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes.CityClinicScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes.DistrictClinicScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes.PatientsClinicScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes.WeekClinicScheduleInflater;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 public class ClinicaScheduleInflater {
@@ -37,7 +41,7 @@ public class ClinicaScheduleInflater {
                 break;
             }
             default: {
-                scheduleInflater = new NameClinicScheduleInflater<>(context);
+                scheduleInflater = new NameScheduleInflater<>(context);
                 break;
             }
 

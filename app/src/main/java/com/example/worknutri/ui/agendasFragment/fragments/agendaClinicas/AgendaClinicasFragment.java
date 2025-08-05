@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas;
+package com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas;
 
 
 import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.CLINICA_FILTER_BUNDLE;

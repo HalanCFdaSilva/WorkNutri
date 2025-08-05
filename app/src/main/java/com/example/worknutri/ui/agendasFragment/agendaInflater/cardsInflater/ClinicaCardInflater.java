@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater;
+package com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.InsertSelectViewSupport;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
 
-public class ClinicaCardInflater {
+public class ClinicaCardInflater implements CardInflater<Clinica> {
     private final Context context;
 
 
@@ -24,7 +24,8 @@ public class ClinicaCardInflater {
 
     }
 
-    public ViewGroup generateClinicaCard(ViewGroup layoutWereAddCard,Clinica clinica) {
+    @Override
+    public ViewGroup generateCard(ViewGroup layoutWereAddCard, Clinica clinica) {
 
         ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
         viewGroup.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.VISIBLE);

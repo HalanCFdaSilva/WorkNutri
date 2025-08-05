@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters;
+package com.example.worknutri.ui.agendasFragment.agendaInflater;
 
 import android.content.Context;
 
@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.cardsInflater.ClinicaCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicaCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.PacienteCardInflater;
 
 import java.util.List;
 
@@ -68,12 +69,14 @@ public abstract class ScheduleInflater<T> {
     }
 
     private ViewGroup getPacienteCard(ViewGroup viewGroup, Paciente element) {
-        return null;
+        PacienteCardInflater pacienteCardInflater = new PacienteCardInflater(context);
+        return pacienteCardInflater.generateCard(viewGroup, element);
+
     }
 
     private ViewGroup getClinicaCard(ViewGroup viewGroup, Clinica element) {
         ClinicaCardInflater clinicaCardInflater = new ClinicaCardInflater(context);
-        return clinicaCardInflater.generateClinicaCard(viewGroup, element);
+        return clinicaCardInflater.generateCard(viewGroup, element);
 
     }
 }

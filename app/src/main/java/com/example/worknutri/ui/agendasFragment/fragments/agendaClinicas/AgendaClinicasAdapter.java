@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaClinicas;
+package com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas;
 
 import android.content.Context;
 import android.widget.LinearLayout;
@@ -8,7 +8,7 @@ import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaClinicas.Inflaters.typesOfScheduleInflater.ClinicaScheduleInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.ClinicaScheduleInflater;
 import com.example.worknutri.ui.agendasFragment.agendaOrdenators.OrderListOfAgenda;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 

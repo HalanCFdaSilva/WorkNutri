@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.agendasFragment.fragments.agendaPacientes;
 
-import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.LinearLayout;
@@ -30,7 +29,7 @@ public class TextWatcherAgendaPaciente implements TextWatcher {
 
 
         List<Paciente> pacientesFiltrados = isEquals(s.toString());
-        adapter.inflateAgenda(((Activity) adapter.getContext()).getLayoutInflater(), layoutToInsert, pacientesFiltrados);
+        adapter.inflateAgendaAfterSearch( layoutToInsert, pacientesFiltrados);
 
 
     }

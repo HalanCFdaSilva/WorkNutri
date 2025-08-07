@@ -1,18 +1,16 @@
 package com.example.worknutri.ui.agendasFragment.agendaInflater;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import androidx.cardview.widget.CardView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicaCardInflater;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.PacienteCardInflater;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ScheduleInflater<T> {
@@ -25,15 +23,15 @@ public abstract class ScheduleInflater<T> {
 
     public  void generateAgenda(ViewGroup viewGroup, List<T> elementsToAdd){
 
-        viewGroup.removeAllViews();
+        List<T> elementsToAddCopy = new ArrayList<>(elementsToAdd);
 
-        while (!elementsToAdd.isEmpty()){
+        while (!elementsToAddCopy.isEmpty()){
 
-            ViewGroup categoryViewGroup = generateCategory(elementsToAdd.get(0));
+            ViewGroup categoryViewGroup = generateCategory(elementsToAddCopy.get(0));
             viewGroup.addView(categoryViewGroup);
-            List<T> collect = filterElements(elementsToAdd);
+            List<T> collect = filterElements(elementsToAddCopy);
             inflateCard(categoryViewGroup.findViewById(R.id.agenda_letter_fragment_linear_layout), collect);
-            elementsToAdd.removeAll(collect);
+            elementsToAddCopy.removeAll(collect);
         }
 
     }
@@ -54,29 +52,29 @@ public abstract class ScheduleInflater<T> {
 
     protected void inflateCard(ViewGroup viewGroup, List<T> toAdd) {
 
-        ViewGroup clinicaCard = null;
-
         for (T element : toAdd) {
+            CardView cardView = new CardView(context);
             if (element instanceof Clinica) {
-                clinicaCard = getClinicaCard(viewGroup, (Clinica) element);
+                generateClinicaCard(cardView, (Clinica) element);
             } else if (element instanceof Paciente) {
-                clinicaCard = getPacienteCard(viewGroup, (Paciente) element);
+                generatePacienteCard(cardView, (Paciente) element);
+            }
+            if (cardView.getChildCount() != 0){
+                viewGroup.addView(cardView);
             }
         }
-        if (clinicaCard != null) {
-            clinicaCard.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.GONE);
-        }
+
     }
 
-    private ViewGroup getPacienteCard(ViewGroup viewGroup, Paciente element) {
+    private void generatePacienteCard(ViewGroup viewGroup, Paciente element) {
         PacienteCardInflater pacienteCardInflater = new PacienteCardInflater(context);
-        return pacienteCardInflater.generateCard(viewGroup, element);
+        pacienteCardInflater.generateCard(viewGroup, element);
 
     }
 
-    private ViewGroup getClinicaCard(ViewGroup viewGroup, Clinica element) {
+    private void generateClinicaCard(ViewGroup viewGroup, Clinica element) {
         ClinicaCardInflater clinicaCardInflater = new ClinicaCardInflater(context);
-        return clinicaCardInflater.generateCard(viewGroup, element);
+        clinicaCardInflater.generateCard(viewGroup, element);
 
     }
 }

@@ -4,48 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/paciente_card_fragment_cardview"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/paciente_card_fragment_imageview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:srcCompat="@drawable/icons8_test_account_32" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/paciente_card_fragment_card_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/paciente_card_fragment_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icons8_test_account_32" />
-
-            <TextView
-                android:id="@+id/paciente_card_fragment_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="TextView"
-                android:textAllCaps="true"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/paciente_card_fragment_imageview"
-                app:layout_constraintStart_toEndOf="@+id/paciente_card_fragment_imageview"
-                app:layout_constraintTop_toTopOf="@+id/paciente_card_fragment_imageview"
-                app:layout_constraintVertical_bias="0.25"
-                tools:text="carlos lacerda filho" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/paciente_card_fragment_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_card_fragment_imageview"
+        app:layout_constraintStart_toEndOf="@+id/paciente_card_fragment_imageview"
+        app:layout_constraintTop_toTopOf="@+id/paciente_card_fragment_imageview"
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="carlos lacerda filho" />
 </androidx.constraintlayout.widget.ConstraintLayout>

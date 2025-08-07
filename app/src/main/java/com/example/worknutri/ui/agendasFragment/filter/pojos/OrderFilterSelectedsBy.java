@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.agendasFragment.filter.pojos;
 
-import org.jetbrains.annotations.Nullable;
 
 public enum OrderFilterSelectedsBy {
     NAME_ASC("NOME_ASC"),
@@ -31,13 +30,5 @@ public enum OrderFilterSelectedsBy {
         return value;
     }
 
-    @Nullable
-    public static OrderFilterSelectedsBy fromValue(String value) {
-        for (OrderFilterSelectedsBy orderBy : values()) {
-            if (orderBy.value.equals(value)) {
-                return orderBy;
-            }
-        }
-        return null;
-    }
+
 }

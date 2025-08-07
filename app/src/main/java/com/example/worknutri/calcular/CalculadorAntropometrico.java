@@ -1,6 +1,8 @@
 package com.example.worknutri.calcular;
 
-import com.example.worknutri.MainActivity;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CalculadorAntropometrico {
 
@@ -91,5 +93,16 @@ public class CalculadorAntropometrico {
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    public static int getYearFromDate(String dateString) {
+        if (dateString.isBlank())
+            return 0;
+        LocalDate date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dateNow = LocalDate.now();
+        int age = dateNow.getYear() - date.getYear();
+        if (date.getDayOfYear() > dateNow.getDayOfYear())
+            age--;
+        return age;
     }
 }

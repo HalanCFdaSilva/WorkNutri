@@ -28,8 +28,6 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
     public ViewGroup generateCard(ViewGroup layoutWereAddCard, Clinica clinica) {
 
         ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
-        viewGroup.findViewById(R.id.card_fragment_clinica_sortdivider).setVisibility(View.VISIBLE);
-
         viewGroup.setOnClickListener(onClick -> {
             Intent intent = new Intent(context, ClinicaDescriptionActivity.class);
             intent.putExtra(ExtrasActivities.CLINICA, clinica);

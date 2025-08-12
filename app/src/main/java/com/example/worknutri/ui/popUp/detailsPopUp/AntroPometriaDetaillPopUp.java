@@ -18,6 +18,8 @@ import com.example.worknutri.ui.InsertSelectViewSupport;
 import com.example.worknutri.ui.TextInViewSupport;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 
+import java.util.Objects;
+
 public class AntroPometriaDetaillPopUp extends PopUpFragment {
     private int constraintId;
     private final Context context;
@@ -135,13 +137,13 @@ public class AntroPometriaDetaillPopUp extends PopUpFragment {
 
         ClassificacaoImc classificacaoImc = ClassificacaoImc.tipoImc(imc);
         TextView textView = new TextView(context);
-        textView.setContentDescription(context.getText(R.string.tipo_imc));
+        textView.setContentDescription(context.getText(R.string.imc_type));
         textView.setId(R.id.classificacao_imc_textview);
-        textView.setText(classificacaoImc.toString().replaceAll("_", " "));
+        textView.setText(classificacaoImc != null ? classificacaoImc.toString().replaceAll("_", " ") : "");
         textView.setTypeface(Typeface.DEFAULT_BOLD);
 
         textView.setBackgroundResource(R.color.white);
-        textView.setBackgroundColor(ContextCompat.getColor(context, classificacaoImc.getColor()));
+        textView.setBackgroundColor(ContextCompat.getColor(context, Objects.requireNonNull(classificacaoImc).getColor()));
 
         textView.setPadding(5, 0, 5, 0);
         ConstraintLayout layout = getViewGroup().findViewById(constraintId);

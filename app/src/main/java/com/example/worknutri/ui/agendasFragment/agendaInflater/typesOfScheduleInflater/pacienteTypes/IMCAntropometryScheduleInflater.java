@@ -28,6 +28,7 @@ public class IMCAntropometryScheduleInflater extends AntropometryScheduleInflate
         return getClassificacaoImc(firstElementOfCategory).toString();
     }
 
+
     private ClassificacaoImc getClassificacaoImc(Paciente paciente) {
         Stream<Antropometria> antropometriaStream = getAntropometriaStream(paciente);
         double imc = antropometriaStream

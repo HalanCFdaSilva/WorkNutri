@@ -27,6 +27,7 @@ public class OrderSelectorGenerator {
         CategoriesGeneratorUtil util = new CategoriesGeneratorUtil(context);
         HorizontalScrollView scrollView = util.generateChipGroup();
         ChipGroup chipGroup = scrollView.findViewById(R.id.filter_category_chipgroup);
+        chipGroup.setSingleSelection(true);
         for (OrderFilterSelectedsBy order : listOfOrder) {
             Chip chip = util.generateChip(order.getValue().replace('_', ' '));
             chip.setOnCheckedChangeListener((compoundButton, isChecked) -> {
@@ -34,6 +35,9 @@ public class OrderSelectorGenerator {
                     uiState.setOrderBy(order);
                 }
             });
+            if (order == uiState.getOrderBy()) {
+                chip.setChecked(true);
+            }
             chipGroup.addView(chip);
         }
         return scrollView;

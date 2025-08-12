@@ -13,8 +13,6 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.Clini
 
 public class ClinicaScheduleInflater {
 
-    ScheduleInflater<Clinica> scheduleInflater;
-
     private final ClinicaFilterPojo clinicaFilterPojo;
 
     public ClinicaScheduleInflater(ClinicaFilterPojo clinicaFilterPojo) {
@@ -22,7 +20,7 @@ public class ClinicaScheduleInflater {
     }
 
     public void inflateSchedule(ViewGroup viewGroup, Context context) {
-
+        ScheduleInflater<Clinica> scheduleInflater = new NameScheduleInflater<>(context);
         switch (clinicaFilterPojo.getUiState().getOrderBy()){
             case DAY_OF_WEEK:{
                 scheduleInflater = new WeekClinicScheduleInflater(context, clinicaFilterPojo.getDayOfWorkList());
@@ -36,14 +34,7 @@ public class ClinicaScheduleInflater {
                 scheduleInflater = new PatientsClinicScheduleInflater(context, clinicaFilterPojo.getPacientes());
                 break;
             }
-            case DISTRICT:{
-                scheduleInflater = new DistrictClinicScheduleInflater(context);
-                break;
-            }
-            default: {
-                scheduleInflater = new NameScheduleInflater<>(context);
-                break;
-            }
+            case DISTRICT: scheduleInflater = new DistrictClinicScheduleInflater(context);
 
         }
         scheduleInflater.generateAgenda(viewGroup, clinicaFilterPojo.getClinicasSelected());

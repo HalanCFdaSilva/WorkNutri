@@ -17,4 +17,9 @@ public class WeightAntropometryScheduleInflater extends AntropometryScheduleInfl
     protected String getCategoryString(Antropometria antropometria) {
         return antropometria.getPeso();
     }
+
+    @Override
+    protected String getMeasureUnit() {
+        return "Kg";
+    }
 }

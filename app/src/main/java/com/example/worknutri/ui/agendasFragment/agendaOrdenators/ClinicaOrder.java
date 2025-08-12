@@ -17,12 +17,13 @@ public class ClinicaOrder {
     }
 
     public List<Clinica> byName(boolean isReversed) {
+        Comparator<Clinica> comparator = Comparator.comparing(c -> c.getNome().toUpperCase());
         if (isReversed)
-            return toOrder.stream().sorted(Comparator.comparing(Clinica::getNome).reversed())
+            return toOrder.stream().sorted(comparator.reversed())
                 .collect(Collectors.toList());
-        return toOrder.stream().sorted(Comparator.comparing(Clinica::getNome))
+        return toOrder.stream().sorted(comparator)
                 .collect(Collectors.toList());
-    }
+        }
 
     public List<Clinica> byBairro() {
         return toOrder.stream().sorted(Comparator.comparing(Clinica::getBairro))

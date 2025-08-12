@@ -26,6 +26,7 @@ public class Antropometria {
     @ColumnInfo(name = "peso_ideal")
     private String pesoIdeal;
 
+    // TODO apagar categoria
     private int idade;
 
     private String imc;

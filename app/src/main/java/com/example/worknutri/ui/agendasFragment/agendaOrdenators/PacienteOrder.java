@@ -16,10 +16,12 @@ public class PacienteOrder {
     }
 
     public List<Paciente> byName(boolean isReversed) {
+        Comparator<Paciente> comparator = Comparator.comparing(p -> p.getNomePaciente().toUpperCase());
+
         if (isReversed)
-            return toOrder.stream().sorted(Comparator.comparing(Paciente::getNomePaciente).reversed())
+            return toOrder.stream().sorted(comparator.reversed())
                     .collect(Collectors.toList());
-        return toOrder.stream().sorted(Comparator.comparing(Paciente::getNomePaciente))
+        return toOrder.stream().sorted(comparator)
                 .collect(Collectors.toList());
     }
 

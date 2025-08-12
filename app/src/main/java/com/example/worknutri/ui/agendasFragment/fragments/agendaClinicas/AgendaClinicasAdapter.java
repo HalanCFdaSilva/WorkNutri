@@ -37,7 +37,8 @@ public class AgendaClinicasAdapter {
         linearLayout.removeAllViews();
 
         OrderListOfAgenda orderListOfAgenda = new OrderListOfAgenda();
-        orderListOfAgenda.orderToAgendaClinicas(clinicaFilterPojo);
+        List<Clinica> clinicasOrdered = orderListOfAgenda.orderToAgendaClinicas(clinicaFilterPojo);
+        clinicaFilterPojo.setClinicasSelected(clinicasOrdered);
         
         ClinicaScheduleInflater clinicaScheduleInflater = new ClinicaScheduleInflater(clinicaFilterPojo);
         clinicaScheduleInflater.inflateSchedule(linearLayout, context);

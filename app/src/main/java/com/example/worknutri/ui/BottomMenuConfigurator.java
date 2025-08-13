@@ -3,9 +3,9 @@ package com.example.worknutri.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
-import com.example.worknutri.MainActivity;
+import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
+import com.example.worknutri.ui.agendasFragment.ScheduleActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomMenuConfigurator {
@@ -17,14 +17,11 @@ public class BottomMenuConfigurator {
         this.navView = navView;
     }
 
-    public void onClickInBottomAppBar(int idItemMenu, boolean isPaciente) {
+    public void onClickInBottomAppBar(int idItemMenu, FragmentSelectedActivity fragmentSelectedActivity) {
 
         navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(item -> {
-            MainActivity.isPaciente = isPaciente;
-            Log.i("TESTE", MainActivity.isPaciente + "");
+            ScheduleActivity.fragmentSelected = fragmentSelectedActivity;
             ((Activity) context).finish();
-
-
             return false;
         });
     }

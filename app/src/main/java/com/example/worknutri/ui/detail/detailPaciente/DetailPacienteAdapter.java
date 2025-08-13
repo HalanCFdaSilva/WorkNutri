@@ -66,7 +66,7 @@ public class DetailPacienteAdapter {
 
     private void bottomNavEditIcon(BottomMenuConfigurator menuConfigurator) {
         Intent intent = new Intent(context, FormularioPacienteActivity.class);
-        intent.putExtra(ExtrasActivities.PACIENTE, paciente);
+        intent.putExtra(ExtrasActivities.PACIENTE_EXTRA.getKey(), paciente);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
     }
 
@@ -74,7 +74,7 @@ public class DetailPacienteAdapter {
         Intent intent;
         if (clinica != null){
             intent = new Intent(context, ClinicaDescriptionActivity.class);
-            intent.putExtra(ExtrasActivities.CLINICA, clinica);
+            intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
             menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
         }
     }

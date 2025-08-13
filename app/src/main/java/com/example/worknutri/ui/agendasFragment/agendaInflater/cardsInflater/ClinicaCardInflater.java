@@ -30,7 +30,7 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
         ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
         viewGroup.setOnClickListener(onClick -> {
             Intent intent = new Intent(context, ClinicaDescriptionActivity.class);
-            intent.putExtra(ExtrasActivities.CLINICA, clinica);
+            intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
             context.startActivities(new Intent[]{intent});
         });
         return viewGroup;

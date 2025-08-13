@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import com.example.worknutri.MainActivity;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.FragmentAgendaBinding;
 import com.example.worknutri.ui.agendasFragment.filter.NavsDirection.NavDirectionPacienteFilter;
@@ -30,8 +29,6 @@ public class AgendaPacienteFragment extends Fragment {
 
 
         binding = FragmentAgendaBinding.inflate(inflater, container, false);
-
-        MainActivity.isPaciente = true;
         adapter = new AgendaPacienteAdapter(getContext());
 
 
@@ -48,7 +45,6 @@ public class AgendaPacienteFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         binding.agendaFragmentLinearLayout.removeAllViews();
         adapter.inflateAgenda(binding.agendaFragmentLinearLayout);
         configureFilter();

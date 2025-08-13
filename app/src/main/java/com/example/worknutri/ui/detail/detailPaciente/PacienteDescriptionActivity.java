@@ -23,8 +23,8 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paciente_descrition);
         Intent intent = getIntent();
-        if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
-            Paciente paciente = (Paciente)intent.getSerializableExtra(ExtrasActivities.PACIENTE);
+        if (intent.hasExtra(ExtrasActivities.PACIENTE_EXTRA.getKey())) {
+            Paciente paciente = (Paciente)intent.getSerializableExtra(ExtrasActivities.PACIENTE_EXTRA.getKey());
             adapter = new DetailPacienteAdapter(paciente, this);
             FloatingActionButton fab = findViewById(R.id.paciente_description_activity_fab_back);
             fab.setOnClickListener(onClick -> this.finish());

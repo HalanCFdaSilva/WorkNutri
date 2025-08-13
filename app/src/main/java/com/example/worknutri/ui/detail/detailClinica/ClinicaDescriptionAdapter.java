@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
@@ -28,8 +26,8 @@ public class ClinicaDescriptionAdapter {
     private Context context;
 
     public ClinicaDescriptionAdapter(Intent intent, Context context) {
-        if (intent.hasExtra(ExtrasActivities.CLINICA)) {
-            this.clinica = (Clinica) intent.getSerializableExtra(ExtrasActivities.CLINICA);
+        if (intent.hasExtra(ExtrasActivities.CLINICA_EXTRA.getKey())) {
+            this.clinica = (Clinica) intent.getSerializableExtra(ExtrasActivities.CLINICA_EXTRA.getKey());
             dataBase = AppDataBase.getInstance(context);
             dayOfWorkList = dataBase.dayOfWorkDao().getDaysforClinicaId(clinica.getId());
             this.context = context;
@@ -80,7 +78,7 @@ public class ClinicaDescriptionAdapter {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, FormularioClinicaActivity.class);
-        intent.putExtra(ExtrasActivities.CLINICA, clinica);
+        intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 
 

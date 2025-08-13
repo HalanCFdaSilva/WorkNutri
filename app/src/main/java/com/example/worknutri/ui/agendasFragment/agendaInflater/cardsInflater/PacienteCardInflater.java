@@ -32,7 +32,7 @@ public class PacienteCardInflater implements CardInflater<Paciente> {
 
             view.setOnClickListener( onClick ->{
                 Intent intent = new Intent(context, PacienteDescriptionActivity.class);
-                intent.putExtra(ExtrasActivities.PACIENTE, paciente);
+                intent.putExtra(ExtrasActivities.PACIENTE_EXTRA.getKey(), paciente);
                 context.startActivities(new Intent[]{intent});
             });
             return view;

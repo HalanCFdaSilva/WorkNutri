@@ -44,8 +44,8 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     }
 
     public void insertInFormulario(Intent intent, ViewGroup viewRootFormulario) {
-        if (intent.hasExtra(ExtrasActivities.PACIENTE)) {
-            paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE);
+        if (intent.hasExtra(ExtrasActivities.PACIENTE_EXTRA.getKey())) {
+            paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE_EXTRA.getKey());
             antropometria = getDataBase().antropometriaDao().getByPacienteId(paciente.getId());
             patologia = getDataBase().patologiaDao().loadAllByIdPaciente(paciente.getId()).get(0);
             InsertionPacienteFormulario insertion = new InsertionPacienteFormulario();

@@ -30,8 +30,8 @@ public class FormularioClinicaActivity extends AppCompatActivity {
     }
 
     private void getClinicaOfIntent() {
-        if (getIntent().hasExtra(ExtrasActivities.CLINICA)) {
-            Clinica clinica = (Clinica) getIntent().getSerializableExtra(ExtrasActivities.CLINICA);
+        if (getIntent().hasExtra(ExtrasActivities.CLINICA_EXTRA.getKey())) {
+            Clinica clinica = (Clinica) getIntent().getSerializableExtra(ExtrasActivities.CLINICA_EXTRA.getKey());
             adapter.insertClinicaInlayout(clinica,findViewById(R.id.formulario_clinica_linear_layout));
         }
 

@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_navigation_pacientes_to_filter"
             app:destination="@id/navigation_filter_pacientes" />
+        <action
+            android:id="@+id/action_navigation_pacientes_to_clinicas"
+            app:destination="@+id/navigation_clinicas"/>
     </fragment>
     <dialog
         android:id="@+id/navigation_filter_pacientes"

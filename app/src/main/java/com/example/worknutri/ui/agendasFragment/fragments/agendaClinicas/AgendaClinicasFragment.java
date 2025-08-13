@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.worknutri.MainActivity;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.FragmentAgendaBinding;
 import com.example.worknutri.ui.agendasFragment.filter.NavsDirection.NavDirectionClinicaFilter;
@@ -32,10 +31,7 @@ public class AgendaClinicasFragment extends Fragment {
 
         binding = FragmentAgendaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        MainActivity.isPaciente = false;
         adapter = new AgendaClinicasAdapter(getContext());
-
-
         binding.agendaFragmentLayoutSearch.setHint("Digite o nome da clinica");
         binding.agendaFragmentEditTextSearch.addTextChangedListener(new TextWatcherAgendaClinica(adapter, binding.agendaFragmentLinearLayout));
 

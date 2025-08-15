@@ -116,45 +116,9 @@
                     app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
 
 
-                <!--           IDADE-->
-                <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_idade_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/idade_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_genero_spinner"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_genero_spinner" />
 
-                <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/obrigatorio"
-                    android:textColor="@color/obrigatorio"
-                    android:textSize="20sp"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_idade_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_idade_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_idade" />
 
-                <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_idade"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/idade_hint"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:textAlignment="viewStart"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_idade_title"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_idade_title" />
+
 
                 <!--           DATA NASCIMENTO-->
                 <TextView
@@ -167,6 +131,17 @@
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
 
+                <TextView
+                    android:id="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/obrigatorio"
+                    android:textColor="@color/obrigatorio"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
+                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
+                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_nascimento" />
                 <EditText
                     android:id="@+id/formulario_paciente_dados_pessoais_nascimento"
                     android:layout_width="wrap_content"
@@ -762,7 +737,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/teal_200_lower"
                     android:text="@string/ver_button"
                     android:textSize="14sp"
                     app:cornerRadius="@dimen/cardview_default_radius"
@@ -774,422 +749,57 @@
 
             <!--           DADOS PATOLOGICOS PACIENTE -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_paciente_patologia_layout"
+            android:id="@+id/formulario_paciente_patologia_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_layout">
+
+            <TextView
+                android:id="@+id/formulario_paciente_patologia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/patologia_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/formulario_paciente_patologia_sortDivider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_layout">
+                app:layout_constraintTop_toBottomOf="@id/formulario_paciente_patologia" />
 
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/formulario_paciente_patologia_layout_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/patologia_title"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_patologia_sortDivider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_patologia" />
-
-                <!--            PATOLOGIA ATUAL-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/patologia_atual_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia"
                     app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_sortDivider" />
 
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_patologia_atual"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/patologia_atual_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_patologia_atual_title" />
-
-
-                <!--            URINA-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_urina_title"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/formulario_paciente_patologia_button_add"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/urina_title"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_patologia_atual" />
-
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_urina"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/urina_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_urina_title" />
-
-
-                <!--            FEZES-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_fezes_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/fezes_title"
+                    android:text="@string/new_register"
+                    android:textAllCaps="true"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_urina" />
+                    app:backgroundTint="@color/teal_200_lower"
+                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_layout_content"
+                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_layout_content"
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_layout_content" />/>
 
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_fezes"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/fezes_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_fezes_title" />
-
-                <!--            HORA SONO-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_sono_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/sono_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_fezes_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_fezes" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_sono"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/sono_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_sono_title" />
-
-                <!--            MEDICACAO-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_medicacao_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/medicacao_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_sono" />
-
-                <CheckBox
-                    android:id="@+id/formulario_paciente_patologia_medicacao_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_patologia_medicacao_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_checkbox"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_patologia_medicacao_title" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_medicacao"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/medicacao_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_medicacao_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_medicacao_title" />
-
-                <!--            SUPLEMENTO-->
-
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_suplemento_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/suplemento_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_medicacao" />
-
-                <CheckBox
-                    android:id="@+id/formulario_paciente_patologia_suplemento_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_patologia_suplemento_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_patologia_suplemento_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_patologia_suplemento_title" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_suplemento"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/suplemento_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_suplemento_title" />
-
-
-                <!--            ETILICO-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_etilico_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/etilico_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_suplemento" />
-
-                <CheckBox
-                    android:id="@+id/formulario_paciente_patologia_etilico_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_patologia_etilico_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_checkbox"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_patologia_etilico_title" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_etilico"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/suplemento_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_etilico_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_etilico_title" />
-
-
-                <!--            FUMANTE-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_fumante_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/fumante_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_etilico" />
-
-                <CheckBox
-                    android:id="@+id/formulario_paciente_patologia_fumante_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_patologia_fumante_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_checkbox"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_patologia_fumante_title" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_fumante"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/suplemento_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_fumante_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_fumante_title" />
-
-
-                <!--            ALERGIA ALIMENTAR-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_alergia_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/alergias_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_fumante" />
-
-                <CheckBox
-                    android:id="@+id/formulario_paciente_patologia_alergia_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_patologia_alergia_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_suplemento_checkbox"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_patologia_alergia_title" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_alergia"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/suplemento_hint"
-                    android:inputType="textMultiLine"
-                    android:singleLine="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_alergia_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_alergia_title" />
-
-                <!--            CONSUMO AGUA-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_agua_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/agua_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_alergia" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_agua"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/agua_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_agua_title" />
-
-
-                <!--            ACUCAR-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_acucar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/acucar_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_agua" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_acucar"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/acucar_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_acucar_title" />
-
-                <!--            ATIVIDADE FISICA-->
-                <TextView
-                    android:id="@+id/formulario_paciente_patologia_atividade_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/atividade_title"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_acucar" />
-
-                <EditText
-                    android:id="@+id/formulario_paciente_patologia_atividade"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/multilined_height"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/atividade_hint"
-                    android:inputType="textMultiLine"
-                    android:textSize="12sp"
-                    android:background="@drawable/border"
-                    android:padding="@dimen/multilined_padding"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_patologia_atual"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_atividade_title" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            observações-->
             <TextView

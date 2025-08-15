@@ -6,8 +6,9 @@ import android.view.ViewGroup;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntroPometriaDetaillPopUp;
+import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
+import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
 
 public class PopUpFactoryImpl implements PopUpFactory{
@@ -26,15 +27,15 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public AntroPometriaDetaillPopUp generateSmallAntropometriaPopUp( Antropometria antropometria) {
-        AntroPometriaDetaillPopUp popUp = new AntroPometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
+    public AntropometriaDetaillPopUp generateSmallAntropometriaPopUp(Antropometria antropometria) {
+        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
         popUp.generateSmall(antropometria);
         return popUp;
     }
 
     @Override
-    public AntroPometriaDetaillPopUp generateFullAntropometriaPopUp( Antropometria antropometria) {
-        AntroPometriaDetaillPopUp popUp = new AntroPometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
+    public AntropometriaDetaillPopUp generateFullAntropometriaPopUp(Antropometria antropometria) {
+        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
         popUp.generateComplete(antropometria);
         return popUp;
     }
@@ -47,5 +48,10 @@ public class PopUpFactoryImpl implements PopUpFactory{
     @Override
     public DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity) {
         return new DatePickerPopUp(layoutInflater,viewGroupRootOfActivity);
+    }
+
+    @Override
+    public PopUpPathologyAdd generatePopUpPatologiaAdd(LayoutInflater layoutInflater) {
+        return new PopUpPathologyAdd(layoutInflater);
     }
 }

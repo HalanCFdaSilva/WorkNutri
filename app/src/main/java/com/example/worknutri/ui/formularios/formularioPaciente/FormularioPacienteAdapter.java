@@ -104,7 +104,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     private boolean validaObrigatorios(ViewGroup viewRoot, TextView textViewError) {
         boolean validado = !ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name),
                 viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name_obrigatorio), textViewError);
-        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_idade),
+        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
                 viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_idade_obrigatorio), textViewError)) {
             validado = false;
         }
@@ -142,7 +142,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     }
 
     private boolean validaCalculosAntropometricos(ViewGroup viewGroup) {
-        EditText editText = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade);
+        EditText editText = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
         if (!editText.getText().toString().isBlank()) {
             editText = viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura);
             if (!editText.getText().toString().isBlank()) {

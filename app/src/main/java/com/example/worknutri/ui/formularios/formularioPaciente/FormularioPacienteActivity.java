@@ -30,19 +30,13 @@ public class FormularioPacienteActivity extends AppCompatActivity {
         adapter.OpenNivelAtividadePopUpOnClick(findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview),
                 getLayoutInflater(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
 
-        this.configurePatologiaCheckBox();
+
         this.insertKeyListeners();
         FloatingActionButton button = findViewById(R.id.formulario_paciente_activity_fab);
         button.setOnClickListener(v -> saveLayout());
     }
 
-    private void configurePatologiaCheckBox() {
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_medicacao_checkbox), findViewById(R.id.formulario_paciente_patologia_medicacao));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_suplemento_checkbox), findViewById(R.id.formulario_paciente_patologia_suplemento));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_etilico_checkbox), findViewById(R.id.formulario_paciente_patologia_etilico));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_fumante_checkbox), findViewById(R.id.formulario_paciente_patologia_fumante));
-        adapter.patologiaCheckBoxConfigure(findViewById(R.id.formulario_paciente_patologia_alergia_checkbox), findViewById(R.id.formulario_paciente_patologia_alergia));
-    }
+
 
     private void insertKeyListeners() {
         EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);

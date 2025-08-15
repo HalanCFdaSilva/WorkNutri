@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/pop_up_patologia_add_spinner"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/pop_up_patologia_add_multiAutoComplete"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/multilined_height"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/actual_pathology_hint"
+        android:padding="@dimen/multilined_padding"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_spinner" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pop_up_patologia_add_button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:alpha="0.75"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/baseline_add_24"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/pop_up_patologia_add_multiAutoComplete"
+        app:layout_constraintStart_toStartOf="@+id/pop_up_patologia_add_multiAutoComplete"
+        app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_multiAutoComplete"
+        app:strokeColor="@color/teal_200_lower"
+        app:strokeWidth="1dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

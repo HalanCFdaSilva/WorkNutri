@@ -10,4 +10,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="sim">sim</string>
     <string name="nao">não</string>
+    <string name="add">Adicionar</string>
+    <string name="new_register">Novo Registro</string>
 </resources>

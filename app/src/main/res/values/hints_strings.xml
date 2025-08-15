@@ -19,18 +19,18 @@
     <string name="circum_quadril_hint">CIRCUNFERÊNCIA QUADRIL EM CM</string>
 
 
-    <string name="patologia_atual_hint">DIGITE O QUADRO PATOLÓGICO DO PACIENTE</string>
-    <string name="urina_hint">DIGITE COMO É A URINA DO PACIENTE</string>
-    <string name="fezes_hint">DIGITE COMO SÃO AS FEZES DO PACIENTE</string>
-    <string name="sono_hint">DIGITE SOBRE A QUALIDADE DO SONO DO PACIENTE</string>
-    <string name="medicacao_hint">DIGITE SOBRE A MEDICAÇÃO DO PACIENTE</string>
-    <string name="suplemento_hint">DIGITE SOBRE O USO DE SUPLEMENTO PELO PACIENTE</string>
-    <string name="etilico_hint">DIGITE SOBRE O USO DE ALCOOL PELO PACIENTE</string>
-    <string name="fumante_hint">DIGITE SOBRE O USO DE FUMO PELO PACIENTE</string>
-    <string name="alergias_hint">DIGITE SOBRE AS ALERGIAS DO PACIENTE</string>
-    <string name="agua_hint">DIGITE SOBRE A INGESTÃO DE ÁGUA PELO PACIENTE</string>
-    <string name="acucar_hint">DIGITE SOBRE O CONSUME DE AÇUCAR PELO PACIENTE</string>
-    <string name="atividade_hint">DIGITE COMO É A VIDA ATIVA DO PACIENTE</string>
+    <string name="actual_pathology_hint">DIGITE O QUADRO PATOLÓGICO DO PACIENTE</string>
+    <string name="urine_hint">DIGITE COMO É A URINA DO PACIENTE</string>
+    <string name="stool_hint">DIGITE COMO SÃO AS FEZES DO PACIENTE</string>
+    <string name="slumber_hint">DIGITE SOBRE A QUALIDADE DO SONO DO PACIENTE</string>
+    <string name="medication_hint">DIGITE SOBRE A MEDICAÇÃO DO PACIENTE</string>
+    <string name="supplement_hint">DIGITE SOBRE O USO DE SUPLEMENTO PELO PACIENTE</string>
+    <string name="ethylic_hint">DIGITE SOBRE O USO DE ALCOOL PELO PACIENTE</string>
+    <string name="smoker_hint">DIGITE SOBRE O USO DE FUMO PELO PACIENTE</string>
+    <string name="allergy_hint">DIGITE SOBRE AS ALERGIAS DO PACIENTE</string>
+    <string name="water_hint">DIGITE SOBRE A INGESTÃO DE ÁGUA PELO PACIENTE</string>
+    <string name="sugar_hint">DIGITE SOBRE O CONSUME DE AÇUCAR PELO PACIENTE</string>
+    <string name="activity_hint">DIGITE COMO É A VIDA ATIVA DO PACIENTE</string>
 
     <string name="clinica_hint">DIGITE O NOME DA CLINICA</string>
     <string name="cep_hint">DIGITE O CEP</string>

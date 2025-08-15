@@ -1,13 +1,7 @@
 package com.example.worknutri.ui.formularios.formularioPaciente;
 
-import static com.example.worknutri.ui.InsertSelectViewSupport.getStringOfEditText;
-
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.CalculadorAntropometrico;
 import com.example.worknutri.calcular.Conversor;
@@ -23,34 +17,6 @@ public class InsertionPacienteFormulario {
 
 
     public Patologia insertViewGroupInPatologia(ViewGroup viewGroup, Patologia patologia) {
-
-
-        patologia.setPatologiaAtual(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_patologia_atual)));
-        patologia.setUrina(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_urina)));
-        patologia.setFezes(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_fezes)));
-        patologia.setHoraSono(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_sono)));
-        patologia.setMedicacao(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao)));
-        patologia.setSuplemento(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento)));
-        patologia.setFumante(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante)));
-        patologia.setEtilico(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico)));
-        patologia.setAlergiaAlimentar(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia)));
-        patologia.setConsumoAgua(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_agua)));
-        patologia.setAcucar(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_acucar)));
-        patologia.setAtividadeFisica(getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_atividade)));
-
-
         return patologia;
     }
 
@@ -116,9 +82,6 @@ public class InsertionPacienteFormulario {
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner));
         paciente.setGenero(i == 0 ? 'M' : 'F');
 
-        paciente.setIdade(InsertSelectViewSupport.getIntOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade)));
-
         paciente.setNascimento(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)));
 
@@ -149,8 +112,6 @@ public class InsertionPacienteFormulario {
     public void insertPacienteInViewGroup(ViewGroup viewGroup, Paciente paciente) {
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_idade)
-                , String.valueOf(paciente.getIdade()));
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)
                 , paciente.getNascimento());
         InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)
@@ -200,30 +161,6 @@ public class InsertionPacienteFormulario {
      * @see InsertSelectViewSupport
      */
     public void InsertPatologia(ViewGroup viewGroup, Patologia patologia) {
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_patologia_atual)
-                , patologia.getPatologiaAtual());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_urina)
-                , patologia.getUrina());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_fezes)
-                , patologia.getFezes());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_sono)
-                , patologia.getHoraSono());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_agua)
-                , patologia.getConsumoAgua());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_patologia_acucar)
-                , patologia.getAcucar());
-
-        insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_medicacao), patologia.getMedicacao());
-        insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_suplemento), patologia.getSuplemento());
-        insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_etilico), patologia.getEtilico());
-        insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_fumante), patologia.getFumante());
-        insertInCheckBox(viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia_checkbox),
-                viewGroup.findViewById(R.id.formulario_paciente_patologia_alergia), patologia.getAlergiaAlimentar());
-
 
     }
 
@@ -237,14 +174,6 @@ public class InsertionPacienteFormulario {
         }
         if (i < clinicas.size()) {
             spinnerClinica.setSelection(i);
-        }
-    }
-
-    private void insertInCheckBox(CheckBox checkbox, EditText editText, String string) {
-        if (string.isBlank()) {
-            checkbox.setChecked(true);
-            editText.setVisibility(View.VISIBLE);
-            InsertSelectViewSupport.insertInEditText(editText, string);
         }
     }
 

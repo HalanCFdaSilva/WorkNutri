@@ -20,17 +20,17 @@ import com.example.worknutri.ui.popUp.PopUpFragment;
 
 import java.util.Objects;
 
-public class AntroPometriaDetaillPopUp extends PopUpFragment {
+public class AntropometriaDetaillPopUp extends PopUpFragment {
     private int constraintId;
     private final Context context;
-    public AntroPometriaDetaillPopUp(LayoutInflater layoutInflater,Context context) {
+    public AntropometriaDetaillPopUp(LayoutInflater layoutInflater, Context context) {
         super(layoutInflater);
         this.context = context;
 
     }
 
     public void generateSmall( Antropometria antropometria) {
-        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description_small, null);
+        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description_formulario, null);
         constraintId = R.id.popup_antropometria_description_small;
         this.insertView(viewGroup);
         setSmallText(antropometria);

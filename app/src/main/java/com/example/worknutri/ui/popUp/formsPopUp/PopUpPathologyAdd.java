@@ -62,16 +62,19 @@ public class PopUpPathologyAdd extends PopUpFragment {
         button.setOnClickListener(onClick ->{
             Spinner spinner = getViewGroup().findViewById(R.id.pop_up_patologia_add_spinner);
             String selectedPathology = (String) spinner.getSelectedItem();
-            removePathology(selectedPathology);
-            PopUpPatologiaDescription popUpPatologiaDescription = new PopUpPatologiaDescription();
+            PathologyCategory pathologyCategory = getPathologyCategory(selectedPathology);
+            pathology.remove(pathologyCategory);
+
+            MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);
+            String message = multiAutoCompleteTextView.getText().toString();
+            PopUpPatologiaFragment popUpPatologiaDescription = new PopUpPatologiaFragment(context);
+            ViewGroup viewToAdd = popUpPatologiaDescription.generateViewGroup(pathologyCategory, message);
+            viewGroup.addView(viewToAdd);
             //TODO implementar a inserção do popUp no viewGroup
         });
     }
 
-    private void removePathology(String selectedPathology) {
 
-        pathology.remove(getPathologyCategory(selectedPathology));
-    }
 
 
 

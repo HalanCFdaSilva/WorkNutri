@@ -1,5 +1,6 @@
 package com.example.worknutri.ui.popUp.factory;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,8 +9,11 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
+import com.example.worknutri.ui.popUp.formsPopUp.PathologyCategory;
 import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
+
+import java.util.List;
 
 public class PopUpFactoryImpl implements PopUpFactory{
     public final LayoutInflater layoutInflater;
@@ -51,7 +55,7 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public PopUpPathologyAdd generatePopUpPatologiaAdd(LayoutInflater layoutInflater) {
-        return new PopUpPathologyAdd(layoutInflater);
+    public PopUpPathologyAdd generatePopUpPatologiaAdd(Context context,List<PathologyCategory> pathologyCategories) {
+        return new PopUpPathologyAdd(context,  pathologyCategories);
     }
 }

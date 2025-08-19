@@ -1,9 +1,7 @@
 package com.example.worknutri.ui.popUp.factory;
 
 
-import android.content.Context;
 import android.view.ViewGroup;
-
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
@@ -26,7 +24,7 @@ public interface PopUpFactory {
     RemoveConfirmPopUp generateRemoveConfirmPopUp();
     DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity);
 
-    PopUpPathologyAdd generatePopUpPatologiaAdd(Context context, List<PathologyCategory> pathologyCategories);
+    PopUpPathologyAdd generatePopUpPatologiaAdd( List<PathologyCategory> pathologyCategories);
 
 
 

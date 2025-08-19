@@ -2,7 +2,9 @@ package com.example.worknutri.ui.popUp.formsPopUp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
@@ -19,9 +21,9 @@ public class PopUpPathologyAdd extends PopUpFragment {
     private final List<PathologyCategory> pathology;
     public PopUpPathologyAdd(Context context,List<PathologyCategory> pathologyCategories) {
         super(LayoutInflater.from(context));
-        CardView cardView =  (CardView) getInflater().inflate(R.layout.popup_patologia_add,null);
-    insertView(cardView);
-        getViewGroup().findViewById(R.id.popup_base_layout_scrollview_layout_header);
+        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_patologia_add,null);
+        insertView(viewGroup);
+        super.insertTitle(R.string.patologia_title);
         this.pathology = pathologyCategories;
         this.context = context;
     }
@@ -38,11 +40,19 @@ public class PopUpPathologyAdd extends PopUpFragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        spinner.setOnItemClickListener((parent, view, position, id) -> {
-            String itemAtPosition = (String) spinner.getItemAtPosition(position);
-            PathologyCategory pathologyCategory = getPathologyCategory(itemAtPosition);
-            textView.setText("");
-            textView.setHint(pathologyCategory.getHint());
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemAtPosition = (String) spinner.getItemAtPosition(position);
+                PathologyCategory pathologyCategory = getPathologyCategory(itemAtPosition);
+                textView.setText("");
+                textView.setHint(pathologyCategory.getHint());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
     }
 
@@ -54,7 +64,7 @@ public class PopUpPathologyAdd extends PopUpFragment {
     }
     private List<String> getPathologyNames() {
         return pathology.stream()
-                .map(PathologyCategory::name)
+                .map(PathologyCategory::getName)
                 .collect(Collectors.toList());
     }
 
@@ -67,10 +77,12 @@ public class PopUpPathologyAdd extends PopUpFragment {
 
             MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);
             String message = multiAutoCompleteTextView.getText().toString();
-            PopUpPatologiaFragment popUpPatologiaDescription = new PopUpPatologiaFragment(context);
-            ViewGroup viewToAdd = popUpPatologiaDescription.generateViewGroup(pathologyCategory, message);
+            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyCategory);
+            CardView viewToAdd = popUpPatologiaDescription.generateViewGroup(context, message);
+            popUpPatologiaDescription.configureDeleteButton(viewGroup,pathology);
             viewGroup.addView(viewToAdd);
-            //TODO implementar a inserção do popUp no viewGroup
+
+            getPopUpWindow().dismiss();
         });
     }
 

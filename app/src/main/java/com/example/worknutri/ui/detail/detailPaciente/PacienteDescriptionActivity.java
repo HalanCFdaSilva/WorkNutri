@@ -40,7 +40,7 @@ public class PacienteDescriptionActivity extends AppCompatActivity {
         adapter.refreshData();
         setTitle(adapter.getNomePaciente().toUpperCase());
         adapter.insertTextInLayout(findViewById(R.id.paciente_description_activity_layout));
-        adapter.generateAntropometriaAndPatologiaPopUp(findViewById(R.id.paciente_description_activity_layout), getLayoutInflater());
+        adapter.generateAntropometriaAndPatologiaPopUp(findViewById(R.id.paciente_description_activity_layout));
         adapter.configureNavButtom(findViewById(R.id.paciente_description_activity_nav_view));
 
     }

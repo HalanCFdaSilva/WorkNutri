@@ -16,15 +16,15 @@ import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
 import java.util.List;
 
 public class PopUpFactoryImpl implements PopUpFactory{
-    public final LayoutInflater layoutInflater;
 
-    public PopUpFactoryImpl(LayoutInflater layoutInflater) {
-        this.layoutInflater = layoutInflater;
+    private final Context context;
+    public PopUpFactoryImpl(Context context) {
+        this.context = context;
     }
 
     @Override
     public PatologiaDetaillPopUp generatePatologiaDetailPopUp(Patologia patologia) {
-        PatologiaDetaillPopUp popUp = new PatologiaDetaillPopUp(layoutInflater);
+        PatologiaDetaillPopUp popUp = new PatologiaDetaillPopUp(LayoutInflater.from(context));
         popUp.setText(patologia);
         popUp.removeMarginBottom();
         return popUp;
@@ -32,30 +32,30 @@ public class PopUpFactoryImpl implements PopUpFactory{
 
     @Override
     public AntropometriaDetaillPopUp generateSmallAntropometriaPopUp(Antropometria antropometria) {
-        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
+        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(LayoutInflater.from(context),context);
         popUp.generateSmall(antropometria);
         return popUp;
     }
 
     @Override
     public AntropometriaDetaillPopUp generateFullAntropometriaPopUp(Antropometria antropometria) {
-        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(layoutInflater,layoutInflater.getContext());
+        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(LayoutInflater.from(context),context);
         popUp.generateComplete(antropometria);
         return popUp;
     }
 
     @Override
     public RemoveConfirmPopUp generateRemoveConfirmPopUp() {
-        return new RemoveConfirmPopUp(layoutInflater);
+        return new RemoveConfirmPopUp(LayoutInflater.from(context));
     }
 
     @Override
     public DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity) {
-        return new DatePickerPopUp(layoutInflater,viewGroupRootOfActivity);
+        return new DatePickerPopUp(LayoutInflater.from(context),viewGroupRootOfActivity);
     }
 
     @Override
-    public PopUpPathologyAdd generatePopUpPatologiaAdd(Context context,List<PathologyCategory> pathologyCategories) {
-        return new PopUpPathologyAdd(context,  pathologyCategories);
+    public PopUpPathologyAdd generatePopUpPatologiaAdd(List<PathologyCategory> pathologyCategories) {
+        return new PopUpPathologyAdd(context, pathologyCategories);
     }
 }

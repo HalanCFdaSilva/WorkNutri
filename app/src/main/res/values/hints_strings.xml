@@ -29,7 +29,7 @@
     <string name="smoker_hint">DIGITE SOBRE O USO DE FUMO PELO PACIENTE</string>
     <string name="allergy_hint">DIGITE SOBRE AS ALERGIAS DO PACIENTE</string>
     <string name="water_hint">DIGITE SOBRE A INGESTÃO DE ÁGUA PELO PACIENTE</string>
-    <string name="sugar_hint">DIGITE SOBRE O CONSUME DE AÇUCAR PELO PACIENTE</string>
+    <string name="sugar_hint">DIGITE SOBRE O CONSUMO DE AÇUCAR PELO PACIENTE</string>
     <string name="activity_hint">DIGITE COMO É A VIDA ATIVA DO PACIENTE</string>
 
     <string name="clinica_hint">DIGITE O NOME DA CLINICA</string>

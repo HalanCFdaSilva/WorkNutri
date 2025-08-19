@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -82,7 +81,7 @@ public class DetailPacienteAdapter {
     private void bottomNavDeleteIcon(BottomNavigationView bottomNavigationView) {
         bottomNavigationView.getMenu().findItem(R.id.navegation_delete).
                 setOnMenuItemClickListener(onClick -> {
-                    RemoveConfirmPopUp popUp = new PopUpFactoryImpl(((Activity) context).getLayoutInflater()).generateRemoveConfirmPopUp();
+                    RemoveConfirmPopUp popUp = new PopUpFactoryImpl( context).generateRemoveConfirmPopUp();
                     popUp.getConfirmButton().setOnClickListener(onClickButton -> {
                         pacienteDao.delete(paciente);
                         patologiaDao.delete(patologia);
@@ -109,24 +108,24 @@ public class DetailPacienteAdapter {
         ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
     }
 
-    public void generateAntropometriaAndPatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+    public void generateAntropometriaAndPatologiaPopUp(ViewGroup viewGroup) {
 
-        generateAntropometriaPopUp(viewGroup, layoutInflater);
-        generatePatologiaPopUp(viewGroup, layoutInflater);
+        generateAntropometriaPopUp(viewGroup);
+        generatePatologiaPopUp(viewGroup);
 
     }
 
-    private void generateAntropometriaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+    private void generateAntropometriaPopUp(ViewGroup viewGroup) {
         Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
-        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
+        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(context).
                 generateFullAntropometriaPopUp(antropometria).
                 getPopUpWindow().
                 showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
     }
 
-    private void generatePatologiaPopUp(ViewGroup viewGroup, LayoutInflater layoutInflater) {
+    private void generatePatologiaPopUp(ViewGroup viewGroup) {
         Button buttonPatologia = viewGroup.findViewById(R.id.paciente_description_activity_button_patologic);
-        buttonPatologia.setOnClickListener(v -> new PopUpFactoryImpl(layoutInflater).
+        buttonPatologia.setOnClickListener(v -> new PopUpFactoryImpl(context).
                 generatePatologiaDetailPopUp(patologia).
                 getPopUpWindow().
                 showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));

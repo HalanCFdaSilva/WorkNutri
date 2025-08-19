@@ -6,11 +6,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
@@ -25,7 +25,11 @@ import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.ValidaFormulario;
 import com.example.worknutri.ui.popUp.NivelAtividadeDescritpionPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
+import com.example.worknutri.ui.popUp.formsPopUp.PathologyCategory;
+import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FormularioPacienteAdapter extends FormularioAdapter {
@@ -34,6 +38,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     private Antropometria antropometria;
     private Paciente paciente;
     private final List<Clinica> clinicasInOrder;
+    private final List<PathologyCategory> pathologyCategories = new ArrayList<>(Arrays.asList(PathologyCategory.values()));
 
     public FormularioPacienteAdapter(Context context) {
         super(context);
@@ -41,6 +46,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         antropometria = new Antropometria();
         patologia = new Patologia();
         clinicasInOrder = getDataBase().clinicaDao().getAllInOrder();
+
     }
 
     public void insertInFormulario(Intent intent, ViewGroup viewRootFormulario) {
@@ -126,16 +132,14 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         return validado;
     }
 
-    public void getCalculosAntropometricos(LayoutInflater inflater, ViewGroup viewGroup) {
+    public void getCalculosAntropometricos( ViewGroup viewGroup) {
         if (validaCalculosAntropometricos(viewGroup)) {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.GONE);
-            ViewGroup layout = viewGroup.findViewById(
-                    R.id.formulario_paciente_activity_constraint_layout);
             InsertionPacienteFormulario generator = new InsertionPacienteFormulario();
-            generator.insertViewGroupInPaciente(layout, paciente);
-            generator.insertViewGroupInAntropometria(layout, antropometria, paciente);
-            new PopUpFactoryImpl(inflater).generateSmallAntropometriaPopUp(antropometria).getPopUpWindow().
-                    showAtLocation(viewGroup.findViewById(R.id.formulario_paciente_activity_constraint_layout), Gravity.CENTER, -1, -1);
+            generator.insertViewGroupInPaciente(viewGroup, paciente);
+            generator.insertViewGroupInAntropometria(viewGroup, antropometria, paciente);
+            new PopUpFactoryImpl(getContext()).generateSmallAntropometriaPopUp(antropometria).getPopUpWindow().
+                    showAtLocation(viewGroup, Gravity.CENTER, -1, -1);
         } else {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.VISIBLE);
         }
@@ -163,14 +167,15 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
 
         });
     }
+    public void generatePatologiaView(ViewGroup viewRoot, ViewGroup viewWereAdd) {
 
-    public void patologiaCheckBoxConfigure(CheckBox checkBox, EditText editText) {
-        checkBox.setOnClickListener(v -> {
-            if (!checkBox.isChecked()) {
-                editText.setVisibility(View.GONE);
-            } else {
-                editText.setVisibility(View.VISIBLE);
-            }
-        });
+        if (!pathologyCategories.isEmpty()){
+            PopUpFactoryImpl popUpFactory = new PopUpFactoryImpl(getContext());
+            PopUpPathologyAdd popUpPathologyAdd = popUpFactory.generatePopUpPatologiaAdd( pathologyCategories);
+            popUpPathologyAdd.configurePopUp(viewWereAdd);
+            popUpPathologyAdd.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
+        }else
+            Toast.makeText(getContext(),"Não há patologias disponíveis", Toast.LENGTH_SHORT).show();
+
     }
 }

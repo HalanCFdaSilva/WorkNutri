@@ -37,6 +37,15 @@ public class FormularioPacienteActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Button button = findViewById(R.id.formulario_paciente_patologia_button_add);
+        button.setOnClickListener(onClick->
+                adapter.generatePatologiaView(findViewById(R.id.formulario_paciente_activity_constraint_layout),
+                        findViewById(R.id.formulario_paciente_patologia_layout_content)));
+
+    }
 
     private void insertKeyListeners() {
         EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
@@ -58,8 +67,8 @@ public class FormularioPacienteActivity extends AppCompatActivity {
 
     private void verCalculos() {
         Button button = findViewById(R.id.formulario_paciente_antropometria_calculos_button);
-        button.setOnClickListener(v -> adapter.getCalculosAntropometricos(getLayoutInflater(),
-                    findViewById(R.id.formulario_paciente_activity_constraint_layout)));
+        button.setOnClickListener(v -> adapter
+                .getCalculosAntropometricos(findViewById(R.id.formulario_paciente_activity_constraint_layout)));
     }
 
     private void saveLayout() {

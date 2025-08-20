@@ -11,6 +11,7 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
 import androidx.cardview.widget.CardView;
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,17 +19,19 @@ import java.util.stream.Collectors;
 public class PopUpPathologyAdd extends PopUpFragment {
 
     private final Context context;
-    private final List<PathologyCategory> pathology;
-    public PopUpPathologyAdd(Context context,List<PathologyCategory> pathologyCategories) {
+    private final List<PathologyType> pathologyTypes;
+    private Patologia pathology;
+    public PopUpPathologyAdd(Context context, List<PathologyType> pathologyCategories) {
         super(LayoutInflater.from(context));
         ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_patologia_add,null);
         insertView(viewGroup);
         super.insertTitle(R.string.patologia_title);
-        this.pathology = pathologyCategories;
+        this.pathologyTypes = pathologyCategories;
         this.context = context;
     }
 
-    public void configurePopUp(ViewGroup viewWereAdd){
+    public void configurePopUp(ViewGroup viewWereAdd,Patologia pathology){
+        this.pathology = pathology;
         ViewGroup viewGroup = getViewGroup();
         configureSpinner(viewGroup.findViewById(R.id.pop_up_patologia_add_spinner),viewGroup.findViewById(R.id.pop_up_patologia_add_multiAutoComplete));
         configureButton(viewGroup.findViewById(R.id.pop_up_patologia_add_button),viewWereAdd);
@@ -44,9 +47,9 @@ public class PopUpPathologyAdd extends PopUpFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemAtPosition = (String) spinner.getItemAtPosition(position);
-                PathologyCategory pathologyCategory = getPathologyCategory(itemAtPosition);
+                PathologyType pathologyType = getPathologyCategory(itemAtPosition);
                 textView.setText("");
-                textView.setHint(pathologyCategory.getHint());
+                textView.setHint(pathologyType.getHint());
             }
 
             @Override
@@ -56,15 +59,15 @@ public class PopUpPathologyAdd extends PopUpFragment {
         });
     }
 
-    private PathologyCategory getPathologyCategory(String selectedPathology) {
-        return pathology.stream()
+    private PathologyType getPathologyCategory(String selectedPathology) {
+        return pathologyTypes.stream()
                 .filter(pathologyCategory -> pathologyCategory.getName().equals(selectedPathology))
                 .findAny().orElse(null);
 
     }
     private List<String> getPathologyNames() {
-        return pathology.stream()
-                .map(PathologyCategory::getName)
+        return pathologyTypes.stream()
+                .map(PathologyType::getName)
                 .collect(Collectors.toList());
     }
 
@@ -72,14 +75,14 @@ public class PopUpPathologyAdd extends PopUpFragment {
         button.setOnClickListener(onClick ->{
             Spinner spinner = getViewGroup().findViewById(R.id.pop_up_patologia_add_spinner);
             String selectedPathology = (String) spinner.getSelectedItem();
-            PathologyCategory pathologyCategory = getPathologyCategory(selectedPathology);
-            pathology.remove(pathologyCategory);
+            PathologyType pathologyType = getPathologyCategory(selectedPathology);
+            pathologyTypes.remove(pathologyType);
 
             MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);
             String message = multiAutoCompleteTextView.getText().toString();
-            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyCategory);
+            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyType, pathology);
             CardView viewToAdd = popUpPatologiaDescription.generateViewGroup(context, message);
-            popUpPatologiaDescription.configureDeleteButton(viewGroup,pathology);
+            popUpPatologiaDescription.configureDeleteButton(viewGroup, pathologyTypes);
             viewGroup.addView(viewToAdd);
 
             getPopUpWindow().dismiss();

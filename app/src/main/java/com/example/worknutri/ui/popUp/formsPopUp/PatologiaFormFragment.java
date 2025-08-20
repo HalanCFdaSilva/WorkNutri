@@ -10,17 +10,20 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 
 import java.util.List;
 
 
 public class PatologiaFormFragment {
 
-    private final PathologyCategory category;
+    private final PathologyType category;
     private CardView viewGroup;
-    protected PatologiaFormFragment(PathologyCategory category) {
+    private final Patologia pathology;
+    public PatologiaFormFragment(PathologyType category, Patologia pathology) {
 
         this.category = category;
+        this.pathology = pathology;
     }
 
     public CardView generateViewGroup(Context context, String message) {
@@ -42,19 +45,24 @@ public class PatologiaFormFragment {
         editText.setText(message);
     }
 
-    public void configureDeleteButton(ViewGroup viewWereHasInsert, List<PathologyCategory> categories) {
+    public void configureDeleteButton(ViewGroup viewWereHasInsert, List<PathologyType> categories) {
         ImageButton button = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_button_delete);
         button.setOnClickListener(onClick ->{
+
             viewWereHasInsert.removeView(viewGroup);
+
             if (categories.stream()
                     .noneMatch(categoryOfList -> categoryOfList.toString()
                             .equals(category.toString()))){
-                categories.add(category);
-            }
 
+                categories.add(category);
+                new PathologyTypeToPathologyMapper(category)
+                        .insertValueInCorrectAtribute(pathology,""); // Clear the value for the category
+            }
 
         });
     }
+
 
 
 

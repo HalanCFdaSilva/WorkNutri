@@ -2,7 +2,7 @@ package com.example.worknutri.ui.popUp.formsPopUp;
 
 import com.example.worknutri.R;
 
-public enum PathologyCategory {
+public enum PathologyType {
     ACTUAL_PATHOLOGY ("Patologia Atual", R.string.actual_pathology_hint),
     URINE("Urina", R.string.urine_hint),
     STOOL("Fezes", R.string.stool_hint),
@@ -19,9 +19,18 @@ public enum PathologyCategory {
     private final String name;
     private final int hint;
 
-    PathologyCategory(String name, int hint) {
+    PathologyType(String name, int hint) {
         this.name = name;
         this.hint = hint;
+    }
+
+    public static PathologyType from(String string) {
+        for (PathologyType category : PathologyType.values()) {
+            if (category.name.equalsIgnoreCase(string)) {
+                return category;
+            }
+        }
+        throw new IllegalArgumentException("No PathologyCategory found for: " + string);
     }
 
     public String getName() {

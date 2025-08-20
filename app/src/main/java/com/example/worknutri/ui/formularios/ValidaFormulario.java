@@ -8,15 +8,18 @@ import androidx.core.content.ContextCompat;
 
 import com.example.worknutri.R;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public abstract class ValidaFormulario {
 
 
     public static boolean checaEditText(EditText editText, TextView asteristico, TextView textViewError) {
         String string = editText.getText().toString().strip();
-        if (!string.isEmpty() && !string.isBlank()) {
+        if (!string.isBlank()) {
             asteristico.setVisibility(View.INVISIBLE);
             editText.setHintTextColor(ContextCompat.getColor(editText.getContext(), R.color.black));
             return false;
@@ -74,13 +77,13 @@ public abstract class ValidaFormulario {
 
     /**
      * Método que verifica se um editText foi preenchido no formato correto para datas.
-     *
+     *  Caso não queira exibir a mensagem de erro na textView basta fornecer um null.
      * @param editText             EditText a ser checado
      * @param textViewErrorMensage textView aonde vai aparecer a mensagem de erro da validação
      */
-    public static boolean validaData(EditText editText, TextView textViewErrorMensage) {
+    public static boolean validaData(EditText editText,@Nullable TextView textViewErrorMensage) {
         String data = editText.getText().toString();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         dateFormat.setLenient(false);
         try {
             if (!data.isBlank()) {
@@ -88,28 +91,11 @@ public abstract class ValidaFormulario {
             }
             return true;
         } catch (ParseException e) {
-            editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.obrigatorio));
-            textViewErrorMensage.setText(R.string.error_data);
-            textViewErrorMensage.setVisibility(View.VISIBLE);
-            return false;
-        }
-    }
-
-    /**
-     * Método que verifica se um editText foi preenchido no formato correto para cpf.
-     *
-     * @param editText             EditText a ser checado
-     * @param textViewErrorMensage textView aonde vai aparecer a mensagem de erro da validação
-     */
-    public static boolean validaCpf(EditText editText, TextView textViewErrorMensage) {
-        String cpf = editText.getText().toString();
-        String regex = "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}$";
-        if (cpf.matches(regex) || cpf.isEmpty()) {
-            return true;
-        } else {
-            editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.obrigatorio));
-            textViewErrorMensage.setText(R.string.error_cpf);
-            textViewErrorMensage.setVisibility(View.VISIBLE);
+            if (textViewErrorMensage != null) {
+                editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.obrigatorio));
+                textViewErrorMensage.setText(R.string.error_data);
+                textViewErrorMensage.setVisibility(View.VISIBLE);
+            }
             return false;
         }
     }

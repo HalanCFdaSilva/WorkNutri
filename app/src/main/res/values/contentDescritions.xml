@@ -10,4 +10,5 @@
     <string name="pop_up_white_background">white background from pop up</string>
     <string name="scroll_filter">scroll of filter category</string>
     <string name="patient_picture">Patient picture</string>
+    <string name="trash_button_content">Button to remove a view</string>
 </resources>

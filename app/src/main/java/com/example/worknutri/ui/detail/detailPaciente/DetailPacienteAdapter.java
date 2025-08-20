@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.worknutri.R;
+import com.example.worknutri.calcular.CalculadorAntropometrico;
 import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
 import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
@@ -96,17 +99,39 @@ public class DetailPacienteAdapter {
 
     public void insertTextInLayout(ViewGroup viewGroup) {
 
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_name_paciente_descrition)).setText(paciente.getNomePaciente());
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_idade_paciente_descrition)).setText(String.valueOf(paciente.getIdade()));
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_fone_paciente_descrition)).setText(paciente.getTelefone());
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_email_paciente_descrition)).setText(paciente.getEmail());
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_observation_paciente_descrition)).setText(paciente.getObservacoes());
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_name_paciente_descrition))
+                .setText(paciente.getNomePaciente());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_idade_paciente_descrition))
+                .setText(getAgeText());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_fone_paciente_descrition))
+                .setText(paciente.getTelefone());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_email_paciente_descrition))
+                .setText(paciente.getEmail());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_observation_paciente_descrition))
+                .setText(paciente.getObservacoes());
 
 
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_height_paciente_descrition)).setText(antropometria.getAltura());
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_paciente_descrition)).setText(antropometria.getPeso());
-        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_ideal_paciente_descrition)).setText(antropometria.getPesoIdeal());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_height_paciente_descrition))
+                .setText(antropometria.getAltura());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_paciente_descrition))
+                .setText(antropometria.getPeso());
+
+        ((TextView) viewGroup.findViewById(R.id.paciente_description_activity_peso_ideal_paciente_descrition))
+                .setText(antropometria.getPesoIdeal());
     }
+
+    @NonNull
+    private String getAgeText() {
+        int yearFromDate = CalculadorAntropometrico.getYearFromDate(paciente.getNascimento());
+        return String.valueOf(yearFromDate).concat(yearFromDate == 1 ? " ano" : " anos");
+    }
+
 
     public void generateAntropometriaAndPatologiaPopUp(ViewGroup viewGroup) {
 

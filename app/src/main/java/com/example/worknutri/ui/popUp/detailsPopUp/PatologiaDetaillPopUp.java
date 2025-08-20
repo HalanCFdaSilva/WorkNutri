@@ -54,7 +54,7 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
     private ViewGroup generateView(String title, String description) {
         PatologiaPopUpFragment popUpFragment = new PatologiaPopUpFragment(inflater);
         popUpFragment.setTitle(title);
-        if (description.isBlank()) popUpFragment.setDescription("Não Informado");
+        if (description == null || description.isBlank()) popUpFragment.setDescription("Não Informado");
         else popUpFragment.setDescription(description);
         return popUpFragment.getViewGroup();
     }

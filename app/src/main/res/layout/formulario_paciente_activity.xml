@@ -177,6 +177,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/email_hint"
+                    android:autofillHints="emailAddress"
                     android:inputType="textEmailAddress"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
@@ -202,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/fone_hint"
+                    android:autofillHints="phone"
                     android:inputType="phone"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
@@ -375,6 +377,7 @@
                     android:layout_marginStart="8dp"
                     android:ems="10"
                     android:hint="@string/peso_atual_hint"
+                    android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_atual_title"
@@ -424,6 +427,7 @@
                     android:layout_marginStart="8dp"
                     android:ems="10"
                     android:hint="@string/peso_ideal_hint"
+                    android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_ideal_title"
@@ -518,6 +522,7 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/circum_coxa_hint"
+                    android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_coxa_title"
@@ -629,6 +634,7 @@
                     android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/circum_quadril_hint"
+                    android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_quadril_title"
@@ -691,6 +697,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/info_24dp"
+                    android:contentDescription="@string/info_image_button_content"
                     android:backgroundTint="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
                     app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_atividade_spinner"
@@ -797,7 +804,7 @@
                     app:backgroundTint="@color/teal_200_lower"
                     app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_layout_content"
                     app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_layout_content"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_layout_content" />/>
+                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_layout_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -822,6 +829,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/observacoes_hint"
+                android:autofillHints="text"
                 android:inputType="textMultiLine"
                 android:singleLine="false"
                 android:textSize="12sp"
@@ -862,7 +870,7 @@
         android:id="@+id/formulario_paciente_activity_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/save_form"
+        android:contentDescription="@string/save_form_content"
         android:src="@drawable/save_48dp_000000_fill0_wght400_grad0_opsz64"
         app:fabSize="auto"
         app:layout_anchor="@id/formulario_paciente_activity_nav_app_bar" />

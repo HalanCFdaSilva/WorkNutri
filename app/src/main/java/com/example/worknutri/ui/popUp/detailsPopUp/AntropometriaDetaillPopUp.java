@@ -137,7 +137,7 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
 
         ClassificacaoImc classificacaoImc = ClassificacaoImc.tipoImc(imc);
         TextView textView = new TextView(context);
-        textView.setContentDescription(context.getText(R.string.imc_type));
+        textView.setContentDescription(context.getText(R.string.imc_type_content));
         textView.setId(R.id.classificacao_imc_textview);
         textView.setText(classificacaoImc != null ? classificacaoImc.toString().replaceAll("_", " ") : "");
         textView.setTypeface(Typeface.DEFAULT_BOLD);

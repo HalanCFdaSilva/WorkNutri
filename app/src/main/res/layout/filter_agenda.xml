@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/filter_bottomSheetParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -70,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:contentDescription="@string/scroll_filter"
+            android:contentDescription="@string/scroll_filter_content"
             app:layout_constraintBottom_toTopOf="@+id/filter_category_material_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_max="400dp"

@@ -15,11 +15,11 @@ public class PatologiaPopUpFragment {
 
     public PatologiaPopUpFragment(LayoutInflater inflater) {
         this.inflater = inflater;
-        generateViewGroup();
+
     }
 
-    public void generateViewGroup() {
-        this.viewGroup = (ViewGroup) inflater.inflate(R.layout.popup_patologia_description, null, false);
+    public void generateViewGroup(ViewGroup viewGroup) {
+        this.viewGroup = (ViewGroup) inflater.inflate(R.layout.popup_patologia_description, viewGroup);
         setOnClick();
     }
 

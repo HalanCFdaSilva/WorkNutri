@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.popUp;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,13 +38,7 @@ public class PopUpFragment {
 
     protected void encerrarAoClicarFora(int idView) {
         ImageView imageViewBackground = this.viewGroup.findViewById(idView);
-        imageViewBackground.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                pw.dismiss();
-            }
-        });
+        imageViewBackground.setOnClickListener(v -> pw.dismiss());
     }
 
     protected void insertTitle(int resId) {
@@ -55,9 +48,9 @@ public class PopUpFragment {
         }
     }
 
-    protected void insertView(View view) {
-        LinearLayout layout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
-        layout.addView(view);
+
+    protected ViewGroup getViewToInsert(){
+        return viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
     }
 
     public PopupWindow getPopUpWindow() {

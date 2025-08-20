@@ -15,8 +15,7 @@ public class RemoveConfirmPopUp extends PopUpFragment {
         super(layoutInflater);
         ViewGroup viewGroup = getViewGroup();
         viewGroup.findViewById(R.id.popup_base_layout_scrollview_layout_header).setVisibility(View.GONE);
-        ViewGroup viewToInsert = generateView(layoutInflater);
-        insertView(viewToInsert);
+        generateView(layoutInflater);
 
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone((ConstraintLayout) viewGroup);
@@ -27,11 +26,11 @@ public class RemoveConfirmPopUp extends PopUpFragment {
 
     }
 
-    private ViewGroup generateView(LayoutInflater layoutInflater) {
-        ViewGroup viewToInsert = (ViewGroup) layoutInflater.inflate(R.layout.popup_delete_confirm, null);
+    private void generateView(LayoutInflater layoutInflater) {
+        ViewGroup viewToInsert = (ViewGroup) layoutInflater.inflate(R.layout.popup_delete_confirm, getViewToInsert());
         Button button = viewToInsert.findViewById(R.id.popup_delete_confirm_layout_cancel_button);
         button.setOnClickListener(onClick -> getPopUpWindow().dismiss());
-        return viewToInsert;
+
     }
 
     public Button getConfirmButton() {

@@ -23,8 +23,8 @@ public class PopUpPathologyAdd extends PopUpFragment {
     private Patologia pathology;
     public PopUpPathologyAdd(Context context, List<PathologyType> pathologyCategories) {
         super(LayoutInflater.from(context));
-        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_patologia_add,null);
-        insertView(viewGroup);
+        getInflater().inflate(R.layout.popup_patologia_add,getViewToInsert());
+
         super.insertTitle(R.string.patologia_title);
         this.pathologyTypes = pathologyCategories;
         this.context = context;

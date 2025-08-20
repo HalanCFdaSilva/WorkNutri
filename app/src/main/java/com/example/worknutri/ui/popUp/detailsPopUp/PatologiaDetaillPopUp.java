@@ -2,7 +2,6 @@ package com.example.worknutri.ui.popUp.detailsPopUp;
 
 
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -31,19 +30,19 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
     }
 
     public void setText(Patologia patologia) {
-        insertView(generateView("PATOLOGIA ATUAL", patologia.getPatologiaAtual()));
-        insertView(generateView("URINA", patologia.getUrina()));
-        insertView(generateView("fezes", patologia.getFezes()));
-        insertView(generateView("Hora de Sono", patologia.getHoraSono()));
-        insertView(generateView("medicação", patologia.getMedicacao()));
-        insertView(generateView("suplemento", patologia.getSuplemento()));
-        insertView(generateView("etilico", patologia.getEtilico()));
-        insertView(generateView("fumante", patologia.getFumante()));
-        insertView(generateView("alergia alimentar", patologia.getAlergiaAlimentar()));
-        insertView(generateView("suplemento", patologia.getSuplemento()));
-        insertView(generateView("Consumo de água", patologia.getConsumoAgua()));
-        insertView(generateView("Consumo de Açucar", patologia.getAcucar()));
-        insertView(generateView("Atividade Física", patologia.getAtividadeFisica()));
+        generateView("PATOLOGIA ATUAL", patologia.getPatologiaAtual());
+        generateView("URINA", patologia.getUrina());
+        generateView("fezes", patologia.getFezes());
+        generateView("Hora de Sono", patologia.getHoraSono());
+        generateView("medicação", patologia.getMedicacao());
+        generateView("suplemento", patologia.getSuplemento());
+        generateView("etilico", patologia.getEtilico());
+        generateView("fumante", patologia.getFumante());
+        generateView("alergia alimentar", patologia.getAlergiaAlimentar());
+        generateView("suplemento", patologia.getSuplemento());
+        generateView("Consumo de água", patologia.getConsumoAgua());
+        generateView("Consumo de Açucar", patologia.getAcucar());
+        generateView("Atividade Física", patologia.getAtividadeFisica());
 
     }
 
@@ -51,11 +50,11 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
     /**Método que apartir da classe PatologiaPopUpFragment gera o layout de cada atributo da classe Patologia
      * @see PatologiaPopUpFragment
      * @see Patologia*/
-    private ViewGroup generateView(String title, String description) {
+    private void generateView(String title, String description) {
         PatologiaPopUpFragment popUpFragment = new PatologiaPopUpFragment(inflater);
+        popUpFragment.generateViewGroup(getViewToInsert());
         popUpFragment.setTitle(title);
         if (description == null || description.isBlank()) popUpFragment.setDescription("Não Informado");
         else popUpFragment.setDescription(description);
-        return popUpFragment.getViewGroup();
     }
 }

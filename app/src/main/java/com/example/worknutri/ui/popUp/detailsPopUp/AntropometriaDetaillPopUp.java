@@ -30,15 +30,13 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     public void generateSmall( Antropometria antropometria) {
-        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description_formulario, null);
+        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description_formulario, getViewToInsert());
         constraintId = R.id.popup_antropometria_description_small;
-        this.insertView(viewGroup);
-        setSmallText(antropometria);
+        setSmallText(antropometria, viewGroup);
         this.insertTitle(R.string.antropometria_title);
     }
 
-    private void setSmallText(Antropometria antropometria) {
-        ViewGroup viewGroup = getViewGroup();
+    private void setSmallText(Antropometria antropometria,ViewGroup viewGroup) {
         TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
         InsertSelectViewSupport.insertInTextView(view, TextInViewSupport.formatDouble(antropometria.getImc()));
         view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
@@ -54,15 +52,13 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     public void generateComplete( Antropometria antropometria) {
-        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description, null);
+        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description, getViewToInsert());
         constraintId = R.id.popup_antropometria_description;
-        this.insertView(viewGroup);
-        setText(antropometria);
+        setText(antropometria,viewGroup);
         this.insertTitle(R.string.antropometria_title);
     }
 
-    private void setText(Antropometria antropometria) {
-        ViewGroup viewGroup = getViewGroup();
+    private void setText(Antropometria antropometria,ViewGroup viewGroup) {
         insertCircumferenceData(antropometria, viewGroup);
         insertlengthWeigthData(antropometria, viewGroup);
         insertAntropometricData(antropometria, viewGroup);

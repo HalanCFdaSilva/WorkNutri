@@ -109,6 +109,28 @@ public class PathologyTypeToPathologyMapperTest {
         Assert.assertEquals(expected, patologia.getAtividadeFisica());
     }
 
+
+    @Test
+    public void mapperAGivenNullPathologyTypeWhenInsertValueThenNoActionIsPerformed(){
+        String expected = "Some Value";
+        patologia = new Patologia();
+        insertValue(null, expected);
+        Assert.assertNull(patologia.getPatologiaAtual());
+        Assert.assertNull(patologia.getUrina());
+        Assert.assertNull(patologia.getFezes());
+        Assert.assertNull(patologia.getHoraSono());
+        Assert.assertNull(patologia.getMedicacao());
+        Assert.assertNull(patologia.getSuplemento());
+        Assert.assertNull(patologia.getEtilico());
+        Assert.assertNull(patologia.getFumante());
+        Assert.assertNull(patologia.getAlergiaAlimentar());
+        Assert.assertNull(patologia.getConsumoAgua());
+        Assert.assertNull(patologia.getAcucar());
+        Assert.assertNull(patologia.getAtividadeFisica());
+    }
+
+
+
     public void insertValue(PathologyType pathologyType, String value) {
         PathologyTypeToPathologyMapper mapper = new PathologyTypeToPathologyMapper(pathologyType);
         mapper.insertValueInCorrectAtribute(patologia, value);
@@ -208,4 +230,12 @@ public class PathologyTypeToPathologyMapperTest {
         patologia.setAcucar("Acucar a1");
         patologia.setAtividadeFisica("Bebida a1");
     }
+
+    @Test
+    public void mapperAGivenPathologyTypeWhenGetValueThenReturnNullIfPathologyIsNull() {
+        PathologyTypeToPathologyMapper mapper = new PathologyTypeToPathologyMapper(PathologyType.ACTUAL_PATHOLOGY);
+        String value = mapper.getValueOfPathology(null);
+        Assert.assertNull(value);
+    }
+
 }

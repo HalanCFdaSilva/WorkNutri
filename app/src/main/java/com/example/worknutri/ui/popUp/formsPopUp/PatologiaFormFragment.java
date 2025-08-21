@@ -26,20 +26,16 @@ public class PatologiaFormFragment {
         this.pathology = pathology;
     }
 
-    public CardView generateViewGroup(Context context, String message) {
+    public void generateViewGroup(Context context, ViewGroup viewGroupWereHasInsert) {
 
-        viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, null);
+        viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, viewGroupWereHasInsert);
 
         TextView title = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_title);
-        title.setText(category.getName());
+        title.setText(category.getUpperName());
 
-        configureEditText(message);
-
-
-        return viewGroup;
     }
 
-    private void configureEditText( String message) {
+    public void configureEditText( String message) {
         MultiAutoCompleteTextView editText = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_editText);
         editText.setHint(category.getHint());
         editText.setText(message);

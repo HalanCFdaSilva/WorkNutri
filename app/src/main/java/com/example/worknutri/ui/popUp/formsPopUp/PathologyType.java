@@ -33,8 +33,12 @@ public enum PathologyType {
         throw new IllegalArgumentException("No PathologyCategory found for: " + string);
     }
 
-    public String getName() {
+    public String getUpperName() {
         return name.toUpperCase();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getHint() {

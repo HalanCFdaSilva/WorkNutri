@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
@@ -90,14 +89,15 @@ public class PathologyInsertionPacienteForm extends InsertionPacienteForm {
     }
 
     private void generateView(PathologyType pathologyTypeToInsert, List<PathologyType> pathologies) {
-        String valueOfPathology = new PathologyTypeToPathologyMapper(pathologyTypeToInsert)
-                .getValueOfPathology(pathology);
+        String valueOfPathology = new PathologyTypeToPathologyMapper(pathologyTypeToInsert).getValueOfPathology(pathology);
+
         if (valueOfPathology != null && !valueOfPathology.isEmpty()) {
             PatologiaFormFragment patologiaFormFragment = new PatologiaFormFragment(pathologyTypeToInsert,pathology);
-            CardView cardView = patologiaFormFragment.generateViewGroup(context, valueOfPathology);
+            patologiaFormFragment.generateViewGroup(context, viewGroup);
+            patologiaFormFragment.configureEditText(valueOfPathology);
             pathologies.remove(pathologyTypeToInsert);
             patologiaFormFragment.configureDeleteButton(viewGroup, pathologies);
-            viewGroup.addView(cardView);
+
         }
     }
 

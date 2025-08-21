@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
-import androidx.cardview.widget.CardView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.PopUpFragment;
@@ -61,13 +60,13 @@ public class PopUpPathologyAdd extends PopUpFragment {
 
     private PathologyType getPathologyCategory(String selectedPathology) {
         return pathologyTypes.stream()
-                .filter(pathologyCategory -> pathologyCategory.getName().equals(selectedPathology))
+                .filter(pathologyCategory -> pathologyCategory.getUpperName().equals(selectedPathology))
                 .findAny().orElse(null);
 
     }
     private List<String> getPathologyNames() {
         return pathologyTypes.stream()
-                .map(PathologyType::getName)
+                .map(PathologyType::getUpperName)
                 .collect(Collectors.toList());
     }
 
@@ -78,12 +77,16 @@ public class PopUpPathologyAdd extends PopUpFragment {
             PathologyType pathologyType = getPathologyCategory(selectedPathology);
             pathologyTypes.remove(pathologyType);
 
+
+            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyType, pathology);
+            popUpPatologiaDescription.generateViewGroup(context, viewGroup);
+
             MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);
             String message = multiAutoCompleteTextView.getText().toString();
-            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyType, pathology);
-            CardView viewToAdd = popUpPatologiaDescription.generateViewGroup(context, message);
+
+            popUpPatologiaDescription.configureEditText(message);
             popUpPatologiaDescription.configureDeleteButton(viewGroup, pathologyTypes);
-            viewGroup.addView(viewToAdd);
+
 
             getPopUpWindow().dismiss();
         });

@@ -7,7 +7,7 @@ import com.example.worknutri.R;
 public enum ClassificacaoImc {
     DEFICIT(R.color.yellow_alert, -1),
     NORMAL(R.color.green_alert, 0),
-    SOBRE_PESO(R.color.yellow_alert, 1),
+    SOBREPESO(R.color.yellow_alert, 1),
     OBESIDADE_LEVE(R.color.orange_alert, 2),
     OBESIDADE_MEDIA(R.color.red_alert, 3),
     OBESIDADE_MORBIDA(R.color.magenta_alert, 4);
@@ -40,7 +40,7 @@ public enum ClassificacaoImc {
         }
 
         if (25 <= valor & valor < 30) {
-            return ClassificacaoImc.SOBRE_PESO;
+            return ClassificacaoImc.SOBREPESO;
         }
 
         if (30 <= valor & valor < 35) {

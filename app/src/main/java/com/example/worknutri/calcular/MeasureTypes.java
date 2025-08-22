@@ -14,7 +14,7 @@ public enum MeasureTypes {
     MeasureTypes(int value) {
         this.value = value;
     }
-    public static MeasureTypes fromValue(int value) {
+    public static MeasureTypes fromValue(int value) throws IllegalArgumentException{
         for (MeasureTypes type : MeasureTypes.values()) {
             if (type.value == value) {
                 return type;

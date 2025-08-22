@@ -1,4 +1,4 @@
-package com.example.worknutri.popUpTest.formsPopUpTest;
+package com.example.worknutri.ui.popUpTest.formsPopUpTest;
 
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;

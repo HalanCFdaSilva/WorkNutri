@@ -6,11 +6,17 @@ public abstract class MeasureConverter {
      * @param valueOriginal valor a ser modificado.
      * @param currentMeasure Medida atual do valor, onde 0 é grama ou metro, 1 é decigrama ou decímetro, 2 é centigrama ou centímetro, 3 é miligrama ou milímetro.
      * @return retorna o valor já modificado para grama ou metro apartir de uma nova variável*/
-    public static double convertToGramOrMeters(int currentMeasure, double valueOriginal) {
+    public static double convertToGramOrMeters(MeasureTypes currentMeasure, double valueOriginal) {
         double value = valueOriginal;
-        while (currentMeasure != 0) {
-            value /= 10;
-            currentMeasure--;
+        MeasureTypes gram = MeasureTypes.GRAM_METER;
+        while (currentMeasure != gram) {
+            if (currentMeasure.getValue() > gram.getValue()) {
+                value /= 10;
+                currentMeasure = MeasureTypes.fromValue(currentMeasure.getValue() - 1);
+            } else {
+                value *= 10;
+                currentMeasure = MeasureTypes.fromValue(currentMeasure.getValue() + 1);
+            }
         }
         return value;
 
@@ -18,18 +24,12 @@ public abstract class MeasureConverter {
 
     /**Converte o valor para a medida mili(milimetro,centimetro)
      * @param valueOriginal valor a ser modificado. Obs: Não é alterado
-     * @param currentMeasure Medida atual do valor, onde 0 é grama ou metro, 1 é decigrama ou decímetro, 2 é centigrama ou centímetro, 3 é miligrama ou milímetro.
      * @return retorna o valor já modificado para mili em uma nova variável*/
-    public static double convertToMili(int currentMeasure, double valueOriginal) {
+    public static double convertToMili(MeasureTypes measureTypes, double valueOriginal) {
         double value = valueOriginal;
-        while (currentMeasure != 3) {
-            if (currentMeasure < 3) {
-                value *= 10;
-                currentMeasure++;
-            } else {
+        while (measureTypes != MeasureTypes.MILI) {
                 value /= 10;
-                currentMeasure--;
-            }
+                measureTypes = MeasureTypes.fromValue(measureTypes.getValue()+1);
         }
         return value;
 

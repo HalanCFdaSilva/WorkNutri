@@ -21,9 +21,9 @@ public class CalculadorAntropometrico {
     public String generateTMB(char genero, int idade) {
         String tmb = null;
         if (genero == 'M') {
-            tmb = String.valueOf(66 + (13.7 * peso) + (5 * MeasureConverter.convertToMili(0, altura)) - (6.8 * idade));
+            tmb = String.valueOf(66 + (13.7 * peso) + (5 * MeasureConverter.convertToMili(MeasureTypes.GRAM_METER, altura)) - (6.8 * idade));
         } else if (genero == 'F') {
-            tmb = String.valueOf(655 + (9.6 * peso) + (1.8 * MeasureConverter.convertToMili(0, altura)) - (4.7 * idade));
+            tmb = String.valueOf(655 + (9.6 * peso) + (1.8 * MeasureConverter.convertToMili(MeasureTypes.GRAM_METER, altura)) - (4.7 * idade));
         }
         return tmb;
     }

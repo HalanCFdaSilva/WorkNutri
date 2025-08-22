@@ -22,8 +22,7 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
         paciente.setNomePaciente(InsertSelectViewSupport.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)));
 
-        int i = getPositionOfSpinner(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner));
+        int i = ((Spinner)viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner)).getSelectedItemPosition();
         paciente.setGenero(i == 0 ? 'M' : 'F');
 
         paciente.setNascimento(InsertSelectViewSupport.getStringOfEditText(
@@ -42,7 +41,7 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
     }
 
     public static void insertClinicaInPaciente(Spinner spinner, Paciente paciente, List<Clinica> clinicasInOrder) {
-        int i = getPositionOfSpinner(spinner);
+        int i = spinner.getSelectedItemPosition();
         Clinica clinica = clinicasInOrder.get(i);
         paciente.setClinicaId(clinica.getId());
     }

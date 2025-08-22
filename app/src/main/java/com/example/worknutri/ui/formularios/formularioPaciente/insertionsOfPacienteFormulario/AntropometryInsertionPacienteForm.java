@@ -7,6 +7,7 @@ import android.widget.Spinner;
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.CalculadorAntropometrico;
 import com.example.worknutri.calcular.MeasureConverter;
+import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.InsertSelectViewSupport;
@@ -20,15 +21,16 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
 
 
         double pesoAtual = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual_spinner));
+                getMeasureTypesFromGramSpinner(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual_spinner)));
         antropometria.setPeso(String.valueOf(pesoAtual));
 
+        Spinner spinner = viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura);
         double altura = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura),
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura));
+                MeasureTypes.fromValue(spinner.getSelectedItemPosition()));
         antropometria.setAltura(String.valueOf(altura));
 
         double pesoIdeal = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal),
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal_spinner));
+                getMeasureTypesFromGramSpinner(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal_spinner)));
         antropometria.setPesoIdeal(String.valueOf(pesoIdeal));
 
 
@@ -66,10 +68,14 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
 
     }
 
-    private double getValueConverTed(EditText editText, Spinner spinner) {
-        double pesoAtual = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(editText));
-        int position = getPositionOfSpinner(spinner);
-        return MeasureConverter.convertToGramOrMeters(position, pesoAtual);
+    private MeasureTypes getMeasureTypesFromGramSpinner(Spinner spinner) {
+        int selectedItemPosition = spinner.getSelectedItemPosition();
+        return MeasureTypes.fromValue(selectedItemPosition-3);
+    }
+
+    private double getValueConverTed(EditText editText, MeasureTypes measureTypes) {
+        double valueOfEditText = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(editText));
+        return MeasureConverter.convertToGramOrMeters(measureTypes, valueOfEditText);
     }
 
     /**

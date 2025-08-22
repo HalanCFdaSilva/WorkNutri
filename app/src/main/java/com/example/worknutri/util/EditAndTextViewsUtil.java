@@ -1,13 +1,13 @@
-package com.example.worknutri.ui;
+package com.example.worknutri.util;
 
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public abstract class InsertSelectViewSupport {
+public abstract class EditAndTextViewsUtil {
 
-    public static void insertInTextViewOrGone(TextView textView, String stringToInsert) {
+    public static void insertInTextViewOrTextViewGone(TextView textView, String stringToInsert) {
         if (!stringToInsert.isBlank()) {
             textView.setText(stringToInsert);
         } else {
@@ -16,11 +16,8 @@ public abstract class InsertSelectViewSupport {
     }
 
     public static void insertInTextView(TextView textView, String stringToInsert) {
-        if (stringToInsert != null) {
-            textView.setText(stringToInsert);
-        } else {
-            textView.setText(" ");
-        }
+        String correctString = stringToInsert != null ? stringToInsert : " ";
+       textView.setText(correctString);
     }
 
     public static String getStringOfEditText(EditText editText) {
@@ -30,12 +27,6 @@ public abstract class InsertSelectViewSupport {
 
     }
 
-    public static int getIntOfEditText(EditText editText) {
-
-        String string = editText.getText().toString();
-        return !string.isEmpty() ? Integer.parseInt(string) : 0;
-
-    }
 
     public static void insertInEditText(EditText editText, String stringToInsert) {
         if (stringToInsert != null) {

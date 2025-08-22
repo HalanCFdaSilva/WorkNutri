@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
 
 public class ClinicaCardInflater implements CardInflater<Clinica> {
@@ -39,13 +39,13 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
     private ViewGroup inflateClinicaCard(ViewGroup layout, Clinica clinica, Context context) {
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
-        InsertSelectViewSupport.insertInTextView(textView, clinica.getNome());
+        EditAndTextViewsUtil.insertInTextView(textView, clinica.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
-        InsertSelectViewSupport.insertInTextViewOrGone(textView, clinica.getRua());
+        EditAndTextViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getRua());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_bairro);
-        InsertSelectViewSupport.insertInTextViewOrGone(textView, clinica.getBairro());
+        EditAndTextViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getBairro());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
-        InsertSelectViewSupport.insertInTextViewOrGone(textView, clinica.getCidade());
+        EditAndTextViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getCidade());
         if (clinica.getBairro().isBlank()) {
             viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
         }
@@ -55,13 +55,13 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
     public static ViewGroup generateClinicaCardForSpinner(ViewGroup layout, Clinica clinica, Context context) {
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout, false);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
-        InsertSelectViewSupport.insertInTextView(textView, clinica.getNome());
+        EditAndTextViewsUtil.insertInTextView(textView, clinica.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
-        InsertSelectViewSupport.insertInTextView(textView, clinica.getRua());
+        EditAndTextViewsUtil.insertInTextView(textView, clinica.getRua());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_bairro);
-        InsertSelectViewSupport.insertInTextView(textView, clinica.getBairro());
+        EditAndTextViewsUtil.insertInTextView(textView, clinica.getBairro());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
-        InsertSelectViewSupport.insertInTextView(textView, clinica.getCidade());
+        EditAndTextViewsUtil.insertInTextView(textView, clinica.getCidade());
         if (clinica.getBairro().isBlank() || clinica.getCidade().isBlank()) {
             viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
         }

@@ -7,7 +7,7 @@ import android.widget.Spinner;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 
 import java.util.List;
 
@@ -19,24 +19,24 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
     public void insertViewGroupInPaciente( Paciente paciente) {
 
 
-        paciente.setNomePaciente(InsertSelectViewSupport.getStringOfEditText(
+        paciente.setNomePaciente(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)));
 
         int i = ((Spinner)viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner)).getSelectedItemPosition();
         paciente.setGenero(i == 0 ? 'M' : 'F');
 
-        paciente.setNascimento(InsertSelectViewSupport.getStringOfEditText(
+        paciente.setNascimento(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)));
 
-        paciente.setEmail(InsertSelectViewSupport.getStringOfEditText(
+        paciente.setEmail(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)));
 
-        paciente.setTelefone(InsertSelectViewSupport.getStringOfEditText(
+        paciente.setTelefone(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone)));
 
     }
     public static void insertObservationsInPaciente(Paciente paciente, EditText editText) {
-        paciente.setObservacoes(InsertSelectViewSupport.getStringOfEditText(
+        paciente.setObservacoes(EditAndTextViewsUtil.getStringOfEditText(
                editText));
     }
 
@@ -51,16 +51,16 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
      * com a ajuda da classe InsertSelectViewSupport.
      *
      * @see Paciente
-     * @see InsertSelectViewSupport
+     * @see EditAndTextViewsUtil
      */
     public void insertPacienteInViewGroup( Paciente paciente) {
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)
                 , paciente.getNascimento());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)
                 , paciente.getEmail());
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone)
                 , paciente.getTelefone());
 
         if (paciente.getGenero() == 'M') {

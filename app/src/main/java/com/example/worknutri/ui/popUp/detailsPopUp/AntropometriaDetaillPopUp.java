@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 import com.example.worknutri.ui.TextInViewSupport;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 
@@ -38,7 +38,7 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
 
     private void setSmallText(Antropometria antropometria,ViewGroup viewGroup) {
         TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
-        InsertSelectViewSupport.insertInTextView(view, TextInViewSupport.formatDouble(antropometria.getImc()));
+        EditAndTextViewsUtil.insertInTextView(view, TextInViewSupport.formatDouble(antropometria.getImc()));
         view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
         insertWithKcal(view, antropometria.getTaxaMetabolica());
         view = viewGroup.findViewById(R.id.antropometria_small_popup_valor_metabolico);
@@ -67,7 +67,7 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     private void insertAntropometricData(Antropometria antropometria, ViewGroup viewGroup) {
         String imc = TextInViewSupport.formatDouble(antropometria.getImc());
         TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
-        InsertSelectViewSupport.insertInTextView(view,imc );
+        EditAndTextViewsUtil.insertInTextView(view,imc );
         generateClassificacaoImc(Double.parseDouble(imc), context);
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_taxa_metabolica);
         insertWithKcal(view, antropometria.getTaxaMetabolica());
@@ -105,27 +105,27 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     private void insertWithKcal(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" Kcal"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" Kcal"));
     }
 
     private void insertWithCm(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" cm"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" cm"));
     }
 
     private void insertWithKg(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" kg"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" kg"));
     }
 
     private void insertWithM(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" m"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" m"));
     }
 
     private void insertWithMl(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" mlm"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" mlm"));
     }
 
     private void insertWithKcalDia(TextView textView, String string) {
-        InsertSelectViewSupport.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" Kcal/Dia"));
+        EditAndTextViewsUtil.insertInTextView(textView, TextInViewSupport.formatDouble(string).concat(" Kcal/Dia"));
     }
 
 

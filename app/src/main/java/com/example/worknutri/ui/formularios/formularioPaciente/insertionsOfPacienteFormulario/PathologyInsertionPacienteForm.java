@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyTypeToPathologyMapper;
 import com.example.worknutri.ui.popUp.formsPopUp.PatologiaFormFragment;
@@ -68,7 +68,7 @@ public class PathologyInsertionPacienteForm extends InsertionPacienteForm {
      * a ajuda da classe InsertSelectViewSupport.
      *
      * @see Patologia
-     * @see InsertSelectViewSupport
+     * @see EditAndTextViewsUtil
      */
     public void InsertPatologiaValuesInViewGroup(Context context, List<PathologyType> pathologies) {
         if (viewGroup != null){

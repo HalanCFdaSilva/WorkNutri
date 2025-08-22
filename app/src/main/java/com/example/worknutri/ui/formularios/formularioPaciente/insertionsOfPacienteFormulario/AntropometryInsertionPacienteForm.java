@@ -10,7 +10,7 @@ import com.example.worknutri.calcular.MeasureConverter;
 import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 
 public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
     public AntropometryInsertionPacienteForm(ViewGroup viewGroup) {
@@ -54,15 +54,15 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
 
         antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade(), pesoAtual)));
 
-        antropometria.setCircumferenciaBracoDir(InsertSelectViewSupport.getStringOfEditText(
+        antropometria.setCircumferenciaBracoDir(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)));
-        antropometria.setCircumferenciaCoxaDir(InsertSelectViewSupport.getStringOfEditText(
+        antropometria.setCircumferenciaCoxaDir(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_coxa)));
-        antropometria.setCircumferenciaAbdomen(InsertSelectViewSupport.getStringOfEditText(
+        antropometria.setCircumferenciaAbdomen(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen)));
-        antropometria.setCircumferenciaCintura(InsertSelectViewSupport.getStringOfEditText(
+        antropometria.setCircumferenciaCintura(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)));
-        antropometria.setCircumferenciaQuadril(InsertSelectViewSupport.getStringOfEditText(
+        antropometria.setCircumferenciaQuadril(EditAndTextViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)));
 
 
@@ -74,7 +74,7 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
     }
 
     private double getValueConverTed(EditText editText, MeasureTypes measureTypes) {
-        double valueOfEditText = Double.parseDouble(InsertSelectViewSupport.getStringOfEditText(editText));
+        double valueOfEditText = Double.parseDouble(EditAndTextViewsUtil.getStringOfEditText(editText));
         return MeasureConverter.convertToGramOrMeters(measureTypes, valueOfEditText);
     }
 
@@ -83,31 +83,31 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
      * com a ajuda da classe InsertSelectViewSupport.
      *
      * @see Antropometria
-     * @see InsertSelectViewSupport
+     * @see EditAndTextViewsUtil
      */
     public void insertAntropometria(Antropometria antropometria) {
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)
                 , antropometria.getAltura());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)
                 , antropometria.getPeso());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal)
                 , antropometria.getPesoIdeal());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)
                 , antropometria.getCircumferenciaBracoDir());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_coxa)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_coxa)
                 , antropometria.getCircumferenciaCoxaDir());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen)
                 , antropometria.getCircumferenciaAbdomen());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)
                 , antropometria.getCircumferenciaCintura());
 
-        InsertSelectViewSupport.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)
+        EditAndTextViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)
                 , antropometria.getCircumferenciaQuadril());
     }
 }

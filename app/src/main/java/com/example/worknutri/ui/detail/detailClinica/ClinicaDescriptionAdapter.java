@@ -11,7 +11,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.InsertSelectViewSupport;
+import com.example.worknutri.util.EditAndTextViewsUtil;
 import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
@@ -43,28 +43,28 @@ public class ClinicaDescriptionAdapter {
     }
 
     private void insertDadosGerais(ViewGroup viewGroup) {
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_name), clinica.getNome());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone1());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_email), clinica.getEmail());
     }
 
     private void InsertEndereco(ViewGroup viewGroup) {
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_cep), clinica.getCodigoPostal());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_rua), clinica.getRua());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_numero), String.valueOf(clinica.getNumero()));
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_complemento), clinica.getComplemento());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_cidade), clinica.getCidade());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_bairro), clinica.getBairro());
-        InsertSelectViewSupport.insertInTextView(viewGroup.findViewById(
+        EditAndTextViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_endereco_estado), clinica.getEstado());
     }
 

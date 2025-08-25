@@ -1,18 +1,17 @@
-package com.example.worknutri;
+package com.example.worknutri.calcularTest;
 
 import com.example.worknutri.calcular.CalculadorAntropometrico;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 
-public class TesteCalculoAntropometria {
+public class CalculadorAntropometricoTest {
     CalculadorAntropometrico calculador;
 
     @Before
-    public void generateCalculadorAntropométrico(){
+    public void generateCalculadorAntropometrico(){
         calculador = new CalculadorAntropometrico(70,1.8);
     }
 
@@ -25,14 +24,14 @@ public class TesteCalculoAntropometria {
     }
 
     @Test
-    public void calculaTaxaMetabólicaBasalCorretamenteParaHomens(){
+    public void calculaTaxaMetabolicaBasalCorretamenteParaHomens(){
         double tmb = Double.parseDouble(calculador.generateTMB('M',25));
         Assert.assertEquals(1755,tmb,0);
 
     }
 
     @Test
-    public void calculaTaxaMetabólicaBasalCorretamenteParaMulheres(){
+    public void calculaTaxaMetabolicaBasalCorretamenteParaMulheres(){
         double tmb = Double.parseDouble(calculador.generateTMB('F',25));
         Assert.assertEquals(1533.5,tmb,0);
 

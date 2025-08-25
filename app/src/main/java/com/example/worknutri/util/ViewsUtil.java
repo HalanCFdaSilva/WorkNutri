@@ -5,10 +5,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public abstract class EditAndTextViewsUtil {
+public abstract class ViewsUtil {
 
     public static void insertInTextViewOrTextViewGone(TextView textView, String stringToInsert) {
-        if (!stringToInsert.isBlank()) {
+        if (stringToInsert != null && !stringToInsert.isBlank()) {
             textView.setText(stringToInsert);
         } else {
             textView.setVisibility(View.GONE);
@@ -16,14 +16,14 @@ public abstract class EditAndTextViewsUtil {
     }
 
     public static void insertInTextView(TextView textView, String stringToInsert) {
-        String correctString = stringToInsert != null ? stringToInsert : " ";
+        String correctString = stringToInsert != null ? stringToInsert : "";
        textView.setText(correctString);
     }
 
     public static String getStringOfEditText(EditText editText) {
 
         String string = editText.getText().toString();
-        return !string.isEmpty() ? string : "";
+        return !string.isBlank() ? string : "";
 
     }
 
@@ -34,9 +34,9 @@ public abstract class EditAndTextViewsUtil {
         }
     }
 
-    public static String getStringOfSpinner(Spinner spinner, String[] arrayOfStringgSpinner) {
+    public static String getStringOfSpinner(Spinner spinner, String[] arrayOfStringSpinner) {
         int i = spinner.getSelectedItemPosition();
-        return arrayOfStringgSpinner[i];
+        return arrayOfStringSpinner[i];
     }
 
 

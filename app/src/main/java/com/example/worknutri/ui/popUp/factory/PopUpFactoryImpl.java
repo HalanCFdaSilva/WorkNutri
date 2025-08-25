@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
@@ -31,18 +30,10 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public AntropometriaDetaillPopUp generateSmallAntropometriaPopUp(Antropometria antropometria) {
-        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(LayoutInflater.from(context),context);
-        popUp.generateSmall(antropometria);
-        return popUp;
+    public AntropometriaDetaillPopUp generateAntropometriaPopUp() {
+        return new AntropometriaDetaillPopUp(context);
     }
 
-    @Override
-    public AntropometriaDetaillPopUp generateFullAntropometriaPopUp(Antropometria antropometria) {
-        AntropometriaDetaillPopUp popUp = new AntropometriaDetaillPopUp(LayoutInflater.from(context),context);
-        popUp.generateComplete(antropometria);
-        return popUp;
-    }
 
     @Override
     public RemoveConfirmPopUp generateRemoveConfirmPopUp() {

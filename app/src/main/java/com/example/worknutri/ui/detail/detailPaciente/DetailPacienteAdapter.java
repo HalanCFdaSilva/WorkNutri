@@ -26,6 +26,7 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
 import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
+import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -142,10 +143,13 @@ public class DetailPacienteAdapter {
 
     private void generateAntropometriaPopUp(ViewGroup viewGroup) {
         Button buttonAntropometria = viewGroup.findViewById(R.id.paciente_description_activity_button_antropometric);
-        buttonAntropometria.setOnClickListener(v -> new PopUpFactoryImpl(context).
-                generateFullAntropometriaPopUp(antropometria).
-                getPopUpWindow().
-                showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1));
+        buttonAntropometria.setOnClickListener(v -> {
+            AntropometriaDetaillPopUp antropometriaDetaillPopUp = new PopUpFactoryImpl(context).
+                    generateAntropometriaPopUp();
+            antropometriaDetaillPopUp.generateComplete(antropometria);
+            antropometriaDetaillPopUp.getPopUpWindow().
+                    showAtLocation(viewGroup.findViewById(R.id.paciente_description_activity_layout), Gravity.CENTER, -1, -1);
+        });
     }
 
     private void generatePatologiaPopUp(ViewGroup viewGroup) {

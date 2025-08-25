@@ -27,6 +27,7 @@ import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacie
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PacienteInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PathologyInsertionPacienteForm;
 import com.example.worknutri.ui.popUp.NivelAtividadeDescritpionPopUp;
+import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
 import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
@@ -158,7 +159,9 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             new AntropometryInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
                     .insertViewGroupInAntropometria(antropometria, paciente);
 
-            new PopUpFactoryImpl(getContext()).generateSmallAntropometriaPopUp(antropometria).getPopUpWindow().
+            AntropometriaDetaillPopUp antropometriaDetaillPopUp = new PopUpFactoryImpl(getContext()).generateAntropometriaPopUp();
+            antropometriaDetaillPopUp.generateSmall(antropometria);
+            antropometriaDetaillPopUp.getPopUpWindow().
                     showAtLocation(viewGroup, Gravity.CENTER, -1, -1);
         } else {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.VISIBLE);

@@ -23,8 +23,8 @@ import java.util.Objects;
 public class AntropometriaDetaillPopUp extends PopUpFragment {
     private int constraintId;
     private final Context context;
-    public AntropometriaDetaillPopUp(LayoutInflater layoutInflater, Context context) {
-        super(layoutInflater);
+    public AntropometriaDetaillPopUp(Context context) {
+        super(LayoutInflater.from(context));
         this.context = context;
 
     }

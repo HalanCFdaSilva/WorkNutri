@@ -2,7 +2,6 @@ package com.example.worknutri.ui.popUp.factory;
 
 
 import android.view.ViewGroup;
-import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
@@ -17,11 +16,10 @@ public interface PopUpFactory {
 
     PatologiaDetaillPopUp generatePatologiaDetailPopUp( Patologia patologia);
 
-    AntropometriaDetaillPopUp generateSmallAntropometriaPopUp(Antropometria antropometria);
-
-    AntropometriaDetaillPopUp generateFullAntropometriaPopUp(Antropometria antropometria);
+    AntropometriaDetaillPopUp generateAntropometriaPopUp();
 
     RemoveConfirmPopUp generateRemoveConfirmPopUp();
+
     DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity);
 
     PopUpPathologyAdd generatePopUpPatologiaAdd( List<PathologyType> pathologyCategories);

@@ -3,7 +3,6 @@ package com.example.worknutri.ui.formularios.formularioPaciente;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ import com.example.worknutri.ui.formularios.ValidaFormulario;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.AntropometryInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PacienteInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PathologyInsertionPacienteForm;
-import com.example.worknutri.ui.popUp.NivelAtividadeDescritpionPopUp;
+import com.example.worknutri.ui.popUp.detailsPopUp.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
@@ -183,9 +182,10 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         return false;
     }
 
-    public void OpenNivelAtividadePopUpOnClick(ImageView button, LayoutInflater inflater, ViewGroup viewGroup) {
+    public void OpenNivelAtividadePopUpOnClick(ImageView button, ViewGroup viewGroup) {
         button.setOnClickListener(onClick -> {
-            NivelAtividadeDescritpionPopUp popUp = new NivelAtividadeDescritpionPopUp(inflater);
+            ActivityLevelDetailPopUp popUp = new PopUpFactoryImpl(getContext()).generateActivityLevelDetailPopUp();
+            popUp.configureLayout();
             popUp.getPopUpWindow().showAtLocation(viewGroup, Gravity.CENTER, -1, -1);
 
         });

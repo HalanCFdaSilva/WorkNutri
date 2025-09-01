@@ -8,10 +8,16 @@
       <SelectionState runConfigName="PopUpFactoryImplTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testGeneratePopUpPatologiaAddWereReceiveInParameterOneListWithAllPathologyTypes()">
+      <SelectionState runConfigName="testGenerateActivityLevelDetail()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testGenerateActivityLevelDetail()">
+      <SelectionState runConfigName="ActivityLevelDetailPopUpTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="configureLayoutMethodSetBackgroundAndForegroundOfScrollLayoutToTransparent()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="configureLayoutMethodSetImageViewWithCorrectDrawableResource()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

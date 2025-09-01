@@ -2,7 +2,6 @@ package com.example.worknutri.ui.popUp.factory;
 
 
 import android.view.ViewGroup;
-import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public interface PopUpFactory {
 
-    PatologiaDetaillPopUp generatePatologiaDetailPopUp( Patologia patologia);
+    PatologiaDetaillPopUp generatePatologiaDetailPopUp();
 
     AntropometriaDetaillPopUp generateAntropometriaPopUp();
 

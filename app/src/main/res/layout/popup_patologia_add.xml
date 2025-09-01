@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_spinner" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/pop_up_patologia_add_button"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
@@ -51,6 +51,5 @@
         app:layout_constraintEnd_toEndOf="@+id/pop_up_patologia_add_multiAutoComplete"
         app:layout_constraintStart_toStartOf="@+id/pop_up_patologia_add_multiAutoComplete"
         app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_multiAutoComplete"
-        app:strokeColor="@color/teal_200_lower"
-        app:strokeWidth="1dp" />
+        app:strokeColor="@color/teal_200_lower" />
 </androidx.constraintlayout.widget.ConstraintLayout>

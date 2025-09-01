@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
@@ -22,11 +21,8 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public PatologiaDetaillPopUp generatePatologiaDetailPopUp(Patologia patologia) {
-        PatologiaDetaillPopUp popUp = new PatologiaDetaillPopUp(LayoutInflater.from(context));
-        popUp.setText(patologia);
-        popUp.removeMarginBottom();
-        return popUp;
+    public PatologiaDetaillPopUp generatePatologiaDetailPopUp() {
+        return new PatologiaDetaillPopUp(LayoutInflater.from(context));
     }
 
     @Override

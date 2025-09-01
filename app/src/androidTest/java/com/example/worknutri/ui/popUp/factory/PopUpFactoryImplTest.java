@@ -9,9 +9,11 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 
 import com.example.worknutri.ui.popUp.PopUpFragment;
+import com.example.worknutri.ui.popUp.detailsPopUp.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
 import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
+import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
 
 import org.junit.Assert;
@@ -62,13 +64,20 @@ public class PopUpFactoryImplTest {
 
     @Test
     public void testGeneratePopUpPatologiaAddWereReceiveAEmptyListOnParameter() {
-        PopUpFragment popUpPathologyAdd = popUpFactory.generatePopUpPatologiaAdd(new ArrayList<>());
-        Assert.assertNotNull(popUpPathologyAdd);
+        PopUpPathologyAdd popUp = popUpFactory.generatePopUpPatologiaAdd(new ArrayList<>());
+        Assert.assertNotNull(popUp);
     }
 
     @Test
     public void testGeneratePopUpPatologiaAddWereReceiveInParameterOneListWithAllPathologyTypes() {
-        PopUpFragment popUpPathologyAdd = popUpFactory.generatePopUpPatologiaAdd(Arrays.asList(PathologyType.values()));
-        Assert.assertNotNull(popUpPathologyAdd);
+        PopUpPathologyAdd popUp = popUpFactory.generatePopUpPatologiaAdd(Arrays.asList(PathologyType.values()));
+        Assert.assertNotNull(popUp);
+    }
+
+    @Test
+    public void testGenerateActivityLevelDetail() {
+        ActivityLevelDetailPopUp activityLevelPopUp = popUpFactory.generateActivityLevelDetailPopUp();
+        Assert.assertNotNull(activityLevelPopUp);
+
     }
 }

@@ -45,17 +45,16 @@ dependencies {
     implementation(libs.navigation.ui)
 
     testImplementation(libs.junit)
-    testImplementation("org.mockito:mockito-core:5.5.0")
+    testImplementation(libs.mockito.core)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
     //    COORDINATOR DEPENDENCIES
-    implementation("com.google.android.material:material:1.3.0-alpha03")
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation(libs.material)
+    implementation(libs.coordinatorlayout)
 
 //    ROOM DEPENDENCIES
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
 
 }

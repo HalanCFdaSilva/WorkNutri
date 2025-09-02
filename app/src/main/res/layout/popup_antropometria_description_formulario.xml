@@ -8,7 +8,7 @@
 
     <!--            IMC-->
     <TextView
-        android:id="@+id/antropometria_small_popup_imc_title"
+        android:id="@+id/paciente_descrition_antropometria_imc_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/antropometria_popup_imc"
+        android:id="@+id/paciente_descrition_antropometria_imc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/antropometria_small_popup_imc_title"
-        app:layout_constraintStart_toEndOf="@+id/antropometria_small_popup_imc_title"
-        app:layout_constraintTop_toTopOf="@+id/antropometria_small_popup_imc_title"
+        app:layout_constraintBottom_toBottomOf="@+id/paciente_descrition_antropometria_imc_title"
+        app:layout_constraintStart_toEndOf="@+id/paciente_descrition_antropometria_imc_title"
+        app:layout_constraintTop_toTopOf="@+id/paciente_descrition_antropometria_imc_title"
         tool:text="58 kilogramas" />
 
 
@@ -36,8 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/metabolica_taxa_title"
-        app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
-        app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_imc_title" />
+        app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/paciente_descrition_antropometria_imc_title" />
 
     <TextView
         android:id="@+id/antropometria_small_popup_taxa_metabolica"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/metabolica_valor_title"
-        app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
+        app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
         app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_taxa_metabolica_title" />
 
     <TextView
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/bolso_title"
-        app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
+        app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
         app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_valor_metabolico_title" />
 
     <TextView
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/venta_title"
-        app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
+        app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
         app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_bolso_title" />
 
     <TextView
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/agua_ideal_title"
-        app:layout_constraintStart_toStartOf="@+id/antropometria_small_popup_imc_title"
+        app:layout_constraintStart_toStartOf="@+id/paciente_descrition_antropometria_imc_title"
         app:layout_constraintTop_toBottomOf="@+id/antropometria_small_popup_venta_title" />
 
     <TextView

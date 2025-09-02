@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PopUpFactoryImplTest">
+      <SelectionState runConfigName="AntropometriaDetailPopUpTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testGenerateActivityLevelDetail()">
+      <SelectionState runConfigName="GenerateSmallMethodInsertAntropometriaDataCorrectely()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ActivityLevelDetailPopUpTest">
+      <SelectionState runConfigName="GenerateSmallMethodContainCorrectViews()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="configureLayoutMethodSetBackgroundAndForegroundOfScrollLayoutToTransparent()">
+      <SelectionState runConfigName="GenerateCompleteMethodContainCorrectViews()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="configureLayoutMethodSetImageViewWithCorrectDrawableResource()">
+      <SelectionState runConfigName="GenerateCompleteMethodInsertAntropometriaDataCorrectely()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -37,7 +37,7 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     private void setSmallText(Antropometria antropometria,ViewGroup viewGroup) {
-        TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
+        TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
         ViewsUtil.insertInTextView(view, StringsUtil.formatDouble(antropometria.getImc()));
         view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
         insertWithKcal(view, antropometria.getTaxaMetabolica());
@@ -66,7 +66,7 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
 
     private void insertAntropometricData(Antropometria antropometria, ViewGroup viewGroup) {
         String imc = StringsUtil.formatDouble(antropometria.getImc());
-        TextView view = viewGroup.findViewById(R.id.antropometria_popup_imc);
+        TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
         ViewsUtil.insertInTextView(view,imc );
         generateClassificacaoImc(Double.parseDouble(imc), context);
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_taxa_metabolica);
@@ -147,9 +147,9 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
 
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(layout);
-        constraintSet.connect(textView.getId(), ConstraintSet.START, R.id.antropometria_popup_imc, ConstraintSet.END, 8);
-        constraintSet.connect(textView.getId(), ConstraintSet.TOP, R.id.antropometria_popup_imc, ConstraintSet.TOP);
-        constraintSet.connect(textView.getId(), ConstraintSet.BOTTOM, R.id.antropometria_popup_imc, ConstraintSet.BOTTOM);
+        constraintSet.connect(textView.getId(), ConstraintSet.START, R.id.paciente_descrition_antropometria_imc, ConstraintSet.END, 8);
+        constraintSet.connect(textView.getId(), ConstraintSet.TOP, R.id.paciente_descrition_antropometria_imc, ConstraintSet.TOP);
+        constraintSet.connect(textView.getId(), ConstraintSet.BOTTOM, R.id.paciente_descrition_antropometria_imc, ConstraintSet.BOTTOM);
         constraintSet.applyTo(layout);
 
 

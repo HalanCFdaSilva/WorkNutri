@@ -22,7 +22,7 @@ public abstract class StringWithUnitsFormatter {
     }
 
     public static String withMl( String string) {
-        return StringsUtil.formatDouble(string).concat(" mlm");
+        return StringsUtil.formatDouble(string).concat(" ml");
     }
 
     public static String withKcalDia( String string) {

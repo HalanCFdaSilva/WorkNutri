@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
+import com.example.worknutri.calcular.StringWithUnitsFormatter;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.util.StringsUtil;
 import com.example.worknutri.util.ViewsUtil;
@@ -21,6 +22,7 @@ import com.example.worknutri.ui.popUp.PopUpFragment;
 import java.util.Objects;
 
 public class AntropometriaDetaillPopUp extends PopUpFragment {
+    
     private int constraintId;
     private final Context context;
     public AntropometriaDetaillPopUp(Context context) {
@@ -37,28 +39,40 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     private void setSmallText(Antropometria antropometria,ViewGroup viewGroup) {
-        TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
-        ViewsUtil.insertInTextView(view, StringsUtil.formatDouble(antropometria.getImc()));
+        TextView view = viewGroup.findViewById(R.id.antropometria_small_popup_imc);
+        String imcFormatted = StringsUtil.formatDouble(antropometria.getImc());
+        ViewsUtil.insertInTextView(view,imcFormatted);
+        generateClassificacaoImc(Double.parseDouble(imcFormatted),R.id.antropometria_small_popup_imc);
+
         view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
-        insertWithKcal(view, antropometria.getTaxaMetabolica());
+        String stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getTaxaMetabolica());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.antropometria_small_popup_valor_metabolico);
-        insertWithKcal(view, antropometria.getValorMetabolico());
+        stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getValorMetabolico());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.antropometria_small_popup_bolso);
-        insertWithKcal(view, antropometria.getRegraBolso());
+        stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getRegraBolso());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.antropometria_small_popup_venta);
-        this.insertWithKcalDia(view, antropometria.getVenta());
+        stringWithUnit = StringWithUnitsFormatter.withKcalDia( antropometria.getVenta());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.antropometria_small_popup_agua);
-        insertWithMl(view, antropometria.getAgua());
+        stringWithUnit = StringWithUnitsFormatter.withMl( antropometria.getAgua());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
     }
 
     public void generateComplete( Antropometria antropometria) {
         ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description, getViewToInsert());
         constraintId = R.id.popup_antropometria_description;
-        setText(antropometria,viewGroup);
+        setCompleteTextViews(antropometria,viewGroup);
         this.insertTitle(R.string.antropometria_title);
     }
 
-    private void setText(Antropometria antropometria,ViewGroup viewGroup) {
+    private void setCompleteTextViews(Antropometria antropometria, ViewGroup viewGroup) {
         insertCircumferenceData(antropometria, viewGroup);
         insertlengthWeigthData(antropometria, viewGroup);
         insertAntropometricData(antropometria, viewGroup);
@@ -67,75 +81,75 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     private void insertAntropometricData(Antropometria antropometria, ViewGroup viewGroup) {
         String imc = StringsUtil.formatDouble(antropometria.getImc());
         TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_imc);
-        ViewsUtil.insertInTextView(view,imc );
-        generateClassificacaoImc(Double.parseDouble(imc), context);
+        ViewsUtil.insertInTextView(view, imc );
+        generateClassificacaoImc(Double.parseDouble(imc),R.id.paciente_descrition_antropometria_imc);
+
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_taxa_metabolica);
-        insertWithKcal(view, antropometria.getTaxaMetabolica());
+        String stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getTaxaMetabolica());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_valor_metabolico);
-        insertWithKcal(view, antropometria.getValorMetabolico());
+        stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getValorMetabolico());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_bolso);
-        insertWithKcal(view, antropometria.getRegraBolso());
+        stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getRegraBolso());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_venta);
-        insertWithKcalDia(view, antropometria.getVenta());
+        stringWithUnit = StringWithUnitsFormatter.withKcalDia( antropometria.getVenta());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_agua);
-        insertWithMl(view, antropometria.getAgua());
+        stringWithUnit = StringWithUnitsFormatter.withMl( antropometria.getAgua());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
     }
 
     private void insertlengthWeigthData(Antropometria antropometria, ViewGroup viewGroup) {
         TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_altura);
-        insertWithM(view, antropometria.getAltura());
+        String stringWithUnit = StringWithUnitsFormatter.withMeters( antropometria.getAltura());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
 
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_atual);
-        insertWithKg(view, antropometria.getPeso());
+        stringWithUnit = StringWithUnitsFormatter.withKg( antropometria.getPeso());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_peso_ideal);
-        insertWithKg(view, antropometria.getPesoIdeal());
+        stringWithUnit = StringWithUnitsFormatter.withKg( antropometria.getPesoIdeal());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
     }
 
     private void insertCircumferenceData(Antropometria antropometria, ViewGroup viewGroup) {
         TextView view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_braco);
-        insertWithCm(view, antropometria.getCircumferenciaBracoDir());
+        String stringWithUnit = StringWithUnitsFormatter.withCm(antropometria.getCircumferenciaBracoDir());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_coxa);
-        insertWithCm(view, antropometria.getCircumferenciaCoxaDir());
+        stringWithUnit = StringWithUnitsFormatter.withCm( antropometria.getCircumferenciaCoxaDir());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_abdomen);
-        insertWithCm(view, antropometria.getCircumferenciaAbdomen());
+        stringWithUnit = StringWithUnitsFormatter.withCm( antropometria.getCircumferenciaAbdomen());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_cintura);
-        insertWithCm(view, antropometria.getCircumferenciaCintura());
+        stringWithUnit = StringWithUnitsFormatter.withCm( antropometria.getCircumferenciaCintura());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
+
         view = viewGroup.findViewById(R.id.paciente_descrition_antropometria_circum_quadril);
-        insertWithCm(view, antropometria.getCircumferenciaQuadril());
-    }
-
-    private void insertWithKcal(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" Kcal"));
-    }
-
-    private void insertWithCm(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" cm"));
-    }
-
-    private void insertWithKg(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" kg"));
-    }
-
-    private void insertWithM(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" m"));
-    }
-
-    private void insertWithMl(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" mlm"));
-    }
-
-    private void insertWithKcalDia(TextView textView, String string) {
-        ViewsUtil.insertInTextView(textView, StringsUtil.formatDouble(string).concat(" Kcal/Dia"));
+        stringWithUnit = StringWithUnitsFormatter.withCm( antropometria.getCircumferenciaQuadril());
+        ViewsUtil.insertInTextView(view, stringWithUnit);
     }
 
 
-    private void generateClassificacaoImc(double imc, Context context) {
+    private void generateClassificacaoImc(double imc,int idConstraint) {
 
         ClassificacaoImc classificacaoImc = ClassificacaoImc.tipoImc(imc);
         TextView textView = new TextView(context);
         textView.setContentDescription(context.getText(R.string.imc_type_content));
         textView.setId(R.id.classificacao_imc_textview);
-        textView.setText(classificacaoImc != null ? classificacaoImc.toString().replaceAll("_", " ") : "");
+        textView.setText(classificacaoImc != null ? classificacaoImc.toString() : "");
         textView.setTypeface(Typeface.DEFAULT_BOLD);
 
         textView.setBackgroundResource(R.color.white);
@@ -147,9 +161,9 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
 
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(layout);
-        constraintSet.connect(textView.getId(), ConstraintSet.START, R.id.paciente_descrition_antropometria_imc, ConstraintSet.END, 8);
-        constraintSet.connect(textView.getId(), ConstraintSet.TOP, R.id.paciente_descrition_antropometria_imc, ConstraintSet.TOP);
-        constraintSet.connect(textView.getId(), ConstraintSet.BOTTOM, R.id.paciente_descrition_antropometria_imc, ConstraintSet.BOTTOM);
+        constraintSet.connect(textView.getId(), ConstraintSet.START, idConstraint, ConstraintSet.END, 8);
+        constraintSet.connect(textView.getId(), ConstraintSet.TOP, idConstraint, ConstraintSet.TOP);
+        constraintSet.connect(textView.getId(), ConstraintSet.BOTTOM, idConstraint, ConstraintSet.BOTTOM);
         constraintSet.applyTo(layout);
 
 

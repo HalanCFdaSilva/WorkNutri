@@ -8,16 +8,16 @@
       <SelectionState runConfigName="AntropometriaDetailPopUpTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GenerateSmallMethodInsertAntropometriaDataCorrectely()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="GenerateSmallMethodContainCorrectViews()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GenerateCompleteMethodContainCorrectViews()">
+      <SelectionState runConfigName="generateCompleteMethodInsertTheTitleCorrectly()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GenerateCompleteMethodInsertAntropometriaDataCorrectely()">
+      <SelectionState runConfigName="verifyIfGenerateCompleteMethodCreateCorrectImcTypeTextView()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="verifyIfGenerateSmallMethodCreateCorrectImcTypeTextView()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

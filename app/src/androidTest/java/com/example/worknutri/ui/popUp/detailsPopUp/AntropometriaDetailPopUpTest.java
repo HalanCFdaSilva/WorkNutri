@@ -1,15 +1,21 @@
 package com.example.worknutri.ui.popUp.detailsPopUp;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
+import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.google.android.material.divider.MaterialDivider;
@@ -24,12 +30,15 @@ public class AntropometriaDetailPopUpTest {
 
     private AntropometriaDetaillPopUp antropometriaDetaillPopUp;
     private Antropometria antropometria;
+    private Context context;
 
     @Before
     public void setUp() {
-        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
+
         antropometriaDetaillPopUp = new PopUpFactoryImpl(context).generateAntropometriaPopUp();
+
         antropometria = new Antropometria();
         antropometria.setAltura("1.75");
         antropometria.setPeso("70.0");
@@ -61,10 +70,11 @@ public class AntropometriaDetailPopUpTest {
     public void GenerateSmallMethodContainCorrectViews() {
         antropometriaDetaillPopUp.generateSmall(antropometria);
         ViewGroup viewGroup = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_antropometria_description_small);
-        Assert.assertEquals(12,viewGroup.getChildCount());
+        Assert.assertEquals(13,viewGroup.getChildCount());
 
-        verifyIfContainsElementInId(viewGroup,R.id.paciente_descrition_antropometria_imc_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.paciente_descrition_antropometria_imc,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_imc_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_imc,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.classificacao_imc_textview,TextView.class);
 
         verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_taxa_metabolica_title,TextView.class);
         verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_taxa_metabolica,TextView.class);
@@ -93,7 +103,7 @@ public class AntropometriaDetailPopUpTest {
     public void GenerateSmallMethodInsertAntropometriaDataCorrectely() {
         antropometriaDetaillPopUp.generateSmall(antropometria);
 
-        Assert.assertEquals(antropometria.getImc(),getStringInViewText(R.id.paciente_descrition_antropometria_imc));
+        Assert.assertEquals(antropometria.getImc(),getStringInViewText(R.id.antropometria_small_popup_imc));
         Assert.assertEquals(antropometria.getTaxaMetabolica(),getStringInViewText(R.id.antropometria_small_popup_taxa_metabolica));
         Assert.assertEquals(antropometria.getValorMetabolico(),getStringInViewText(R.id.antropometria_small_popup_valor_metabolico));
         Assert.assertEquals(antropometria.getRegraBolso(),getStringInViewText(R.id.antropometria_small_popup_bolso));
@@ -206,6 +216,54 @@ public class AntropometriaDetailPopUpTest {
     public void GetViewGroupMethodReturnTheCorrectViewGroup() {
         Assert.assertNotNull(antropometriaDetaillPopUp.getViewGroup());
         Assert.assertEquals(antropometriaDetaillPopUp.getViewGroup().getId(),R.id.popup_base_layout);
+    }
+
+    @Test
+    public void verifyIfGenerateCompleteMethodCreateCorrectImcTypeTextView(){
+        antropometria.setImc("22.0");
+        ClassificacaoImc imcExpected = ClassificacaoImc.tipoImc(22.0);
+        Assert.assertNotNull(imcExpected);
+        antropometriaDetaillPopUp.generateComplete(antropometria);
+        verifyImcTypeTextView(imcExpected);
+
+
+    }
+
+    @Test
+    public void verifyIfGenerateSmallMethodCreateCorrectImcTypeTextView(){
+        antropometria.setImc("45.0");
+        ClassificacaoImc imcExpected = ClassificacaoImc.tipoImc(45.0);
+        Assert.assertNotNull(imcExpected);
+        antropometriaDetaillPopUp.generateComplete(antropometria);
+        verifyImcTypeTextView(imcExpected);
+
+
+    }
+
+
+    private void verifyImcTypeTextView(ClassificacaoImc imcExpected) {
+        TextView textView = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.classificacao_imc_textview);
+        Assert.assertNotNull(textView);
+
+        Drawable background = textView.getBackground();
+        Assert.assertEquals(ContextCompat.getColor(context, imcExpected.getColor()),((ColorDrawable) background).getColor());
+
+        Assert.assertEquals(imcExpected.toString(),textView.getText().toString());
+        Assert.assertEquals(context.getText(R.string.imc_type_content).toString(),textView.getContentDescription());
+        Assert.assertEquals(Typeface.DEFAULT_BOLD,textView.getTypeface());
+
+        Assert.assertEquals(5, textView.getPaddingLeft());
+        Assert.assertEquals(0, textView.getPaddingTop());
+        Assert.assertEquals(5, textView.getPaddingRight());
+        Assert.assertEquals(0, textView.getPaddingBottom());
+
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams)textView.getLayoutParams();
+        Assert.assertEquals(R.id.paciente_descrition_antropometria_imc,layoutParams.topToTop);
+        Assert.assertEquals(R.id.paciente_descrition_antropometria_imc,layoutParams.bottomToBottom);
+        Assert.assertEquals(R.id.paciente_descrition_antropometria_imc,layoutParams.startToEnd);
+        Assert.assertEquals(8,layoutParams.leftMargin);
+        Assert.assertEquals(ConstraintLayout.LayoutParams.WRAP_CONTENT,layoutParams.width);
+        Assert.assertEquals(ConstraintLayout.LayoutParams.WRAP_CONTENT,layoutParams.height);
     }
 
 

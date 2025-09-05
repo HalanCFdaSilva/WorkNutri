@@ -1,15 +1,15 @@
-package com.example.worknutri.ui.popUp.formsPopUp;
+package com.example.worknutri.ui.popUp.pathology;
 
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 
-public class PathologyTypeToPathologyMapper {
-    private final PathologyType category;
+public class PathologyFieldMapper {
+    private final PathologyField category;
 
-    public PathologyTypeToPathologyMapper(PathologyType category) {
+    public PathologyFieldMapper(PathologyField category) {
         this.category = category;
     }
 
-    public void insertValueInCorrectAtribute(Patologia pathology, String value) {
+    public void setValue(Patologia pathology, String value) {
 
         if (category != null && pathology != null) {
             switch (category){
@@ -62,7 +62,7 @@ public class PathologyTypeToPathologyMapper {
         }
     }
 
-    public String getValueOfPathology(Patologia pathology) {
+    public String getValue(Patologia pathology) {
         if (category != null && pathology != null) {
             switch (category){
                 case SUPPLEMENT: return pathology.getSuplemento();

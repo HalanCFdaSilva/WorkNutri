@@ -1,8 +1,6 @@
-package com.example.worknutri.ui.popUp.formsPopUpTest;
+package com.example.worknutri.ui.popUp.pathology;
 
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyTypeToPathologyMapper;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +20,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperAActualPathologyTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Patologia Atual";
-        insertValue(PathologyType.ACTUAL_PATHOLOGY,expected);
+        insertValue(PathologyField.ACTUAL_PATHOLOGY,expected);
         Assert.assertEquals(expected, patologia.getPatologiaAtual());
     }
 
@@ -30,7 +28,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperAUrineTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Urina";
-        insertValue(PathologyType.URINE,expected);
+        insertValue(PathologyField.URINE,expected);
         Assert.assertEquals(expected, patologia.getUrina());
     }
 
@@ -38,7 +36,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperAStoolTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Fezes";
-        insertValue(PathologyType.STOOL,expected);
+        insertValue(PathologyField.STOOL,expected);
         Assert.assertEquals(expected, patologia.getFezes());
     }
 
@@ -46,7 +44,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperASlumberTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Sono";
-        insertValue(PathologyType.SLUMBER,expected);
+        insertValue(PathologyField.SLUMBER,expected);
         Assert.assertEquals(expected, patologia.getHoraSono());
     }
 
@@ -54,7 +52,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperAMedicationTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Medicacao";
-        insertValue(PathologyType.MEDICATION,expected);
+        insertValue(PathologyField.MEDICATION,expected);
         Assert.assertEquals(expected, patologia.getMedicacao());
     }
 
@@ -62,7 +60,7 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperASupplementTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Suplemento";
-        insertValue(PathologyType.SUPPLEMENT,expected);
+        insertValue(PathologyField.SUPPLEMENT,expected);
         Assert.assertEquals(expected, patologia.getSuplemento());
     }
 
@@ -70,42 +68,42 @@ public class PathologyTypeToPathologyMapperTest {
     public void mapperAEthylicTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Etilico";
-        insertValue(PathologyType.ETHYLIC,expected);
+        insertValue(PathologyField.ETHYLIC,expected);
         Assert.assertEquals(expected, patologia.getEtilico());
     }
     @Test
     public void mapperASmokerTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Fumante";
-        insertValue(PathologyType.SMOKER,expected);
+        insertValue(PathologyField.SMOKER,expected);
         Assert.assertEquals(expected, patologia.getFumante());
     }
     @Test
     public void mapperAAllergyTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Alergia Alimentar";
-        insertValue(PathologyType.ALLERGY,expected);
+        insertValue(PathologyField.ALLERGY,expected);
         Assert.assertEquals(expected, patologia.getAlergiaAlimentar());
     }
     @Test
     public void mapperAWaterTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Agua";
-        insertValue(PathologyType.WATER,expected);
+        insertValue(PathologyField.WATER,expected);
         Assert.assertEquals(expected, patologia.getConsumoAgua());
     }
     @Test
     public void mapperASugarTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Acucar";
-        insertValue(PathologyType.SUGAR,expected);
+        insertValue(PathologyField.SUGAR,expected);
         Assert.assertEquals(expected, patologia.getAcucar());
     }
     @Test
     public void mapperAActivityTypeToInsertAValueInCorrectPathologyVariavel(){
 
         String expected = "Bebida";
-        insertValue(PathologyType.ACTIVITY,expected);
+        insertValue(PathologyField.ACTIVITY,expected);
         Assert.assertEquals(expected, patologia.getAtividadeFisica());
     }
 
@@ -131,9 +129,9 @@ public class PathologyTypeToPathologyMapperTest {
 
 
 
-    public void insertValue(PathologyType pathologyType, String value) {
-        PathologyTypeToPathologyMapper mapper = new PathologyTypeToPathologyMapper(pathologyType);
-        mapper.insertValueInCorrectAtribute(patologia, value);
+    public void insertValue(PathologyField pathologyField, String value) {
+        PathologyFieldMapper mapper = new PathologyFieldMapper(pathologyField);
+        mapper.setValue(patologia, value);
     }
 
 
@@ -141,79 +139,79 @@ public class PathologyTypeToPathologyMapperTest {
     @Test
     public void mapperAActualPathologyTypeToGetAValueOfCorrectPathologyVariavel(){
 
-        String valueReturn = getValue(PathologyType.ACTUAL_PATHOLOGY);
+        String valueReturn = getValue(PathologyField.ACTUAL_PATHOLOGY);
         Assert.assertEquals(patologia.getPatologiaAtual(),valueReturn);
     }
 
     @Test
     public void mapperAUrineTypeToGetAValueOfCorrectPathologyVariavel(){
 
-        String valueReturn = getValue(PathologyType.URINE);
+        String valueReturn = getValue(PathologyField.URINE);
         Assert.assertEquals(patologia.getUrina(),valueReturn);
 
     }
 
     @Test
     public void mapperAStoolTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.STOOL);
+        String valueReturn = getValue(PathologyField.STOOL);
         Assert.assertEquals(patologia.getFezes(),valueReturn);
 
     }
 
     @Test
     public void mapperASlumberTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.SLUMBER);
+        String valueReturn = getValue(PathologyField.SLUMBER);
         Assert.assertEquals(patologia.getHoraSono(),valueReturn);
     }
 
     @Test
     public void mapperAMedicationTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.MEDICATION);
+        String valueReturn = getValue(PathologyField.MEDICATION);
         Assert.assertEquals(patologia.getMedicacao(),valueReturn);
     }
 
     @Test
     public void mapperASupplementTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.SUPPLEMENT);
+        String valueReturn = getValue(PathologyField.SUPPLEMENT);
         Assert.assertEquals(patologia.getSuplemento(),valueReturn);
     }
 
     @Test
     public void mapperAEthylicTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.ETHYLIC);
+        String valueReturn = getValue(PathologyField.ETHYLIC);
         Assert.assertEquals(patologia.getEtilico(),valueReturn);
     }
     @Test
     public void mapperASmokerTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.SMOKER);
+        String valueReturn = getValue(PathologyField.SMOKER);
         Assert.assertEquals(patologia.getFumante(),valueReturn);
     }
     @Test
     public void mapperAAllergyTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.ALLERGY);
+        String valueReturn = getValue(PathologyField.ALLERGY);
         Assert.assertEquals(patologia.getAlergiaAlimentar(),valueReturn);
     }
     @Test
     public void mapperAWaterTypeToGetAValueOfCorrectPathologyVariavel(){
-        String valueReturn = getValue(PathologyType.WATER);
+        String valueReturn = getValue(PathologyField.WATER);
         Assert.assertEquals(patologia.getConsumoAgua(),valueReturn);
     }
     @Test
     public void mapperASugarTypeToGetAValueOfCorrectPathologyVariavel(){
 
-        String valueReturn = getValue(PathologyType.SUGAR);
+        String valueReturn = getValue(PathologyField.SUGAR);
         Assert.assertEquals(patologia.getAcucar(),valueReturn);
     }
     @Test
     public void mapperAActivityTypeToGetAValueOfCorrectPathologyVariavel(){
 
-        String valueReturn = getValue(PathologyType.ACTIVITY);
+        String valueReturn = getValue(PathologyField.ACTIVITY);
         Assert.assertEquals(patologia.getAtividadeFisica(),valueReturn);
     }
-    public String getValue(PathologyType pathologyType) {
+    public String getValue(PathologyField pathologyField) {
         resetPatologia();
-        PathologyTypeToPathologyMapper mapper = new PathologyTypeToPathologyMapper(pathologyType);
-        return mapper.getValueOfPathology(patologia);
+        PathologyFieldMapper mapper = new PathologyFieldMapper(pathologyField);
+        return mapper.getValue(patologia);
     }
     public void resetPatologia() {
         patologia = new Patologia();
@@ -233,8 +231,8 @@ public class PathologyTypeToPathologyMapperTest {
 
     @Test
     public void mapperAGivenPathologyTypeWhenGetValueThenReturnNullIfPathologyIsNull() {
-        PathologyTypeToPathologyMapper mapper = new PathologyTypeToPathologyMapper(PathologyType.ACTUAL_PATHOLOGY);
-        String value = mapper.getValueOfPathology(null);
+        PathologyFieldMapper mapper = new PathologyFieldMapper(PathologyField.ACTUAL_PATHOLOGY);
+        String value = mapper.getValue(null);
         Assert.assertNull(value);
     }
 

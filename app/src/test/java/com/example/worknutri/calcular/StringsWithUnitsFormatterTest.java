@@ -1,6 +1,4 @@
-package com.example.worknutri.calcularTest;
-
-import com.example.worknutri.calcular.StringWithUnitsFormatter;
+package com.example.worknutri.calcular;
 
 import org.junit.Assert;
 import org.junit.Test;

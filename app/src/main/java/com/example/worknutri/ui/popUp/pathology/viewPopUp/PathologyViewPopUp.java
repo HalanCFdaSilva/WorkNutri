@@ -1,6 +1,7 @@
-package com.example.worknutri.ui.popUp.detailsPopUp;
+package com.example.worknutri.ui.popUp.pathology.viewPopUp;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,14 +10,15 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.PopUpFragment;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
 
-public class PatologiaDetaillPopUp extends PopUpFragment {
-    private final LayoutInflater inflater;
+public class PathologyViewPopUp extends PopUpFragment {
 
-    public PatologiaDetaillPopUp(LayoutInflater inflater) {
+    public PathologyViewPopUp(LayoutInflater inflater) {
         super(inflater);
         this.insertTitle(R.string.patologia_title);
-        this.inflater = inflater;
+
 
     }
 
@@ -30,31 +32,25 @@ public class PatologiaDetaillPopUp extends PopUpFragment {
     }
 
     public void setText(Patologia patologia) {
-        generateView("PATOLOGIA ATUAL", patologia.getPatologiaAtual());
-        generateView("URINA", patologia.getUrina());
-        generateView("fezes", patologia.getFezes());
-        generateView("Hora de Sono", patologia.getHoraSono());
-        generateView("medicação", patologia.getMedicacao());
-        generateView("suplemento", patologia.getSuplemento());
-        generateView("etilico", patologia.getEtilico());
-        generateView("fumante", patologia.getFumante());
-        generateView("alergia alimentar", patologia.getAlergiaAlimentar());
-        generateView("suplemento", patologia.getSuplemento());
-        generateView("Consumo de água", patologia.getConsumoAgua());
-        generateView("Consumo de Açucar", patologia.getAcucar());
-        generateView("Atividade Física", patologia.getAtividadeFisica());
+        for (PathologyField pathologyType: PathologyField.values()) {
+            String description = new PathologyFieldMapper(pathologyType).getValue(patologia);
+            generateView(pathologyType.getName(), description);
+        }
 
     }
 
 
     /**Método que apartir da classe PatologiaPopUpFragment gera o layout de cada atributo da classe Patologia
-     * @see PatologiaPopUpFragment
+     * @see PathologyViewFragmentFactory
      * @see Patologia*/
-    private void generateView(String title, String description) {
-        PatologiaPopUpFragment popUpFragment = new PatologiaPopUpFragment(inflater);
+    public void generateView(String title, String description) {
+        Log.d("PatologiaDetaillPopUp", "setText: " + title + " - " + description);
+        PathologyViewFragmentFactory popUpFragment = new PathologyViewFragmentFactory(getInflater());
         popUpFragment.generateViewGroup(getViewToInsert());
         popUpFragment.setTitle(title);
         if (description == null || description.isBlank()) popUpFragment.setDescription("Não Informado");
         else popUpFragment.setDescription(description);
+        getViewToInsert().addView(popUpFragment.getViewGroup());
+
     }
 }

@@ -1,16 +1,15 @@
-package com.example.worknutri.ui.popUp.formsPopUpTest;
+package com.example.worknutri.ui.popUp.pathology;
 
 import com.example.worknutri.R;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
 
 import org.junit.Test;
 
-public class PathologyTypeTest {
+public class PathologyFieldTest {
 
     @Test
     public void testPathologyTypeNameAttribute() {
         // Test to ensure that all PathologyType enum values are correctly defined
-        for (PathologyType type : PathologyType.values()) {
+        for (PathologyField type : PathologyField.values()) {
             switch (type) {
                 case ACTUAL_PATHOLOGY: {
                     assert "Patologia Atual".equals(type.getName());
@@ -67,7 +66,7 @@ public class PathologyTypeTest {
     @Test
     public void testPathologyTypeGetUpperNameMethodIsCorrect() {
         // Test to ensure that the upper name of each PathologyType enum value is correctly defined
-        for (PathologyType type : PathologyType.values()) {
+        for (PathologyField type : PathologyField.values()) {
             switch (type) {
                 case ACTUAL_PATHOLOGY: {
                     assert "PATOLOGIA ATUAL".equals(type.getUpperName());
@@ -125,30 +124,30 @@ public class PathologyTypeTest {
     public void testPathologyTypeCount() {
         // Test to ensure that the number of PathologyType enum values is correct
         int expectedCount = 12; // Update this if the number of types changes
-        assert PathologyType.values().length == expectedCount : "Expected " + expectedCount + " PathologyType values, but found " + PathologyType.values().length;
+        assert PathologyField.values().length == expectedCount : "Expected " + expectedCount + " PathologyType values, but found " + PathologyField.values().length;
     }
 
     @Test
     public void testPathologyTypeFromMethod() {
         // Test to ensure that the from method correctly maps strings to PathologyType enum values
-        assert PathologyType.from("Patologia Atual") == PathologyType.ACTUAL_PATHOLOGY;
-        assert PathologyType.from("Urina") == PathologyType.URINE;
-        assert PathologyType.from("Fezes") == PathologyType.STOOL;
-        assert PathologyType.from("Sono") == PathologyType.SLUMBER;
-        assert PathologyType.from("Medicação") == PathologyType.MEDICATION;
-        assert PathologyType.from("Suplementação") == PathologyType.SUPPLEMENT;
-        assert PathologyType.from("Etilico") == PathologyType.ETHYLIC;
-        assert PathologyType.from("Fumante") == PathologyType.SMOKER;
-        assert PathologyType.from("Alergia") == PathologyType.ALLERGY;
-        assert PathologyType.from("Água") == PathologyType.WATER;
-        assert PathologyType.from("Açúcar") == PathologyType.SUGAR;
-        assert PathologyType.from("Atividade Fisica") == PathologyType.ACTIVITY;
+        assert PathologyField.from("Patologia Atual") == PathologyField.ACTUAL_PATHOLOGY;
+        assert PathologyField.from("Urina") == PathologyField.URINE;
+        assert PathologyField.from("Fezes") == PathologyField.STOOL;
+        assert PathologyField.from("Sono") == PathologyField.SLUMBER;
+        assert PathologyField.from("Medicação") == PathologyField.MEDICATION;
+        assert PathologyField.from("Suplementação") == PathologyField.SUPPLEMENT;
+        assert PathologyField.from("Etilico") == PathologyField.ETHYLIC;
+        assert PathologyField.from("Fumante") == PathologyField.SMOKER;
+        assert PathologyField.from("Alergia") == PathologyField.ALLERGY;
+        assert PathologyField.from("Água") == PathologyField.WATER;
+        assert PathologyField.from("Açúcar") == PathologyField.SUGAR;
+        assert PathologyField.from("Atividade Fisica") == PathologyField.ACTIVITY;
     }
     @Test
     public void testIfFromMethodThrowsIllegalArgumentExceptionWereReceiveInvalidParameter() {
         // Test to ensure that the from method throws an exception for invalid input
         try {
-            PathologyType.from("InvalidType");
+            PathologyField.from("InvalidType");
             assert false : "Expected IllegalArgumentException for invalid input";
         } catch (IllegalArgumentException e) {
             assert true; // Exception was thrown as expected
@@ -159,7 +158,7 @@ public class PathologyTypeTest {
     public void testIfFromMethodThrowsIllegalArgumentExceptionWereReceiveNullParameter() {
         // Test to ensure that the from method throws an exception for invalid input
         try {
-            PathologyType.from(null);
+            PathologyField.from(null);
             assert false : "Expected IllegalArgumentException for invalid input";
         } catch (IllegalArgumentException e) {
             assert true; // Exception was thrown as expected
@@ -168,7 +167,7 @@ public class PathologyTypeTest {
 
     @Test
     public void testPathologyTypeHintAttribute() {
-        for (PathologyType type : PathologyType.values()) {
+        for (PathologyField type : PathologyField.values()) {
             switch (type) {
                 case ACTUAL_PATHOLOGY: {
                     assert R.string.actual_pathology_hint== type.getHint();

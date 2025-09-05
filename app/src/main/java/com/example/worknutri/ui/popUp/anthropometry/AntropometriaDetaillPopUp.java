@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.detailsPopUp;
+package com.example.worknutri.ui.popUp.anthropometry;
 
 
 import android.content.Context;

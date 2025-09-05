@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.detailsPopUp;
+package com.example.worknutri.ui.popUp.pathology.viewPopUp;
 
 import android.content.Context;
 import android.view.ContextThemeWrapper;
@@ -26,9 +26,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class PatologiaPopUpFragmentTest {
+public class PathologyViewFragmentFactoryTest {
 
-    private PatologiaPopUpFragment patologiaPopUpFragment;
+    private PathologyViewFragmentFactory pathologyViewFragmentFactory;
     private Context context;
 
     @Rule
@@ -38,7 +38,7 @@ public class PatologiaPopUpFragmentTest {
     public void setUp() {
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
-        patologiaPopUpFragment = new PatologiaPopUpFragment(LayoutInflater.from(context));
+        pathologyViewFragmentFactory = new PathologyViewFragmentFactory(LayoutInflater.from(context));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class PatologiaPopUpFragmentTest {
     public void setTitleMethodSetsCorrectTitle(){
         String title = "title";
         ViewGroup childAt = generateView();
-        patologiaPopUpFragment.setTitle(title);
+        pathologyViewFragmentFactory.setTitle(title);
 
         TextView textView = childAt.findViewById(R.id.popup_paciente_descrition_patologia_textview_title);
         Assert.assertEquals(title,textView.getText().toString());
@@ -92,7 +92,7 @@ public class PatologiaPopUpFragmentTest {
     public void setDescriptionMethodSetsCorrectDescription(){
         String description = "description";
         ViewGroup childAt = generateView();
-        patologiaPopUpFragment.setDescription(description);
+        pathologyViewFragmentFactory.setDescription(description);
 
         TextView textView = childAt.findViewById(R.id.popup_paciente_descrition_patologia_textview_description);
         Assert.assertEquals(description,textView.getText().toString());
@@ -102,8 +102,8 @@ public class PatologiaPopUpFragmentTest {
     @NonNull
     private ViewGroup generateView() {
         LinearLayout layout = new LinearLayout(context);
-        patologiaPopUpFragment.generateViewGroup(layout);
-        return patologiaPopUpFragment.getViewGroup();
+        pathologyViewFragmentFactory.generateViewGroup(layout);
+        return pathologyViewFragmentFactory.getViewGroup();
     }
 
     @Test
@@ -111,7 +111,7 @@ public class PatologiaPopUpFragmentTest {
         activityRule.getScenario().onActivity(activity -> {
             context = activity;
             context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
-            patologiaPopUpFragment = new PatologiaPopUpFragment(LayoutInflater.from(context));
+            pathologyViewFragmentFactory = new PathologyViewFragmentFactory(LayoutInflater.from(context));
             ViewGroup childAt = generateView();
 
             TextView textView = childAt.findViewById(R.id.popup_paciente_descrition_patologia_textview_description);

@@ -25,11 +25,11 @@ import com.example.worknutri.ui.formularios.ValidaFormulario;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.AntropometryInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PacienteInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PathologyInsertionPacienteForm;
-import com.example.worknutri.ui.popUp.detailsPopUp.ActivityLevelDetailPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
+import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
+import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
-import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyAddPopUp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +41,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     private Antropometria antropometria;
     private Paciente paciente;
     private final List<Clinica> clinicasInOrder;
-    private final List<PathologyType> pathologyCategories = new ArrayList<>(Arrays.asList(PathologyType.values()));
+    private final List<PathologyField> pathologyCategories = new ArrayList<>(Arrays.asList(PathologyField.values()));
 
     public FormularioPacienteAdapter(Context context) {
         super(context);
@@ -194,9 +194,9 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
 
         if (!pathologyCategories.isEmpty()){
             PopUpFactoryImpl popUpFactory = new PopUpFactoryImpl(getContext());
-            PopUpPathologyAdd popUpPathologyAdd = popUpFactory.generatePopUpPatologiaAdd( pathologyCategories);
-            popUpPathologyAdd.configurePopUp(viewWereAdd,patologia);
-            popUpPathologyAdd.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
+            PathologyAddPopUp pathologyAddPopUp = popUpFactory.generatePopUpPatologiaAdd( pathologyCategories);
+            pathologyAddPopUp.configurePopUp(viewWereAdd,patologia);
+            pathologyAddPopUp.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
         }else
             Toast.makeText(getContext(),"Não há patologias disponíveis", Toast.LENGTH_SHORT).show();
 

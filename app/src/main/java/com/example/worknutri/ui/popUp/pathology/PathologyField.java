@@ -1,8 +1,8 @@
-package com.example.worknutri.ui.popUp.formsPopUp;
+package com.example.worknutri.ui.popUp.pathology;
 
 import com.example.worknutri.R;
 
-public enum PathologyType {
+public enum PathologyField {
     ACTUAL_PATHOLOGY ("Patologia Atual", R.string.actual_pathology_hint),
     URINE("Urina", R.string.urine_hint),
     STOOL("Fezes", R.string.stool_hint),
@@ -14,18 +14,18 @@ public enum PathologyType {
     ALLERGY("Alergia", R.string.allergy_hint),
     WATER("Água", R.string.water_hint),
     SUGAR("Açúcar", R.string.sugar_hint),
-    ACTIVITY("Atividade Fisica", R.string.activity_hint),;
+    ACTIVITY("Atividade Fisica", R.string.activity_hint);
 
     private final String name;
     private final int hint;
 
-    PathologyType(String name, int hint) {
+    PathologyField(String name, int hint) {
         this.name = name;
         this.hint = hint;
     }
 
-    public static PathologyType from(String string) {
-        for (PathologyType category : PathologyType.values()) {
+    public static PathologyField from(String string) {
+        for (PathologyField category : PathologyField.values()) {
             if (category.name.equalsIgnoreCase(string)) {
                 return category;
             }
@@ -44,4 +44,5 @@ public enum PathologyType {
     public int getHint() {
         return hint;
     }
+
 }

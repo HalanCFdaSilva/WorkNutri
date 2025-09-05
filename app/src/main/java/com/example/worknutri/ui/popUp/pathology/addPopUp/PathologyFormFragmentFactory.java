@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.formsPopUp;
+package com.example.worknutri.ui.popUp.pathology.addPopUp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,16 +11,18 @@ import androidx.cardview.widget.CardView;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
 
 import java.util.List;
 
 
-public class PatologiaFormFragment {
+public class PathologyFormFragmentFactory {
 
-    private final PathologyType category;
+    private final PathologyField category;
     private CardView viewGroup;
     private final Patologia pathology;
-    public PatologiaFormFragment(PathologyType category, Patologia pathology) {
+    public PathologyFormFragmentFactory(PathologyField category, Patologia pathology) {
 
         this.category = category;
         this.pathology = pathology;
@@ -41,7 +43,7 @@ public class PatologiaFormFragment {
         editText.setText(message);
     }
 
-    public void configureDeleteButton(ViewGroup viewWereHasInsert, List<PathologyType> categories) {
+    public void configureDeleteButton(ViewGroup viewWereHasInsert, List<PathologyField> categories) {
         ImageButton button = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_button_delete);
         button.setOnClickListener(onClick ->{
 
@@ -52,8 +54,8 @@ public class PatologiaFormFragment {
                             .equals(category.toString()))){
 
                 categories.add(category);
-                new PathologyTypeToPathologyMapper(category)
-                        .insertValueInCorrectAtribute(pathology,""); // Clear the value for the category
+                new PathologyFieldMapper(category)
+                        .setValue(pathology,""); // Clear the value for the category
             }
 
         });

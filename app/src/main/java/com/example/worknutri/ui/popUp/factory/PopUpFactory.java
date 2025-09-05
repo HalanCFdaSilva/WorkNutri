@@ -3,18 +3,18 @@ package com.example.worknutri.ui.popUp.factory;
 
 import android.view.ViewGroup;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.ActivityLevelDetailPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
-import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
+import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
+import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
+import com.example.worknutri.ui.popUp.pathology.viewPopUp.PathologyViewPopUp;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyAddPopUp;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
 
 import java.util.List;
 
 public interface PopUpFactory {
 
-    PatologiaDetaillPopUp generatePatologiaDetailPopUp();
+    PathologyViewPopUp generatePatologiaDetailPopUp();
 
     AntropometriaDetaillPopUp generateAntropometriaPopUp();
 
@@ -22,7 +22,7 @@ public interface PopUpFactory {
 
     DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity);
 
-    PopUpPathologyAdd generatePopUpPatologiaAdd( List<PathologyType> pathologyCategories);
+    PathologyAddPopUp generatePopUpPatologiaAdd(List<PathologyField> pathologyCategories);
     ActivityLevelDetailPopUp generateActivityLevelDetailPopUp();
 
 

@@ -1,7 +1,4 @@
-package com.example.worknutri.calcularTest;
-
-import com.example.worknutri.calcular.MeasureConverter;
-import com.example.worknutri.calcular.MeasureTypes;
+package com.example.worknutri.calcular;
 
 import org.junit.Assert;
 import org.junit.Test;

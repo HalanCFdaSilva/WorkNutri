@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.formsPopUp;
+package com.example.worknutri.ui.popUp.pathology.addPopUp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,15 +12,17 @@ import android.widget.Spinner;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.popUp.PopUpFragment;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PopUpPathologyAdd extends PopUpFragment {
+public class PathologyAddPopUp extends PopUpFragment {
 
     private final Context context;
-    private final List<PathologyType> pathologyTypes;
+    private final List<PathologyField> pathologyTypes;
     private Patologia pathology;
-    public PopUpPathologyAdd(Context context, List<PathologyType> pathologyCategories) {
+    public PathologyAddPopUp(Context context, List<PathologyField> pathologyCategories) {
         super(LayoutInflater.from(context));
         getInflater().inflate(R.layout.popup_patologia_add,getViewToInsert());
 
@@ -46,7 +48,7 @@ public class PopUpPathologyAdd extends PopUpFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemAtPosition = (String) spinner.getItemAtPosition(position);
-                PathologyType pathologyType = getPathologyCategory(itemAtPosition);
+                PathologyField pathologyType = getPathologyCategory(itemAtPosition);
                 textView.setText("");
                 textView.setHint(pathologyType.getHint());
             }
@@ -58,7 +60,7 @@ public class PopUpPathologyAdd extends PopUpFragment {
         });
     }
 
-    private PathologyType getPathologyCategory(String selectedPathology) {
+    private PathologyField getPathologyCategory(String selectedPathology) {
         return pathologyTypes.stream()
                 .filter(pathologyCategory -> pathologyCategory.getUpperName().equals(selectedPathology))
                 .findAny().orElse(null);
@@ -66,7 +68,7 @@ public class PopUpPathologyAdd extends PopUpFragment {
     }
     private List<String> getPathologyNames() {
         return pathologyTypes.stream()
-                .map(PathologyType::getUpperName)
+                .map(PathologyField::getUpperName)
                 .collect(Collectors.toList());
     }
 
@@ -74,11 +76,11 @@ public class PopUpPathologyAdd extends PopUpFragment {
         button.setOnClickListener(onClick ->{
             Spinner spinner = getViewGroup().findViewById(R.id.pop_up_patologia_add_spinner);
             String selectedPathology = (String) spinner.getSelectedItem();
-            PathologyType pathologyType = getPathologyCategory(selectedPathology);
+            PathologyField pathologyType = getPathologyCategory(selectedPathology);
             pathologyTypes.remove(pathologyType);
 
 
-            PatologiaFormFragment popUpPatologiaDescription = new PatologiaFormFragment(pathologyType, pathology);
+            PathologyFormFragmentFactory popUpPatologiaDescription = new PathologyFormFragmentFactory(pathologyType, pathology);
             popUpPatologiaDescription.generateViewGroup(context, viewGroup);
 
             MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);

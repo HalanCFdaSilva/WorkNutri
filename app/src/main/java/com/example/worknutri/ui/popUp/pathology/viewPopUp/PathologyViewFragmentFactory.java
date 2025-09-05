@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.popUp.detailsPopUp;
+package com.example.worknutri.ui.popUp.pathology.viewPopUp;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +9,17 @@ import android.widget.TextView;
 import com.example.worknutri.R;
 
 /**Classe de suporte para a PatologiaDetailPopUp que gera o icone usado pelo PatologiaDetailPopUp.*/
-public class PatologiaPopUpFragment {
+public class PathologyViewFragmentFactory {
     private final LayoutInflater inflater;
     private ViewGroup viewGroup;
 
-    public PatologiaPopUpFragment(LayoutInflater inflater) {
+    public PathologyViewFragmentFactory(LayoutInflater inflater) {
         this.inflater = inflater;
 
     }
 
     public void generateViewGroup(ViewGroup viewGroup) {
-        this.viewGroup = (ViewGroup) inflater.inflate(R.layout.popup_patologia_description, viewGroup);
+        this.viewGroup = (ViewGroup) inflater.inflate(R.layout.popup_patologia_description, viewGroup,false);
         setOnClick();
     }
 

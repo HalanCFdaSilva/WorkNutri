@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.util.ViewsUtil;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyTypeToPathologyMapper;
-import com.example.worknutri.ui.popUp.formsPopUp.PatologiaFormFragment;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyFormFragmentFactory;
 
 
 import java.util.List;
@@ -36,9 +36,9 @@ public class PathologyInsertionPacienteForm extends InsertionPacienteForm {
                 String title = getTitleOfView(child);
 
                 try{
-                    PathologyType pathologyType = PathologyType.from(title);
-                    new PathologyTypeToPathologyMapper(pathologyType)
-                            .insertValueInCorrectAtribute( pathology,getMessageOfView(child));
+                    PathologyField pathologyType = PathologyField.from(title);
+                    new PathologyFieldMapper(pathologyType)
+                            .setValue( pathology,getMessageOfView(child));
                 }catch (IllegalArgumentException ignored){}
 
             }
@@ -70,33 +70,33 @@ public class PathologyInsertionPacienteForm extends InsertionPacienteForm {
      * @see Patologia
      * @see ViewsUtil
      */
-    public void InsertPatologiaValuesInViewGroup(Context context, List<PathologyType> pathologies) {
+    public void InsertPatologiaValuesInViewGroup(Context context, List<PathologyField> pathologies) {
         if (viewGroup != null){
             this.context = context;
-            generateView(PathologyType.ACTUAL_PATHOLOGY, pathologies);
-            generateView(PathologyType.MEDICATION, pathologies);
-            generateView(PathologyType.SUPPLEMENT, pathologies);
-            generateView(PathologyType.ACTIVITY, pathologies);
-            generateView(PathologyType.SLUMBER, pathologies);
-            generateView(PathologyType.SUGAR, pathologies);
-            generateView(PathologyType.WATER, pathologies);
-            generateView(PathologyType.URINE, pathologies);
-            generateView(PathologyType.STOOL, pathologies);
-            generateView(PathologyType.ALLERGY, pathologies);
-            generateView(PathologyType.ETHYLIC, pathologies);
-            generateView(PathologyType.SMOKER, pathologies);
+            generateView(PathologyField.ACTUAL_PATHOLOGY, pathologies);
+            generateView(PathologyField.MEDICATION, pathologies);
+            generateView(PathologyField.SUPPLEMENT, pathologies);
+            generateView(PathologyField.ACTIVITY, pathologies);
+            generateView(PathologyField.SLUMBER, pathologies);
+            generateView(PathologyField.SUGAR, pathologies);
+            generateView(PathologyField.WATER, pathologies);
+            generateView(PathologyField.URINE, pathologies);
+            generateView(PathologyField.STOOL, pathologies);
+            generateView(PathologyField.ALLERGY, pathologies);
+            generateView(PathologyField.ETHYLIC, pathologies);
+            generateView(PathologyField.SMOKER, pathologies);
         }
     }
 
-    private void generateView(PathologyType pathologyTypeToInsert, List<PathologyType> pathologies) {
-        String valueOfPathology = new PathologyTypeToPathologyMapper(pathologyTypeToInsert).getValueOfPathology(pathology);
+    private void generateView(PathologyField pathologyTypeToInsert, List<PathologyField> pathologies) {
+        String valueOfPathology = new PathologyFieldMapper(pathologyTypeToInsert).getValue(pathology);
 
         if (valueOfPathology != null && !valueOfPathology.isEmpty()) {
-            PatologiaFormFragment patologiaFormFragment = new PatologiaFormFragment(pathologyTypeToInsert,pathology);
-            patologiaFormFragment.generateViewGroup(context, viewGroup);
-            patologiaFormFragment.configureEditText(valueOfPathology);
+            PathologyFormFragmentFactory pathologyFormFragmentFactory = new PathologyFormFragmentFactory(pathologyTypeToInsert,pathology);
+            pathologyFormFragmentFactory.generateViewGroup(context, viewGroup);
+            pathologyFormFragmentFactory.configureEditText(valueOfPathology);
             pathologies.remove(pathologyTypeToInsert);
-            patologiaFormFragment.configureDeleteButton(viewGroup, pathologies);
+            pathologyFormFragmentFactory.configureDeleteButton(viewGroup, pathologies);
 
         }
     }

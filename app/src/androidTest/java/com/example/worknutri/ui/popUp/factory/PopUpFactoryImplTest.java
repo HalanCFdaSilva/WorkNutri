@@ -9,11 +9,11 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 
 import com.example.worknutri.ui.popUp.PopUpFragment;
-import com.example.worknutri.ui.popUp.detailsPopUp.ActivityLevelDetailPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.AntropometriaDetaillPopUp;
-import com.example.worknutri.ui.popUp.detailsPopUp.PatologiaDetaillPopUp;
-import com.example.worknutri.ui.popUp.formsPopUp.PathologyType;
-import com.example.worknutri.ui.popUp.formsPopUp.PopUpPathologyAdd;
+import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
+import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyAddPopUp;
+import com.example.worknutri.ui.popUp.pathology.viewPopUp.PathologyViewPopUp;
+import com.example.worknutri.ui.popUp.pathology.PathologyField;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
 
 import org.junit.Assert;
@@ -39,7 +39,7 @@ public class PopUpFactoryImplTest {
 
     @Test
     public void testGeneratePatologiaDetailPopUp() {
-        PatologiaDetaillPopUp datePickerPopUp = popUpFactory.generatePatologiaDetailPopUp();
+        PathologyViewPopUp datePickerPopUp = popUpFactory.generatePatologiaDetailPopUp();
         Assert.assertNotNull(datePickerPopUp);
     }
 
@@ -64,13 +64,13 @@ public class PopUpFactoryImplTest {
 
     @Test
     public void testGeneratePopUpPatologiaAddWereReceiveAEmptyListOnParameter() {
-        PopUpPathologyAdd popUp = popUpFactory.generatePopUpPatologiaAdd(new ArrayList<>());
+        PathologyAddPopUp popUp = popUpFactory.generatePopUpPatologiaAdd(new ArrayList<>());
         Assert.assertNotNull(popUp);
     }
 
     @Test
     public void testGeneratePopUpPatologiaAddWereReceiveInParameterOneListWithAllPathologyTypes() {
-        PopUpPathologyAdd popUp = popUpFactory.generatePopUpPatologiaAdd(Arrays.asList(PathologyType.values()));
+        PathologyAddPopUp popUp = popUpFactory.generatePopUpPatologiaAdd(Arrays.asList(PathologyField.values()));
         Assert.assertNotNull(popUp);
     }
 

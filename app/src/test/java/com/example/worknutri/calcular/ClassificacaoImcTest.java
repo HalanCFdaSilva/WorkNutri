@@ -1,9 +1,8 @@
-package com.example.worknutri.calcularTest;
+package com.example.worknutri.calcular;
 
 import static org.junit.Assert.assertEquals;
 
 import com.example.worknutri.R;
-import com.example.worknutri.calcular.ClassificacaoImc;
 
 import org.junit.Test;
 

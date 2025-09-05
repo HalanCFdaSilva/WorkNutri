@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_patologia_descrition"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -43,7 +44,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
-                            android:text="@string/patologia_atual_title"
+                            tools:text="@string/patologia_atual_title"
                             android:textAllCaps="true"
                             android:textSize="16sp"
                             android:textStyle="bold"

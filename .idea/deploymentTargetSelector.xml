@@ -5,13 +5,16 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AntropometriaDetailPopUpTest">
+      <SelectionState runConfigName="PatologiaPopUpFragmentTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="verifyIfGenerateCompleteMethodCreateCorrectImcTypeTextView()">
+      <SelectionState runConfigName="setTitleMethodSetsCorrectTitle()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="verifyIfGenerateSmallMethodCreateCorrectImcTypeTextView()">
+      <SelectionState runConfigName="layoutInflatedInGenerateViewGroupMethodHasCorrectViews()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="onClickTogglesDescriptionVisibilityAndArrowIcon()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -1,8 +1,9 @@
 package com.example.worknutri.ui.popUp.pathology.viewPopUp;
 
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -34,7 +35,8 @@ public class PathologyViewPopUp extends PopUpFragment {
     public void setText(Patologia patologia) {
         for (PathologyField pathologyType: PathologyField.values()) {
             String description = new PathologyFieldMapper(pathologyType).getValue(patologia);
-            generateView(pathologyType.getName(), description);
+            ViewGroup viewGenerated = generateView(pathologyType.getName(), description);
+            getViewToInsert().addView(viewGenerated);
         }
 
     }
@@ -43,14 +45,13 @@ public class PathologyViewPopUp extends PopUpFragment {
     /**Método que apartir da classe PatologiaPopUpFragment gera o layout de cada atributo da classe Patologia
      * @see PathologyViewFragmentFactory
      * @see Patologia*/
-    public void generateView(String title, String description) {
-        Log.d("PatologiaDetaillPopUp", "setText: " + title + " - " + description);
+    public ViewGroup generateView(String title, String description) {
         PathologyViewFragmentFactory popUpFragment = new PathologyViewFragmentFactory(getInflater());
         popUpFragment.generateViewGroup(getViewToInsert());
         popUpFragment.setTitle(title);
         if (description == null || description.isBlank()) popUpFragment.setDescription("Não Informado");
         else popUpFragment.setDescription(description);
-        getViewToInsert().addView(popUpFragment.getViewGroup());
+        return popUpFragment.getViewGroup();
 
     }
 }

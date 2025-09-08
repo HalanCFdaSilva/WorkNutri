@@ -85,6 +85,12 @@ public class PathologyViewPopUpTest {
 
 
     @Test
+    public void verifyIfgenerateViewReturnsOneViewgroup() {
+        ViewGroup view = patologiaDetailPopUp.generateView("Test Title", "Test Description");
+        Assert.assertNotNull(view);
+    }
+
+    @Test
     public void verifyIfGenerateViewWorksCorrectly() {
         ViewGroup viewGroup = patologiaDetailPopUp.getViewGroup();
         ViewGroup internLayout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);

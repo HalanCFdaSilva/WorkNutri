@@ -17,6 +17,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.google.android.material.divider.MaterialDivider;
 
@@ -39,21 +40,7 @@ public class AntropometriaDetailPopUpTest {
 
         antropometriaDetaillPopUp = new PopUpFactoryImpl(context).generateAntropometriaPopUp();
 
-        antropometria = new Antropometria();
-        antropometria.setAltura("1.75");
-        antropometria.setPeso("70.0");
-        antropometria.setPesoIdeal("68.0");
-        antropometria.setImc("22.86");
-        antropometria.setCircumferenciaAbdomen("85.0");
-        antropometria.setCircumferenciaCintura("90.0");
-        antropometria.setCircumferenciaBracoDir("30.0");
-        antropometria.setCircumferenciaCoxaDir("29.0");
-        antropometria.setCircumferenciaQuadril("35.0");
-        antropometria.setRegraBolso("2500");
-        antropometria.setTaxaMetabolica("1500");
-        antropometria.setValorMetabolico("2000");
-        antropometria.setVenta("300");
-        antropometria.setAgua("2000");
+        antropometria = TestEntityFactory.generateAntropometria();
 
 
     }

@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
 import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
@@ -101,18 +101,17 @@ public class PathologyViewPopUpTest {
         Assert.assertEquals(0, initialChildCount);
 
         // Gera uma nova view
-        patologiaDetailPopUp.generateView("Test Title", "Test Description");
+        ViewGroup childView = patologiaDetailPopUp.generateView("Test Title", "Test Description");
 
-        // Verifica se um novo filho foi adicionado
+        // Verifica se não foi adicionada a view ao layout intern automaticamente
         int updatedChildCount = internLayout.getChildCount();
-        Assert.assertEquals(1, updatedChildCount);
+        Assert.assertEquals(0, updatedChildCount);
 
         // Verifica se o layout correto foi inflado
-        Assert.assertEquals(R.id.popup_patologia_descrition,internLayout.getChildAt(0).getId());
+        Assert.assertNotNull(childView);
+        Assert.assertEquals(R.id.popup_patologia_descrition,childView.getId());
 
         // Verifica se o título e a descrição foram definidos corretamente
-        View childView = internLayout.getChildAt(0);
-        Assert.assertNotNull(childView);
         View titleView = childView.findViewById(R.id.popup_paciente_descrition_patologia_textview_title);
         View descriptionView = childView.findViewById(R.id.popup_paciente_descrition_patologia_textview_description);
         Assert.assertNotNull(titleView);
@@ -125,13 +124,9 @@ public class PathologyViewPopUpTest {
         ViewGroup internLayout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertNotNull(internLayout);
         // Gera uma nova view com descrição em branco
-        patologiaDetailPopUp.generateView("Test Title", "   ");
-        // Verifica se um novo filho foi adicionado
-        int updatedChildCount = internLayout.getChildCount();
-        Assert.assertEquals(1, updatedChildCount);
+        ViewGroup childView = patologiaDetailPopUp.generateView("Test Title", "   ");
 
         // Verifica se o título e a descrição foram definidos corretamente
-        View childView =  internLayout.getChildAt(0);
         Assert.assertNotNull(childView);
         View titleView = childView.findViewById(R.id.popup_paciente_descrition_patologia_textview_title);
         View descriptionView = childView.findViewById(R.id.popup_paciente_descrition_patologia_textview_description);
@@ -146,14 +141,8 @@ public class PathologyViewPopUpTest {
         ViewGroup viewGroup = patologiaDetailPopUp.getViewGroup();
         ViewGroup internLayout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertNotNull(internLayout);
-        // Gera uma nova view com descrição nula
-        patologiaDetailPopUp.generateView("Test Title", null);
-        // Verifica se um novo filho foi adicionado
-        int updatedChildCount = internLayout.getChildCount();
-        Assert.assertEquals(1, updatedChildCount);
 
-        // Verifica se o título foi definido corretamente
-        View childView =  internLayout.getChildAt(0);
+        View childView = patologiaDetailPopUp.generateView("Test Title", null);
         Assert.assertNotNull(childView);
         View descriptionView = childView.findViewById(R.id.popup_paciente_descrition_patologia_textview_description);
         Assert.assertNotNull(descriptionView);
@@ -171,32 +160,13 @@ public class PathologyViewPopUpTest {
         int initialChildCount = internLayout.getChildCount();
         Assert.assertEquals(0, initialChildCount);
 
-        Patologia patologia = getPatologia();
+        Patologia patologia = TestEntityFactory.generatePatologia();
 
         patologiaDetailPopUp.setText(patologia);
 
         int updatedChildCount = internLayout.getChildCount();
         Assert.assertEquals(12, updatedChildCount);
 
-    }
-
-    /**Método que cria uma instância de Patologia com dados de teste*/
-    @NonNull
-    private static Patologia getPatologia() {
-        Patologia patologia = new Patologia();
-        patologia.setPatologiaAtual("Diabetes");
-        patologia.setUrina("Normal");
-        patologia.setFezes("Constipado");
-        patologia.setHoraSono("8 horas");
-        patologia.setMedicacao("Metformina");
-        patologia.setSuplemento("Vitamina D");
-        patologia.setEtilico("Não");
-        patologia.setFumante("Não");
-        patologia.setAlergiaAlimentar("Nenhuma");
-        patologia.setConsumoAgua("2 litros");
-        patologia.setAcucar("Baixo");
-        patologia.setAtividadeFisica("Regular");
-        return patologia;
     }
 
     @Test
@@ -208,7 +178,7 @@ public class PathologyViewPopUpTest {
         int initialChildCount = internLayout.getChildCount();
         Assert.assertEquals(0, initialChildCount);
 
-        Patologia patologia = getPatologia();
+        Patologia patologia = TestEntityFactory.generatePatologia();
 
         patologiaDetailPopUp.setText(patologia);
 

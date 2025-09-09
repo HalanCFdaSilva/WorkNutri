@@ -49,7 +49,6 @@ public class PathologyAddPopUp extends PopUpFragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemAtPosition = (String) spinner.getItemAtPosition(position);
                 PathologyField pathologyType = getPathologyCategory(itemAtPosition);
-                textView.setText("");
                 textView.setHint(pathologyType.getHint());
             }
 

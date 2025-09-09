@@ -30,10 +30,11 @@ public class PathologyFormFragmentFactory {
 
     public void generateViewGroup(Context context, ViewGroup viewGroupWereHasInsert) {
 
-        viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, viewGroupWereHasInsert);
+        viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, viewGroupWereHasInsert,false);
 
         TextView title = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_title);
         title.setText(category.getUpperName());
+        viewGroupWereHasInsert.addView(viewGroup);
 
     }
 

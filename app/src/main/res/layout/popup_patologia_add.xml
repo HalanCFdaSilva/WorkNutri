@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/popup_patologia_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/pop_up_patologia_add_spinner"
+        android:id="@+id/popup_patologia_add_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <MultiAutoCompleteTextView
-        android:id="@+id/pop_up_patologia_add_multiAutoComplete"
+        android:id="@+id/popup_patologia_add_multiAutoComplete"
         android:layout_width="0dp"
         android:layout_height="@dimen/multilined_height"
         android:layout_marginStart="8dp"
@@ -32,10 +33,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_patologia_add_spinner" />
 
     <Button
-        android:id="@+id/pop_up_patologia_add_button"
+        android:id="@+id/popup_patologia_add_button"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,8 +49,8 @@
         app:cornerRadius="5dp"
         app:icon="@drawable/baseline_add_24"
         app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/pop_up_patologia_add_multiAutoComplete"
-        app:layout_constraintStart_toStartOf="@+id/pop_up_patologia_add_multiAutoComplete"
-        app:layout_constraintTop_toBottomOf="@+id/pop_up_patologia_add_multiAutoComplete"
+        app:layout_constraintEnd_toEndOf="@+id/popup_patologia_add_multiAutoComplete"
+        app:layout_constraintStart_toStartOf="@+id/popup_patologia_add_multiAutoComplete"
+        app:layout_constraintTop_toBottomOf="@+id/popup_patologia_add_multiAutoComplete"
         app:strokeColor="@color/teal_200_lower" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,8 +34,8 @@ public class PathologyAddPopUp extends PopUpFragment {
     public void configurePopUp(ViewGroup viewWereAdd,Patologia pathology){
         this.pathology = pathology;
         ViewGroup viewGroup = getViewGroup();
-        configureSpinner(viewGroup.findViewById(R.id.pop_up_patologia_add_spinner),viewGroup.findViewById(R.id.pop_up_patologia_add_multiAutoComplete));
-        configureButton(viewGroup.findViewById(R.id.pop_up_patologia_add_button),viewWereAdd);
+        configureSpinner(viewGroup.findViewById(R.id.popup_patologia_add_spinner),viewGroup.findViewById(R.id.popup_patologia_add_multiAutoComplete));
+        configureButton(viewGroup.findViewById(R.id.popup_patologia_add_button),viewWereAdd);
     }
 
     private void configureSpinner(Spinner spinner, MultiAutoCompleteTextView textView) {
@@ -73,7 +73,7 @@ public class PathologyAddPopUp extends PopUpFragment {
 
     private void configureButton(Button button,ViewGroup viewGroup) {
         button.setOnClickListener(onClick ->{
-            Spinner spinner = getViewGroup().findViewById(R.id.pop_up_patologia_add_spinner);
+            Spinner spinner = getViewGroup().findViewById(R.id.popup_patologia_add_spinner);
             String selectedPathology = (String) spinner.getSelectedItem();
             PathologyField pathologyType = getPathologyCategory(selectedPathology);
             pathologyTypes.remove(pathologyType);
@@ -82,7 +82,7 @@ public class PathologyAddPopUp extends PopUpFragment {
             PathologyFormFragmentFactory popUpPatologiaDescription = new PathologyFormFragmentFactory(pathologyType, pathology);
             popUpPatologiaDescription.generateViewGroup(context, viewGroup);
 
-            MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.pop_up_patologia_add_multiAutoComplete);
+            MultiAutoCompleteTextView multiAutoCompleteTextView = getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
             String message = multiAutoCompleteTextView.getText().toString();
 
             popUpPatologiaDescription.configureEditText(message);

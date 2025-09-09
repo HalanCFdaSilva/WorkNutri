@@ -29,13 +29,25 @@ public class PathologyFormFragmentFactory {
     }
 
     public void generateViewGroup(Context context, ViewGroup viewGroupWereHasInsert) {
+        viewGroup = checkViewNotAlreadyInflated(viewGroupWereHasInsert);
+        if (viewGroup == null) {
+            viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, viewGroupWereHasInsert,false);
+            TextView title = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_title);
+            title.setText(category.getUpperName());
+            viewGroupWereHasInsert.addView(viewGroup);
+        }
 
-        viewGroup = (CardView) LayoutInflater.from(context).inflate(R.layout.popup_patologia_description_formulario, viewGroupWereHasInsert,false);
+    }
 
-        TextView title = viewGroup.findViewById(R.id.pop_up_patologia_description_formulario_title);
-        title.setText(category.getUpperName());
-        viewGroupWereHasInsert.addView(viewGroup);
-
+    private CardView checkViewNotAlreadyInflated(ViewGroup viewGroupWereHasInsert) {
+        for (int i = 0; i < viewGroupWereHasInsert.getChildCount(); i++) {
+            CardView childViewGroup = (CardView) viewGroupWereHasInsert.getChildAt(i);
+            TextView title = childViewGroup.findViewById(R.id.pop_up_patologia_description_formulario_title);
+            if(title.getText().toString().equals(category.getUpperName())){
+                return childViewGroup;
+            }
+        }
+        return null;
     }
 
     public void configureEditText( String message) {

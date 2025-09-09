@@ -11,8 +11,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
+import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
+import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,12 +25,13 @@ import org.junit.runner.RunWith;
 public class PathologyFormFragmentFactoryTest {
 
     private PathologyFormFragmentFactory pathologyFormFactory;
+    private Patologia pathology;
     private Context context;
 
     @Before
     public void setUp() {
-        // Initialize with a sample PathologyField and Patologia object
-        pathologyFormFactory = new PathologyFormFragmentFactory(PathologyField.ETHYLIC, TestEntityFactory.generatePatologia());
+        pathology = TestEntityFactory.generatePatologia();
+        pathologyFormFactory = new PathologyFormFragmentFactory(PathologyField.ETHYLIC, pathology);
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
 
@@ -85,6 +88,72 @@ public class PathologyFormFragmentFactoryTest {
 
         // Verify the category is added back
         Assert.assertTrue(categories.contains(category));
+    }
+
+    @Test
+    public void testConfigureDeleteButtonDoesNotAddCategoryIfAlreadyPresent() {
+        LinearLayout layout = new LinearLayout(context);
+        pathologyFormFactory.generateViewGroup(context, layout);
+        PathologyField category = PathologyField.ETHYLIC;
+        java.util.List<PathologyField> categories = new java.util.ArrayList<>();
+        categories.add(category); // Add the same category to ensure it is already present
+        pathologyFormFactory.configureDeleteButton(layout, categories);
+
+        // Simulate button click
+        View view = layout.getChildAt(0);
+        ImageButton deleteButton = view.findViewById(R.id.pop_up_patologia_description_formulario_button_delete);
+        deleteButton.performClick();
+
+        // Verify the view is removed
+        Assert.assertEquals(0, layout.getChildCount());
+
+        // Verify the category is not added again (size should remain 1)
+        Assert.assertEquals(1, categories.size());
+    }
+
+    @Test
+    public void testConfigureDeleteButtonClearsPathologyFieldValue() {
+        LinearLayout layout = new LinearLayout(context);
+        pathologyFormFactory.generateViewGroup(context, layout);
+        PathologyField category = PathologyField.ETHYLIC;
+        java.util.List<PathologyField> categories = new java.util.ArrayList<>();
+        // Ensure the category is not present initially
+        Assert.assertFalse(categories.contains(category));
+        pathologyFormFactory.configureDeleteButton(layout, categories);
+
+        // Simulate button click
+        View view = layout.getChildAt(0);
+        ImageButton deleteButton = view.findViewById(R.id.pop_up_patologia_description_formulario_button_delete);
+        deleteButton.performClick();
+
+        // Verify the view is removed
+        Assert.assertEquals(0, layout.getChildCount());
+        // Verify the category is added back
+        Assert.assertTrue(categories.contains(category));
+        // Verify the pathology field value is cleared
+        Assert.assertEquals("", new PathologyFieldMapper(category).getValue(pathology));
+    }
+
+    @Test
+    public void verifyIfGenerateTwoViewsWithTheSameCategoryTheSecondOneIsNotAddedToTheLayout(){
+        LinearLayout layout = new LinearLayout(context);
+        Assert.assertEquals(0, layout.getChildCount());
+        pathologyFormFactory.generateViewGroup(context, layout);
+        Assert.assertEquals(1, layout.getChildCount());
+        PathologyFormFragmentFactory secondFactory = new PathologyFormFragmentFactory(PathologyField.ETHYLIC, pathology);
+        secondFactory.generateViewGroup(context, layout);
+        Assert.assertEquals(1, layout.getChildCount());
+    }
+
+    @Test
+    public void verifyIfGenerateTwoViewsWithDifferentCategoryTheSecondOneIsAddedToTheLayout(){
+        LinearLayout layout = new LinearLayout(context);
+        Assert.assertEquals(0, layout.getChildCount());
+        pathologyFormFactory.generateViewGroup(context, layout);
+        Assert.assertEquals(1, layout.getChildCount());
+        PathologyFormFragmentFactory secondFactory = new PathologyFormFragmentFactory(PathologyField.SLUMBER, pathology);
+        secondFactory.generateViewGroup(context, layout);
+        Assert.assertEquals(2, layout.getChildCount());
     }
 
 

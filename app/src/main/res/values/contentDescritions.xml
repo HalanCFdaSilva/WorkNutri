@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nested_scroll_content">scroll of page</string>
-    <string name="add_button_content">Button to add a new data to the data bank</string>
-    <string name="calendar_button_content">Work Calendar</string>
-    <string name="save_form_content">Save form</string>
-    <string name="imc_type_content">BMI rating</string>
+    <string name="nested_scroll_content">Scroll da página</string>
+    <string name="add_button_content">Butão para criar um novo registro</string>
+    <string name="calendar_button_content">Calendário de trabalho</string>
+    <string name="save_form_content">Botão para salvar o formulário</string>
+    <string name="imc_type_content">Categoria do imc do paciente</string>
     <string name="arrow_image_content">Arrow image that expands or contracts a category in the layout</string>
-    <string name="pop_up_gray_background_content">gray background from pop up</string>
-    <string name="pop_up_white_background_content">white background from pop up</string>
-    <string name="scroll_filter_content">scroll of filter category</string>
-    <string name="patient_picture_content">Patient picture</string>
-    <string name="trash_button_content">Button to remove a view</string>
-    <string name="background_title_popup_content">Background of title to pop up</string>
-    <string name="info_image_button_content">ImageButton of one i to get more information about spinner options</string>
+    <string name="pop_up_gray_background_content">Plano de fundo cinza do popup</string>
+    <string name="pop_up_white_background_content">Plano de fundo branco do popup</string>
+    <string name="scroll_filter_content">scroll da categoria do filtro</string>
+    <string name="patient_picture_content">Foto do paciente</string>
+    <string name="trash_button_content">botão para remover a view</string>
+    <string name="background_title_popup_content">plano de fundo do titulo do popup</string>
+    <string name="info_image_button_content">Botão com mais informações sobre os niveis de atividade fisica </string>
+    <string name="type_of_pathology_content">Nome da Patologia do paciente </string>
 </resources>

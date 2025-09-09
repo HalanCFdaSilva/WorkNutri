@@ -4,6 +4,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pop_up_patologia_description_formulario"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
@@ -24,7 +25,9 @@
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="patologia atual:" />
+            tools:text="patologia atual:"
+            android:contentDescription="@string/type_of_pathology_content"
+            android:labelFor="@+id/pop_up_patologia_description_formulario_editText"/>
 
         <MultiAutoCompleteTextView
             android:id="@+id/pop_up_patologia_description_formulario_editText"

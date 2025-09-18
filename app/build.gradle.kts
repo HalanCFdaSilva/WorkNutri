@@ -48,6 +48,8 @@ dependencies {
     testImplementation(libs.mockito.core)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.rules)
 
     //    COORDINATOR DEPENDENCIES
     implementation(libs.material)

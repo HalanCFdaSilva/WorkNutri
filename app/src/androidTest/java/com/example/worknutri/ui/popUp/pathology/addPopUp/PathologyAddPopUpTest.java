@@ -1,5 +1,12 @@
 package com.example.worknutri.ui.popUp.pathology.addPopUp;
 
+import static androidx.test.espresso.Espresso.onData;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
+import static org.hamcrest.Matchers.anything;
+
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -11,14 +18,17 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
+import com.example.worknutri.ui.ActivityToTest;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -29,11 +39,13 @@ public class PathologyAddPopUpTest {
 
     private PathologyAddPopUp pathologyAddPopUp;
     private Context context;
+    @Rule
+    public ActivityScenarioRule<ActivityToTest> activityRule =
+        new ActivityScenarioRule<>(ActivityToTest.class);
 
 
     @Before
     public void setUp() {
-
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
         pathologyAddPopUp = new PathologyAddPopUp(context, List.of(PathologyField.values()));
@@ -121,6 +133,50 @@ public class PathologyAddPopUpTest {
         }
     }
 
+    @Test
+    public void verifyIfConfigureLayoutInsertHintInMultiAutoCompleteTextViewCorrectlyInSelectedItemOnSpinner(){
+        List<PathologyField> listOfPathologiesToInsertInSpinner = List.of(PathologyField.values());
+        pathologyAddPopUp = new PathologyAddPopUp(context, listOfPathologiesToInsertInSpinner);
+        pathologyAddPopUp.configurePopUp(new LinearLayout(context),null);
+        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        Assert.assertNotNull(viewGroup);
+        activityRule.getScenario().onActivity(activity -> {
+            // Supondo que você já tenha uma instância de Dialog chamada dialog
+            activity.showPopUp(pathologyAddPopUp.getPopUpWindow());
+        });
 
+        //verify if layout is correct
+        ViewGroup viewToVerify = viewGroup.findViewById(R.id.popup_patologia_add);
+        Assert.assertNotNull(viewToVerify);
+        Assert.assertEquals(3,viewToVerify.getChildCount());
+
+
+        // Verify MultiAutoCompleteTextView
+        View childToVerify = viewToVerify.getChildAt(1);
+        Assert.assertEquals(R.id.popup_patologia_add_multiAutoComplete,childToVerify.getId());
+        Assert.assertTrue(childToVerify instanceof MultiAutoCompleteTextView);
+        MultiAutoCompleteTextView multiAutoCompleteTextView = (MultiAutoCompleteTextView) childToVerify;
+
+        // Verify Spinner
+        childToVerify = viewToVerify.getChildAt(0);
+        Assert.assertEquals(R.id.popup_patologia_add_spinner,childToVerify.getId());
+        Assert.assertTrue(childToVerify instanceof Spinner);
+        Spinner spinner = (Spinner) childToVerify;
+        Assert.assertNotNull(spinner.getOnItemSelectedListener());
+
+
+
+        for (int i = 0; i < spinner.getAdapter().getCount(); i++) {
+            onView(withId(R.id.popup_patologia_add_spinner)).perform(click());
+            onData(anything()).atPosition(i).perform(click());
+            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+            String item = (String) spinner.getAdapter().getItem(i);
+            PathologyField pathologyField = listOfPathologiesToInsertInSpinner.stream()
+                    .filter(pathology -> pathology.getUpperName().equals(item))
+                    .findAny().orElse(null);
+            Assert.assertNotNull(pathologyField);
+            Assert.assertEquals(context.getText(pathologyField.getHint()),multiAutoCompleteTextView.getHint().toString());
+        }
+    }
 
 }

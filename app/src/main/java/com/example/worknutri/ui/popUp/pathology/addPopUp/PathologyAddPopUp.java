@@ -31,7 +31,9 @@ public class PathologyAddPopUp extends PopUpFragment {
         this.context = context;
     }
 
-    public void configurePopUp(ViewGroup viewWereAdd,Patologia pathology){
+    public void configurePopUp(ViewGroup viewWereAdd, Patologia pathology){
+        if (pathology==null)
+            throw new NullPointerException();
         this.pathology = pathology;
         ViewGroup viewGroup = getViewGroup();
         configureSpinner(viewGroup.findViewById(R.id.popup_patologia_add_spinner),viewGroup.findViewById(R.id.popup_patologia_add_multiAutoComplete));
@@ -39,8 +41,9 @@ public class PathologyAddPopUp extends PopUpFragment {
     }
 
     private void configureSpinner(Spinner spinner, MultiAutoCompleteTextView textView) {
+        List<String> pathologyNames = getPathologyNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_spinner_item, getPathologyNames());
+                android.R.layout.simple_spinner_item, pathologyNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -54,6 +57,11 @@ public class PathologyAddPopUp extends PopUpFragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+        if (pathologyNames.isEmpty()){
+            spinner.setEnabled(false);
+            spinner.setClickable(false);
+        }
+
     }
 
     private PathologyField getPathologyCategory(String selectedPathology) {
@@ -74,8 +82,7 @@ public class PathologyAddPopUp extends PopUpFragment {
             String selectedPathology = (String) spinner.getSelectedItem();
             PathologyField pathologyType = getPathologyCategory(selectedPathology);
             pathologyTypes.remove(pathologyType);
-
-
+            configureSpinner(getViewGroup().findViewById(R.id.popup_patologia_add_spinner),getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete));
             PathologyFormFragmentFactory popUpPatologiaDescription = new PathologyFormFragmentFactory(pathologyType, pathology);
             popUpPatologiaDescription.generateViewGroup(context, viewGroup);
 

@@ -20,7 +20,7 @@ import java.util.List;
 public class DatePickerPopUp extends PopUpFragment {
 
     private final LayoutInflater inflater;
-    private DayOfWork dayOfWork;
+    private final DayOfWork dayOfWork;
     private final ViewGroup viewGroupRootOfActivity;
 
 
@@ -135,8 +135,8 @@ public class DatePickerPopUp extends PopUpFragment {
     }
 
     public void convertToDayOfWork() {
-        ModifyDayOfWork modifyDayOfWork = new ModifyDayOfWork(dayOfWork);
-        modifyDayOfWork.generateOfTimeDescritionFragment(getViewGroup());
+        DayOfWorkViewBinder dayOfWorkViewBinder = new DayOfWorkViewBinder(dayOfWork);
+        dayOfWorkViewBinder.bind(getViewGroup());
 
     }
 

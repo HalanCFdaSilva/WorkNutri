@@ -34,9 +34,11 @@ public class DayOfWork {
 
     public void insertDate(DayOfWork dayOfWork) {
 
-        setDayOfWeek(dayOfWork.getDayOfWeek());
-        setHoraInicio(dayOfWork.getHoraInicio());
-        setHoraFim(dayOfWork.getHoraFim());
+        if (dayOfWork != null) {
+            setDayOfWeek(dayOfWork.getDayOfWeek());
+            setHoraInicio(dayOfWork.getHoraInicio());
+            setHoraFim(dayOfWork.getHoraFim());
+        }
     }
 
     public long getId() {

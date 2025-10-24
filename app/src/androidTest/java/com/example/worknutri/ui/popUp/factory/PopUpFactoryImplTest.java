@@ -57,8 +57,8 @@ public class PopUpFactoryImplTest {
 
     @Test
     public void testGenerateDatePickerPopUp() {
-        ViewGroup viewGroup = new LinearLayout(context);
-        DatePickerPopUp datePickerPopUp = popUpFactory.generateDatePickerPopUp(viewGroup);
+
+        DatePickerPopUp datePickerPopUp = popUpFactory.generateDatePickerPopUp();
         Assert.assertNotNull(datePickerPopUp );
     }
 

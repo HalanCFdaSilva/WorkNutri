@@ -1,6 +1,7 @@
 package com.example.worknutri.ui.popUp.hourDatePopUp;
 
 
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,13 +21,15 @@ public class DayOfWorkUiService {
     private final List<HourDateFragmentInserter> hourDateFragmentInserterList;
 
     private final ViewGroup viewGroupToInsertHourDateFragment;
+    private ViewGroup viewGroupRoot;
 
 
 
     public DayOfWorkUiService(ViewGroup viewGroupRoot, ViewGroup viewGroupToInsertHourDateFragment) {
-        this.datePickerPopUp = new PopUpFactoryImpl(viewGroupRoot.getContext()).generateDatePickerPopUp(viewGroupRoot);
+        this.datePickerPopUp = new PopUpFactoryImpl(viewGroupRoot.getContext()).generateDatePickerPopUp();
         this.viewGroupToInsertHourDateFragment = viewGroupToInsertHourDateFragment;
         this.hourDateFragmentInserterList = new ArrayList<>();
+        this.viewGroupRoot = viewGroupRoot;
     }
 
     public DayOfWorkUiService(ViewGroup viewGroupToInsertHourDateFragment) {
@@ -106,6 +109,7 @@ public class DayOfWorkUiService {
         layout.setOnClickListener(v -> {
             datePickerPopUp.modifyDay(dayOfWork);
             onPickerDayOfWorkClickInSaveButton();
+            datePickerPopUp.getPopUpWindow().showAtLocation(viewGroupRoot, Gravity.CENTER, -1, -1);
         });
     }
 

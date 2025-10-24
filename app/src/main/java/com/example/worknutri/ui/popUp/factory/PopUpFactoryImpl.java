@@ -2,7 +2,7 @@ package com.example.worknutri.ui.popUp.factory;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
+
 
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
@@ -38,8 +38,8 @@ public class PopUpFactoryImpl implements PopUpFactory{
     }
 
     @Override
-    public DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity) {
-        return new DatePickerPopUp(LayoutInflater.from(context),viewGroupRootOfActivity);
+    public DatePickerPopUp generateDatePickerPopUp() {
+        return new DatePickerPopUp(LayoutInflater.from(context));
     }
 
     @Override

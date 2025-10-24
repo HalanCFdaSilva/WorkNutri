@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.popUp.hourDatePopUp.datePicker;
 
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,47 +19,45 @@ import java.util.List;
 public class DatePickerPopUp extends PopUpFragment {
 
     private final LayoutInflater inflater;
-    private final DayOfWork dayOfWork;
-    private final ViewGroup viewGroupRootOfActivity;
+    private DayOfWork dayOfWork;
 
 
-    public DatePickerPopUp(LayoutInflater inflater, ViewGroup viewGroupRootOfActivity) {
+
+    public DatePickerPopUp(LayoutInflater inflater) {
         super((ViewGroup) inflater.inflate(R.layout.popup_date_picker, null),
                 R.id.date_picker_pop_up_image_view_not_use);
         this.inflater = inflater;
         dayOfWork = new DayOfWork();
-        this.viewGroupRootOfActivity = viewGroupRootOfActivity;
+
 
     }
 
     public void modifyDay( DayOfWork dayOfWork) {
 
-        newLayout();
+        generateNewLayout();
         encerrarAoClicarFora();
-        configuraBotoes(dayOfWork);
-        getPopUpWindow().showAtLocation(viewGroupRootOfActivity, Gravity.CENTER, -1, -1);
+        setDayOfWork(dayOfWork);
+        configuraBotoes();
 
     }
 
-    public void newLayout(){
+    public void generateNewLayout(){
         setViewGroup((ViewGroup) inflater.inflate(R.layout.popup_date_picker, null));
     }
 
     public void encerrarAoClicarFora(){
         encerrarAoClicarFora(R.id.date_picker_pop_up_image_view_not_use);
     }
-    public void configuraBotoes(DayOfWork dayOfWork) {
+    public void configuraBotoes() {
 
-        setDayOfWork(dayOfWork);
+
         this.configureWeekPicker();
         this.configureBeginHourPicker();
         this.configureEndHourPicker();
     }
 
-    private void setDayOfWork(DayOfWork dayOfWork) {
-        if (dayOfWork.getId()!= 0){
-            this.dayOfWork.insertDate(dayOfWork);
-        }
+    public void setDayOfWork(DayOfWork dayOfWork) {
+        this.dayOfWork = dayOfWork;
     }
 
     private void configureEndHourPicker() {
@@ -116,8 +113,8 @@ public class DatePickerPopUp extends PopUpFragment {
 
     private int getValueOfHourInNumberPicker(int id){
         NumberPicker numberPicker = getViewGroup().findViewById(id);
-        String hourStart = numberPicker.getDisplayedValues()[numberPicker.getValue()];
-        return StringsUtil.convertHourStringInInt(hourStart);
+        String hour = numberPicker.getDisplayedValues()[numberPicker.getValue()];
+        return StringsUtil.convertHourStringInInt(hour);
     }
 
     private boolean collideWithDayOfWorkOfClass(List<DayOfWork> listOfDayToWorkAdded) {

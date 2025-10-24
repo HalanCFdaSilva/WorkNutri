@@ -1,7 +1,6 @@
 package com.example.worknutri.ui.popUp.factory;
 
 
-import android.view.ViewGroup;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
@@ -20,7 +19,7 @@ public interface PopUpFactory {
 
     RemoveConfirmPopUp generateRemoveConfirmPopUp();
 
-    DatePickerPopUp generateDatePickerPopUp(ViewGroup viewGroupRootOfActivity);
+    DatePickerPopUp generateDatePickerPopUp();
 
     PathologyAddPopUp generatePopUpPatologiaAdd(List<PathologyField> pathologyCategories);
     ActivityLevelDetailPopUp generateActivityLevelDetailPopUp();

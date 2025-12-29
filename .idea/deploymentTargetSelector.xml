@@ -5,16 +5,16 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PatologiaPopUpFragmentTest">
+      <SelectionState runConfigName="DatePickerPopUpTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="setTitleMethodSetsCorrectTitle()">
+      <SelectionState runConfigName="testDatePickerIsCorrectReturnsFalseForInvalidPeriod()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="layoutInflatedInGenerateViewGroupMethodHasCorrectViews()">
+      <SelectionState runConfigName="DayOfWorkUiServiceTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="onClickTogglesDescriptionVisibilityAndArrowIcon()">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -57,7 +57,17 @@ public class DatePickerPopUp extends PopUpFragment {
     }
 
     public void setDayOfWork(DayOfWork dayOfWork) {
-        this.dayOfWork = dayOfWork;
+        if (checkDayOfWork(dayOfWork))
+            this.dayOfWork = dayOfWork;
+    }
+
+    private boolean checkDayOfWork(DayOfWork dayOfWork) {
+        if (dayOfWork.getId() != 0){
+            return !dayOfWork.getDayOfWeek().isBlank() &&
+                    !dayOfWork.getHoraInicio().isBlank() &&
+                    !dayOfWork.getHoraFim().isBlank();
+        }
+        return true;
     }
 
     private void configureEndHourPicker() {

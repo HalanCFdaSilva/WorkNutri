@@ -1,6 +1,5 @@
 package com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,17 +9,16 @@ import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 public class HourDateFragmentInserter {
 
 
-    private ViewGroup layoutToInsertHourDate;
-    private HourDateFragment hourDateFragment;
-    private DayOfWork dayOfWork;
+    private final ViewGroup layoutToInsertHourDate;
+    private final HourDateFragment hourDateFragment;
+    private final DayOfWork dayOfWork;
 
     public HourDateFragmentInserter(ViewGroup layoutToInsertFragment,DayOfWork dayOfWork) {
         this.layoutToInsertHourDate = layoutToInsertFragment;
         this.hourDateFragment = new HourDateFragment();
         
         Context context = layoutToInsertFragment.getContext();
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        this.hourDateFragment.generateNewLayout(inflater);
+        this.hourDateFragment.generateNewLayout(LayoutInflater.from(context));
 
         this.dayOfWork = dayOfWork;
     }

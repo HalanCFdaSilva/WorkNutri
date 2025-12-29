@@ -7,7 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.ActivityToTest;
-import com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork.HourDateFragment;
 import com.example.worknutri.ui.popUp.hourDatePopUp.daysOfWork.HourDateFragmentInserter;
 
 import org.junit.Before;
@@ -86,7 +85,7 @@ public class HourDateFragmentInserterTest {
     @Test
     public void testGetHourDateFragmentReturnsInstance() {
         assertNotNull(inserter.getHourDateFragment());
-        assertTrue(inserter.getHourDateFragment() instanceof HourDateFragment);
+
     }
 
     @Test

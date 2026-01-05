@@ -25,11 +25,6 @@ public interface PacienteDao {
     @Query("SELECT * FROM paciente WHERE nome_paciente LIKE :nomePaciente")
     List<Paciente> findByName(String nomePaciente);
 
-
-//    @Transaction
-//    @Query("SELECT * FROM paciente WHERE cpf LIKE :cpfPaciente")
-//    List<DietasEPaciente> findPacienteAndDietasByCpf(String cpfPaciente);
-
     @Insert
     void insertAll(Paciente... pacientes);
 

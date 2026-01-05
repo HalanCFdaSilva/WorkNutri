@@ -46,7 +46,7 @@ public class ClinicaDescriptionAdapter {
         ViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_name), clinica.getNome());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone1());
+                R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
                 R.id.clinica_description_activity_dados_gerais_email), clinica.getEmail());
     }

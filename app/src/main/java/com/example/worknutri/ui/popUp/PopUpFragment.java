@@ -1,6 +1,6 @@
 package com.example.worknutri.ui.popUp;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -39,10 +39,7 @@ public class PopUpFragment {
 
     protected void encerrarAoClicarFora(int idView) {
         ImageView imageViewBackground = this.viewGroup.findViewById(idView);
-        imageViewBackground.setOnClickListener(v -> {
-            Log.d("PopUpFragment", "Clicou fora do popup, fechando.");
-            pw.dismiss();
-        });
+        imageViewBackground.setOnClickListener(v -> pw.dismiss());
     }
 
     protected void insertTitle(int resId) {

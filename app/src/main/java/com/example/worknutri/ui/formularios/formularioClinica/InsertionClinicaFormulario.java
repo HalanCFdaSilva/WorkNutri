@@ -25,7 +25,7 @@ public class InsertionClinicaFormulario {
         clinica.setEmail(stringOfEditText);
 
         stringOfEditText = ViewsUtil.getStringOfEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_fone));
-        clinica.setTelefone1(stringOfEditText);
+        clinica.setTelefone(stringOfEditText);
 
         stringOfEditText = ViewsUtil.getStringOfEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_rua));
         clinica.setRua(stringOfEditText);
@@ -50,7 +50,7 @@ public class InsertionClinicaFormulario {
 
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_email), clinica.getEmail());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_fone), clinica.getTelefone1());
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_dados_pessoais_fone), clinica.getTelefone());
 
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_clinica_endereco_cep), clinica.getCodigoPostal());
 

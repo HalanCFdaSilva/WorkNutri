@@ -5,16 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DatePickerPopUpTest">
+      <SelectionState runConfigName="ClinicaDaoTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testDatePickerIsCorrectReturnsFalseForInvalidPeriod()">
+      <SelectionState runConfigName="testUpdateDontModifyClinicaDataIfModifyId()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DayOfWorkUiServiceTest">
+      <SelectionState runConfigName="testDeleteDontRemovesClinicaFromDataBaseIfDontFindTupleWithIdEqual()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri'">
+      <SelectionState runConfigName="DayOfWorkDaoTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="PacienteDaoTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

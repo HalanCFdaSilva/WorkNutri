@@ -96,7 +96,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         else antropometriaDao.update(antropometria);
 
         PatologiaDao patologiaDao = getDataBase().patologiaDao();
-        if (patologia.getIdPaciente() == 0) patologiaDao.insertAll(patologia);
+        if (patologia.getIdPaciente() == 0) patologiaDao.insert(patologia);
         else patologiaDao.update(patologia);
     }
 

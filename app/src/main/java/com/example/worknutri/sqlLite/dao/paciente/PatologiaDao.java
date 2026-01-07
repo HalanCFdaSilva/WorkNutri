@@ -19,7 +19,7 @@ public interface PatologiaDao {
     List<Patologia> loadAllByIdPaciente(long pacienteIds);
 
     @Insert
-    void insertAll(Patologia... patologias);
+    void insert(Patologia patologia);
 
     @Update
     void update(Patologia patologia);

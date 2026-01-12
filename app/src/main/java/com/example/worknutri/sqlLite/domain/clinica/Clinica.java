@@ -13,7 +13,7 @@ public class Clinica implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String nome;
-    private String telefone;
+    private String telefone1;
     private String email;
 
     private String rua;
@@ -42,12 +42,12 @@ public class Clinica implements Serializable {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelefone1() {
+        return telefone1;
     }
 
-    public void setTelefone(String telefone1) {
-        this.telefone = telefone1;
+    public void setTelefone1(String telefone1) {
+        this.telefone1 = telefone1;
     }
 
     public String getEmail() {

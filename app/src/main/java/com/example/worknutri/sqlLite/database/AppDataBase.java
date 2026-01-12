@@ -37,15 +37,20 @@ public abstract class AppDataBase extends RoomDatabase {
      */
     private static final String DATA_BASE_NAME = "nutri_bank.db";
 
+    private static AppDataBase INSTANCE;
+
     /**
      * Método necessário para quando você quiser gerar uma instância do banco de dados e assim poder acessa-lo.
      */
     public static AppDataBase getInstance(Context context) {
 
-        return Room.databaseBuilder(context, AppDataBase.class, DATA_BASE_NAME)
-                .createFromAsset("dataBase/nutri_bank.db")
-                .allowMainThreadQueries()
-                .build();
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context, AppDataBase.class, DATA_BASE_NAME)
+                    .createFromAsset("dataBase/nutri_bank.db")
+                    .allowMainThreadQueries()
+                    .build();
+        }
+        return INSTANCE;
 
     }
 

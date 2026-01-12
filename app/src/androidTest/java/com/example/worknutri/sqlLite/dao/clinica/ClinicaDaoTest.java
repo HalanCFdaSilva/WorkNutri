@@ -91,7 +91,7 @@ public class ClinicaDaoTest {
         Clinica clinica = new Clinica();
         clinica.setNome("Clinica Teste");
         clinica.setEmail("teste@test.com");
-        clinica.setTelefone("123456789");
+        clinica.setTelefone1("123456789");
         clinica.setBairro("Bairro Teste");
         clinica.setCidade("cidade teste");
         clinica.setEstado("estado teste");
@@ -111,7 +111,7 @@ public class ClinicaDaoTest {
         Assert.assertNotNull(clinicaAfterDB);
         Assert.assertEquals(clinica.getNome(), clinicaAfterDB.getNome());
         Assert.assertEquals(clinica.getEmail(), clinicaAfterDB.getEmail());
-        Assert.assertEquals(clinica.getTelefone(), clinicaAfterDB.getTelefone());
+        Assert.assertEquals(clinica.getTelefone1(), clinicaAfterDB.getTelefone1());
         Assert.assertEquals(clinica.getBairro(), clinicaAfterDB.getBairro());
         Assert.assertEquals(clinica.getCidade(), clinicaAfterDB.getCidade());
         Assert.assertEquals(clinica.getEstado(), clinicaAfterDB.getEstado());
@@ -128,7 +128,7 @@ public class ClinicaDaoTest {
         Clinica clinica = new Clinica();
         clinica.setNome("Clinica Teste");
         clinica.setEmail("teste@test.com");
-        clinica.setTelefone("123456789");
+        clinica.setTelefone1("123456789");
         clinica.setBairro("Bairro Teste");
         clinica.setCidade("cidade teste");
         clinica.setEstado("estado teste");
@@ -149,7 +149,7 @@ public class ClinicaDaoTest {
         Assert.assertNotNull(clinicaAfterDB);
         Assert.assertEquals(clinica.getNome(), clinicaAfterDB.getNome());
         Assert.assertEquals(clinica.getEmail(), clinicaAfterDB.getEmail());
-        Assert.assertEquals(clinica.getTelefone(), clinicaAfterDB.getTelefone());
+        Assert.assertEquals(clinica.getTelefone1(), clinicaAfterDB.getTelefone1());
         Assert.assertEquals(clinica.getBairro(), clinicaAfterDB.getBairro());
         Assert.assertEquals(clinica.getCidade(), clinicaAfterDB.getCidade());
         Assert.assertEquals(clinica.getEstado(), clinicaAfterDB.getEstado());
@@ -165,7 +165,7 @@ public class ClinicaDaoTest {
         clinicaAfterDB.setEstado("estado teste modificado");
         clinicaAfterDB.setCidade("cidade teste modificada");
         clinicaAfterDB.setBairro("Bairro Teste Modificado");
-        clinicaAfterDB.setTelefone("987654321");
+        clinicaAfterDB.setTelefone1("987654321");
         clinicaAfterDB.setEmail("modificado@teste.com");
         clinicaAfterDB.setNome("Clinica Teste Modificada");
         dao.update(clinicaAfterDB);
@@ -175,7 +175,7 @@ public class ClinicaDaoTest {
         Assert.assertEquals(clinicaAfterDB.getId(), clinicaAfterUpdate.getId());
         Assert.assertEquals(clinicaAfterDB.getNome(), clinicaAfterUpdate.getNome());
         Assert.assertEquals(clinicaAfterDB.getEmail(), clinicaAfterUpdate.getEmail());
-        Assert.assertEquals(clinicaAfterDB.getTelefone(), clinicaAfterUpdate.getTelefone());
+        Assert.assertEquals(clinicaAfterDB.getTelefone1(), clinicaAfterUpdate.getTelefone1());
         Assert.assertEquals(clinicaAfterDB.getBairro(), clinicaAfterUpdate.getBairro());
         Assert.assertEquals(clinicaAfterDB.getCidade(), clinicaAfterUpdate.getCidade());
         Assert.assertEquals(clinicaAfterDB.getEstado(), clinicaAfterUpdate.getEstado());
@@ -191,7 +191,7 @@ public class ClinicaDaoTest {
         Clinica clinica = new Clinica();
         clinica.setNome("Clinica Teste");
         clinica.setEmail("teste@test.com");
-        clinica.setTelefone("123456789");
+        clinica.setTelefone1("123456789");
         clinica.setBairro("Bairro Teste");
         clinica.setCidade("cidade teste");
         clinica.setEstado("estado teste");
@@ -207,7 +207,7 @@ public class ClinicaDaoTest {
 
         Assert.assertEquals(clinica.getNome(), clinicaAfterDB.getNome());
         Assert.assertEquals(clinica.getEmail(), clinicaAfterDB.getEmail());
-        Assert.assertEquals(clinica.getTelefone(), clinicaAfterDB.getTelefone());
+        Assert.assertEquals(clinica.getTelefone1(), clinicaAfterDB.getTelefone1());
         Assert.assertEquals(clinica.getBairro(), clinicaAfterDB.getBairro());
         Assert.assertEquals(clinica.getCidade(), clinicaAfterDB.getCidade());
         Assert.assertEquals(clinica.getEstado(), clinicaAfterDB.getEstado());
@@ -225,7 +225,7 @@ public class ClinicaDaoTest {
         clinicaAfterDB.setEstado("estado teste modificado");
         clinicaAfterDB.setCidade("cidade teste modificada");
         clinicaAfterDB.setBairro("Bairro Teste Modificado");
-        clinicaAfterDB.setTelefone("987654321");
+        clinicaAfterDB.setTelefone1("987654321");
         clinicaAfterDB.setEmail("modificado@teste.com");
         clinicaAfterDB.setNome("Clinica Teste Modificada");
         dao.update(clinicaAfterDB);
@@ -236,7 +236,7 @@ public class ClinicaDaoTest {
         Assert.assertNotEquals(clinicaAfterDB.getId(), clinicaAfterUpdate.getId());
         Assert.assertNotEquals(clinicaAfterDB.getNome(), clinicaAfterUpdate.getNome());
         Assert.assertNotEquals(clinicaAfterDB.getEmail(), clinicaAfterUpdate.getEmail());
-        Assert.assertNotEquals(clinicaAfterDB.getTelefone(), clinicaAfterUpdate.getTelefone());
+        Assert.assertNotEquals(clinicaAfterDB.getTelefone1(), clinicaAfterUpdate.getTelefone1());
         Assert.assertNotEquals(clinicaAfterDB.getBairro(), clinicaAfterUpdate.getBairro());
         Assert.assertNotEquals(clinicaAfterDB.getCidade(), clinicaAfterUpdate.getCidade());
         Assert.assertNotEquals(clinicaAfterDB.getEstado(), clinicaAfterUpdate.getEstado());
@@ -248,7 +248,7 @@ public class ClinicaDaoTest {
         Assert.assertEquals(oldId, clinicaAfterUpdate.getId());
         Assert.assertEquals(clinica.getNome(), clinicaAfterUpdate.getNome());
         Assert.assertEquals(clinica.getEmail(), clinicaAfterUpdate.getEmail());
-        Assert.assertEquals(clinica.getTelefone(), clinicaAfterUpdate.getTelefone());
+        Assert.assertEquals(clinica.getTelefone1(), clinicaAfterUpdate.getTelefone1());
         Assert.assertEquals(clinica.getBairro(), clinicaAfterUpdate.getBairro());
         Assert.assertEquals(clinica.getCidade(), clinicaAfterUpdate.getCidade());
         Assert.assertEquals(clinica.getEstado(), clinicaAfterUpdate.getEstado());
@@ -371,7 +371,7 @@ public class ClinicaDaoTest {
         Clinica c = new Clinica();
         c.setNome(nome);
         c.setEmail(nome.toLowerCase().replace(" ", "") + "@test.com");
-        c.setTelefone("000000000");
+        c.setTelefone1("000000000");
         c.setRua("Rua Teste");
         c.setNumero(1);
         c.setComplemento("");

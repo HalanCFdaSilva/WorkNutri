@@ -5,19 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PacienteDaoTest">
+      <SelectionState runConfigName="getInstance_opensDatabaseAndCanBeClosed()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="insertAll_assignsIdsAndGetAllReturnsInserted()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="getById_returnsCorrectPaciente()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="AntropometriaDaoTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="getById_returnsCorrectAntropometria()">
+      <SelectionState runConfigName="getInstance_isSingletonAcrossCalls()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

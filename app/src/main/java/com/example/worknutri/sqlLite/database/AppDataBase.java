@@ -28,7 +28,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
  * @see RoomDatabase
  */
 @Database(entities = {Paciente.class, Patologia.class, Antropometria.class, Clinica.class, DayOfWork.class},
-        exportSchema = true, version = 1)
+         version = 1)
 public abstract class AppDataBase extends RoomDatabase {
 
     /**

@@ -9,7 +9,9 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.database.AppDataBase;
+import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 
 import org.junit.After;
 import org.junit.Before;
@@ -160,5 +162,49 @@ public class PacienteDaoTest {
         assertNotNull(result);
         assertTrue(result.isEmpty());
     }
+
+    @Test
+    public void deletingPaciente_deletesLinkedPatologiaAndAntropometria_dueToCascade() {
+        // insere paciente
+        Paciente paciente = newPaciente("Paciente Cascade");
+        dao.insertAll(paciente);
+
+        List<Paciente> pacientes = dao.findByName("Paciente Cascade");
+        assertEquals(1, pacientes.size());
+        Paciente storedPaciente = pacientes.get(0);
+        long pacienteId = storedPaciente.getId();
+
+        // insere patologia vinculada
+
+        Patologia pat = new Patologia();
+        try { pat.setIdPaciente((int) pacienteId); } catch (Exception ignored) {}
+        pat.setPatologiaAtual("Hipertensão");
+        PatologiaDao patologiaDao = db.patologiaDao();
+        patologiaDao.insert(pat);
+
+        // insere antropometria vinculada
+        Antropometria ant = new Antropometria();
+        try { ant.setIdPaciente((int) pacienteId); } catch (Exception ignored) {}
+        ant.setPeso("70");
+        AntropometriaDao antropometriaDao = db.antropometriaDao();
+        antropometriaDao.insertAll(ant);
+
+        // confirma inserções
+        List<Patologia> patologiasBefore = patologiaDao.loadAllByIdPaciente((int) pacienteId);
+        Antropometria antrosBefore = antropometriaDao.getByPacienteId((int) pacienteId);
+        assertEquals(1, patologiasBefore.size());
+        assertNotNull(antrosBefore);
+
+        // deleta paciente
+        dao.delete(storedPaciente);
+
+        // confirma que entradas vinculadas foram removidas por cascade
+        List<Patologia> patologiasAfter = patologiaDao.loadAllByIdPaciente((int) pacienteId);
+        Antropometria antrosAfter = antropometriaDao.getByPacienteId((int) pacienteId);
+        assertTrue(patologiasAfter == null || patologiasAfter.isEmpty());
+        assertNull(antrosAfter);
+    }
+
+
 }
 

@@ -5,10 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="getInstance_opensDatabaseAndCanBeClosed()">
+      <SelectionState runConfigName="deletingPaciente_deletesLinkedPatologia_dueToCascade() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="getInstance_isSingletonAcrossCalls()">
+      <SelectionState runConfigName="deletingPaciente_deletesLinkedPatologiaAndAntropometria_dueToCascade()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

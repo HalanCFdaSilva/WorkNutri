@@ -123,6 +123,7 @@ public class DayOfWorkUiService {
 
     public void generatePopUpOfDatePickerToNewDayOfWork() {
         datePickerPopUp.modifyDay(new DayOfWork());
+        datePickerPopUp.getPopUpWindow().showAtLocation(viewGroupRoot, Gravity.CENTER, -1, -1);
     }
 
 

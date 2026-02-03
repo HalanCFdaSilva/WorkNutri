@@ -13,7 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.ActivityMainBinding;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
+import com.example.worknutri.ui.formularios.clinicForm.ClinicFormActivity;
 import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -67,7 +67,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private void configurefab() {
         FloatingActionButton floatBottom = this.findViewById(R.id.main_activity_fab);
         floatBottom.setOnClickListener(v -> {
-            Intent intent = new Intent(getBaseContext(), FormularioClinicaActivity.class);
+            Intent intent = new Intent(getBaseContext(), ClinicFormActivity.class);
             if (fragmentSelected == FragmentSelectedActivity.PACIENTE_FRAGMENT) {
                 intent = new Intent(getBaseContext(), FormularioPacienteActivity.class);
             }

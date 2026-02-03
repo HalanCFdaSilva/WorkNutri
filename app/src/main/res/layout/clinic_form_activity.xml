@@ -2,18 +2,19 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clinic_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.formularios.formularioClinica.FormularioClinicaActivity">
+    tools:context=".ui.formularios.clinicForm.ClinicFormActivity">
 
     <ScrollView
-        android:id="@+id/formulario_clinica_activy_scrollview"
+        android:id="@+id/clinic_form_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contextClickable="false">
 
         <LinearLayout
-            android:id="@+id/formulario_clinica_linear_layout"
+            android:id="@+id/clinic_form_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -21,12 +22,12 @@
 
 <!--        DADOS GERAIS CLINICA-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_clinica_dados_gerais_constraint"
+                android:id="@+id/clinic_form_general_data_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/formulario_clinica_dados_gerais_title"
+                    android:id="@+id/clinic_form_general_data_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -36,40 +37,40 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_clinica_dados_gerais_sortDivider"
+                    android:id="@+id/clinic_form_general_data_sortDivider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_clinica_dados_gerais_title" />
+                    app:layout_constraintTop_toBottomOf="@id/clinic_form_general_data_title" />
 
 
 <!--                NOME-->
                 <TextView
-                    android:id="@+id/formulario_clinica_dados_gerais_name_title"
+                    android:id="@+id/clinic_form_general_data_name_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/nome_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_dados_gerais_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_dados_gerais_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_general_data_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_general_data_sortDivider" />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_dados_gerais_name_obrigatorio"
+                    android:id="@+id/clinic_form_general_data_name_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_dados_gerais_name_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_dados_gerais_name_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_dados_gerais_name" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_general_data_name_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_general_data_name_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_general_data_name" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_dados_gerais_name"
+                    android:id="@+id/clinic_form_general_data_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -79,25 +80,25 @@
                     android:hint="@string/clinica_hint"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_dados_gerais_name_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_general_data_name_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_dados_gerais_name_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_dados_gerais_name_title" />
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_general_data_name_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_general_data_name_title" />
 
 
                 <!--           EMAIL-->
                 <TextView
-                    android:id="@+id/formulario_clinica_dados_pessoais_email_title"
+                    android:id="@+id/clinic_form_general_data_email_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/email_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_dados_gerais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_dados_gerais_name" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_general_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_general_data_name" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_dados_pessoais_email"
+                    android:id="@+id/clinic_form_general_data_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints="emailAddress"
@@ -106,42 +107,42 @@
                     android:inputType="textEmailAddress"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_dados_pessoais_email_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_dados_gerais_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_general_data_email_title"
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_general_data_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_dados_gerais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_dados_pessoais_email_title" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_general_data_name"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_general_data_email_title" />
 
 
                 <!--           TELEFONE-->
                 <TextView
-                    android:id="@+id/formulario_clinica_dados_pessoais_fone_title"
+                    android:id="@+id/clinic_form_general_data_phone_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:text="@string/fone_title"
-                    app:layout_constraintEnd_toStartOf="@+id/formulario_clinica_dados_pessoais_fone"
+                    app:layout_constraintEnd_toStartOf="@+id/clinic_form_general_data_phone"
                     app:layout_constraintHorizontal_bias="0.66"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_dados_gerais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_dados_pessoais_email" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_general_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_general_data_email" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_dados_pessoais_fone"
+                    android:id="@+id/clinic_form_general_data_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints="phone"
                     android:ems="10"
                     android:hint="@string/fone_hint"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:maxLength="15"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_dados_pessoais_fone_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_dados_gerais_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_general_data_phone_title"
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_general_data_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_dados_gerais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_dados_pessoais_fone_title" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_general_data_name"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_general_data_phone_title" />
 
 
 
@@ -151,13 +152,13 @@
 
 <!--            ENDERECO CLINICA-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_clinica_endereco_constraint"
+                android:id="@+id/clinic_form_address_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_title"
+                    android:id="@+id/clinic_form_address_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -167,28 +168,28 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_clinica_endereco_sortDivider"
+                    android:id="@+id/clinic_form_address_sortDivider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_clinica_endereco_title" />
+                    app:layout_constraintTop_toBottomOf="@id/clinic_form_address_title" />
 
 
                 <!--            CEP-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_cep_title"
+                    android:id="@+id/clinic_form_address_zip_postal_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/cep_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_address_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_sortDivider" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_cep"
+                    android:id="@+id/clinic_form_address_zip_postal"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -198,37 +199,37 @@
                     android:inputType="number"
                     android:maxLength="9"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_cep_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_zip_postal_title"
                     app:layout_constraintVertical_bias="0.333" />
 
 
                 <!--            RUA-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_rua_title"
+                    android:id="@+id/clinic_form_address_street_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/rua_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_cep" />
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_zip_postal" />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_rua_obrigatorio"
+                    android:id="@+id/clinic_form_address_street_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_rua_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_rua_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_rua" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_street_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_street_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_street" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_rua"
+                    android:id="@+id/clinic_form_address_street"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -239,39 +240,39 @@
                     android:hint="@string/rua_hint"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_rua_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_street_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_rua_obrigatorio"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_cep" />
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_street_mandatory"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_zip_postal" />
 
 
 
 <!--            NUMERO-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_numero_title"
+                    android:id="@+id/clinic_form_address_number_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/numero_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_endereco_cep_title"
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_address_zip_postal_title"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_rua" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_street" />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_numero_obrigatorio"
+                    android:id="@+id/clinic_form_address_number_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_numero_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_numero_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_numero" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_number_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_number_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_number" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_numero"
+                    android:id="@+id/clinic_form_address_number"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -280,25 +281,25 @@
                     android:hint="@string/numero_hint"
                     android:inputType="number"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_numero_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_numero_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_numero_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_number_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_number_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_number_title" />
 
 
 
 <!--            COMPLEMENTO-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_complemento_title"
+                    android:id="@+id/clinic_form_address_complement_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/complemento_title"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_numero"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_numero"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_numero" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_number"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_number"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_number" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_complemento"
+                    android:id="@+id/clinic_form_address_complement"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -307,37 +308,37 @@
                     android:autofillHints="complementAddress"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_complemento_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_complement_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_complemento_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_complemento_title" />
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_complement_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_complement_title" />
 
 
 
 <!--            CIDADE-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_cidade_title"
+                    android:id="@+id/clinic_form_address_city_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/cidade_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_numero" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_number" />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_cidade_obrigatorio"
+                    android:id="@+id/clinic_form_address_city_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_cidade_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_cidade_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_cidade" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_city_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_city_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_city" />
 
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_cidade"
+                    android:id="@+id/clinic_form_address_city"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -346,39 +347,39 @@
                     android:hint="@string/cidade_hint"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_cidade_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_endereco_rua"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_cidade_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_cidade_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_city_title"
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_address_street"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_city_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_city_title" />
 
 
 
 <!--            BAIRRO-->
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_bairro_title"
+                    android:id="@+id/clinic_form_address_neighborhood_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/bairro_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_endereco_cep_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_endereco_cidade" />
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_address_zip_postal_title"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_address_city" />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_bairro_obrigatorio"
+                    android:id="@+id/clinic_form_address_neighborhood_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_bairro_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_bairro_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_neighborhood_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_neighborhood_title"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_neighborhood" />
 
 
                 <!--            ESTADO-->
                 <EditText
-                    android:id="@+id/formulario_clinica_endereco_bairro"
+                    android:id="@+id/clinic_form_address_neighborhood"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -388,42 +389,42 @@
                     android:autofillHints="districtAddress"
                     android:inputType="text"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_bairro_title"
-                    app:layout_constraintEnd_toStartOf="@+id/formulario_clinica_endereco_estado_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_clinica_endereco_bairro_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_neighborhood_title"
+                    app:layout_constraintEnd_toStartOf="@+id/clinic_form_address_state_title"
+                    app:layout_constraintStart_toEndOf="@+id/clinic_form_address_neighborhood_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_neighborhood_title"
                      />
 
                 <TextView
-                    android:id="@+id/formulario_clinica_endereco_estado_title"
+                    android:id="@+id/clinic_form_address_state_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="9dp"
                     android:text="@string/estado_title"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_bairro"
-                    app:layout_constraintEnd_toStartOf="@+id/formulario_clinica_endereco_estado_spinner"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_bairro" />
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_neighborhood"
+                    app:layout_constraintEnd_toStartOf="@+id/clinic_form_address_state_spinner"
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_neighborhood" />
 
                 <Spinner
-                    android:id="@+id/formulario_clinica_endereco_estado_spinner"
+                    android:id="@+id/clinic_form_address_state_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:entries="@array/estado_brasil"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_clinica_endereco_estado_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/clinic_form_address_state_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_clinica_endereco_estado_title" />
+                    app:layout_constraintTop_toTopOf="@+id/clinic_form_address_state_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_clinica_horario_atendimento_constraint"
+                android:id="@+id/clinic_form_horario_atendimento_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/formulario_clinica_horario_atendimento_title"
+                    android:id="@+id/clinic_form_horario_atendimento_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -433,16 +434,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_clinica_horario_atendimento_sortDivider"
+                    android:id="@+id/clinic_form_horario_atendimento_sortDivider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_clinica_horario_atendimento_title" />
+                    app:layout_constraintTop_toBottomOf="@id/clinic_form_horario_atendimento_title" />
 
                 <LinearLayout
-                    android:id="@+id/formulario_clinica_horario_atendimento_layout"
+                    android:id="@+id/clinic_form_horario_atendimento_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="64dp"
@@ -451,28 +452,25 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_horario_atendimento_sortDivider" />
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_horario_atendimento_sortDivider" />
 
                 <Button
-                    android:id="@+id/formulario_clinica_horario_atendimento_button_add"
+                    android:id="@+id/clinic_form_horario_atendimento_button_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/add_dia_atendimento"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_clinica_horario_atendimento_layout"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_clinica_horario_atendimento_layout"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_clinica_horario_atendimento_layout" />
+                    app:layout_constraintEnd_toEndOf="@+id/clinic_form_horario_atendimento_layout"
+                    app:layout_constraintStart_toStartOf="@+id/clinic_form_horario_atendimento_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/clinic_form_horario_atendimento_layout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </ScrollView>
 
-
-
-
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/formulario_clinica_activy_nav_app_bar"
+        android:id="@+id/clinic_form_nav_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -483,7 +481,7 @@
         app:fabCradleVerticalOffset="10dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/formulario_clinica_activy_activity_nav_view"
+            android:id="@+id/clinic_form_nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
@@ -495,27 +493,23 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/formulario_clinica_activy_fab"
+        android:id="@+id/clinic_form_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/save_form_content"
         android:src="@drawable/save_48dp_000000_fill0_wght400_grad0_opsz64"
         app:fabSize="auto"
-        app:layout_anchor="@id/formulario_clinica_activy_nav_app_bar" />
+        app:layout_anchor="@id/clinic_form_nav_app_bar" />
 
     <TextView
-        android:id="@+id/formulario_clinica_activy_error"
+        android:id="@+id/clinic_form_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/error_blank"
         android:textColor="@color/obrigatorio"
         android:visibility="invisible"
         android:translationY="-10dp"
-        app:layout_anchor="@+id/formulario_clinica_activy_fab"
+        app:layout_anchor="@+id/clinic_form_fab"
         app:layout_anchorGravity="center|fill_vertical" />
-
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.worknutri.R;
 import com.example.worknutri.ui.editTextKeysListener.CalendarioKeyListener;
-import com.example.worknutri.ui.editTextKeysListener.FoneKeyListener;
+import com.example.worknutri.ui.editTextKeysListener.PhoneKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.PesoKeyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -55,7 +55,7 @@ public class FormularioPacienteActivity extends AppCompatActivity {
 
     private void insertKeyListeners() {
         EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
-        editText.setOnKeyListener(new FoneKeyListener());
+        editText.setOnKeyListener(new PhoneKeyListener());
 
         editText = findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
         editText.setOnKeyListener(new CalendarioKeyListener());

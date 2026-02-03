@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioClinica;
+package com.example.worknutri.ui.formularios.clinicForm;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,18 +12,18 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class FormularioClinicaActivity extends AppCompatActivity {
-    private FormularioClinicaAdapter adapter;
+public class ClinicFormActivity extends AppCompatActivity {
+    private ClinicFormAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.formulario_clinica_activity);
+        setContentView(R.layout.clinic_form_activity);
 
-        adapter = new FormularioClinicaAdapter(this);
+        adapter = new ClinicFormAdapter(this.findViewById(R.id.clinic_form));
         getClinicaOfIntent();
-        adapter.configuraBottomNav(findViewById(R.id.formulario_clinica_activy_activity_nav_view), getIntent());
-        adapter.configureKeyListeners(findViewById(R.id.formulario_clinica_linear_layout));
+        adapter.configuraBottomNav(findViewById(R.id.clinic_form_nav_view), getIntent());
+        adapter.configureKeyListeners();
         this.addHour();
 
         save();
@@ -32,14 +32,14 @@ public class FormularioClinicaActivity extends AppCompatActivity {
     private void getClinicaOfIntent() {
         if (getIntent().hasExtra(ExtrasActivities.CLINICA_EXTRA.getKey())) {
             Clinica clinica = (Clinica) getIntent().getSerializableExtra(ExtrasActivities.CLINICA_EXTRA.getKey());
-            adapter.insertClinicaInlayout(clinica,findViewById(R.id.formulario_clinica_linear_layout));
+            adapter.insertClinicInlayout(clinica);
         }
 
 
     }
 
     private void addHour() {
-        Button button = findViewById(R.id.formulario_clinica_horario_atendimento_button_add);
+        Button button = findViewById(R.id.clinic_form_horario_atendimento_button_add);
         button.setOnClickListener(onClick -> {
             DayOfWorkUiService dayOfWorkUiService = adapter.getDayOfWorkUiSave();
             dayOfWorkUiService.generatePopUpOfDatePickerToNewDayOfWork();
@@ -50,11 +50,11 @@ public class FormularioClinicaActivity extends AppCompatActivity {
 
     private void save() {
 
-        FloatingActionButton button = findViewById(R.id.formulario_clinica_activy_fab);
+        FloatingActionButton button = findViewById(R.id.clinic_form_fab);
         button.setOnClickListener( v ->{
-            if (adapter.validaFormulario(findViewById(R.id.formulario_clinica_linear_layout),
-                    findViewById(R.id.formulario_clinica_activy_error))) {
-                adapter.saveInDataBase(findViewById(R.id.formulario_clinica_linear_layout));
+            if (adapter.validateForm(
+                    findViewById(R.id.clinic_form_error))) {
+                adapter.saveInDataBase();
                 finish();
             }
         });

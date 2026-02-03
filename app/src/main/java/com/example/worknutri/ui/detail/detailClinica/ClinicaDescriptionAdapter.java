@@ -12,7 +12,7 @@ import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.util.ViewsUtil;
-import com.example.worknutri.ui.formularios.formularioClinica.FormularioClinicaActivity;
+import com.example.worknutri.ui.formularios.clinicForm.ClinicFormActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -77,7 +77,7 @@ public class ClinicaDescriptionAdapter {
     public void configureNavButton(BottomNavigationView navigationView) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
-        Intent intent = new Intent(context, FormularioClinicaActivity.class);
+        Intent intent = new Intent(context, ClinicFormActivity.class);
         intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 

@@ -16,8 +16,9 @@ public class CepKeyListener implements View.OnKeyListener {
         String text = editText.getText().toString();
         text = text.replaceAll("-", "");
         if (keyCode >= KeyEvent.KEYCODE_0 && keyCode <= KeyEvent.KEYCODE_9) {
-            text = text.length() > 5 ? text.substring(0, 5).concat("-").
-                    concat(text.substring(5)) : text;
+            text = text.length() > 5 ?
+                    text.substring(0, 5).concat("-").concat(text.substring(5))
+                    : text;
             editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.black));
             editText.setText(text);
             editText.setSelection(editText.getText().length());

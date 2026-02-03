@@ -5,10 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="deletingPaciente_deletesLinkedPatologia_dueToCascade() (1)">
+      <SelectionState runConfigName="ClinicFormActivityTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="deletingPaciente_deletesLinkedPatologiaAndAntropometria_dueToCascade()">
+      <SelectionState runConfigName="popupNotShownBeforeClick()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="popupNotShownBeforeClickInButtonAddHour()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="whenActivityLaunchedWithClinicaIntent_itPopulatesLayout()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="whenActivityLaunchedWithClinicaIntentAndContainDayOfWorkInDb_itPopulatesLayout()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

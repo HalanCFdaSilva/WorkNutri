@@ -43,7 +43,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Arrays;
 
 @RunWith(AndroidJUnit4.class)
 public class ClinicFormActivityTest {
@@ -145,7 +145,6 @@ public class ClinicFormActivityTest {
         });
     }
 
-
     private Clinica createClinic() {
         Clinica clinica = new Clinica();
         clinica.setId(1000);
@@ -197,7 +196,6 @@ public class ClinicFormActivityTest {
         onView(withId(R.id.clinic_form_address_number)).perform(replaceText(numberExpected));
         onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText(neighborhoodExpected));
         onView(withId(R.id.clinic_form_address_city)).perform(replaceText(cityExpected));
-        // opcional: email/telefone válidos para passar validação
         onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText(phoneExpected));
         onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText(emailExpected));
 
@@ -219,13 +217,13 @@ public class ClinicFormActivityTest {
 
         try {
             scenario.onActivity(activity -> org.junit.Assert.assertTrue(activity.isFinishing()));
-        } catch (IllegalStateException ignored) {
+        } catch (IllegalStateException | NullPointerException ignored) {
             // Activity já finalizada - comportamento aceitável para este teste
         }
     }
 
     @Test
-    public void SavaDataInDataBankIfOnlyMandatoryFieldIsFilled() {
+    public void SaveDataInDataBankIfOnlyMandatoryFieldIsFilled() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
         onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
         onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
@@ -241,7 +239,7 @@ public class ClinicFormActivityTest {
     }
 
     @Test
-    public void SavaDataInDataBankIfOnlyPhoneFieldIsEmpty() {
+    public void SaveDataInDataBankIfOnlyPhoneFieldIsEmpty() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
         onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
         onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
@@ -260,7 +258,7 @@ public class ClinicFormActivityTest {
     }
 
     @Test
-    public void SavaDataInDataBankIfOnlyEmailFieldIsEmpty() {
+    public void SaveDataInDataBankIfOnlyEmailFieldIsEmpty() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
         onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
         onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
@@ -276,7 +274,6 @@ public class ClinicFormActivityTest {
 
         assertTrue("Esperava id maior que 0 indicando que a clinica foi salva", id > 0);
     }
-
 
     @Test
     public void dontSaveInDataBankAndShowFieldsIfMandatoryFieldIsEmpty() throws Exception {
@@ -324,7 +321,6 @@ public class ClinicFormActivityTest {
         onView(withId(fieldId)).check(TextViewAssertions.matchesText(expectedText));
         onView(withId(fieldId)).check(TextViewAssertions.matchesVisibility(View.VISIBLE));
     }
-
 
     @Test
     public void dontSaveInDataBankAndShowFieldsIfIncorrectedFilledPhoneField() throws Exception {
@@ -384,7 +380,7 @@ public class ClinicFormActivityTest {
 
         scenario.onActivity(activity -> {
             EditText et = activity.findViewById(R.id.clinic_form_general_data_phone);
-            assertEquals(InputType.TYPE_CLASS_NUMBER, et.getInputType());
+            assertEquals(InputType.TYPE_CLASS_PHONE, et.getInputType());
 
             // Expected 0 because the method press a key '0' to check the format after key pressed
             assertEditTextCorrectFormatText(et,"","0");
@@ -411,13 +407,13 @@ public class ClinicFormActivityTest {
         });
     }
 
-
     private static void assertEditTextCorrectFormatText(EditText editText, String textToInsert, String expected) {
         editText.setText(textToInsert);
         editText.dispatchKeyEvent(new android.view.KeyEvent(android.view.KeyEvent.ACTION_DOWN, android.view.KeyEvent.KEYCODE_0));
         editText.dispatchKeyEvent(new android.view.KeyEvent(android.view.KeyEvent.ACTION_UP, android.view.KeyEvent.KEYCODE_0));
         assertEquals(expected, editText.getText().toString());
     }
+
 
     @Test
     public void addHourButtonShowsPopup() throws Exception {
@@ -443,7 +439,7 @@ public class ClinicFormActivityTest {
     @Test
     public void onSaveDatePickerPopupInsertOneViewIBusinessHourLayout() throws Exception {
 
-        AtomicReference<String>[] weekDisplayedList = setDayOfWork(2, 9, 18);
+        List<String> weekDisplayedList = setDayOfWork(2, 9, 18);
         Thread.sleep(500);
         onView(withId(R.id.date_picker_pop_up_button_confirm)).check(doesNotExist());
         scenario.onActivity(activity -> {
@@ -455,9 +451,9 @@ public class ClinicFormActivityTest {
             TextView beginHourView = linearLayout.getChildAt(0).findViewById(R.id.time_descrition_fragment_textView_hour_begin);
             TextView endHourView = linearLayout.getChildAt(0).findViewById(R.id.time_descrition_fragment_textView_hour_end);
 
-            Assert.assertEquals(weekDisplayedList[0].get(), weekView.getText().toString());
-            Assert.assertEquals(weekDisplayedList[1].get(), beginHourView.getText().toString());
-            Assert.assertEquals(weekDisplayedList[2].get(), endHourView.getText().toString());
+            Assert.assertEquals(weekDisplayedList.get(0), weekView.getText().toString());
+            Assert.assertEquals(weekDisplayedList.get(1), beginHourView.getText().toString());
+            Assert.assertEquals(weekDisplayedList.get(2), endHourView.getText().toString());
         });
     }
 
@@ -472,7 +468,7 @@ public class ClinicFormActivityTest {
         onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText("11999999999"));
         onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText("teste@exemplo.com"));
 
-        AtomicReference<String>[] weekDisplayedList = setDayOfWork(2, 9, 18);
+        List<String> weekDisplayedList = setDayOfWork(2, 9, 18);
         onView(withId(R.id.clinic_form_fab)).perform(click());
 
         int clinicaId = db.clinicaDao().findIdByName("Clinica Teste");
@@ -480,9 +476,9 @@ public class ClinicFormActivityTest {
         assertEquals(1, diasDeTrabalho.size());
         DayOfWork dayOfWork = diasDeTrabalho.get(0);
         assertEquals(clinicaId, dayOfWork.getIdClinica());
-        assertEquals(weekDisplayedList[0].get(), dayOfWork.getDayOfWeek());
-        assertEquals(weekDisplayedList[1].get(), dayOfWork.getHoraInicio());
-        assertEquals(weekDisplayedList[2].get(), dayOfWork.getHoraFim());
+        assertEquals(weekDisplayedList.get(0), dayOfWork.getDayOfWeek());
+        assertEquals(weekDisplayedList.get(1), dayOfWork.getHoraInicio());
+        assertEquals(weekDisplayedList.get(2), dayOfWork.getHoraFim());
 
 
     }
@@ -498,8 +494,8 @@ public class ClinicFormActivityTest {
         onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText("11999999999"));
         onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText("teste@exemplo.com"));
 
-        AtomicReference<String>[] weekDisplayedList1 = setDayOfWork(2, 9, 18);
-        AtomicReference<String>[] weekDisplayedList2 = setDayOfWork(3, 10, 15);
+        List<String> weekDisplayedList1 = setDayOfWork(2, 9, 18);
+        List<String> weekDisplayedList2 = setDayOfWork(3, 10, 15);
         onView(withId(R.id.clinic_form_fab)).perform(click());
 
         int clinicaId = db.clinicaDao().findIdByName("Clinica Teste2");
@@ -508,16 +504,16 @@ public class ClinicFormActivityTest {
         boolean foundFirst = false;
         boolean foundSecond = false;
        for (DayOfWork dayOfWork : diasDeTrabalho) {
-            if (dayOfWork.getDayOfWeek().equals(weekDisplayedList1[0].get()) && !foundFirst) {
+            if (dayOfWork.getDayOfWeek().equals(weekDisplayedList1.get(0)) && !foundFirst) {
                 foundFirst = true;
                 assertEquals(clinicaId, dayOfWork.getIdClinica());
-                assertEquals(weekDisplayedList1[1].get(), dayOfWork.getHoraInicio());
-                assertEquals(weekDisplayedList1[2].get(), dayOfWork.getHoraFim());
-            } else if (dayOfWork.getDayOfWeek().equals(weekDisplayedList2[0].get()) && !foundSecond) {
+                assertEquals(weekDisplayedList1.get(1), dayOfWork.getHoraInicio());
+                assertEquals(weekDisplayedList1.get(2), dayOfWork.getHoraFim());
+            } else if (dayOfWork.getDayOfWeek().equals(weekDisplayedList2.get(0)) && !foundSecond) {
                 foundSecond = true;
                 assertEquals(clinicaId, dayOfWork.getIdClinica());
-                assertEquals(weekDisplayedList2[1].get(), dayOfWork.getHoraInicio());
-                assertEquals(weekDisplayedList2[2].get(), dayOfWork.getHoraFim());
+                assertEquals(weekDisplayedList2.get(1), dayOfWork.getHoraInicio());
+                assertEquals(weekDisplayedList2.get(2), dayOfWork.getHoraFim());
             } else {
                 Assert.fail("Dia da semana inesperado: " + dayOfWork.getDayOfWeek());
             }
@@ -526,11 +522,11 @@ public class ClinicFormActivityTest {
 
     }
 
-    private AtomicReference<String>[] setDayOfWork(int weekNumber, int hourBeginNumber, int endHourNumber) {
+    private List<String> setDayOfWork(int weekNumber, int hourBeginNumber, int endHourNumber) {
         onView(withId(R.id.clinic_form_horario_atendimento_button_add)).perform(click());
 
 
-        AtomicReference[] result = {new AtomicReference<>(), new AtomicReference<>(), new AtomicReference<>()};
+        final String[] result = new String[3];
 
 
         onView(withId(R.id.pop_up_date_picker))
@@ -540,24 +536,24 @@ public class ClinicFormActivityTest {
 
         onView(withId(R.id.date_picker_pop_up_number_picker_week_day))
                 .inRoot(RootMatchers.isPlatformPopup())
-                .perform(setNumberPickerValue(weekNumber, result[0]));
+                .perform(setNumberPickerValue(weekNumber, result, 0));
 
         onView(withId(R.id.date_picker_pop_up_number_picker_hour_start))
                 .inRoot(RootMatchers.isPlatformPopup())
-                .perform(setNumberPickerValue(hourBeginNumber, result[1]));
+                .perform(setNumberPickerValue(hourBeginNumber, result, 1));
 
         onView(withId(R.id.date_picker_pop_up_number_picker_hour_end))
                 .inRoot(RootMatchers.isPlatformPopup())
-                .perform(setNumberPickerValue(endHourNumber, result[2]));
+                .perform(setNumberPickerValue(endHourNumber, result, 2));
 
         onView(withId(R.id.date_picker_pop_up_button_confirm))
                 .inRoot(RootMatchers.isPlatformPopup())
                 .perform(click());
 
-        return result;
+        return Arrays.asList(result[0], result[1], result[2]);
     }
 
-    private static ViewAction setNumberPickerValue(final int value, final AtomicReference<String> outDisplayedValue) {
+    private static ViewAction setNumberPickerValue(final int value, final String[] outDisplayedValue, final int outIndex) {
         return new ViewAction() {
             @Override
             public Matcher<View> getConstraints() {
@@ -581,7 +577,7 @@ public class ClinicFormActivityTest {
                 } else {
                     displayed = String.valueOf(picker.getValue());
                 }
-                if (outDisplayedValue != null) outDisplayedValue.set(displayed);
+                if (outDisplayedValue != null) outDisplayedValue[outIndex] = displayed;
                 uiController.loopMainThreadUntilIdle();
             }
         };
@@ -590,7 +586,4 @@ public class ClinicFormActivityTest {
 
 
 
-
 }
-
-

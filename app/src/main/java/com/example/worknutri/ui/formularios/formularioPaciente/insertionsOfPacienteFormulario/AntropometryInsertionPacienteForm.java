@@ -5,7 +5,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.worknutri.R;
-import com.example.worknutri.calcular.CalculadorAntropometrico;
+import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.calcular.MeasureConverter;
 import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
@@ -20,39 +20,40 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
     public void insertViewGroupInAntropometria( Antropometria antropometria, Paciente paciente) {
 
 
-        double pesoAtual = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
-                getMeasureTypesFromGramSpinner(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual_spinner)));
+
+        double pesoAtual = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.formulario_paciente_antropometria_peso_atual_spinner),
+                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual), MeasureTypes.KILO);
         antropometria.setPeso(String.valueOf(pesoAtual));
 
         Spinner spinner = viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura);
-        double altura = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura),
-                MeasureTypes.fromValue(spinner.getSelectedItemPosition()));
+        double altura = getValueConverTed(MeasureTypes.fromValue(spinner.getSelectedItemPosition()),viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura),
+                MeasureTypes.GRAM_METER);
         antropometria.setAltura(String.valueOf(altura));
 
-        double pesoIdeal = getValueConverTed(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal),
-                getMeasureTypesFromGramSpinner(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal_spinner)));
+        double pesoIdeal = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.formulario_paciente_antropometria_peso_ideal_spinner),
+                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal), MeasureTypes.KILO);
         antropometria.setPesoIdeal(String.valueOf(pesoIdeal));
 
 
         int positionOfAtivity = ((Spinner) viewGroup.findViewById(
                 R.id.formulario_paciente_antropometria_calculos_atividade_spinner)).getSelectedItemPosition();
 
-        CalculadorAntropometrico calculador = new CalculadorAntropometrico(pesoAtual, altura);
+        AntropometricCalculator calculador = new AntropometricCalculator(pesoAtual, altura);
 
         antropometria.setImc(calculador.generateImc());
 
-        antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(),
-                CalculadorAntropometrico.getYearFromDate(paciente.getNascimento())));
+        int yearFromDate = AntropometricCalculator.getYearFromDate(paciente.getNascimento());
+        antropometria.setAgua(String.valueOf(calculador.generateAgua(yearFromDate, pesoAtual)));
+        antropometria.setTaxaMetabolica(calculador.generateTMB(paciente.getGenero(), yearFromDate));
 
         antropometria.setValorMetabolico(calculador.generateGET(Double.parseDouble(antropometria.getTaxaMetabolica()),
-                positionOfAtivity, paciente.getGenero()));
+                positionOfAtivity));
 
         antropometria.setRegraBolso(calculador.generateBolso(pesoIdeal));
 
         int valorAPerder = ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_peso_a_perder_spinner)).getSelectedItemPosition();
         antropometria.setVenta(calculador.generateVenta(Double.parseDouble(antropometria.getValorMetabolico()), valorAPerder));
 
-        antropometria.setAgua(String.valueOf(calculador.generateAgua(paciente.getIdade(), pesoAtual)));
 
         antropometria.setCircumferenciaBracoDir(ViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)));
@@ -68,14 +69,15 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
 
     }
 
-    private MeasureTypes getMeasureTypesFromGramSpinner(Spinner spinner) {
+    private MeasureTypes getMeasureTypesToWeightSpinner(int spinnerId) {
+        Spinner spinner = viewGroup.findViewById(spinnerId);
         int selectedItemPosition = spinner.getSelectedItemPosition();
         return MeasureTypes.fromValue(selectedItemPosition-3);
     }
 
-    private double getValueConverTed(EditText editText, MeasureTypes measureTypes) {
+    private double getValueConverTed(MeasureTypes measureTypeActual, EditText editText, MeasureTypes measureTypeExpected) {
         double valueOfEditText = Double.parseDouble(ViewsUtil.getStringOfEditText(editText));
-        return MeasureConverter.convertToGramOrMeters(measureTypes, valueOfEditText);
+        return MeasureConverter.convertTo(measureTypeActual, valueOfEditText,measureTypeExpected);
     }
 
     /**

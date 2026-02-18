@@ -10,14 +10,14 @@ import com.example.worknutri.R;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 
-public abstract class ValidaFormulario {
+public abstract class FormValidator {
 
 
-    public static boolean checaEditText(EditText editText, TextView asteristico, TextView textViewError) {
+    public static boolean editTextIsEmpty(EditText editText, TextView asteristico, TextView textViewError) {
         String string = editText.getText().toString().strip();
         if (!string.isBlank()) {
             asteristico.setVisibility(View.INVISIBLE);
@@ -38,13 +38,13 @@ public abstract class ValidaFormulario {
      * @param editText             EditText a ser checado
      * @param textViewErrorMensage textView aonde vai aparecer a mensagem de erro da validação
      */
-    public static boolean validaTelefone(EditText editText, TextView textViewErrorMensage) {
-        String telefone = editText.getText().toString();
-        telefone = telefone.replace(" ", "");
-        telefone = telefone.replace("(", "");
-        telefone = telefone.replace(")", "");
-        telefone = telefone.replace("-", "");
-        if (telefone.length() >= 8 && telefone.length() <= 11 || telefone.isEmpty()) {
+    public static boolean validatePhoneNumber(EditText editText, TextView textViewErrorMensage) {
+        String phoneNumber = editText.getText().toString();
+        phoneNumber = phoneNumber.replace(" ", "");
+        phoneNumber = phoneNumber.replace("(", "");
+        phoneNumber = phoneNumber.replace(")", "");
+        phoneNumber = phoneNumber.replace("-", "");
+        if (phoneNumber.length() >= 10 && phoneNumber.length() <= 11 || phoneNumber.isEmpty()) {
             return true;
         } else {
             editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.obrigatorio));
@@ -61,10 +61,10 @@ public abstract class ValidaFormulario {
      * @param editText             EditText a ser checado
      * @param textViewErrorMensage textView aonde vai aparecer a mensagem de erro da validação
      */
-    public static boolean validaEmail(EditText editText, TextView textViewErrorMensage) {
+    public static boolean validateEmailAdress(EditText editText, TextView textViewErrorMensage) {
         String email = editText.getText().toString();
-        String regex = "^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,}$";
-        if (email.matches(regex) || email.isEmpty()) {
+        String pattern = "^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,}$";
+        if (email.matches(pattern) || email.isEmpty()) {
             editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.black));
             return true;
         } else {
@@ -81,16 +81,24 @@ public abstract class ValidaFormulario {
      * @param editText             EditText a ser checado
      * @param textViewErrorMensage textView aonde vai aparecer a mensagem de erro da validação
      */
-    public static boolean validaData(EditText editText,@Nullable TextView textViewErrorMensage) {
-        String data = editText.getText().toString();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        dateFormat.setLenient(false);
+    public static boolean validateDate(EditText editText, @Nullable TextView textViewErrorMensage) {
+        String date = editText.getText().toString();
+        DateTimeFormatter formatter = DateTimeFormatter
+                .ofPattern("dd/MM/uuuu")
+                .withResolverStyle(ResolverStyle.STRICT);
+
         try {
-            if (!data.isBlank()) {
-                dateFormat.parse(data.trim());
+            LocalDate dateParsed = LocalDate.parse(date, formatter);
+            if (dateParsed.isAfter(LocalDate.now())) {
+                throw new Exception();
             }
+            if (dateParsed.getYear() < 1900) {
+                throw new Exception();
+            }
+
             return true;
-        } catch (ParseException e) {
+
+        } catch (Exception e) {
             if (textViewErrorMensage != null) {
                 editText.setTextColor(ContextCompat.getColor(editText.getContext(), R.color.obrigatorio));
                 textViewErrorMensage.setText(R.string.error_data);
@@ -98,7 +106,8 @@ public abstract class ValidaFormulario {
             }
             return false;
         }
-    }
 
+
+    }
 
 }

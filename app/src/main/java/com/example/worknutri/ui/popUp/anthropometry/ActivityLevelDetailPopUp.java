@@ -38,6 +38,7 @@ public class ActivityLevelDetailPopUp extends PopUpFragment {
 
     private void insertImageView(ViewGroup viewGroup){
         ImageView imageView = new ImageView(context);
+        imageView.setId(R.id.popup_activity_level_imageview);
         imageView.setImageResource(R.drawable.tabela_desc_nivel_atividade_pic);
         LinearLayout layout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
         layout.addView(imageView);

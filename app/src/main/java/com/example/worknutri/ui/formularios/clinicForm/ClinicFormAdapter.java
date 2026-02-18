@@ -11,7 +11,7 @@ import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.editTextKeysListener.CepKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.PhoneKeyListener;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
-import com.example.worknutri.ui.formularios.ValidaFormulario;
+import com.example.worknutri.ui.formularios.FormValidator;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 
 import java.util.List;
@@ -46,9 +46,9 @@ public class ClinicFormAdapter extends FormularioAdapter {
 
     public boolean validateForm(TextView textViewError) {
         if (validaPreenchimentoObrigatorio(textViewError)) {
-            if (ValidaFormulario.validaTelefone(viewRootActivity.findViewById(R.id.clinic_form_general_data_phone),
+            if (FormValidator.validatePhoneNumber(viewRootActivity.findViewById(R.id.clinic_form_general_data_phone),
                     textViewError)) {
-                return ValidaFormulario.validaEmail(viewRootActivity.findViewById(R.id.clinic_form_general_data_email),
+                return FormValidator.validateEmailAdress(viewRootActivity.findViewById(R.id.clinic_form_general_data_email),
                         textViewError);
             }
         }
@@ -56,23 +56,23 @@ public class ClinicFormAdapter extends FormularioAdapter {
     }
 
     private boolean validaPreenchimentoObrigatorio(TextView textViewError) {
-        boolean formularioPreenchido = !ValidaFormulario.checaEditText(viewRootActivity.findViewById(R.id.clinic_form_general_data_name),
+        boolean formularioPreenchido = !FormValidator.editTextIsEmpty(viewRootActivity.findViewById(R.id.clinic_form_general_data_name),
                 viewRootActivity.findViewById(R.id.clinic_form_general_data_name_mandatory), textViewError);
-        if (ValidaFormulario.checaEditText(viewRootActivity.findViewById(R.id.clinic_form_address_street),
+        if (FormValidator.editTextIsEmpty(viewRootActivity.findViewById(R.id.clinic_form_address_street),
                 viewRootActivity.findViewById(R.id.clinic_form_address_street_mandatory), textViewError)) {
             formularioPreenchido = false;
 
         }
-        if (ValidaFormulario.checaEditText(viewRootActivity.findViewById(R.id.clinic_form_address_number),
+        if (FormValidator.editTextIsEmpty(viewRootActivity.findViewById(R.id.clinic_form_address_number),
                 viewRootActivity.findViewById(R.id.clinic_form_address_number_mandatory), textViewError)) {
             formularioPreenchido = false;
         }
-        if (ValidaFormulario.checaEditText(viewRootActivity.findViewById(R.id.clinic_form_address_neighborhood),
+        if (FormValidator.editTextIsEmpty(viewRootActivity.findViewById(R.id.clinic_form_address_neighborhood),
                 viewRootActivity.findViewById(R.id.clinic_form_address_neighborhood_mandatory), textViewError)) {
             formularioPreenchido = false;
         }
 
-        if (ValidaFormulario.checaEditText(viewRootActivity.findViewById(R.id.clinic_form_address_city),
+        if (FormValidator.editTextIsEmpty(viewRootActivity.findViewById(R.id.clinic_form_address_city),
                 viewRootActivity.findViewById(R.id.clinic_form_address_city_mandatory), textViewError)) {
             formularioPreenchido = false;
         }

@@ -1,7 +1,7 @@
 package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.pacienteTypes;
 
 import android.content.Context;
-import com.example.worknutri.calcular.CalculadorAntropometrico;
+import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 
 public class AgeScheduleInflater extends AntropometryScheduleInflater {
@@ -12,7 +12,7 @@ public class AgeScheduleInflater extends AntropometryScheduleInflater {
     @Override
     protected int getCategoryValor(Paciente paciente) {
         String nascimento = paciente.getNascimento();
-        return CalculadorAntropometrico.getYearFromDate(nascimento);
+        return AntropometricCalculator.getYearFromDate(nascimento);
     }
 
     @Override

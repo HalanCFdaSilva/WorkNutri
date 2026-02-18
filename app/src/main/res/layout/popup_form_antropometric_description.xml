@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/popup_form_antropometric_description"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <!--            IMC-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_imc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/imc_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_imc_title"
+        tool:text="58 kilogramas" />
+
+
+    <!--            TAXA METABOLICA-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_metabolical_rate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/metabolica_taxa_title"
+        app:layout_constraintStart_toStartOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/popup_form_antropometric_description_imc_title" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_metabolical_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        tool:text="58 kilogramas"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_metabolical_rate_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_metabolical_rate_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_metabolical_rate_title" />
+
+
+    <!--            VALOR METABOLICO-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_energy_expend_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/metabolica_valor_title"
+        app:layout_constraintStart_toStartOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/popup_form_antropometric_description_metabolical_rate_title" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_energy_expend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        tool:text="58 kilogramas"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_energy_expend_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_energy_expend_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_energy_expend_title" />
+
+
+    <!--            BOLSO-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_thumb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/bolso_title"
+        app:layout_constraintStart_toStartOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/popup_form_antropometric_description_energy_expend_title" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        tool:text="58 kilogramas"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_thumb_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_thumb_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_thumb_title" />
+
+    <!--            VENTA-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_venta_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/venta_title"
+        app:layout_constraintStart_toStartOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/popup_form_antropometric_description_thumb_title" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_venta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        tool:text="58 kilogramas"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_venta_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_venta_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_venta_title" />
+
+    <!--            AGUA-->
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_water_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/agua_ideal_title"
+        app:layout_constraintStart_toStartOf="@+id/popup_form_antropometric_description_imc_title"
+        app:layout_constraintTop_toBottomOf="@+id/popup_form_antropometric_description_venta_title" />
+
+    <TextView
+        android:id="@+id/popup_form_antropometric_description_water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        tool:text="58 Litros"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_form_antropometric_description_water_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/popup_form_antropometric_description_water_title"
+        app:layout_constraintTop_toTopOf="@+id/popup_form_antropometric_description_water_title" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

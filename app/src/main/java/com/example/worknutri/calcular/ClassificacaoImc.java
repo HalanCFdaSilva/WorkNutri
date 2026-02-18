@@ -51,12 +51,7 @@ public enum ClassificacaoImc {
             return ClassificacaoImc.OBESIDADE_MEDIA;
         }
 
-        if (valor >= 40) {
-            return ClassificacaoImc.OBESIDADE_MORBIDA;
-        }
-
-
-        return null;
+        return ClassificacaoImc.OBESIDADE_MORBIDA;
     }
 
     @NonNull

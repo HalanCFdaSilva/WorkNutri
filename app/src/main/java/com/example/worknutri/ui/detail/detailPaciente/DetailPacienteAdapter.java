@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
-import com.example.worknutri.calcular.CalculadorAntropometrico;
+import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.sqlLite.dao.clinica.ClinicaDao;
 import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
@@ -24,7 +24,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
-import com.example.worknutri.ui.formularios.formularioPaciente.FormularioPacienteActivity;
+import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.pathology.viewPopUp.PathologyViewPopUp;
@@ -69,7 +69,7 @@ public class DetailPacienteAdapter {
     }
 
     private void bottomNavEditIcon(BottomMenuConfigurator menuConfigurator) {
-        Intent intent = new Intent(context, FormularioPacienteActivity.class);
+        Intent intent = new Intent(context, PatientFormActivity.class);
         intent.putExtra(ExtrasActivities.PACIENTE_EXTRA.getKey(), paciente);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
     }
@@ -130,7 +130,7 @@ public class DetailPacienteAdapter {
 
     @NonNull
     private String getAgeText() {
-        int yearFromDate = CalculadorAntropometrico.getYearFromDate(paciente.getNascimento());
+        int yearFromDate = AntropometricCalculator.getYearFromDate(paciente.getNascimento());
         return String.valueOf(yearFromDate).concat(yearFromDate == 1 ? " ano" : " anos");
     }
 

@@ -71,7 +71,9 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
     }
 
 
-
+    public static void insertObservationsInViewGroup(EditText editText, Paciente paciente) {
+        ViewsUtil.insertInEditText(editText, paciente.getObservacoes());
+    }
 
 
 

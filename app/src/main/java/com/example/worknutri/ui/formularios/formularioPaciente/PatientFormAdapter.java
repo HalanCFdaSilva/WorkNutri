@@ -21,7 +21,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
-import com.example.worknutri.ui.formularios.ValidaFormulario;
+import com.example.worknutri.ui.formularios.FormValidator;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.AntropometryInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PacienteInsertionPacienteForm;
 import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PathologyInsertionPacienteForm;
@@ -35,38 +35,42 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FormularioPacienteAdapter extends FormularioAdapter {
+public class PatientFormAdapter extends FormularioAdapter {
 
-    private Patologia patologia;
-    private Antropometria antropometria;
-    private Paciente paciente;
-    private final List<Clinica> clinicasInOrder;
+    private Patologia pathology;
+    private Antropometria anthropometry;
+    private Paciente patient;
+    private final List<Clinica> clinicsInOrder;
     private final List<PathologyField> pathologyCategories = new ArrayList<>(Arrays.asList(PathologyField.values()));
 
-    public FormularioPacienteAdapter(Context context) {
+    public PatientFormAdapter(Context context) {
         super(context);
-        paciente = new Paciente();
-        antropometria = new Antropometria();
-        patologia = new Patologia();
-        clinicasInOrder = getDataBase().clinicaDao().getAllInOrder();
+        patient = new Paciente();
+        anthropometry = new Antropometria();
+        pathology = new Patologia();
+        clinicsInOrder = getDataBase().clinicaDao().getAllInOrder();
 
     }
 
     public void insertInFormulario(Intent intent, ViewGroup viewRootFormulario) {
         if (intent.hasExtra(ExtrasActivities.PACIENTE_EXTRA.getKey())) {
-            paciente = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE_EXTRA.getKey());
-            antropometria = getDataBase().antropometriaDao().getByPacienteId(paciente.getId());
-            patologia = getDataBase().patologiaDao().loadAllByIdPaciente(paciente.getId()).get(0);
+            patient = (Paciente) intent.getSerializableExtra(ExtrasActivities.PACIENTE_EXTRA.getKey());
+            anthropometry = getDataBase().antropometriaDao().getByPacienteId(patient.getId());
+            pathology = getDataBase().patologiaDao().loadAllByIdPaciente(patient.getId()).get(0);
 
             new PacienteInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                    .insertPacienteInViewGroup( paciente);
+                    .insertPacienteInViewGroup(patient);
+
+            PacienteInsertionPacienteForm.insertObservationsInViewGroup(
+                    viewRootFormulario.findViewById(R.id.formulario_paciente_observation), patient);
+
             PacienteInsertionPacienteForm.SelectClinica(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),
-                    paciente.getClinicaId(), clinicasInOrder);
+                    patient.getClinicaId(), clinicsInOrder);
 
             new AntropometryInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_antropometria_layout))
-                    .insertAntropometria( antropometria);
+                    .insertAntropometria(anthropometry);
 
-            new PathologyInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout_content),patologia)
+            new PathologyInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout_content), pathology)
                     .InsertPatologiaValuesInViewGroup(getContext(), pathologyCategories);
 
 
@@ -77,45 +81,45 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     public void savePaciente(ViewGroup viewGroup) {
 
         new PacienteInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                .insertViewGroupInPaciente( paciente);
-        PacienteInsertionPacienteForm.insertObservationsInPaciente(paciente, viewGroup.findViewById(R.id.formulario_paciente_observation));
-        PacienteInsertionPacienteForm.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner), paciente, clinicasInOrder);
+                .insertViewGroupInPaciente(patient);
+        PacienteInsertionPacienteForm.insertObservationsInPaciente(patient, viewGroup.findViewById(R.id.formulario_paciente_observation));
+        PacienteInsertionPacienteForm.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner), patient, clinicsInOrder);
 
         new AntropometryInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
-                .insertViewGroupInAntropometria(antropometria, paciente);
+                .insertViewGroupInAntropometria(anthropometry, patient);
 
-        new PathologyInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content),patologia)
+        new PathologyInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content), pathology)
                 .insertViewGroupInPatologia();
 
         PacienteDao pacienteDao = getDataBase().pacienteDao();
-        if (paciente.getId() == 0) pacienteDao.insertAll(paciente);
-        else pacienteDao.update(paciente);
+        if (patient.getId() == 0) pacienteDao.insertAll(patient);
+        else pacienteDao.update(patient);
 
         AntropometriaDao antropometriaDao = getDataBase().antropometriaDao();
-        if (antropometria.getIdPaciente() == 0) antropometriaDao.insertAll(antropometria);
-        else antropometriaDao.update(antropometria);
+        if (anthropometry.getIdPaciente() == 0) antropometriaDao.insertAll(anthropometry);
+        else antropometriaDao.update(anthropometry);
 
         PatologiaDao patologiaDao = getDataBase().patologiaDao();
-        if (patologia.getIdPaciente() == 0) patologiaDao.insert(patologia);
-        else patologiaDao.update(patologia);
+        if (pathology.getIdPaciente() == 0) patologiaDao.insert(pathology);
+        else patologiaDao.update(pathology);
     }
 
     public void setClinicas(Spinner spinner) {
 
-        spinner.setAdapter(new ClinicaArrayAdapter(getContext(), clinicasInOrder));
+        spinner.setAdapter(new ClinicaArrayAdapter(getContext(), clinicsInOrder));
     }
 
     public boolean validaFormulario(ViewGroup viewRoot, TextView textViewError) {
         boolean validado = validaObrigatorios(viewRoot, textViewError);
-        if (validado && !ValidaFormulario.validaData(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
+        if (validado && !FormValidator.validateDate(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
                 textViewError)) {
             validado = false;
         }
-        if (validado && !ValidaFormulario.validaEmail(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_email),
+        if (validado && !FormValidator.validateEmailAdress(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_email),
                 textViewError)) {
             validado = false;
         }
-        if (validado && !ValidaFormulario.validaTelefone(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_fone),
+        if (validado && !FormValidator.validatePhoneNumber(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_fone),
                 textViewError)) {
             validado = false;
         }
@@ -124,22 +128,22 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
     }
 
     private boolean validaObrigatorios(ViewGroup viewRoot, TextView textViewError) {
-        boolean validado = !ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name),
+        boolean validado = !FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name),
                 viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name_obrigatorio), textViewError);
-        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
                 viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_idade_obrigatorio), textViewError)) {
             validado = false;
         }
-        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_antropometria_altura),
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_altura),
                 viewRoot.findViewById(R.id.formulario_paciente_antropometria_altura_obrigatorio), textViewError)) {
             validado = false;
         }
-        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
                 viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_atual_obrigatorio), textViewError)) {
             validado = false;
         }
 
-        if (ValidaFormulario.checaEditText(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_ideal),
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_ideal),
                 viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_ideal_obrigatorio), textViewError)) {
             validado = false;
         }
@@ -153,13 +157,13 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.GONE);
 
             new PacienteInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                    .insertViewGroupInPaciente( paciente);
+                    .insertViewGroupInPaciente(patient);
 
             new AntropometryInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
-                    .insertViewGroupInAntropometria(antropometria, paciente);
+                    .insertViewGroupInAntropometria(anthropometry, patient);
 
             AntropometriaDetaillPopUp antropometriaDetaillPopUp = new PopUpFactoryImpl(getContext()).generateAntropometriaPopUp();
-            antropometriaDetaillPopUp.generateSmall(antropometria);
+            antropometriaDetaillPopUp.generateSmall(anthropometry);
             antropometriaDetaillPopUp.getPopUpWindow().
                     showAtLocation(viewGroup, Gravity.CENTER, -1, -1);
         } else {
@@ -195,7 +199,7 @@ public class FormularioPacienteAdapter extends FormularioAdapter {
         if (!pathologyCategories.isEmpty()){
             PopUpFactoryImpl popUpFactory = new PopUpFactoryImpl(getContext());
             PathologyAddPopUp pathologyAddPopUp = popUpFactory.generatePopUpPatologiaAdd( pathologyCategories);
-            pathologyAddPopUp.configurePopUp(viewWereAdd,patologia);
+            pathologyAddPopUp.configurePopUp(viewWereAdd, pathology);
             pathologyAddPopUp.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
         }else
             Toast.makeText(getContext(),"Não há patologias disponíveis", Toast.LENGTH_SHORT).show();

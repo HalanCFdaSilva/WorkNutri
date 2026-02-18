@@ -34,4 +34,19 @@ public abstract class MeasureConverter {
         return value;
 
     }
+
+    public static double convertTo(MeasureTypes measureTypeActual, double valueOriginal,MeasureTypes measureTypeExpected) {
+        double value = valueOriginal;
+        while (measureTypeActual != measureTypeExpected) {
+            if (measureTypeActual.getValue() > measureTypeExpected.getValue()) {
+                value /= 10;
+                measureTypeActual = MeasureTypes.fromValue(measureTypeActual.getValue() - 1);
+            } else {
+                value *= 10;
+                measureTypeActual = MeasureTypes.fromValue(measureTypeActual.getValue() + 1);
+            }
+        }
+        return value;
+
+    }
 }

@@ -32,35 +32,35 @@ public class AntropometriaDetaillPopUp extends PopUpFragment {
     }
 
     public void generateSmall( Antropometria antropometria) {
-        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_antropometria_description_formulario, getViewToInsert());
-        constraintId = R.id.popup_antropometria_description_small;
+        ViewGroup viewGroup = (ViewGroup) getInflater().inflate(R.layout.popup_form_antropometric_description, getViewToInsert());
+        constraintId = R.id.popup_form_antropometric_description;
         setSmallText(antropometria, viewGroup);
         this.insertTitle(R.string.antropometria_title);
     }
 
     private void setSmallText(Antropometria antropometria,ViewGroup viewGroup) {
-        TextView view = viewGroup.findViewById(R.id.antropometria_small_popup_imc);
+        TextView view = viewGroup.findViewById(R.id.popup_form_antropometric_description_imc);
         String imcFormatted = StringsUtil.formatDouble(antropometria.getImc());
         ViewsUtil.insertInTextView(view,imcFormatted);
-        generateClassificacaoImc(Double.parseDouble(imcFormatted),R.id.antropometria_small_popup_imc);
+        generateClassificacaoImc(Double.parseDouble(imcFormatted),R.id.popup_form_antropometric_description_imc);
 
-        view = viewGroup.findViewById(R.id.antropometria_small_popup_taxa_metabolica);
+        view = viewGroup.findViewById(R.id.popup_form_antropometric_description_metabolical_rate);
         String stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getTaxaMetabolica());
         ViewsUtil.insertInTextView(view, stringWithUnit);
 
-        view = viewGroup.findViewById(R.id.antropometria_small_popup_valor_metabolico);
+        view = viewGroup.findViewById(R.id.popup_form_antropometric_description_energy_expend);
         stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getValorMetabolico());
         ViewsUtil.insertInTextView(view, stringWithUnit);
 
-        view = viewGroup.findViewById(R.id.antropometria_small_popup_bolso);
+        view = viewGroup.findViewById(R.id.popup_form_antropometric_description_thumb);
         stringWithUnit = StringWithUnitsFormatter.withKcal( antropometria.getRegraBolso());
         ViewsUtil.insertInTextView(view, stringWithUnit);
 
-        view = viewGroup.findViewById(R.id.antropometria_small_popup_venta);
+        view = viewGroup.findViewById(R.id.popup_form_antropometric_description_venta);
         stringWithUnit = StringWithUnitsFormatter.withKcalDia( antropometria.getVenta());
         ViewsUtil.insertInTextView(view, stringWithUnit);
 
-        view = viewGroup.findViewById(R.id.antropometria_small_popup_agua);
+        view = viewGroup.findViewById(R.id.popup_form_antropometric_description_water);
         stringWithUnit = StringWithUnitsFormatter.withMl( antropometria.getAgua());
         ViewsUtil.insertInTextView(view, stringWithUnit);
     }

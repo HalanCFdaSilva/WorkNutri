@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.worknutri.calcular.CalculadorAntropometrico;
+import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.calcular.MeasureConverter;
 import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.util.StringsUtil;
@@ -35,7 +35,7 @@ public class PesoKeyListener implements View.OnKeyListener {
             int positionSpinner = spinnerAltura.getSelectedItemPosition();
             double altura = MeasureConverter.convertToGramOrMeters(MeasureTypes.fromValue(positionSpinner), editTextText);
 
-            double pesoIdeal = CalculadorAntropometrico.generatePesoIdeal(altura);
+            double pesoIdeal = AntropometricCalculator.generatePesoIdeal(altura);
             editTextPesoIdeal.setText(StringsUtil.formatDouble(String.valueOf(pesoIdeal)));
             spinnerPesoIdeal.setSelection(0);
         }

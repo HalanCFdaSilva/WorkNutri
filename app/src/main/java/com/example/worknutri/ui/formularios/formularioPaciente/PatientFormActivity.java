@@ -14,17 +14,17 @@ import com.example.worknutri.ui.editTextKeysListener.PhoneKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.PesoKeyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class FormularioPacienteActivity extends AppCompatActivity {
+public class PatientFormActivity extends AppCompatActivity {
 
-    private FormularioPacienteAdapter adapter;
+    private PatientFormAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario_paciente_activity);
-        adapter = new FormularioPacienteAdapter(this);
+        adapter = new PatientFormAdapter(this);
 
-        verCalculos();
+        showAnthropometricCalc();
 
         adapter.setClinicas(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
 
@@ -38,8 +38,8 @@ public class FormularioPacienteActivity extends AppCompatActivity {
 
 
         this.insertKeyListeners();
-        FloatingActionButton button = findViewById(R.id.formulario_paciente_activity_fab);
-        button.setOnClickListener(v -> saveLayout());
+        FloatingActionButton saveButton = findViewById(R.id.formulario_paciente_activity_fab);
+        saveButton.setOnClickListener(v -> saveLayout());
     }
 
 
@@ -71,7 +71,7 @@ public class FormularioPacienteActivity extends AppCompatActivity {
     }
 
 
-    private void verCalculos() {
+    private void showAnthropometricCalc() {
         Button button = findViewById(R.id.formulario_paciente_antropometria_calculos_button);
         button.setOnClickListener(v -> adapter
                 .getCalculosAntropometricos(findViewById(R.id.formulario_paciente_activity_constraint_layout)));

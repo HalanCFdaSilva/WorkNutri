@@ -8,6 +8,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.example.worknutri.support.ViewUtil.assertEditTextCorrectFormatText;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -165,11 +166,7 @@ public class ClinicFormActivityTest {
     @Test
     public void SavaDataInDataBankIfFormValidate() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+        insertMinimunValues();
         onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText("11999999999"));
         onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText("teste@exemplo.com"));
 
@@ -225,11 +222,7 @@ public class ClinicFormActivityTest {
     @Test
     public void SaveDataInDataBankIfOnlyMandatoryFieldIsFilled() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+        insertMinimunValues();
 
         onView(withId(R.id.clinic_form_fab)).perform(click());
 
@@ -241,11 +234,7 @@ public class ClinicFormActivityTest {
     @Test
     public void SaveDataInDataBankIfOnlyPhoneFieldIsEmpty() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+        insertMinimunValues();
         onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText("teste@exemplo.com"));
 
         // Clica no FAB para salvar
@@ -260,11 +249,7 @@ public class ClinicFormActivityTest {
     @Test
     public void SaveDataInDataBankIfOnlyEmailFieldIsEmpty() {
         // Preenche campos obrigatórios (nomes de ids conforme layout)
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+        insertMinimunValues();
         onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText("11999999999"));
 
         // Clica no FAB para salvar
@@ -324,55 +309,46 @@ public class ClinicFormActivityTest {
 
     @Test
     public void dontSaveInDataBankAndShowFieldsIfIncorrectedFilledPhoneField() throws Exception {
-
-        List<Clinica> clinicaListBefore = db.clinicaDao().getAll();
-
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
-
-        onView(withId(R.id.clinic_form_general_data_email)).perform(replaceText("aa"));
-
-        onView(withId(R.id.clinic_form_fab)).perform(click());
-        // aguarda pequena margem para qualquer operação assíncrona (ajuste se necessário)
-        Thread.sleep(500);
-
-        onView(withId(R.id.clinic_form_general_data_email)).check(TextViewAssertions.matchesTextColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.clinic_form_error)).check(TextViewAssertions.matchesVisibility(View.VISIBLE));
-        onView(withId(R.id.clinic_form_error)).check(TextViewAssertions.matchesText(ApplicationProvider.getApplicationContext().getString(R.string.error_email)));
-
-        List<Clinica> clinicaListAfter = db.clinicaDao().getAll();
-        assertEquals("Esperava id 0 indicando que a clínica NÃO foi salva", clinicaListBefore.size(), clinicaListAfter.size());
-
+        checkFieldCorrectlyShowError(R.id.clinic_form_general_data_phone,R.string.error_fone);
     }
 
     @Test
     public void dontSaveInDataBankAndShowFieldsIfIncorrectedFilledEmailField() throws Exception {
+        checkFieldCorrectlyShowError(R.id.clinic_form_general_data_email,R.string.error_email);
+    }
+    private void checkFieldCorrectlyShowError(int idEdittextToCheck,int idStringError) throws InterruptedException {
 
         List<Clinica> clinicaListBefore = db.clinicaDao().getAll();
 
-        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
-        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
-        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
-        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
-        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+        insertMinimunValues();
 
-        onView(withId(R.id.clinic_form_general_data_phone)).perform(replaceText("1199"));
+        onView(withId(idEdittextToCheck)).perform(replaceText("22"));
 
         onView(withId(R.id.clinic_form_fab)).perform(click());
         // aguarda pequena margem para qualquer operação assíncrona (ajuste se necessário)
         Thread.sleep(500);
 
-        onView(withId(R.id.clinic_form_general_data_phone)).check(TextViewAssertions.matchesTextColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.clinic_form_error)).check(TextViewAssertions.matchesVisibility(View.VISIBLE));
-        onView(withId(R.id.clinic_form_error)).check(TextViewAssertions.matchesText(ApplicationProvider.getApplicationContext().getString(R.string.error_fone)));
+        onView(withId(idEdittextToCheck))
+                .check(TextViewAssertions.matchesTextColor(TestUtil.colorFromRes(R.color.obrigatorio)));
+        onView(withId(R.id.clinic_form_error))
+                .check(TextViewAssertions.matchesVisibility(View.VISIBLE))
+                .check(TextViewAssertions.matchesText(TestUtil.getStringFromRes(idStringError)));
 
         List<Clinica> clinicaListAfter = db.clinicaDao().getAll();
         assertEquals("Esperava id 0 indicando que a clínica NÃO foi salva", clinicaListBefore.size(), clinicaListAfter.size());
 
+
     }
+
+    private void insertMinimunValues() {
+        onView(withId(R.id.clinic_form_general_data_name)).perform(replaceText("Clinica Teste"));
+        onView(withId(R.id.clinic_form_address_street)).perform(replaceText("Rua Teste"));
+        onView(withId(R.id.clinic_form_address_number)).perform(replaceText("123"));
+        onView(withId(R.id.clinic_form_address_neighborhood)).perform(replaceText("Bairro Teste"));
+        onView(withId(R.id.clinic_form_address_city)).perform(replaceText("Cidade Teste"));
+    }
+
+
 
 
     @Test
@@ -407,12 +383,7 @@ public class ClinicFormActivityTest {
         });
     }
 
-    private static void assertEditTextCorrectFormatText(EditText editText, String textToInsert, String expected) {
-        editText.setText(textToInsert);
-        editText.dispatchKeyEvent(new android.view.KeyEvent(android.view.KeyEvent.ACTION_DOWN, android.view.KeyEvent.KEYCODE_0));
-        editText.dispatchKeyEvent(new android.view.KeyEvent(android.view.KeyEvent.ACTION_UP, android.view.KeyEvent.KEYCODE_0));
-        assertEquals(expected, editText.getText().toString());
-    }
+
 
 
     @Test

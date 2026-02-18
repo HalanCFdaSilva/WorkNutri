@@ -40,7 +40,7 @@ public class AntropometriaDetailPopUpTest {
 
         antropometriaDetaillPopUp = new PopUpFactoryImpl(context).generateAntropometriaPopUp();
 
-        antropometria = TestEntityFactory.generateAntropometria();
+        antropometria = TestEntityFactory.generateAntropometria("15/08/2000",1.70,68);
 
 
     }
@@ -50,33 +50,33 @@ public class AntropometriaDetailPopUpTest {
         antropometriaDetaillPopUp.generateSmall(antropometria);
         ViewGroup layout = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertEquals(1,layout.getChildCount());
-        Assert.assertEquals(R.id.popup_antropometria_description_small,layout.getChildAt(0).getId());
+        Assert.assertEquals(R.id.popup_form_antropometric_description,layout.getChildAt(0).getId());
     }
 
     @Test
     public void GenerateSmallMethodContainCorrectViews() {
         antropometriaDetaillPopUp.generateSmall(antropometria);
-        ViewGroup viewGroup = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_antropometria_description_small);
+        ViewGroup viewGroup = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_form_antropometric_description);
         Assert.assertEquals(13,viewGroup.getChildCount());
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_imc_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_imc,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_imc_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_imc,TextView.class);
         verifyIfContainsElementInId(viewGroup,R.id.classificacao_imc_textview,TextView.class);
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_taxa_metabolica_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_taxa_metabolica,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_metabolical_rate_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_metabolical_rate,TextView.class);
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_valor_metabolico_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_valor_metabolico,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_energy_expend_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_energy_expend,TextView.class);
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_bolso_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_bolso,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_thumb_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_thumb,TextView.class);
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_venta_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_venta,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_venta_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_venta,TextView.class);
 
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_agua_title,TextView.class);
-        verifyIfContainsElementInId(viewGroup,R.id.antropometria_small_popup_agua,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_water_title,TextView.class);
+        verifyIfContainsElementInId(viewGroup,R.id.popup_form_antropometric_description_water,TextView.class);
 
     }
 
@@ -90,12 +90,12 @@ public class AntropometriaDetailPopUpTest {
     public void GenerateSmallMethodInsertAntropometriaDataCorrectely() {
         antropometriaDetaillPopUp.generateSmall(antropometria);
 
-        Assert.assertEquals(antropometria.getImc(),getStringInViewText(R.id.antropometria_small_popup_imc));
-        Assert.assertEquals(antropometria.getTaxaMetabolica(),getStringInViewText(R.id.antropometria_small_popup_taxa_metabolica));
-        Assert.assertEquals(antropometria.getValorMetabolico(),getStringInViewText(R.id.antropometria_small_popup_valor_metabolico));
-        Assert.assertEquals(antropometria.getRegraBolso(),getStringInViewText(R.id.antropometria_small_popup_bolso));
-        Assert.assertEquals(antropometria.getVenta(),getStringInViewText(R.id.antropometria_small_popup_venta));
-        Assert.assertEquals(antropometria.getAgua(),getStringInViewText(R.id.antropometria_small_popup_agua));
+        Assert.assertEquals(antropometria.getImc(),getStringInViewText(R.id.popup_form_antropometric_description_imc));
+        Assert.assertEquals(antropometria.getTaxaMetabolica(),getStringInViewText(R.id.popup_form_antropometric_description_metabolical_rate));
+        Assert.assertEquals(antropometria.getValorMetabolico(),getStringInViewText(R.id.popup_form_antropometric_description_energy_expend));
+        Assert.assertEquals(antropometria.getRegraBolso(),getStringInViewText(R.id.popup_form_antropometric_description_thumb));
+        Assert.assertEquals(antropometria.getVenta(),getStringInViewText(R.id.popup_form_antropometric_description_venta));
+        Assert.assertEquals(antropometria.getAgua(),getStringInViewText(R.id.popup_form_antropometric_description_water));
 
     }
 

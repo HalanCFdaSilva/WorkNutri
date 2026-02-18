@@ -19,4 +19,16 @@ public abstract class TestUtil {
     public static int colorFromRes(int resId) {
         return ContextCompat.getColor(getThemedContext(), resId);
     }
+
+    public static String formatDoubleToString(double value) {
+        String stringValue = String.valueOf( value).replace(',', '.');
+        if (stringValue.endsWith(".00")) {
+            stringValue = stringValue.substring(0, stringValue.length() - 1);
+        }
+        return stringValue;
+    }
+
+    public static String getStringFromRes(int resId) {
+        return getThemedContext().getString(resId);
+    }
 }

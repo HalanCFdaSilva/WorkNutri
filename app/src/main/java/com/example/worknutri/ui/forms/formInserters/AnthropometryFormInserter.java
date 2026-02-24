@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formInserters;
+package com.example.worknutri.ui.forms.formInserters;
 
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,7 +10,7 @@ import com.example.worknutri.calcular.MeasureConverter;
 import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.formularios.InvalidViewGroupIdException;
+import com.example.worknutri.ui.forms.InvalidViewGroupIdException;
 import com.example.worknutri.util.ViewsUtil;
 
 public class AnthropometryFormInserter extends FormInserter<Antropometria> {

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.clinicForm;
+package com.example.worknutri.ui.forms.clinicForm;
 
 import android.os.Bundle;
 import android.widget.Button;

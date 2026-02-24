@@ -9,7 +9,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.R;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.formularios.FormValidator;
 
 import org.junit.Before;
 import org.junit.Test;

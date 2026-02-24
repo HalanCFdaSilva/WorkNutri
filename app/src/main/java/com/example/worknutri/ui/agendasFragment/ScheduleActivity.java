@@ -13,8 +13,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.ActivityMainBinding;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.formularios.clinicForm.ClinicFormActivity;
-import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
+import com.example.worknutri.ui.forms.clinicForm.ClinicFormActivity;
+import com.example.worknutri.ui.forms.patientForm.PatientFormActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

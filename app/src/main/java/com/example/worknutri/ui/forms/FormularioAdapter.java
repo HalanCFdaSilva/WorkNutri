@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios;
+package com.example.worknutri.ui.forms;
 
 import android.content.Context;
 import android.content.Intent;

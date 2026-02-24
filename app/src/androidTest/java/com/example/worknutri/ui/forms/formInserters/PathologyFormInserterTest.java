@@ -22,8 +22,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
-import com.example.worknutri.ui.formularios.formInserters.PathologyFormInserter;
-import com.example.worknutri.ui.formularios.InvalidViewGroupIdException;
+import com.example.worknutri.ui.forms.InvalidViewGroupIdException;
 import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;
 
 import org.junit.Before;

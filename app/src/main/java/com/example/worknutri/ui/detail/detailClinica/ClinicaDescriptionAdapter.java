@@ -12,7 +12,7 @@ import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.util.ViewsUtil;
-import com.example.worknutri.ui.formularios.clinicForm.ClinicFormActivity;
+import com.example.worknutri.ui.forms.clinicForm.ClinicFormActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

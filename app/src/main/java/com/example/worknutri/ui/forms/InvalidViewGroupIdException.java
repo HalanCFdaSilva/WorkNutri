@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios;
+package com.example.worknutri.ui.forms;
 
 public class InvalidViewGroupIdException extends IllegalArgumentException {
   public InvalidViewGroupIdException(int viewGroupId) {

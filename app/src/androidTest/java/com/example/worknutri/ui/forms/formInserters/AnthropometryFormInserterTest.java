@@ -20,9 +20,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.formularios.InvalidViewGroupIdException;
-import com.example.worknutri.ui.formularios.formInserters.AnthropometryFormInserter;
-import com.example.worknutri.ui.formularios.formInserters.PathologyFormInserter;
+import com.example.worknutri.ui.forms.InvalidViewGroupIdException;
 
 import org.junit.Before;
 import org.junit.Test;

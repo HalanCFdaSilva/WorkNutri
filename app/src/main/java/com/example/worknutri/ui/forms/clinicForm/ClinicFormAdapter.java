@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.clinicForm;
+package com.example.worknutri.ui.forms.clinicForm;
 
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,9 +10,9 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.editTextKeysListener.CepKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.PhoneKeyListener;
-import com.example.worknutri.ui.formularios.FormularioAdapter;
-import com.example.worknutri.ui.formularios.FormValidator;
-import com.example.worknutri.ui.formularios.formInserters.ClinicFormInserter;
+import com.example.worknutri.ui.forms.FormularioAdapter;
+import com.example.worknutri.ui.forms.FormValidator;
+import com.example.worknutri.ui.forms.formInserters.ClinicFormInserter;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 
 import java.util.List;

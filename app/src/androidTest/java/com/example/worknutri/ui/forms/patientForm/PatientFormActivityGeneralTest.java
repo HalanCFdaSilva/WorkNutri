@@ -32,7 +32,6 @@ import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.support.TextViewAssertions;
 import com.example.worknutri.support.ViewUtil;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
 
 import org.junit.After;
 import org.junit.Before;

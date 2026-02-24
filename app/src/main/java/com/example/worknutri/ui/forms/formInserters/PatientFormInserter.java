@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formInserters;
+package com.example.worknutri.ui.forms.formInserters;
 
 import android.view.ViewGroup;
 import android.widget.EditText;

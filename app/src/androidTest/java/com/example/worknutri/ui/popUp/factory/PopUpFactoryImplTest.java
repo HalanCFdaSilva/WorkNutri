@@ -1,8 +1,6 @@
 package com.example.worknutri.ui.popUp.factory;
 
 import android.content.Context;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -11,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.example.worknutri.ui.popUp.PopUpFragment;
 import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
-import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyAddPopUp;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.AddPathologyPopUp;
 import com.example.worknutri.ui.popUp.pathology.viewPopUp.PathologyViewPopUp;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
 import com.example.worknutri.ui.popUp.hourDatePopUp.datePicker.DatePickerPopUp;
@@ -27,12 +25,11 @@ import java.util.Arrays;
 @RunWith(AndroidJUnit4.class)
 public class PopUpFactoryImplTest {
 
-    private Context context;
     private PopUpFactoryImpl popUpFactory;
 
     @Before
     public void setUp() {
-        context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         popUpFactory = new PopUpFactoryImpl(context);
 
     }
@@ -63,14 +60,14 @@ public class PopUpFactoryImplTest {
     }
 
     @Test
-    public void testGeneratePopUpPatologiaAddWereReceiveAEmptyListOnParameter() {
-        PathologyAddPopUp popUp = popUpFactory.generatePopUpPatologiaAdd(new ArrayList<>());
+    public void testGenerateAddPathologyPopUpWereReceiveAEmptyListOnParameter() {
+        AddPathologyPopUp popUp = popUpFactory.generateAddPathologyPopUp(new ArrayList<>());
         Assert.assertNotNull(popUp);
     }
 
     @Test
-    public void testGeneratePopUpPatologiaAddWereReceiveInParameterOneListWithAllPathologyTypes() {
-        PathologyAddPopUp popUp = popUpFactory.generatePopUpPatologiaAdd(Arrays.asList(PathologyField.values()));
+    public void testGenerateAddPathologyPopUpWereReceiveInParameterOneListWithAllPathologyTypes() {
+        AddPathologyPopUp popUp = popUpFactory.generateAddPathologyPopUp(Arrays.asList(PathologyField.values()));
         Assert.assertNotNull(popUp);
     }
 

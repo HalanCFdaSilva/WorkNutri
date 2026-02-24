@@ -39,9 +39,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
-public class PathologyAddPopUpTest {
+public class AddPathologyPopUpTest {
 
-    private PathologyAddPopUp pathologyAddPopUp;
+    private AddPathologyPopUp addPathologyPopUp;
     private Context context;
     private ArrayList<PathologyField> pathologyFields;
     @Rule
@@ -54,25 +54,25 @@ public class PathologyAddPopUpTest {
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);
         pathologyFields = new ArrayList<>(List.of(PathologyField.values()));
-        pathologyAddPopUp = new PathologyAddPopUp(context, pathologyFields);
+        addPathologyPopUp = new AddPathologyPopUp(context, pathologyFields);
     }
 
     @Test
     public void verifyIfNewPathologyAddPopUpInflateTheLayout(){
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
     }
 
     @Test
     public void verifyIfViewGroupIsPopupBaseLayout(){
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         Assert.assertEquals(R.id.popup_base_layout,viewGroup.getId());
     }
 
     @Test
     public void verifyIfInflatePopUpPatologiaAddCorrectly(){
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         LinearLayout layout = viewGroup.findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertNotNull(layout);
@@ -83,7 +83,7 @@ public class PathologyAddPopUpTest {
 
     @Test
     public void verifyIfPopUpPatologiaAddLayoutCorrectly(){
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         ViewGroup viewToVerify = viewGroup.findViewById(R.id.popup_patologia_add);
         Assert.assertNotNull(viewToVerify);
@@ -103,7 +103,7 @@ public class PathologyAddPopUpTest {
 
     @Test
     public void verifyIfTitleIsInsertedCorrectly(){
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         View title = viewGroup.findViewById(R.id.popup_base_layout_title_textview_header);
         Assert.assertNotNull(title);
@@ -116,9 +116,9 @@ public class PathologyAddPopUpTest {
     @Test
     public void verifyIfConfigureLayoutInsertDataInSpinnerCorrectly(){
 
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
-        pathologyAddPopUp.configurePopUp(new LinearLayout(context),new Patologia());
+        addPathologyPopUp.configurePopUp(new LinearLayout(context),new Patologia());
         ViewGroup viewToVerify = viewGroup.findViewById(R.id.popup_patologia_add);
         Assert.assertNotNull(viewToVerify);
         Assert.assertEquals(3,viewToVerify.getChildCount());
@@ -136,12 +136,12 @@ public class PathologyAddPopUpTest {
     @Test
     public void verifyIfConfigureLayoutInsertHintInMultiAutoCompleteTextViewCorrectlyInSelectedItemOnSpinner(){
 
-        pathologyAddPopUp.configurePopUp(new LinearLayout(context),new Patologia());
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        addPathologyPopUp.configurePopUp(new LinearLayout(context),new Patologia());
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         activityRule.getScenario().onActivity(activity -> {
             // Supondo que você já tenha uma instância de Dialog chamada dialog
-            activity.showPopUp(pathologyAddPopUp.getPopUpWindow());
+            activity.showPopUp(addPathologyPopUp.getPopUpWindow());
         });
 
         //verify if layout is correct
@@ -181,7 +181,7 @@ public class PathologyAddPopUpTest {
     @Test
     public void verifyIfInClickButtonRemoveThePathologyTypeSelectedFromList(){
         LinearLayout layoutWhereAdd = new LinearLayout(context);
-        pathologyAddPopUp.configurePopUp(layoutWhereAdd, new Patologia());
+        addPathologyPopUp.configurePopUp(layoutWhereAdd, new Patologia());
 
         for (int i = 0; i < pathologyFields.size(); i++) {
 
@@ -198,11 +198,11 @@ public class PathologyAddPopUpTest {
 
     @Test
     public void verifyIfSpinnerIsDisabledOrEmptyWhenAllPathologiesAreRemoved() {
-        pathologyAddPopUp = new PathologyAddPopUp(context, new ArrayList<>(List.of(PathologyField.values())));
+        addPathologyPopUp = new AddPathologyPopUp(context, new ArrayList<>(List.of(PathologyField.values())));
         LinearLayout layoutWhereAdd = new LinearLayout(context);
-        pathologyAddPopUp.configurePopUp(layoutWhereAdd, new Patologia());
+        addPathologyPopUp.configurePopUp(layoutWhereAdd, new Patologia());
 
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Spinner spinner = viewGroup.findViewById(R.id.popup_patologia_add_spinner);
 
         int total = spinner.getAdapter().getCount();
@@ -219,9 +219,9 @@ public class PathologyAddPopUpTest {
     @Test
     public void verifyIfConfigureLayoutInsertDataInLinearLayoutWhenClickOnButton() {
         LinearLayout layoutWhereAdd = new LinearLayout(context);
-        pathologyAddPopUp.configurePopUp(layoutWhereAdd, new Patologia());
+        addPathologyPopUp.configurePopUp(layoutWhereAdd, new Patologia());
 
-        ViewGroup viewGroup = pathologyAddPopUp.getViewGroup();
+        ViewGroup viewGroup = addPathologyPopUp.getViewGroup();
         Assert.assertNotNull(viewGroup);
         View viewOfSpinner = viewGroup.findViewById(R.id.popup_patologia_add_spinner);
         Assert.assertNotNull(viewOfSpinner);
@@ -235,18 +235,18 @@ public class PathologyAddPopUpTest {
             View addedView = layoutWhereAdd.getChildAt(i);
             Assert.assertNotNull(addedView);
             checkViewCreated(i, addedView);
-            Assert.assertFalse(pathologyAddPopUp.getPopUpWindow().isShowing());
+            Assert.assertFalse(addPathologyPopUp.getPopUpWindow().isShowing());
 
         }
     }
 
     private void simulateNewPathologyEntry(int i) {
         activityRule.getScenario().onActivity(activity ->
-                activity.showPopUp(pathologyAddPopUp.getPopUpWindow()));
+                activity.showPopUp(addPathologyPopUp.getPopUpWindow()));
         onView(withId(R.id.popup_patologia_add_spinner)).perform(click());
         onData(anything()).atPosition(0).perform(click());
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        View editText = pathologyAddPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
+        View editText = addPathologyPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
         Assert.assertNotNull(editText);
         Assert.assertTrue(editText instanceof MultiAutoCompleteTextView);
         MultiAutoCompleteTextView multiAutoCompleteTextView = (MultiAutoCompleteTextView) editText;
@@ -290,16 +290,16 @@ public class PathologyAddPopUpTest {
 
     @Test(expected = NullPointerException.class)
     public void verifyIfConfigurePopUpThrowsExceptionWhenPathologyIsNull() {
-        pathologyAddPopUp.configurePopUp(new LinearLayout(context), null);
+        addPathologyPopUp.configurePopUp(new LinearLayout(context), null);
     }
 
     @Test
     public void verifyIfPopUpIsDismissedAfterAddPathology() {
         LinearLayout layoutWhereAdd = new LinearLayout(context);
-        pathologyAddPopUp.configurePopUp(layoutWhereAdd, new Patologia());
+        addPathologyPopUp.configurePopUp(layoutWhereAdd, new Patologia());
 
         activityRule.getScenario().onActivity(activity ->
-                activity.showPopUp(pathologyAddPopUp.getPopUpWindow()));
+                activity.showPopUp(addPathologyPopUp.getPopUpWindow()));
 
         // Simula seleção e clique no botão
         onView(withId(R.id.popup_patologia_add_spinner)).perform(click());
@@ -310,16 +310,16 @@ public class PathologyAddPopUpTest {
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
         // Verifica se o popup foi fechado
-        Assert.assertFalse(pathologyAddPopUp.getPopUpWindow().isShowing());
+        Assert.assertFalse(addPathologyPopUp.getPopUpWindow().isShowing());
     }
 
     @Test
     public void verifyIfPopUpStateIsMaintainedAfterRecreation() {
         LinearLayout layoutWhereAdd = new LinearLayout(context);
-        pathologyAddPopUp.configurePopUp(layoutWhereAdd, new Patologia());
+        addPathologyPopUp.configurePopUp(layoutWhereAdd, new Patologia());
 
         activityRule.getScenario().onActivity(activity ->
-                activity.showPopUp(pathologyAddPopUp.getPopUpWindow()));
+                activity.showPopUp(addPathologyPopUp.getPopUpWindow()));
 
         // Seleciona um item no spinner
         onView(withId(R.id.popup_patologia_add_spinner)).perform(click());
@@ -328,7 +328,7 @@ public class PathologyAddPopUpTest {
 
         // Digita um texto
         onView(withId(R.id.popup_patologia_add_multiAutoComplete)).perform(click());
-        MultiAutoCompleteTextView multi = pathologyAddPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
+        MultiAutoCompleteTextView multi = addPathologyPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
         multi.setText("Texto de teste");
 
         // Recria a Activity (simula rotação)
@@ -336,12 +336,12 @@ public class PathologyAddPopUpTest {
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
 
         // Verifica se o popup ainda está visível
-        Assert.assertTrue(pathologyAddPopUp.getPopUpWindow().isShowing());
+        Assert.assertTrue(addPathologyPopUp.getPopUpWindow().isShowing());
 
         // Verifica se o item selecionado e o texto foram mantidos
-        Spinner spinner = pathologyAddPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_spinner);
+        Spinner spinner = addPathologyPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_spinner);
         Assert.assertEquals(1, spinner.getSelectedItemPosition());
-        MultiAutoCompleteTextView multiAfter = pathologyAddPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
+        MultiAutoCompleteTextView multiAfter = addPathologyPopUp.getViewGroup().findViewById(R.id.popup_patologia_add_multiAutoComplete);
         Assert.assertEquals("Texto de teste", multiAfter.getText().toString());
     }
 

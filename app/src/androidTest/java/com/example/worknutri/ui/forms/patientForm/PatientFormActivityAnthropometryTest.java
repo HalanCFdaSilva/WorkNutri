@@ -28,7 +28,6 @@ import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.support.TextViewAssertions;
 import com.example.worknutri.support.ViewUtil;
-import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
 
 import org.junit.After;
 import org.junit.Before;
@@ -94,15 +93,15 @@ public class PatientFormActivityAnthropometryTest {
     public void onClickInButtonToViewAAnthropometryDataWithBirthHeightAndWeightsFilledOpenASmallPopUpOfAntropometry() throws InterruptedException {
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
 
-        openAntropometrypopUp("11/12/2000", "1.75", "70");
+        openAntropometrypopUp("1.75", "70");
 
         onView(withId(R.id.popup_base_layout)).inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));
         onView(withId(R.id.popup_form_antropometric_description)).inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));
 
     }
 
-    private void openAntropometrypopUp( String birth, String height, String weight) throws InterruptedException {
-        insertAntropologicDatas(birth, height, weight);
+    private void openAntropometrypopUp( String height, String weight) throws InterruptedException {
+        insertAntropologicDatas("11/12/2000", height, weight);
 
         scenario.onActivity(activity -> activity.findViewById(
                 R.id.formulario_paciente_antropometria_calculos_button).performClick());
@@ -124,7 +123,7 @@ public class PatientFormActivityAnthropometryTest {
         double weight = 70;
         double height = 1.75;
         AntropometricCalculator calculator = new AntropometricCalculator(weight,height);
-        openAntropometrypopUp("11/12/2000", String.valueOf(height), String.valueOf(weight));
+        openAntropometrypopUp(String.valueOf(height), String.valueOf(weight));
 
         String imc = calculator.generateImc();
         ClassificacaoImc imcType = ClassificacaoImc.tipoImc(Double.parseDouble(imc));

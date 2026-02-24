@@ -19,7 +19,6 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.formularios.formInserters.PatientFormInserter;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 
 import org.junit.Before;

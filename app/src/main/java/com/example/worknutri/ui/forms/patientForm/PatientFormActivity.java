@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioPaciente;
+package com.example.worknutri.ui.forms.patientForm;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -26,13 +26,13 @@ public class PatientFormActivity extends AppCompatActivity {
 
         showAnthropometricCalc();
 
-        adapter.setClinicas(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
+        adapter.setClinics(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
 
         adapter.configuraBottomNav(findViewById(R.id.formulario_paciente_activity_nav_view),getIntent());
 
         adapter.insertInFormulario(getIntent(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
 
-        adapter.OpenNivelAtividadePopUpOnClick(
+        adapter.OpenActivityLevelPopUpOnClickIn(
                 findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview),
                 findViewById(R.id.formulario_paciente_activity_constraint_layout));
 
@@ -48,7 +48,7 @@ public class PatientFormActivity extends AppCompatActivity {
         super.onStart();
         Button button = findViewById(R.id.formulario_paciente_patologia_button_add);
         button.setOnClickListener(onClick->
-                adapter.generatePatologiaView(findViewById(R.id.formulario_paciente_activity_constraint_layout),
+                adapter.generateAddPatologyPopup(findViewById(R.id.formulario_paciente_activity_constraint_layout),
                         findViewById(R.id.formulario_paciente_patologia_layout_content)));
 
     }
@@ -74,14 +74,14 @@ public class PatientFormActivity extends AppCompatActivity {
     private void showAnthropometricCalc() {
         Button button = findViewById(R.id.formulario_paciente_antropometria_calculos_button);
         button.setOnClickListener(v -> adapter
-                .getCalculosAntropometricos(findViewById(R.id.formulario_paciente_activity_constraint_layout)));
+                .generateAnthropometricDataPopUp(findViewById(R.id.formulario_paciente_activity_constraint_layout)));
     }
 
     private void saveLayout() {
         ViewGroup viewGroup = findViewById(R.id.formulario_paciente_activity_constraint_layout);
 
-        if (adapter.validaFormulario(viewGroup, findViewById(R.id.formulario_paciente_activity_error))) {
-            adapter.savePaciente(viewGroup);
+        if (adapter.validateForm(viewGroup, findViewById(R.id.formulario_paciente_activity_error))) {
+            adapter.savePatientInDb(viewGroup);
             finish();
         }
 

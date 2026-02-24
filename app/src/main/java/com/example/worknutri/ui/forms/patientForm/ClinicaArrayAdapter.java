@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioPaciente;
+package com.example.worknutri.ui.forms.patientForm;
 
 import android.content.Context;
 import android.view.View;

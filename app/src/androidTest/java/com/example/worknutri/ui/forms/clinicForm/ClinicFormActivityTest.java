@@ -34,7 +34,6 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.support.TextViewAssertions;
-import com.example.worknutri.ui.formularios.clinicForm.ClinicFormActivity;
 
 import org.hamcrest.Matcher;
 import org.junit.After;

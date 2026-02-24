@@ -17,12 +17,12 @@ import com.example.worknutri.ui.popUp.pathology.PathologyField;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PathologyAddPopUp extends PopUpFragment {
+public class AddPathologyPopUp extends PopUpFragment {
 
     private final Context context;
     private final List<PathologyField> pathologyTypes;
     private Patologia pathology;
-    public PathologyAddPopUp(Context context, List<PathologyField> pathologyCategories) {
+    public AddPathologyPopUp(Context context, List<PathologyField> pathologyCategories) {
         super(LayoutInflater.from(context));
         getInflater().inflate(R.layout.popup_patologia_add,getViewToInsert());
 

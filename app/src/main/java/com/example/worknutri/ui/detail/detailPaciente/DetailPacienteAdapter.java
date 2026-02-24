@@ -24,7 +24,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
-import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
+import com.example.worknutri.ui.forms.patientForm.PatientFormActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.pathology.viewPopUp.PathologyViewPopUp;

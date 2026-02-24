@@ -22,7 +22,6 @@ import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.R;
-import com.example.worknutri.ui.formularios.formularioPaciente.PatientFormActivity;
 
 import org.junit.After;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioPaciente;
+package com.example.worknutri.ui.forms.patientForm;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,16 +20,16 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.formularios.FormularioAdapter;
-import com.example.worknutri.ui.formularios.FormValidator;
-import com.example.worknutri.ui.formularios.formInserters.AnthropometryFormInserter;
-import com.example.worknutri.ui.formularios.formInserters.PatientFormInserter;
-import com.example.worknutri.ui.formularios.formInserters.PathologyFormInserter;
+import com.example.worknutri.ui.forms.FormularioAdapter;
+import com.example.worknutri.ui.forms.FormValidator;
+import com.example.worknutri.ui.forms.formInserters.AnthropometryFormInserter;
+import com.example.worknutri.ui.forms.formInserters.PatientFormInserter;
+import com.example.worknutri.ui.forms.formInserters.PathologyFormInserter;
 import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
-import com.example.worknutri.ui.popUp.pathology.addPopUp.PathologyAddPopUp;
+import com.example.worknutri.ui.popUp.pathology.addPopUp.AddPathologyPopUp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +78,7 @@ public class PatientFormAdapter extends FormularioAdapter {
     }
 
 
-    public void savePaciente(ViewGroup viewGroup) {
+    public void savePatientInDb(ViewGroup viewGroup) {
 
         PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
                 .insertViewGroupInEntity(patient);
@@ -104,13 +104,13 @@ public class PatientFormAdapter extends FormularioAdapter {
         else patologiaDao.update(pathology);
     }
 
-    public void setClinicas(Spinner spinner) {
+    public void setClinics(Spinner spinner) {
 
         spinner.setAdapter(new ClinicaArrayAdapter(getContext(), clinicsInOrder));
     }
 
-    public boolean validaFormulario(ViewGroup viewRoot, TextView textViewError) {
-        boolean validado = validaObrigatorios(viewRoot, textViewError);
+    public boolean validateForm(ViewGroup viewRoot, TextView textViewError) {
+        boolean validado = validateMandatoryFields(viewRoot, textViewError);
         if (validado && !FormValidator.validateDate(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
                 textViewError)) {
             validado = false;
@@ -127,7 +127,7 @@ public class PatientFormAdapter extends FormularioAdapter {
         return validado;
     }
 
-    private boolean validaObrigatorios(ViewGroup viewRoot, TextView textViewError) {
+    private boolean validateMandatoryFields(ViewGroup viewRoot, TextView textViewError) {
         boolean validado = !FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name),
                 viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name_obrigatorio), textViewError);
         if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
@@ -152,8 +152,8 @@ public class PatientFormAdapter extends FormularioAdapter {
         return validado;
     }
 
-    public void getCalculosAntropometricos( ViewGroup viewGroup) {
-        if (validaCalculosAntropometricos(viewGroup)) {
+    public void generateAnthropometricDataPopUp(ViewGroup viewGroup) {
+        if (validateAnthropometricData(viewGroup)) {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.GONE);
 
             PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
@@ -171,7 +171,7 @@ public class PatientFormAdapter extends FormularioAdapter {
         }
     }
 
-    private boolean validaCalculosAntropometricos(ViewGroup viewGroup) {
+    private boolean validateAnthropometricData(ViewGroup viewGroup) {
         EditText editText = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
         if (!editText.getText().toString().isBlank()) {
             editText = viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura);
@@ -186,7 +186,7 @@ public class PatientFormAdapter extends FormularioAdapter {
         return false;
     }
 
-    public void OpenNivelAtividadePopUpOnClick(ImageView button, ViewGroup viewGroup) {
+    public void OpenActivityLevelPopUpOnClickIn(ImageView button, ViewGroup viewGroup) {
         button.setOnClickListener(onClick -> {
             ActivityLevelDetailPopUp popUp = new PopUpFactoryImpl(getContext()).generateActivityLevelDetailPopUp();
             popUp.configureLayout();
@@ -194,13 +194,13 @@ public class PatientFormAdapter extends FormularioAdapter {
 
         });
     }
-    public void generatePatologiaView(ViewGroup viewRoot, ViewGroup viewWereAdd) {
+    public void generateAddPatologyPopup(ViewGroup viewRoot, ViewGroup viewWereAdd) {
 
         if (!pathologyCategories.isEmpty()){
             PopUpFactoryImpl popUpFactory = new PopUpFactoryImpl(getContext());
-            PathologyAddPopUp pathologyAddPopUp = popUpFactory.generatePopUpPatologiaAdd( pathologyCategories);
-            pathologyAddPopUp.configurePopUp(viewWereAdd, pathology);
-            pathologyAddPopUp.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
+            AddPathologyPopUp addPathologyPopUp = popUpFactory.generateAddPathologyPopUp( pathologyCategories);
+            addPathologyPopUp.configurePopUp(viewWereAdd, pathology);
+            addPathologyPopUp.getPopUpWindow().showAtLocation(viewRoot, Gravity.CENTER, -1, -1);
         }else
             Toast.makeText(getContext(),"Não há patologias disponíveis", Toast.LENGTH_SHORT).show();
 

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formInserters;
+package com.example.worknutri.ui.forms.formInserters;
 
 import android.content.Context;
 import android.view.ViewGroup;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
-import com.example.worknutri.ui.formularios.InvalidViewGroupIdException;
+import com.example.worknutri.ui.forms.InvalidViewGroupIdException;
 import com.example.worknutri.util.ViewsUtil;
 import com.example.worknutri.ui.popUp.pathology.PathologyField;
 import com.example.worknutri.ui.popUp.pathology.PathologyFieldMapper;

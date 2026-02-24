@@ -12,6 +12,7 @@ import com.example.worknutri.ui.editTextKeysListener.CepKeyListener;
 import com.example.worknutri.ui.editTextKeysListener.PhoneKeyListener;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.FormValidator;
+import com.example.worknutri.ui.formularios.formInserters.ClinicFormInserter;
 import com.example.worknutri.ui.popUp.hourDatePopUp.DayOfWorkUiService;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ClinicFormAdapter extends FormularioAdapter {
 
 
-    private final InsertionClinicForm insertion;
+    private final ClinicFormInserter insertion;
     private Clinica clinica;
     private final DayOfWorkUiService dayOfWorkUiService;
     private final ViewGroup viewRootActivity;
@@ -28,7 +29,7 @@ public class ClinicFormAdapter extends FormularioAdapter {
         super(viewGroupRoot.getContext());
         dayOfWorkUiService = new DayOfWorkUiService(viewGroupRoot,
                 viewGroupRoot.findViewById(R.id.clinic_form_horario_atendimento_layout));
-        insertion = new InsertionClinicForm(viewGroupRoot.getContext());
+        insertion = ClinicFormInserter.create(viewGroupRoot);
         this.clinica = new Clinica();
         viewRootActivity = viewGroupRoot;
 
@@ -36,7 +37,7 @@ public class ClinicFormAdapter extends FormularioAdapter {
 
     public void insertClinicInlayout(Clinica clinica) {
         this.clinica = clinica;
-        insertion.InsertInFormulario(viewRootActivity, clinica);
+        insertion.insertEntityInViewGroup(clinica);
         DayOfWorkDao dayOfWorkDao = getDataBase().dayOfWorkDao();
         dayOfWorkUiService.insertAllDayOfWork(dayOfWorkDao, clinica.getId());
 
@@ -83,12 +84,12 @@ public class ClinicFormAdapter extends FormularioAdapter {
     public void saveInDataBase() {
         List<DayOfWork> dayOfWorks = dayOfWorkUiService.getAllDayOfWork();
         if (clinica.getId() == 0) {
-            insertion.InsertInClinica(viewRootActivity, clinica);
+            insertion.insertViewGroupInEntity( clinica);
             getDataBase().clinicaDao().insertAll(clinica);
             int id = getDataBase().clinicaDao().findIdByName(clinica.getNome());
             saveDayofWork(dayOfWorks, id);
         } else {
-            insertion.InsertInClinica(viewRootActivity, clinica);
+            insertion.insertViewGroupInEntity(clinica);
             getDataBase().clinicaDao().update(clinica);
             saveDayofWork(dayOfWorks, clinica.getId());
         }

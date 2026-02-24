@@ -22,9 +22,9 @@ import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.formularios.FormularioAdapter;
 import com.example.worknutri.ui.formularios.FormValidator;
-import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.AntropometryInsertionPacienteForm;
-import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PacienteInsertionPacienteForm;
-import com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario.PathologyInsertionPacienteForm;
+import com.example.worknutri.ui.formularios.formInserters.AnthropometryFormInserter;
+import com.example.worknutri.ui.formularios.formInserters.PatientFormInserter;
+import com.example.worknutri.ui.formularios.formInserters.PathologyFormInserter;
 import com.example.worknutri.ui.popUp.anthropometry.ActivityLevelDetailPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
@@ -58,20 +58,20 @@ public class PatientFormAdapter extends FormularioAdapter {
             anthropometry = getDataBase().antropometriaDao().getByPacienteId(patient.getId());
             pathology = getDataBase().patologiaDao().loadAllByIdPaciente(patient.getId()).get(0);
 
-            new PacienteInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                    .insertPacienteInViewGroup(patient);
+            PatientFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+                    .insertEntityInViewGroup(patient);
 
-            PacienteInsertionPacienteForm.insertObservationsInViewGroup(
+            PatientFormInserter.insertObservationsInViewGroup(
                     viewRootFormulario.findViewById(R.id.formulario_paciente_observation), patient);
 
-            PacienteInsertionPacienteForm.SelectClinica(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),
+            PatientFormInserter.SelectClinica(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),
                     patient.getClinicaId(), clinicsInOrder);
 
-            new AntropometryInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_antropometria_layout))
-                    .insertAntropometria(anthropometry);
+            AnthropometryFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_antropometria_layout))
+                    .insertEntityInViewGroup(anthropometry);
 
-            new PathologyInsertionPacienteForm(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout_content), pathology)
-                    .InsertPatologiaValuesInViewGroup(getContext(), pathologyCategories);
+            PathologyFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout_content), pathologyCategories)
+                    .insertEntityInViewGroup(pathology);
 
 
         }
@@ -80,16 +80,16 @@ public class PatientFormAdapter extends FormularioAdapter {
 
     public void savePaciente(ViewGroup viewGroup) {
 
-        new PacienteInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                .insertViewGroupInPaciente(patient);
-        PacienteInsertionPacienteForm.insertObservationsInPaciente(patient, viewGroup.findViewById(R.id.formulario_paciente_observation));
-        PacienteInsertionPacienteForm.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner), patient, clinicsInOrder);
+        PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+                .insertViewGroupInEntity(patient);
+        PatientFormInserter.insertObservationsInPaciente(patient, viewGroup.findViewById(R.id.formulario_paciente_observation));
+        PatientFormInserter.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner), patient, clinicsInOrder);
 
-        new AntropometryInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
-                .insertViewGroupInAntropometria(anthropometry, patient);
+        AnthropometryFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
+                .insertViewGroupInEntity(anthropometry, patient);
 
-        new PathologyInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content), pathology)
-                .insertViewGroupInPatologia();
+        PathologyFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content), null)
+                .insertViewGroupInEntity(pathology);
 
         PacienteDao pacienteDao = getDataBase().pacienteDao();
         if (patient.getId() == 0) pacienteDao.insertAll(patient);
@@ -156,11 +156,11 @@ public class PatientFormAdapter extends FormularioAdapter {
         if (validaCalculosAntropometricos(viewGroup)) {
             viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.GONE);
 
-            new PacienteInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
-                    .insertViewGroupInPaciente(patient);
+            PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+                    .insertViewGroupInEntity(patient);
 
-            new AntropometryInsertionPacienteForm(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
-                    .insertViewGroupInAntropometria(anthropometry, patient);
+            AnthropometryFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
+                    .insertViewGroupInEntity(anthropometry, patient);
 
             AntropometriaDetaillPopUp antropometriaDetaillPopUp = new PopUpFactoryImpl(getContext()).generateAntropometriaPopUp();
             antropometriaDetaillPopUp.generateSmall(anthropometry);

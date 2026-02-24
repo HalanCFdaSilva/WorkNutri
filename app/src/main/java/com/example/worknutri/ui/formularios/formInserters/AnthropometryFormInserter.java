@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario;
+package com.example.worknutri.ui.formularios.formInserters;
 
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,16 +10,28 @@ import com.example.worknutri.calcular.MeasureConverter;
 import com.example.worknutri.calcular.MeasureTypes;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.ui.formularios.InvalidViewGroupIdException;
 import com.example.worknutri.util.ViewsUtil;
 
-public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
-    public AntropometryInsertionPacienteForm(ViewGroup viewGroup) {
+public class AnthropometryFormInserter extends FormInserter<Antropometria> {
+    private AnthropometryFormInserter(ViewGroup viewGroup) {
         super(viewGroup);
+        viewGroupIdExpected = R.id.formulario_paciente_antropometria_layout;
     }
 
-    public void insertViewGroupInAntropometria( Antropometria antropometria, Paciente paciente) {
+    public static AnthropometryFormInserter create (ViewGroup viewGroup) throws InvalidViewGroupIdException{
+        if (checkViewGroupIsCorrectly(viewGroup)) {
+            return new AnthropometryFormInserter(viewGroup);
+        } else {
+            throw new InvalidViewGroupIdException( viewGroup.getId());
+        }
+    }
 
+    @Override
+    public void insertViewGroupInEntity(Antropometria antropometria) {
 
+    }
+    public void insertViewGroupInEntity(Antropometria antropometria, Paciente paciente) {
 
         double pesoAtual = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.formulario_paciente_antropometria_peso_atual_spinner),
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual), MeasureTypes.KILO);
@@ -65,8 +77,6 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)));
         antropometria.setCircumferenciaQuadril(ViewsUtil.getStringOfEditText(
                 viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)));
-
-
     }
 
     private MeasureTypes getMeasureTypesToWeightSpinner(int spinnerId) {
@@ -87,7 +97,8 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
      * @see Antropometria
      * @see ViewsUtil
      */
-    public void insertAntropometria(Antropometria antropometria) {
+    @Override
+    public void insertEntityInViewGroup(Antropometria antropometria) {
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)
                 , antropometria.getAltura());
 
@@ -111,5 +122,10 @@ public class AntropometryInsertionPacienteForm extends InsertionPacienteForm{
 
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)
                 , antropometria.getCircumferenciaQuadril());
+    }
+
+    public static boolean checkViewGroupIsCorrectly(ViewGroup viewGroup){
+        return  viewGroup != null &&(viewGroup.getId() == R.id.form_patient_activity ||
+                viewGroup.getId() == R.id.formulario_paciente_antropometria_layout);
     }
 }

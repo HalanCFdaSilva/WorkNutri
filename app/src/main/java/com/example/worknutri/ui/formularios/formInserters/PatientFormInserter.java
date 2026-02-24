@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.formularios.formularioPaciente.insertionsOfPacienteFormulario;
+package com.example.worknutri.ui.formularios.formInserters;
 
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -11,12 +11,20 @@ import com.example.worknutri.util.ViewsUtil;
 
 import java.util.List;
 
-public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
-    public PacienteInsertionPacienteForm(ViewGroup viewGroup) {
+public class PatientFormInserter extends FormInserter<Paciente> {
+    private PatientFormInserter(ViewGroup viewGroup) {
         super(viewGroup);
+        viewGroupIdExpected = R.id.form_patient_activity;
     }
 
-    public void insertViewGroupInPaciente( Paciente paciente) {
+    public static PatientFormInserter create(ViewGroup viewGroup) {
+        if (checkViewGroupIsCorrectly(viewGroup))
+            return new PatientFormInserter(viewGroup);
+        throw new IllegalArgumentException("O viewGroup deve ser do tipo esperado. Esperado: " + viewGroupIdExpected + ", Recebido: " + viewGroup.getId());
+
+    }
+
+    public void insertViewGroupInEntity(Paciente paciente) {
 
 
         paciente.setNomePaciente(ViewsUtil.getStringOfEditText(
@@ -53,7 +61,7 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
      * @see Paciente
      * @see ViewsUtil
      */
-    public void insertPacienteInViewGroup( Paciente paciente) {
+    public void insertEntityInViewGroup(Paciente paciente) {
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
                 , paciente.getNomePaciente());
         ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)
@@ -88,5 +96,10 @@ public class PacienteInsertionPacienteForm extends InsertionPacienteForm{
         if (i < clinicas.size()) {
             spinnerClinica.setSelection(i);
         }
+    }
+
+    public static boolean checkViewGroupIsCorrectly(ViewGroup viewGroup){
+        return  viewGroup != null && (viewGroup.getId() == R.id.form_patient_activity||
+                viewGroup.getId() == R.id.formulario_paciente_dados_pessoais_layout);
     }
 }

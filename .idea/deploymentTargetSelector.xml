@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ClinicFormActivityTest">
+      <SelectionState runConfigName="insertViewGroupInEntityPopulatesPatologiaFromUiForAllValidIds()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="popupNotShownBeforeClick()">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.forms'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="popupNotShownBeforeClickInButtonAddHour()">
+      <SelectionState runConfigName="onClickInButtonToViewAAnthropometryDataWithBirthHeightAndWeightsFilledOpenASmallPopUpOfAntropometry()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenActivityLaunchedWithClinicaIntent_itPopulatesLayout()">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.formularios.formularioPaciente'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenActivityLaunchedWithClinicaIntentAndContainDayOfWorkInDb_itPopulatesLayout()">
+      <SelectionState runConfigName="insertEntityInViewGroupAddsViewsForNonEmptyFields()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

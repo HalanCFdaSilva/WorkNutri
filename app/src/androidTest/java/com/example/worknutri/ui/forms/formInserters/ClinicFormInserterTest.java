@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.forms.clinicForm;
+package com.example.worknutri.ui.forms.formInserters;
 
 
 import android.content.Context;
@@ -12,7 +12,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.formularios.clinicForm.InsertionClinicForm;
+import com.example.worknutri.ui.formularios.formInserters.ClinicFormInserter;
 import com.example.worknutri.util.ViewsUtil;
 
 import org.junit.Before;
@@ -22,22 +22,22 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
-public class InsertionClinicFormTest {
+public class ClinicFormInserterTest {
 
     private ViewGroup clinicFormLayout;
     private Context context;
-    private InsertionClinicForm insertionClinicForm;
+    private ClinicFormInserter clinicFormInserter;
 
     @Before
     public void setUp() {
         context = TestUtil.getThemedContext();
         clinicFormLayout = (ViewGroup) LayoutInflater.from(context)
                 .inflate(R.layout.clinic_form_activity, new LinearLayout(context), false);
-        insertionClinicForm = new InsertionClinicForm(context);
+        clinicFormInserter = ClinicFormInserter.create(clinicFormLayout);
     }
 
     @Test
-    public void insertInFormulario_shouldPopulateViewsFromClinica() {
+    public void insertEntityInViewGroup_shouldPopulateViewsFromClinica() {
         // prepara um Clinica com valores de teste
         Clinica clinica = new Clinica();
         clinica.setNome("Nome Teste");
@@ -55,7 +55,7 @@ public class InsertionClinicFormTest {
         clinica.setEstado(estadoEscolhido);
 
         // executa
-        insertionClinicForm.InsertInFormulario(clinicFormLayout, clinica);
+        clinicFormInserter.insertEntityInViewGroup( clinica);
 
         // valida campos preenchidos nas views
         assertEquals("Nome deve ser populado",
@@ -128,7 +128,7 @@ public class InsertionClinicFormTest {
 
         // lê para um objeto Clinica
         Clinica clinica = new Clinica();
-        insertionClinicForm.InsertInClinica(clinicFormLayout, clinica);
+        clinicFormInserter.insertViewGroupInEntity(clinica);
 
         // valida valores lidos
         assertEquals("Nome lido corretamente", "Nome View", clinica.getNome());

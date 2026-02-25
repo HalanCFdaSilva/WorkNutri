@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri'">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.forms'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generatePopUpOfDatePickerToNewDayOfWork_shouldProvideEmptyDay()">
+      <SelectionState runConfigName="clickingBottomNav_shouldSelectCorrectFragment()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GenerateCompleteMethodInsertAntropometriaDataCorrectely()">
+      <SelectionState runConfigName="clickingBottomNav_shouldSelectCorrectFragment() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generatePopUpOfDatePickerToNewDayOfWorkShouldProvideEmptyDay()">
+      <SelectionState runConfigName="FormNavViewTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DayOfWorkUiServiceTest">
+      <SelectionState runConfigName="patientFormClickingBottomNav_shouldSelectCorrectFragment()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

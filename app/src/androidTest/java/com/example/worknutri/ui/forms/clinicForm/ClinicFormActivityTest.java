@@ -34,6 +34,8 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.support.TextViewAssertions;
+import com.example.worknutri.support.NavViewInteractionTest;
+import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
 
 import org.hamcrest.Matcher;
 import org.junit.After;
@@ -553,7 +555,14 @@ public class ClinicFormActivityTest {
         };
     }
 
+    @Test
+    public void clickingBottomNav_shouldSelectCorrectFragment() {
+
+        NavViewInteractionTest<ClinicFormActivity> navTest = new NavViewInteractionTest<>(R.id.clinic_form_nav_view, ClinicFormActivity.class);
+        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_pacientes,FragmentSelectedActivity.PACIENTE_FRAGMENT);
+        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_clinicas,FragmentSelectedActivity.CLINICA_FRAGMENT);
 
 
+    }
 
 }

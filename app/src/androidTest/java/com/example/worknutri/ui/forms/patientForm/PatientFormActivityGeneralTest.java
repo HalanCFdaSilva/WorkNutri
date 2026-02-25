@@ -6,7 +6,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
 import static com.example.worknutri.support.ViewUtil.assertEditTextCorrectFormatText;
 
 import android.content.Intent;
@@ -32,6 +31,8 @@ import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.support.TextViewAssertions;
 import com.example.worknutri.support.ViewUtil;
 import com.example.worknutri.ui.ExtrasActivities;
+import com.example.worknutri.support.NavViewInteractionTest;
+import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
 
 import org.junit.After;
 import org.junit.Before;
@@ -368,7 +369,15 @@ public class PatientFormActivityGeneralTest {
 
         });
     }
-    
+    @Test
+    public void clickingBottomNav_shouldSelectCorrectFragment() {
+
+        NavViewInteractionTest<PatientFormActivity> navTest = new NavViewInteractionTest<>(R.id.formulario_paciente_activity_nav_view, PatientFormActivity.class);
+        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_pacientes,FragmentSelectedActivity.PACIENTE_FRAGMENT);
+        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_clinicas,FragmentSelectedActivity.CLINICA_FRAGMENT);
+
+
+    }
 
 
 }

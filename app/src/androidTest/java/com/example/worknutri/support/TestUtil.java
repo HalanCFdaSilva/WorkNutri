@@ -31,4 +31,14 @@ public abstract class TestUtil {
     public static String getStringFromRes(int resId) {
         return getThemedContext().getString(resId);
     }
+
+    public static String getStringFromDoubleWith2dot(Double doubleValue) {
+        String stringValue = String.valueOf(doubleValue);
+        int indexOfDot = stringValue.indexOf('.');
+        if (indexOfDot + 3 <= stringValue.length()) {
+            return stringValue.substring(0, indexOfDot + 3);
+        }
+        return stringValue;
+
+    }
 }

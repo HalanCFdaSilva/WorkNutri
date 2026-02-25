@@ -18,6 +18,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.support.TestEntityFactory;
+import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.popUp.factory.PopUpFactoryImpl;
 import com.google.android.material.divider.MaterialDivider;
 
@@ -30,7 +31,7 @@ import org.junit.runner.RunWith;
 public class AntropometriaDetailPopUpTest {
 
     private AntropometriaDetaillPopUp antropometriaDetaillPopUp;
-    private Antropometria antropometria;
+    private Antropometria anthropometry;
     private Context context;
 
     @Before
@@ -40,14 +41,14 @@ public class AntropometriaDetailPopUpTest {
 
         antropometriaDetaillPopUp = new PopUpFactoryImpl(context).generateAntropometriaPopUp();
 
-        antropometria = TestEntityFactory.generateAntropometria("15/08/2000",1.70,68);
+        anthropometry = TestEntityFactory.generateAntropometria("15/08/2000",1.70,68);
 
 
     }
 
     @Test
     public void GenerateSmallMethodInsertAPopUpAntropometriaDescriptionFormularioLayoutInLayoutIntern() {
-        antropometriaDetaillPopUp.generateSmall(antropometria);
+        antropometriaDetaillPopUp.generateSmall(anthropometry);
         ViewGroup layout = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertEquals(1,layout.getChildCount());
         Assert.assertEquals(R.id.popup_form_antropometric_description,layout.getChildAt(0).getId());
@@ -55,7 +56,7 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void GenerateSmallMethodContainCorrectViews() {
-        antropometriaDetaillPopUp.generateSmall(antropometria);
+        antropometriaDetaillPopUp.generateSmall(anthropometry);
         ViewGroup viewGroup = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_form_antropometric_description);
         Assert.assertEquals(13,viewGroup.getChildCount());
 
@@ -88,14 +89,19 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void GenerateSmallMethodInsertAntropometriaDataCorrectely() {
-        antropometriaDetaillPopUp.generateSmall(antropometria);
+        antropometriaDetaillPopUp.generateSmall(anthropometry);
 
-        Assert.assertEquals(antropometria.getImc(),getStringInViewText(R.id.popup_form_antropometric_description_imc));
-        Assert.assertEquals(antropometria.getTaxaMetabolica(),getStringInViewText(R.id.popup_form_antropometric_description_metabolical_rate));
-        Assert.assertEquals(antropometria.getValorMetabolico(),getStringInViewText(R.id.popup_form_antropometric_description_energy_expend));
-        Assert.assertEquals(antropometria.getRegraBolso(),getStringInViewText(R.id.popup_form_antropometric_description_thumb));
-        Assert.assertEquals(antropometria.getVenta(),getStringInViewText(R.id.popup_form_antropometric_description_venta));
-        Assert.assertEquals(antropometria.getAgua(),getStringInViewText(R.id.popup_form_antropometric_description_water));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getImc())),
+                getStringInViewText(R.id.popup_form_antropometric_description_imc));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getTaxaMetabolica())),
+                getStringInViewText(R.id.popup_form_antropometric_description_metabolical_rate));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getValorMetabolico())),
+                getStringInViewText(R.id.popup_form_antropometric_description_energy_expend));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getRegraBolso())),
+                getStringInViewText(R.id.popup_form_antropometric_description_thumb));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getVenta())),
+                getStringInViewText(R.id.popup_form_antropometric_description_venta));
+        Assert.assertEquals(anthropometry.getAgua(), getStringInViewText(R.id.popup_form_antropometric_description_water));
 
     }
 
@@ -109,7 +115,7 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void GenerateCompleteMethodInsertAPopUpAntropometriaDescriptionLayoutInLayoutIntern() {
-        antropometriaDetaillPopUp.generateComplete(antropometria);
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
         ViewGroup layout = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_base_layout_layout_intern);
         Assert.assertEquals(1,layout.getChildCount());
         Assert.assertEquals(R.id.popup_antropometria_description,layout.getChildAt(0).getId());
@@ -117,7 +123,7 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void GenerateCompleteMethodContainCorrectViews() {
-        antropometriaDetaillPopUp.generateComplete(antropometria);
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
         ViewGroup viewGroup = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_antropometria_description);
         Assert.assertEquals(33,viewGroup.getChildCount());
 
@@ -173,27 +179,32 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void GenerateCompleteMethodInsertAntropometriaDataCorrectely() {
-        antropometriaDetaillPopUp.generateComplete(antropometria);
-        Assert.assertEquals(antropometria.getCircumferenciaAbdomen(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_abdomen));
-        Assert.assertEquals(antropometria.getCircumferenciaBracoDir(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_braco));
-        Assert.assertEquals(antropometria.getCircumferenciaCoxaDir(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_coxa));
-        Assert.assertEquals(antropometria.getCircumferenciaCintura(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_cintura));
-        Assert.assertEquals(antropometria.getCircumferenciaQuadril(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_quadril));
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
+        Assert.assertEquals(anthropometry.getCircumferenciaAbdomen(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_abdomen));
+        Assert.assertEquals(anthropometry.getCircumferenciaBracoDir(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_braco));
+        Assert.assertEquals(anthropometry.getCircumferenciaCoxaDir(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_coxa));
+        Assert.assertEquals(anthropometry.getCircumferenciaCintura(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_cintura));
+        Assert.assertEquals(anthropometry.getCircumferenciaQuadril(),getStringInViewText(R.id.paciente_descrition_antropometria_circum_quadril));
 
-        Assert.assertEquals(antropometria.getAltura(),getStringInViewText(R.id.paciente_descrition_antropometria_altura));
-        Assert.assertEquals(antropometria.getPeso(),getStringInViewText(R.id.paciente_descrition_antropometria_peso_atual));
-        Assert.assertEquals(antropometria.getPesoIdeal(),getStringInViewText(R.id.paciente_descrition_antropometria_peso_ideal));
+        Assert.assertEquals(anthropometry.getAltura(),getStringInViewText(R.id.paciente_descrition_antropometria_altura));
+        Assert.assertEquals(anthropometry.getPeso(),getStringInViewText(R.id.paciente_descrition_antropometria_peso_atual));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getPesoIdeal())),
+                getStringInViewText(R.id.paciente_descrition_antropometria_peso_ideal));
 
-        Assert.assertEquals(antropometria.getTaxaMetabolica(),getStringInViewText(R.id.paciente_descrition_antropometria_taxa_metabolica));
-        Assert.assertEquals(antropometria.getValorMetabolico(),getStringInViewText(R.id.paciente_descrition_antropometria_valor_metabolico));
-        Assert.assertEquals(antropometria.getRegraBolso(),getStringInViewText(R.id.paciente_descrition_antropometria_bolso));
-        Assert.assertEquals(antropometria.getVenta(),getStringInViewText(R.id.paciente_descrition_antropometria_venta));
-        Assert.assertEquals(antropometria.getAgua(),getStringInViewText(R.id.paciente_descrition_antropometria_agua));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getTaxaMetabolica())),
+                getStringInViewText(R.id.paciente_descrition_antropometria_taxa_metabolica));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getValorMetabolico())),
+                getStringInViewText(R.id.paciente_descrition_antropometria_valor_metabolico));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getRegraBolso())),
+                getStringInViewText(R.id.paciente_descrition_antropometria_bolso));
+        Assert.assertEquals(TestUtil.getStringFromDoubleWith2dot(Double.parseDouble(anthropometry.getVenta())),
+                getStringInViewText(R.id.paciente_descrition_antropometria_venta));
+        Assert.assertEquals(anthropometry.getAgua(),getStringInViewText(R.id.paciente_descrition_antropometria_agua));
 
     }
     @Test
     public void generateCompleteMethodInsertTheTitleCorrectly() {
-        antropometriaDetaillPopUp.generateComplete(antropometria);
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
         TextView title = antropometriaDetaillPopUp.getViewGroup().findViewById(R.id.popup_base_layout_title_textview_header);
         Assert.assertNotNull(title);
         Assert.assertEquals(title.getText().toString(), InstrumentationRegistry.getInstrumentation().getTargetContext().getString(R.string.antropometria_title));
@@ -207,10 +218,10 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void verifyIfGenerateCompleteMethodCreateCorrectImcTypeTextView(){
-        antropometria.setImc("22.0");
+        anthropometry.setImc("22.0");
         ClassificacaoImc imcExpected = ClassificacaoImc.tipoImc(22.0);
         Assert.assertNotNull(imcExpected);
-        antropometriaDetaillPopUp.generateComplete(antropometria);
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
         verifyImcTypeTextView(imcExpected);
 
 
@@ -218,10 +229,10 @@ public class AntropometriaDetailPopUpTest {
 
     @Test
     public void verifyIfGenerateSmallMethodCreateCorrectImcTypeTextView(){
-        antropometria.setImc("45.0");
+        anthropometry.setImc("45.0");
         ClassificacaoImc imcExpected = ClassificacaoImc.tipoImc(45.0);
         Assert.assertNotNull(imcExpected);
-        antropometriaDetaillPopUp.generateComplete(antropometria);
+        antropometriaDetaillPopUp.generateComplete(anthropometry);
         verifyImcTypeTextView(imcExpected);
 
 

@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="insertViewGroupInEntityPopulatesPatologiaFromUiForAllValidIds()">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.forms'">
+      <SelectionState runConfigName="generatePopUpOfDatePickerToNewDayOfWork_shouldProvideEmptyDay()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="onClickInButtonToViewAAnthropometryDataWithBirthHeightAndWeightsFilledOpenASmallPopUpOfAntropometry()">
+      <SelectionState runConfigName="GenerateCompleteMethodInsertAntropometriaDataCorrectely()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.formularios.formularioPaciente'">
+      <SelectionState runConfigName="generatePopUpOfDatePickerToNewDayOfWorkShouldProvideEmptyDay()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="insertEntityInViewGroupAddsViewsForNonEmptyFields()">
+      <SelectionState runConfigName="DayOfWorkUiServiceTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

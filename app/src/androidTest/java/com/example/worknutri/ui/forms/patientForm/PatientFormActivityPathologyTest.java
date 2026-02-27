@@ -55,7 +55,7 @@ public class PatientFormActivityPathologyTest {
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
 
         scenario.onActivity(activity -> activity.findViewById(
-                R.id.formulario_paciente_patologia_button_add).performClick());
+                R.id.patient_form_activity_pathological_add_button).performClick());
 
         Thread.sleep(300);
 
@@ -75,7 +75,7 @@ public class PatientFormActivityPathologyTest {
         Thread.sleep(300);
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
         scenario.onActivity(activity -> {
-            ViewGroup viewGroup = activity.findViewById(R.id.formulario_paciente_patologia_layout_content);
+            ViewGroup viewGroup = activity.findViewById(R.id.patient_form_activity_pathological_layout_content);
 
             assertEquals(1, viewGroup.getChildCount());
             ViewGroup viewOfPathology = (ViewGroup) viewGroup.getChildAt(0);
@@ -99,7 +99,7 @@ public class PatientFormActivityPathologyTest {
         Thread.sleep(300);
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
         scenario.onActivity(activity -> {
-            ViewGroup viewGroup = activity.findViewById(R.id.formulario_paciente_patologia_layout_content);
+            ViewGroup viewGroup = activity.findViewById(R.id.patient_form_activity_pathological_layout_content);
 
             assertEquals(1, viewGroup.getChildCount());
             ViewGroup viewOfPathology = (ViewGroup) viewGroup.getChildAt(0);
@@ -110,7 +110,7 @@ public class PatientFormActivityPathologyTest {
 
         // check if pathology type not appears in spinner
         scenario.onActivity(activity -> activity.findViewById(
-                R.id.formulario_paciente_patologia_button_add).performClick());
+                R.id.patient_form_activity_pathological_add_button).performClick());
         Thread.sleep(300);
         onView(withId(R.id.popup_patologia_add_spinner)).perform(click());
         onView(withText(pathologyTypeExpected))
@@ -127,7 +127,7 @@ public class PatientFormActivityPathologyTest {
         scenario.onActivity(activity -> {
             activity.findViewById(R.id.pop_up_patologia_description_formulario_button_delete).performClick();
             activity.findViewById(
-                    R.id.formulario_paciente_patologia_button_add).performClick();
+                    R.id.patient_form_activity_pathological_add_button).performClick();
         });
         Thread.sleep(300);
         onView(withId(R.id.popup_patologia_add)).inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));
@@ -140,7 +140,7 @@ public class PatientFormActivityPathologyTest {
 
     private void insertNewPathology(String pathologyType, String pathologyText) throws InterruptedException {
         scenario.onActivity(activity -> activity.findViewById(
-                R.id.formulario_paciente_patologia_button_add).performClick());
+                R.id.patient_form_activity_pathological_add_button).performClick());
 
         Thread.sleep(300);
         onView(withId(R.id.popup_patologia_add)).inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));

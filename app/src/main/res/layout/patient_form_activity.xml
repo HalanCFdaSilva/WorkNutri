@@ -2,27 +2,27 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/form_patient_activity"
+    android:id="@+id/patient_form_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
-        android:id="@+id/formulario_paciente_activity_scrollview"
+        android:id="@+id/patient_form_activity_scrollview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="24dp"
-        app:layout_anchor="@+id/formulario_paciente_activity_fab"
+        app:layout_anchor="@+id/patient_form_activity_save_fab"
         app:layout_anchorGravity="top|center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/formulario_paciente_activity_constraint_layout"
+            android:id="@+id/patient_form_activity_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <!--            DADOS PACIENTE-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_paciente_dados_pessoais_layout"
+                android:id="@+id/patient_form_activity_personal_data_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais"
+                    android:id="@+id/patient_form_activity_personal_data_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -40,39 +40,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_dados_pessoais_sortDivider"
+                    android:id="@+id/patient_form_activity_personal_data_sortDivider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_dados_pessoais" />
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_personal_data_title" />
 
                 <!--                NOME-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_name_title"
+                    android:id="@+id/patient_form_activity_personal_data_name_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/nome_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_sortDivider" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_name_obrigatorio"
+                    android:id="@+id/patient_form_activity_personal_data_name_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_name" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_name" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_name"
+                    android:id="@+id/patient_form_activity_personal_data_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -83,37 +83,37 @@
                     android:inputType="text"
                     android:textSize="12sp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_name_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_name_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_name_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_name_title" />
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_personal_data_name_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_name_title" />
 
 
 
 
                 <!--           GENERO-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_genero_title"
+                    android:id="@+id/patient_form_activity_personal_data_gender_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/genero_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_name" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_name" />
 
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_dados_pessoais_genero_spinner"
+                    android:id="@+id/patient_form_activity_personal_data_gender_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:entries="@array/genero_types"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_genero_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_gender_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_genero_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_personal_data_gender_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_gender_title" />
 
 
 
@@ -122,28 +122,28 @@
 
                 <!--           DATA NASCIMENTO-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_nascimento_title"
+                    android:id="@+id/patient_form_activity_personal_data_birthday_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/nascimento_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_genero_title" />
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_gender_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_idade_obrigatorio"
+                    android:id="@+id/patient_form_activity_personal_data_birthday_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_nascimento" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_birthday_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_personal_data_birthday_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_birthday" />
                 <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_nascimento"
+                    android:id="@+id/patient_form_activity_personal_data_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -154,25 +154,25 @@
                     android:maxLength="10"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_nascimento_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_birthday_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_nascimento_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_birthday_title" />
 
 
                 <!--           EMAIL-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_email_title"
+                    android:id="@+id/patient_form_activity_personal_data_email_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/email_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_nascimento" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_birthday" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_email"
+                    android:id="@+id/patient_form_activity_personal_data_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -181,24 +181,24 @@
                     android:inputType="textEmailAddress"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_email_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_email_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_personal_data_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_email_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_email_title" />
 
                 <!--           TELEFONE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_fone_title"
+                    android:id="@+id/patient_form_activity_personal_data_phone_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/fone_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_email" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_email" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_dados_pessoais_fone"
+                    android:id="@+id/patient_form_activity_personal_data_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -207,35 +207,35 @@
                     android:inputType="phone"
                     android:textAlignment="viewStart"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_dados_pessoais_fone_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_dados_pessoais_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_personal_data_phone_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_personal_data_name"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_name"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_dados_pessoais_fone_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_name"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_personal_data_phone_title" />
 
 
                 <!--                CLINICA PACIENTE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_dados_pessoais_clinica_title"
+                    android:id="@+id/patient_form_activity_personal_data_clinic_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/antropometria_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_fone" />
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_phone" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_dados_pessoais_clinica_sortDivider"
+                    android:id="@+id/patient_form_activity_personal_data_clinic_sortDivider"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_clinica_title"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_dados_pessoais_clinica_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_clinic_title"
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_personal_data_clinic_title" />
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_dados_pessoais_clinica_spinner"
+                    android:id="@+id/patient_form_activity_personal_data_clinic_spinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -246,23 +246,23 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:theme="@android:style/ThemeOverlay.Material.Light"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_dados_pessoais_clinica_sortDivider"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_dados_pessoais_clinica_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_personal_data_clinic_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_personal_data_clinic_sortDivider" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            ANTROPOMETRIA-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/formulario_paciente_antropometria_layout"
+                android:id="@+id/patient_form_activity_anthropometry_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_dados_pessoais_layout">
+                app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_personal_data_layout">
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria"
+                    android:id="@+id/patient_form_activity_anthropometry_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -272,39 +272,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_antropometria_sortDivider"
+                    android:id="@+id/patient_form_activity_anthropometry_sortDivider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_antropometria" />
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_anthropometry_title" />
 
-                <!--            ALTURA-->
+                <!--            HEIGHT-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_altura_title"
+                    android:id="@+id/patient_form_activity_anthropometry_height_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/altura_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_sortDivider" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_altura_obrigatorio"
+                    android:id="@+id/patient_form_activity_anthropometry_height_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_altura" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_height" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_altura"
+                    android:id="@+id/patient_form_activity_anthropometry_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -313,65 +313,65 @@
                     android:hint="@string/altura_hint"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_altura_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_altura_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_height_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_height_title" />
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_antropometria_spinner_altura"
+                    android:id="@+id/patient_form_activity_anthropometry_height_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:entries="@array/length_types_small"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_altura"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_altura"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_altura" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_height"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_height"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_height" />
 
 
-                <!--            PESO-->
+                <!--            WEIGHT-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_title_peso"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/peso_upper_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_altura" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_height" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_antropometria_peso_sortDivider"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_sortDivider"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/formulario_paciente_antropometria_title_peso"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_antropometria_title_peso" />
+                    app:layout_constraintStart_toStartOf="@id/patient_form_activity_anthropometry_weight_title"
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_anthropometry_weight_title" />
 
-                <!--            PESO ATUAL-->
+                <!--            CURRENT WEIGHT-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_peso_atual_title"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_current_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/peso_atual_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_title_peso"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_peso_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_weight_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_weight_sortDivider" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_peso_atual_obrigatorio"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_current_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_atual_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_atual_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_atual" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_current_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_current_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_current" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_peso_atual"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_current"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -380,48 +380,48 @@
                     android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_atual_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_altura"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_current_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_height"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_atual_obrigatorio"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_atual_title" />
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_current_mandatory"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_current_title" />
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_antropometria_peso_atual_spinner"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_current_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:entries="@array/size_types"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_atual"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_atual"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_atual" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_current"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_current"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_current" />
 
-                <!--            PESO IDEAL-->
+                <!--            IDEAL WEIGHT-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_peso_ideal_title"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_ideal_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/peso_ideal_title"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_peso_atual_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_peso_atual_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_peso_atual_title" />
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_weight_current_title"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_weight_current_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_weight_current_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_peso_ideal_obrigatorio"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_ideal_mandatory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/obrigatorio"
                     android:textColor="@color/obrigatorio"
                     android:textSize="20sp"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_ideal_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_ideal_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_ideal" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_ideal_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_ideal_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_ideal" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_peso_ideal"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_ideal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -430,55 +430,55 @@
                     android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_ideal_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_peso_atual"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_ideal_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_ideal_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_ideal_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_weight_current"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_ideal_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_ideal_title" />
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_antropometria_peso_ideal_spinner"
+                    android:id="@+id/patient_form_activity_anthropometry_weight_ideal_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:entries="@array/size_types"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_peso_ideal"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_peso_ideal"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_peso_ideal" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_weight_ideal"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_weight_ideal"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_weight_ideal" />
 
 
-                <!--            CIRCUNFERENCIA PACIENTE-->
+                <!--             PATIENT CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_peso_ideal" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_weight_ideal" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_antropometria_circum_sortDivider"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_sortDivider"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/formulario_paciente_antropometria_circum_title"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_antropometria_circum_title" />
+                    app:layout_constraintStart_toStartOf="@id/patient_form_activity_anthropometry_circum_title"
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_anthropometry_circum_title" />
 
 
-                <!--                CIRCUNFERENCIA BRAÇO DIREITO-->
+                <!--                RIGHT ARM CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_braco_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_arm_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_braco_title_small"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_sortDivider" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_sortDivider" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_circum_braco"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_arm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -488,34 +488,34 @@
                     android:autofillHints="@string/circum_braco_hint"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintEnd_toStartOf="@+id/formulario_paciente_antropometria_circum_braco_cm"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_braco_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintEnd_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm_cm"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_arm_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_braco_cm"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_arm_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/cm_string"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_braco_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_braco_title" />
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_arm_title" />
 
 
-                <!--                CIRCUMFERENCIA COXA DIREITA-->
+                <!--                RIGHT THIGH CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_coxa_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_thigh_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_coxa_title_small"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_braco_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_arm_title" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_circum_coxa"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_thigh"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -525,34 +525,34 @@
                     android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_coxa_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_coxa_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_thigh_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_thigh_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_coxa_cm"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_thigh_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/cm_string"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_coxa_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_thigh_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_coxa_title" />
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_thigh_title" />
 
 
-                <!--                CIRCUMFERENCIA ABDOMEN-->
+                <!--                ABDOMEN CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_abdomen_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_abdomen_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_abdomen_title_small"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_coxa_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_thigh_title" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_circum_abdomen"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_abdomen"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -562,34 +562,34 @@
                     android:autofillHints="@string/circum_abdomen_hint"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_abdomen_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_abdomen_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_abdomen_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_abdomen_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_abdomen_cm"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_abdomen_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/cm_string"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_abdomen_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_abdomen_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_abdomen_title" />
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_abdomen_title" />
 
 
-                <!--                CIRCUMFERENCIA CINTURA-->
+                <!--                WAIST CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_cintura_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_waist_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_cintura_title_small"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_abdomen_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_abdomen_title" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_circum_cintura"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_waist"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -599,35 +599,35 @@
                     android:hint="@string/circum_cintura_hint"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_cintura_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_cintura_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_waist_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_waist_title"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_cintura_cm"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_waist_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/cm_string"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_cintura_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_waist_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_cintura_title" />
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_waist_title" />
 
 
-                <!--                CIRCUMFERENCIA QUADRIL-->
+                <!--                HIP CIRCUMFERENCE-->
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_quadril_title"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_hip_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/circum_quadril_title_small"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_cintura_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_waist_title" />
 
                 <EditText
-                    android:id="@+id/formulario_paciente_antropometria_circum_quadril"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_hip"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -637,96 +637,96 @@
                     android:autofillHints="numberDecimal"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_quadril_title"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_circum_braco"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_quadril_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_hip_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_circum_arm"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_hip_title" />
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_circum_quadril_cm"
+                    android:id="@+id/patient_form_activity_anthropometry_circum_hip_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/cm_string"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_circum_quadril_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_circum_hip_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_circum_quadril_title" />
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_circum_hip_title" />
 
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_calculos_title"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/antropometria_calc_title"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_altura_title"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_circum_quadril_title" />
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_height_title"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_circum_hip_title" />
 
                 <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/formulario_paciente_antropometria_calculos_sortDivider"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_sortDivider"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/formulario_paciente_antropometria_calculos_title"
-                    app:layout_constraintTop_toBottomOf="@id/formulario_paciente_antropometria_calculos_title" />
+                    app:layout_constraintStart_toStartOf="@id/patient_form_activity_anthropometry_calculations_title"
+                    app:layout_constraintTop_toBottomOf="@id/patient_form_activity_anthropometry_calculations_title" />
 
 
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_calculos_atividade_title"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_activity_level_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/nivel_atividade"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"/>
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_calculations_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_sortDivider"/>
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_antropometria_calculos_atividade_spinner"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_activity_level_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/atividade_array"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_atividade_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title" />
 
                 <ImageButton
-                    android:id="@+id/formulario_paciente_antropometria_calculos_atividade_info_imageview"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_activity_level_info_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/info_24dp"
                     android:contentDescription="@string/info_image_button_content"
                     android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_atividade_spinner"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_atividade_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_spinner"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title" />
 
 
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_weight_lose_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/peso_a_perder"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_atividade_title"/>
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_calculations_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_activity_level_title"/>
 
                 <Spinner
-                    android:id="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_spinner"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_weight_lose_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/venta_array"
-                    app:layout_constraintBottom_toBottomOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
-                    app:layout_constraintStart_toEndOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
-                    app:layout_constraintTop_toTopOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title" />
+                    app:layout_constraintBottom_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_weight_lose_title"
+                    app:layout_constraintStart_toEndOf="@+id/patient_form_activity_anthropometry_calculations_weight_lose_title"
+                    app:layout_constraintTop_toTopOf="@+id/patient_form_activity_anthropometry_calculations_weight_lose_title" />
 
 
 
                 <TextView
-                    android:id="@+id/formulario_paciente_antropometria_calculos_error"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_error"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -734,13 +734,13 @@
                     android:text="@string/error_antropometria"
                     android:textColor="@color/obrigatorio"
                     android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_sortDivider"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_peso_a_perder_title"
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_calculations_sortDivider"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_calculations_sortDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_weight_lose_title"
                     tools:visibility="visible" />
 
                 <Button
-                    android:id="@+id/formulario_paciente_antropometria_calculos_button"
+                    android:id="@+id/patient_form_activity_anthropometry_calculations_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -748,23 +748,23 @@
                     android:text="@string/ver_button"
                     android:textSize="14sp"
                     app:cornerRadius="@dimen/cardview_default_radius"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_antropometria_calculos_error"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_antropometria_calculos_error"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_calculos_error" />
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_anthropometry_calculations_error"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_anthropometry_calculations_error"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_calculations_error" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <!--           DADOS PATOLOGICOS PACIENTE -->
+            <!--          PATIENT PATHOLOGICAL DATA-->
             <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/formulario_paciente_patologia_layout"
+            android:id="@+id/patient_form_activity_pathological_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_antropometria_layout">
+            app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_anthropometry_layout">
 
             <TextView
-                android:id="@+id/formulario_paciente_patologia"
+                android:id="@+id/patient_form_activity_pathological"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -774,16 +774,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/formulario_paciente_patologia_sortDivider"
+                android:id="@+id/patient_form_activity_pathological_sortDivider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/formulario_paciente_patologia" />
+                app:layout_constraintTop_toBottomOf="@id/patient_form_activity_pathological" />
 
                 <LinearLayout
-                    android:id="@+id/formulario_paciente_patologia_layout_content"
+                    android:id="@+id/patient_form_activity_pathological_layout_content"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -791,10 +791,10 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_sortDivider" />
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_pathological_sortDivider" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/formulario_paciente_patologia_button_add"
+                    android:id="@+id/patient_form_activity_pathological_add_button"
                     style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -802,25 +802,25 @@
                     android:textAllCaps="true"
                     android:textSize="14sp"
                     app:backgroundTint="@color/teal_200_lower"
-                    app:layout_constraintEnd_toEndOf="@+id/formulario_paciente_patologia_layout_content"
-                    app:layout_constraintStart_toStartOf="@+id/formulario_paciente_patologia_layout_content"
-                    app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_layout_content" />
+                    app:layout_constraintEnd_toEndOf="@+id/patient_form_activity_pathological_layout_content"
+                    app:layout_constraintStart_toStartOf="@+id/patient_form_activity_pathological_layout_content"
+                    app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_pathological_layout_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            observações-->
             <TextView
-                android:id="@+id/formulario_paciente_observation_title"
+                android:id="@+id/patient_form_activity_observation_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/observacao_title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_patologia_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_pathological_layout" />
 
             <EditText
-                android:id="@+id/formulario_paciente_observation"
+                android:id="@+id/patient_form_activity_observation"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="8dp"
@@ -837,15 +837,15 @@
                 android:padding="@dimen/multilined_padding"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/formulario_paciente_observation_title"
-                app:layout_constraintTop_toBottomOf="@+id/formulario_paciente_observation_title" />
+                app:layout_constraintStart_toStartOf="@+id/patient_form_activity_observation_title"
+                app:layout_constraintTop_toBottomOf="@+id/patient_form_activity_observation_title" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/formulario_paciente_activity_nav_app_bar"
+        android:id="@+id/patient_form_activity_nav_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -856,7 +856,7 @@
         app:fabCradleVerticalOffset="10dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/formulario_paciente_activity_nav_view"
+            android:id="@+id/patient_form_activity_nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -867,22 +867,22 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/formulario_paciente_activity_fab"
+        android:id="@+id/patient_form_activity_save_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/save_form_content"
         android:src="@drawable/save_48dp_000000_fill0_wght400_grad0_opsz64"
         app:fabSize="auto"
-        app:layout_anchor="@id/formulario_paciente_activity_nav_app_bar" />
+        app:layout_anchor="@id/patient_form_activity_nav_bottom_bar" />
 
     <TextView
-        android:id="@+id/formulario_paciente_activity_error"
+        android:id="@+id/patient_form_activity_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/error_blank"
         android:textColor="@color/obrigatorio"
         android:translationY="-10dp"
         android:visibility="invisible"
-        app:layout_anchor="@+id/formulario_paciente_activity_fab"
+        app:layout_anchor="@+id/patient_form_activity_save_fab"
         app:layout_anchorGravity="center|fill_vertical" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

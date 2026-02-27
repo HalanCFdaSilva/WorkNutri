@@ -38,20 +38,20 @@ public class PatientFormInserterTest {
     @Before
     public void setUp() {
         context = TestUtil.getThemedContext();
-        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
         inserter = PatientFormInserter.create(viewGroup);
     }
 
     @Test
     public void createThrowsWhenViewGroupIdInvalid_andReturnsInstanceWhenValid() {
-        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
 
-        checkNotThrowExceptionAndGenerateObject(R.id.form_patient_activity, root);
-        checkNotThrowExceptionAndGenerateObject(R.id.formulario_paciente_dados_pessoais_layout, root);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity, root);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity_personal_data_layout, root);
 
-        root.setId(R.id.formulario_paciente_patologia_layout);
+        root.setId(R.id.patient_form_activity_pathological_layout);
         assertThrows(IllegalArgumentException.class, () -> PatientFormInserter.create(root));
     }
 
@@ -68,25 +68,25 @@ public class PatientFormInserterTest {
     @Test
     public void insertViewGroupInEntityPopulatesPacienteFromUiForValidIds() {
         int[] validIds = new int[] {
-                R.id.form_patient_activity,
-                R.id.formulario_paciente_dados_pessoais_layout
+                R.id.patient_form_activity,
+                R.id.patient_form_activity_personal_data_layout
         };
 
         // expected values
         Paciente expected = TestEntityFactory.generatePatient();
 
         for (int id : validIds) {
-            ViewGroup inflated = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+            ViewGroup inflated = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                     new LinearLayout(context), false);
             ViewGroup root = inflated.findViewById(id);
             assertNotNull("root must exist for id=" + id, root);
 
             // populate UI
-            EditText name = root.findViewById(R.id.formulario_paciente_dados_pessoais_name);
-            EditText nascimento = root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
-            EditText email = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
-            EditText fone = root.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
-            Spinner genero = root.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner);
+            EditText name = root.findViewById(R.id.patient_form_activity_personal_data_name);
+            EditText nascimento = root.findViewById(R.id.patient_form_activity_personal_data_birthday);
+            EditText email = root.findViewById(R.id.patient_form_activity_personal_data_email);
+            EditText fone = root.findViewById(R.id.patient_form_activity_personal_data_phone);
+            Spinner genero = root.findViewById(R.id.patient_form_activity_personal_data_gender_spinner);
 
             name.setText(expected.getNomePaciente());
             nascimento.setText(expected.getNascimento());
@@ -112,11 +112,11 @@ public class PatientFormInserterTest {
         Paciente expected = TestEntityFactory.generatePatient();
         inserter.insertEntityInViewGroup(expected);
 
-        EditText name = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name);
-        EditText nascimento = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
-        EditText email = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email);
-        EditText fone = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
-        Spinner genero = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner);
+        EditText name = viewGroup.findViewById(R.id.patient_form_activity_personal_data_name);
+        EditText nascimento = viewGroup.findViewById(R.id.patient_form_activity_personal_data_birthday);
+        EditText email = viewGroup.findViewById(R.id.patient_form_activity_personal_data_email);
+        EditText fone = viewGroup.findViewById(R.id.patient_form_activity_personal_data_phone);
+        Spinner genero = viewGroup.findViewById(R.id.patient_form_activity_personal_data_gender_spinner);
 
         assertEquals(expected.getNomePaciente(), name.getText().toString());
         assertEquals(expected.getNascimento(), nascimento.getText().toString());
@@ -130,9 +130,9 @@ public class PatientFormInserterTest {
     public void checkViewGroupIsCorrectlyReturnsTrueAndFalse() {
         // viewGroup id was set in setUp to form_patient_activity
         assertTrue(PatientFormInserter.checkViewGroupIsCorrectly(viewGroup));
-        assertTrue(PatientFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout)));
+        assertTrue(PatientFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_personal_data_layout)));
 
-        viewGroup.setId(R.id.formulario_paciente_patologia_layout);
+        viewGroup.setId(R.id.patient_form_activity_pathological_layout);
         assertFalse(PatientFormInserter.checkViewGroupIsCorrectly(viewGroup));
     }
 

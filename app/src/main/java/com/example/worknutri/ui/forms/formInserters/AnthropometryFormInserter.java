@@ -16,7 +16,7 @@ import com.example.worknutri.util.ViewsUtil;
 public class AnthropometryFormInserter extends FormInserter<Antropometria> {
     private AnthropometryFormInserter(ViewGroup viewGroup) {
         super(viewGroup);
-        viewGroupIdExpected = R.id.formulario_paciente_antropometria_layout;
+        viewGroupIdExpected = R.id.patient_form_activity_anthropometry_layout;
     }
 
     public static AnthropometryFormInserter create (ViewGroup viewGroup) throws InvalidViewGroupIdException{
@@ -33,22 +33,22 @@ public class AnthropometryFormInserter extends FormInserter<Antropometria> {
     }
     public void insertViewGroupInEntity(Antropometria antropometria, Paciente paciente) {
 
-        double pesoAtual = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.formulario_paciente_antropometria_peso_atual_spinner),
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual), MeasureTypes.KILO);
+        double pesoAtual = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.patient_form_activity_anthropometry_weight_current_spinner),
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_current), MeasureTypes.KILO);
         antropometria.setPeso(String.valueOf(pesoAtual));
 
-        Spinner spinner = viewGroup.findViewById(R.id.formulario_paciente_antropometria_spinner_altura);
-        double altura = getValueConverTed(MeasureTypes.fromValue(spinner.getSelectedItemPosition()),viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura),
+        Spinner spinner = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_height_spinner);
+        double altura = getValueConverTed(MeasureTypes.fromValue(spinner.getSelectedItemPosition()),viewGroup.findViewById(R.id.patient_form_activity_anthropometry_height),
                 MeasureTypes.GRAM_METER);
         antropometria.setAltura(String.valueOf(altura));
 
-        double pesoIdeal = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.formulario_paciente_antropometria_peso_ideal_spinner),
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal), MeasureTypes.KILO);
+        double pesoIdeal = getValueConverTed(getMeasureTypesToWeightSpinner(R.id.patient_form_activity_anthropometry_weight_ideal_spinner),
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal), MeasureTypes.KILO);
         antropometria.setPesoIdeal(String.valueOf(pesoIdeal));
 
 
         int positionOfAtivity = ((Spinner) viewGroup.findViewById(
-                R.id.formulario_paciente_antropometria_calculos_atividade_spinner)).getSelectedItemPosition();
+                R.id.patient_form_activity_anthropometry_calculations_activity_level_spinner)).getSelectedItemPosition();
 
         AntropometricCalculator calculador = new AntropometricCalculator(pesoAtual, altura);
 
@@ -63,20 +63,20 @@ public class AnthropometryFormInserter extends FormInserter<Antropometria> {
 
         antropometria.setRegraBolso(calculador.generateBolso(pesoIdeal));
 
-        int valorAPerder = ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_peso_a_perder_spinner)).getSelectedItemPosition();
+        int valorAPerder = ((Spinner) viewGroup.findViewById(R.id.patient_form_activity_anthropometry_calculations_weight_lose_spinner)).getSelectedItemPosition();
         antropometria.setVenta(calculador.generateVenta(Double.parseDouble(antropometria.getValorMetabolico()), valorAPerder));
 
 
         antropometria.setCircumferenciaBracoDir(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)));
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_arm)));
         antropometria.setCircumferenciaCoxaDir(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_coxa)));
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_thigh)));
         antropometria.setCircumferenciaAbdomen(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen)));
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_abdomen)));
         antropometria.setCircumferenciaCintura(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)));
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_waist)));
         antropometria.setCircumferenciaQuadril(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)));
+                viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_hip)));
     }
 
     private MeasureTypes getMeasureTypesToWeightSpinner(int spinnerId) {
@@ -99,33 +99,33 @@ public class AnthropometryFormInserter extends FormInserter<Antropometria> {
      */
     @Override
     public void insertEntityInViewGroup(Antropometria antropometria) {
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_height)
                 , antropometria.getAltura());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_current)
                 , antropometria.getPeso());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal)
                 , antropometria.getPesoIdeal());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_braco)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_arm)
                 , antropometria.getCircumferenciaBracoDir());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_coxa)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_thigh)
                 , antropometria.getCircumferenciaCoxaDir());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_abdomen)
                 , antropometria.getCircumferenciaAbdomen());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_cintura)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_waist)
                 , antropometria.getCircumferenciaCintura());
 
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_antropometria_circum_quadril)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_circum_hip)
                 , antropometria.getCircumferenciaQuadril());
     }
 
     public static boolean checkViewGroupIsCorrectly(ViewGroup viewGroup){
-        return  viewGroup != null &&(viewGroup.getId() == R.id.form_patient_activity ||
-                viewGroup.getId() == R.id.formulario_paciente_antropometria_layout);
+        return  viewGroup != null &&(viewGroup.getId() == R.id.patient_form_activity ||
+                viewGroup.getId() == R.id.patient_form_activity_anthropometry_layout);
     }
 }

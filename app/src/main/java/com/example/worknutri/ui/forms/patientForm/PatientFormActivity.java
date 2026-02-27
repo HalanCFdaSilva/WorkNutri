@@ -21,24 +21,24 @@ public class PatientFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.formulario_paciente_activity);
+        setContentView(R.layout.patient_form_activity);
         adapter = new PatientFormAdapter(this);
 
         showAnthropometricCalc();
 
-        adapter.setClinics(findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner));
+        adapter.setClinics(findViewById(R.id.patient_form_activity_personal_data_clinic_spinner));
 
-        adapter.configuraBottomNav(findViewById(R.id.formulario_paciente_activity_nav_view),getIntent());
+        adapter.configuraBottomNav(findViewById(R.id.patient_form_activity_nav_view),getIntent());
 
-        adapter.insertInFormulario(getIntent(), findViewById(R.id.formulario_paciente_activity_constraint_layout));
+        adapter.insertInFormulario(getIntent(), findViewById(R.id.patient_form_activity_constraint_layout));
 
         adapter.OpenActivityLevelPopUpOnClickIn(
-                findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview),
-                findViewById(R.id.formulario_paciente_activity_constraint_layout));
+                findViewById(R.id.patient_form_activity_anthropometry_calculations_activity_level_info_imageview),
+                findViewById(R.id.patient_form_activity_constraint_layout));
 
 
         this.insertKeyListeners();
-        FloatingActionButton saveButton = findViewById(R.id.formulario_paciente_activity_fab);
+        FloatingActionButton saveButton = findViewById(R.id.patient_form_activity_save_fab);
         saveButton.setOnClickListener(v -> saveLayout());
     }
 
@@ -46,25 +46,25 @@ public class PatientFormActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Button button = findViewById(R.id.formulario_paciente_patologia_button_add);
+        Button button = findViewById(R.id.patient_form_activity_pathological_add_button);
         button.setOnClickListener(onClick->
-                adapter.generateAddPatologyPopup(findViewById(R.id.formulario_paciente_activity_constraint_layout),
-                        findViewById(R.id.formulario_paciente_patologia_layout_content)));
+                adapter.generateAddPatologyPopup(findViewById(R.id.patient_form_activity_constraint_layout),
+                        findViewById(R.id.patient_form_activity_pathological_layout_content)));
 
     }
 
     private void insertKeyListeners() {
-        EditText editText = findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText editText = findViewById(R.id.patient_form_activity_personal_data_phone);
         editText.setOnKeyListener(new PhoneKeyListener());
 
-        editText = findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        editText = findViewById(R.id.patient_form_activity_personal_data_birthday);
         editText.setOnKeyListener(new CalendarioKeyListener());
 
         PesoKeyListener keyListener = new PesoKeyListener();
-        keyListener.setSpinnerAltura(findViewById(R.id.formulario_paciente_antropometria_spinner_altura));
-        keyListener.setPesoIdeal(findViewById(R.id.formulario_paciente_antropometria_peso_ideal_spinner),
-                findViewById(R.id.formulario_paciente_antropometria_peso_ideal));
-        editText = findViewById(R.id.formulario_paciente_antropometria_altura);
+        keyListener.setSpinnerAltura(findViewById(R.id.patient_form_activity_anthropometry_height_spinner));
+        keyListener.setPesoIdeal(findViewById(R.id.patient_form_activity_anthropometry_weight_ideal_spinner),
+                findViewById(R.id.patient_form_activity_anthropometry_weight_ideal));
+        editText = findViewById(R.id.patient_form_activity_anthropometry_height);
         editText.setOnKeyListener(keyListener);
 
 
@@ -72,15 +72,15 @@ public class PatientFormActivity extends AppCompatActivity {
 
 
     private void showAnthropometricCalc() {
-        Button button = findViewById(R.id.formulario_paciente_antropometria_calculos_button);
+        Button button = findViewById(R.id.patient_form_activity_anthropometry_calculations_button);
         button.setOnClickListener(v -> adapter
-                .generateAnthropometricDataPopUp(findViewById(R.id.formulario_paciente_activity_constraint_layout)));
+                .generateAnthropometricDataPopUp(findViewById(R.id.patient_form_activity_constraint_layout)));
     }
 
     private void saveLayout() {
-        ViewGroup viewGroup = findViewById(R.id.formulario_paciente_activity_constraint_layout);
+        ViewGroup viewGroup = findViewById(R.id.patient_form_activity_constraint_layout);
 
-        if (adapter.validateForm(viewGroup, findViewById(R.id.formulario_paciente_activity_error))) {
+        if (adapter.validateForm(viewGroup, findViewById(R.id.patient_form_activity_error))) {
             adapter.savePatientInDb(viewGroup);
             finish();
         }

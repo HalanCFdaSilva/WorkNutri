@@ -58,19 +58,19 @@ public class PatientFormAdapter extends FormularioAdapter {
             anthropometry = getDataBase().antropometriaDao().getByPacienteId(patient.getId());
             pathology = getDataBase().patologiaDao().loadAllByIdPaciente(patient.getId()).get(0);
 
-            PatientFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+            PatientFormInserter.create(viewRootFormulario.findViewById(R.id.patient_form_activity_personal_data_layout))
                     .insertEntityInViewGroup(patient);
 
             PatientFormInserter.insertObservationsInViewGroup(
-                    viewRootFormulario.findViewById(R.id.formulario_paciente_observation), patient);
+                    viewRootFormulario.findViewById(R.id.patient_form_activity_observation), patient);
 
-            PatientFormInserter.SelectClinica(viewRootFormulario.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner),
+            PatientFormInserter.SelectClinica(viewRootFormulario.findViewById(R.id.patient_form_activity_personal_data_clinic_spinner),
                     patient.getClinicaId(), clinicsInOrder);
 
-            AnthropometryFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_antropometria_layout))
+            AnthropometryFormInserter.create(viewRootFormulario.findViewById(R.id.patient_form_activity_anthropometry_layout))
                     .insertEntityInViewGroup(anthropometry);
 
-            PathologyFormInserter.create(viewRootFormulario.findViewById(R.id.formulario_paciente_patologia_layout_content), pathologyCategories)
+            PathologyFormInserter.create(viewRootFormulario.findViewById(R.id.patient_form_activity_pathological_layout_content), pathologyCategories)
                     .insertEntityInViewGroup(pathology);
 
 
@@ -80,15 +80,15 @@ public class PatientFormAdapter extends FormularioAdapter {
 
     public void savePatientInDb(ViewGroup viewGroup) {
 
-        PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+        PatientFormInserter.create(viewGroup.findViewById(R.id.patient_form_activity_personal_data_layout))
                 .insertViewGroupInEntity(patient);
-        PatientFormInserter.insertObservationsInPaciente(patient, viewGroup.findViewById(R.id.formulario_paciente_observation));
-        PatientFormInserter.insertClinicaInPaciente(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner), patient, clinicsInOrder);
+        PatientFormInserter.insertObservationsInPaciente(patient, viewGroup.findViewById(R.id.patient_form_activity_observation));
+        PatientFormInserter.insertClinicaInPaciente(viewGroup.findViewById(R.id.patient_form_activity_personal_data_clinic_spinner), patient, clinicsInOrder);
 
-        AnthropometryFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
+        AnthropometryFormInserter.create(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_layout))
                 .insertViewGroupInEntity(anthropometry, patient);
 
-        PathologyFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content), null)
+        PathologyFormInserter.create(viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content), null)
                 .insertViewGroupInEntity(pathology);
 
         PacienteDao pacienteDao = getDataBase().pacienteDao();
@@ -111,15 +111,15 @@ public class PatientFormAdapter extends FormularioAdapter {
 
     public boolean validateForm(ViewGroup viewRoot, TextView textViewError) {
         boolean validado = validateMandatoryFields(viewRoot, textViewError);
-        if (validado && !FormValidator.validateDate(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
+        if (validado && !FormValidator.validateDate(viewRoot.findViewById(R.id.patient_form_activity_personal_data_birthday),
                 textViewError)) {
             validado = false;
         }
-        if (validado && !FormValidator.validateEmailAdress(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_email),
+        if (validado && !FormValidator.validateEmailAdress(viewRoot.findViewById(R.id.patient_form_activity_personal_data_email),
                 textViewError)) {
             validado = false;
         }
-        if (validado && !FormValidator.validatePhoneNumber(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_fone),
+        if (validado && !FormValidator.validatePhoneNumber(viewRoot.findViewById(R.id.patient_form_activity_personal_data_phone),
                 textViewError)) {
             validado = false;
         }
@@ -128,23 +128,23 @@ public class PatientFormAdapter extends FormularioAdapter {
     }
 
     private boolean validateMandatoryFields(ViewGroup viewRoot, TextView textViewError) {
-        boolean validado = !FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name),
-                viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_name_obrigatorio), textViewError);
-        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
-                viewRoot.findViewById(R.id.formulario_paciente_dados_pessoais_idade_obrigatorio), textViewError)) {
+        boolean validado = !FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.patient_form_activity_personal_data_name),
+                viewRoot.findViewById(R.id.patient_form_activity_personal_data_name_mandatory), textViewError);
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.patient_form_activity_personal_data_birthday),
+                viewRoot.findViewById(R.id.patient_form_activity_personal_data_birthday_mandatory), textViewError)) {
             validado = false;
         }
-        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_altura),
-                viewRoot.findViewById(R.id.formulario_paciente_antropometria_altura_obrigatorio), textViewError)) {
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.patient_form_activity_anthropometry_height),
+                viewRoot.findViewById(R.id.patient_form_activity_anthropometry_height_mandatory), textViewError)) {
             validado = false;
         }
-        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
-                viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_atual_obrigatorio), textViewError)) {
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.patient_form_activity_anthropometry_weight_current),
+                viewRoot.findViewById(R.id.patient_form_activity_anthropometry_weight_current_mandatory), textViewError)) {
             validado = false;
         }
 
-        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_ideal),
-                viewRoot.findViewById(R.id.formulario_paciente_antropometria_peso_ideal_obrigatorio), textViewError)) {
+        if (FormValidator.editTextIsEmpty(viewRoot.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal),
+                viewRoot.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal_mandatory), textViewError)) {
             validado = false;
         }
 
@@ -154,12 +154,12 @@ public class PatientFormAdapter extends FormularioAdapter {
 
     public void generateAnthropometricDataPopUp(ViewGroup viewGroup) {
         if (validateAnthropometricData(viewGroup)) {
-            viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.GONE);
+            viewGroup.findViewById(R.id.patient_form_activity_anthropometry_calculations_error).setVisibility(View.GONE);
 
-            PatientFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout))
+            PatientFormInserter.create(viewGroup.findViewById(R.id.patient_form_activity_personal_data_layout))
                     .insertViewGroupInEntity(patient);
 
-            AnthropometryFormInserter.create(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout))
+            AnthropometryFormInserter.create(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_layout))
                     .insertViewGroupInEntity(anthropometry, patient);
 
             AntropometriaDetaillPopUp antropometriaDetaillPopUp = new PopUpFactoryImpl(getContext()).generateAntropometriaPopUp();
@@ -167,18 +167,18 @@ public class PatientFormAdapter extends FormularioAdapter {
             antropometriaDetaillPopUp.getPopUpWindow().
                     showAtLocation(viewGroup, Gravity.CENTER, -1, -1);
         } else {
-            viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_error).setVisibility(View.VISIBLE);
+            viewGroup.findViewById(R.id.patient_form_activity_anthropometry_calculations_error).setVisibility(View.VISIBLE);
         }
     }
 
     private boolean validateAnthropometricData(ViewGroup viewGroup) {
-        EditText editText = viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        EditText editText = viewGroup.findViewById(R.id.patient_form_activity_personal_data_birthday);
         if (!editText.getText().toString().isBlank()) {
-            editText = viewGroup.findViewById(R.id.formulario_paciente_antropometria_altura);
+            editText = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_height);
             if (!editText.getText().toString().isBlank()) {
-                editText = viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_atual);
+                editText = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_current);
                 if (!editText.getText().toString().isBlank()) {
-                    editText = viewGroup.findViewById(R.id.formulario_paciente_antropometria_peso_ideal);
+                    editText = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal);
                     return !editText.getText().toString().isBlank();
                 }
             }

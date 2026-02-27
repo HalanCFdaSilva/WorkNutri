@@ -14,7 +14,7 @@ import java.util.List;
 public class PatientFormInserter extends FormInserter<Paciente> {
     private PatientFormInserter(ViewGroup viewGroup) {
         super(viewGroup);
-        viewGroupIdExpected = R.id.form_patient_activity;
+        viewGroupIdExpected = R.id.patient_form_activity;
     }
 
     public static PatientFormInserter create(ViewGroup viewGroup) {
@@ -28,19 +28,19 @@ public class PatientFormInserter extends FormInserter<Paciente> {
 
 
         paciente.setNomePaciente(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)));
+                viewGroup.findViewById(R.id.patient_form_activity_personal_data_name)));
 
-        int i = ((Spinner)viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner)).getSelectedItemPosition();
+        int i = ((Spinner)viewGroup.findViewById(R.id.patient_form_activity_personal_data_gender_spinner)).getSelectedItemPosition();
         paciente.setGenero(i == 0 ? 'M' : 'F');
 
         paciente.setNascimento(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)));
+                viewGroup.findViewById(R.id.patient_form_activity_personal_data_birthday)));
 
         paciente.setEmail(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)));
+                viewGroup.findViewById(R.id.patient_form_activity_personal_data_email)));
 
         paciente.setTelefone(ViewsUtil.getStringOfEditText(
-                viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone)));
+                viewGroup.findViewById(R.id.patient_form_activity_personal_data_phone)));
 
     }
     public static void insertObservationsInPaciente(Paciente paciente, EditText editText) {
@@ -62,19 +62,19 @@ public class PatientFormInserter extends FormInserter<Paciente> {
      * @see ViewsUtil
      */
     public void insertEntityInViewGroup(Paciente paciente) {
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_name)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_personal_data_name)
                 , paciente.getNomePaciente());
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_personal_data_birthday)
                 , paciente.getNascimento());
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_email)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_personal_data_email)
                 , paciente.getEmail());
-        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_fone)
+        ViewsUtil.insertInEditText(viewGroup.findViewById(R.id.patient_form_activity_personal_data_phone)
                 , paciente.getTelefone());
 
         if (paciente.getGenero() == 'M') {
-            ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner)).setSelection(0);
+            ((Spinner) viewGroup.findViewById(R.id.patient_form_activity_personal_data_gender_spinner)).setSelection(0);
         } else {
-            ((Spinner) viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner)).setSelection(1);
+            ((Spinner) viewGroup.findViewById(R.id.patient_form_activity_personal_data_gender_spinner)).setSelection(1);
         }
     }
 
@@ -99,7 +99,7 @@ public class PatientFormInserter extends FormInserter<Paciente> {
     }
 
     public static boolean checkViewGroupIsCorrectly(ViewGroup viewGroup){
-        return  viewGroup != null && (viewGroup.getId() == R.id.form_patient_activity||
-                viewGroup.getId() == R.id.formulario_paciente_dados_pessoais_layout);
+        return  viewGroup != null && (viewGroup.getId() == R.id.patient_form_activity ||
+                viewGroup.getId() == R.id.patient_form_activity_personal_data_layout);
     }
 }

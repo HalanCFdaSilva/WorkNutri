@@ -45,7 +45,7 @@ public class PathologyFormInserterTest {
     @Before
     public void setUp() {
         context = TestUtil.getThemedContext();
-        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
         pathology = new Patologia();
         pathologies = new ArrayList<>(Arrays.asList(PathologyField.values()));
@@ -54,18 +54,18 @@ public class PathologyFormInserterTest {
 
     @Test
     public void getViewGroupExpectedIdIsCorrect() {
-        assertEquals(R.id.formulario_paciente_patologia_layout_content, PathologyFormInserter.getViewGroupIdExpected());
+        assertEquals(R.id.patient_form_activity_pathological_layout_content, PathologyFormInserter.getViewGroupIdExpected());
     }
 
     @Test
     public void createThrowsWhenViewGroupIdInvalid_andReturnsInstanceWhenValid() {
         // Inflar um container base
-        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
-        checkNotThrowExceptionAndGenerateObject(R.id.formulario_paciente_patologia_layout, root);
-        checkNotThrowExceptionAndGenerateObject(R.id.formulario_paciente_patologia_layout_content, root);
-        checkNotThrowExceptionAndGenerateObject(R.id.form_patient_activity, root);
-        root.setId(R.id.formulario_paciente_dados_pessoais_layout);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity_pathological_layout, root);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity_pathological_layout_content, root);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity, root);
+        root.setId(R.id.patient_form_activity_personal_data_layout);
         assertThrows("create() not throws InvalidViewGroupIdException to viewGroup with id invalid",
                 InvalidViewGroupIdException.class, () -> PathologyFormInserter.create(root, pathologies));
 
@@ -84,15 +84,15 @@ public class PathologyFormInserterTest {
     @Test
     public void insertViewGroupInEntityPopulatesPatologiaFromUiForAllValidIds() {
         int[] validIds = new int[] {
-                R.id.formulario_paciente_patologia_layout_content,
-                R.id.formulario_paciente_patologia_layout,
-                R.id.form_patient_activity
+                R.id.patient_form_activity_pathological_layout_content,
+                R.id.patient_form_activity_pathological_layout,
+                R.id.patient_form_activity
         };
 
         Patologia expected = TestEntityFactory.generatePatologia();
         for (int id : validIds) {
             pathologies = new ArrayList<>(Arrays.asList(PathologyField.values()));
-            ViewGroup viewInflated = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+            ViewGroup viewInflated = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                     new LinearLayout(context), false);
             ViewGroup root = viewInflated.findViewById(id);
 
@@ -101,8 +101,8 @@ public class PathologyFormInserterTest {
             PathologyFormInserter localInserter = PathologyFormInserter.create(root, pathologies);
 
             ViewGroup viewGroupWithCards= root;
-            if (root.getId() != R.id.formulario_paciente_patologia_layout_content)
-                viewGroupWithCards = root.findViewById(R.id.formulario_paciente_patologia_layout_content);
+            if (root.getId() != R.id.patient_form_activity_pathological_layout_content)
+                viewGroupWithCards = root.findViewById(R.id.patient_form_activity_pathological_layout_content);
 
             assertNotNull("content container must exist for id=" + id, viewGroupWithCards);
 
@@ -171,7 +171,7 @@ public class PathologyFormInserterTest {
         Patologia expected = TestEntityFactory.generatePatologia();
         inserter.insertEntityInViewGroup(expected);
 
-        ViewGroup content = viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content);
+        ViewGroup content = viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content);
         assertNotNull(content);
 
         int matched = 0;
@@ -203,10 +203,10 @@ public class PathologyFormInserterTest {
     public void checkViewGroupIsCorrectlyReturnsTrueAndFalse() {
         // viewGroup id was set in setUp to formulario_paciente_patologia_layout
         assertTrue(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup));
-        assertTrue(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout)));
-        assertTrue(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content)));
+        assertTrue(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_pathological_layout)));
+        assertTrue(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content)));
 
-        viewGroup.setId(R.id.formulario_paciente_dados_pessoais_layout);
+        viewGroup.setId(R.id.patient_form_activity_personal_data_layout);
         assertFalse(PathologyFormInserter.checkViewGroupIsCorrectly(viewGroup));
     }
 
@@ -219,7 +219,7 @@ public class PathologyFormInserterTest {
         titleUnknown.setText("UNKNOWN_TITLE");
         MultiAutoCompleteTextView etUnknown = unknownCard.findViewById(R.id.pop_up_patologia_description_formulario_editText);
         etUnknown.setText("Should be ignored");
-        ViewGroup viewGroupWithCards = viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content);
+        ViewGroup viewGroupWithCards = viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content);
         viewGroupWithCards.addView(unknownCard);
 
         // This should not throw and should leave pathology fields null

@@ -74,16 +74,16 @@ public class PatientFormActivityAnthropometryTest {
 
     private void checkHeightKeyListener(String measureType, String height, double idealWeightExpected) {
 
-        ViewUtil.selectSpinnerItemByName(R.id.formulario_paciente_antropometria_spinner_altura, measureType);
+        ViewUtil.selectSpinnerItemByName(R.id.patient_form_activity_anthropometry_height_spinner, measureType);
 
         scenario.onActivity(activity -> {
-            EditText etHeight = activity.findViewById(R.id.formulario_paciente_antropometria_altura);
-            EditText etIdealWeight = activity.findViewById(R.id.formulario_paciente_antropometria_peso_ideal);
+            EditText etHeight = activity.findViewById(R.id.patient_form_activity_anthropometry_height);
+            EditText etIdealWeight = activity.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal);
             etHeight.setText(height);
             etHeight.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_0));
             etHeight.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_0));
 
-            assertEquals(measureType, ((Spinner)activity.findViewById(R.id.formulario_paciente_antropometria_spinner_altura)).getSelectedItem().toString());
+            assertEquals(measureType, ((Spinner)activity.findViewById(R.id.patient_form_activity_anthropometry_height_spinner)).getSelectedItem().toString());
             assertEquals("0".concat(height), etHeight.getText().toString());
             assertEquals(String.valueOf(idealWeightExpected).substring(0,5), etIdealWeight.getText().toString());
         });
@@ -104,16 +104,16 @@ public class PatientFormActivityAnthropometryTest {
         insertAntropologicDatas("11/12/2000", height, weight);
 
         scenario.onActivity(activity -> activity.findViewById(
-                R.id.formulario_paciente_antropometria_calculos_button).performClick());
+                R.id.patient_form_activity_anthropometry_calculations_button).performClick());
 
         Thread.sleep(300);
     }
 
     private static void insertAntropologicDatas(String birth, String height, String weight) {
-        onView(withId(R.id.formulario_paciente_dados_pessoais_nascimento)).perform(replaceText(birth));
-        onView(withId(R.id.formulario_paciente_antropometria_altura)).perform(replaceText(height));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual)).perform(replaceText(weight));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_ideal)).perform(replaceText(TestUtil
+        onView(withId(R.id.patient_form_activity_personal_data_birthday)).perform(replaceText(birth));
+        onView(withId(R.id.patient_form_activity_anthropometry_height)).perform(replaceText(height));
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current)).perform(replaceText(weight));
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_ideal)).perform(replaceText(TestUtil
                 .formatDoubleToString(AntropometricCalculator.generatePesoIdeal(Double.parseDouble(height)))));
     }
 
@@ -162,7 +162,7 @@ public class PatientFormActivityAnthropometryTest {
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
 
         scenario.onActivity(activity -> activity.findViewById(
-                R.id.formulario_paciente_antropometria_calculos_atividade_info_imageview).performClick());
+                R.id.patient_form_activity_anthropometry_calculations_activity_level_info_imageview).performClick());
         Thread.sleep(300);
 
         onView(withId(R.id.popup_base_layout)).inRoot(RootMatchers.isPlatformPopup()).check(matches(isDisplayed()));
@@ -175,7 +175,7 @@ public class PatientFormActivityAnthropometryTest {
     @Test
     public void onClickInSaveButtonInsertDataInDbCorrectely() {
         String pacientName = "Test Name";
-        onView(withId(R.id.formulario_paciente_dados_pessoais_name)).perform(replaceText(pacientName));
+        onView(withId(R.id.patient_form_activity_personal_data_name)).perform(replaceText(pacientName));
         LocalDate date = LocalDate.of(2000, 12, 12);
 
         Antropometria antropometricExpected = TestEntityFactory.generateAntropometria(
@@ -184,7 +184,7 @@ public class PatientFormActivityAnthropometryTest {
         insertDataInactivity(date, antropometricExpected);
 
         scenario.onActivity(activity ->
-                activity.findViewById(R.id.formulario_paciente_activity_fab).performClick());
+                activity.findViewById(R.id.patient_form_activity_save_fab).performClick());
 
         AppDataBase db = AppDataBase.getInstance(TestUtil.getThemedContext());
         long id = db.pacienteDao().findByName(pacientName).get(0).getId();
@@ -197,21 +197,21 @@ public class PatientFormActivityAnthropometryTest {
         insertAntropologicDatas(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 antropometricExpected.getAltura(), antropometricExpected.getPeso());
 
-        onView(withId(R.id.formulario_paciente_antropometria_circum_cintura))
+        onView(withId(R.id.patient_form_activity_anthropometry_circum_waist))
                 .perform(replaceText(antropometricExpected.getCircumferenciaCintura()));
-        onView(withId(R.id.formulario_paciente_antropometria_circum_coxa))
+        onView(withId(R.id.patient_form_activity_anthropometry_circum_thigh))
                 .perform(replaceText(antropometricExpected.getCircumferenciaCoxaDir()));
-        onView(withId(R.id.formulario_paciente_antropometria_circum_braco))
+        onView(withId(R.id.patient_form_activity_anthropometry_circum_arm))
                 .perform(replaceText(antropometricExpected.getCircumferenciaBracoDir()));
-        onView(withId(R.id.formulario_paciente_antropometria_circum_abdomen))
+        onView(withId(R.id.patient_form_activity_anthropometry_circum_abdomen))
                 .perform(replaceText(antropometricExpected.getCircumferenciaAbdomen()));
 
         scenario.onActivity(activity -> {
             ((TextView)activity.findViewById(
-                    R.id.formulario_paciente_antropometria_circum_quadril)).setText(antropometricExpected.getCircumferenciaQuadril());
-            Spinner spinner = activity.findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_spinner);
+                    R.id.patient_form_activity_anthropometry_circum_hip)).setText(antropometricExpected.getCircumferenciaQuadril());
+            Spinner spinner = activity.findViewById(R.id.patient_form_activity_anthropometry_calculations_activity_level_spinner);
             spinner.setSelection(1);
-            spinner = activity.findViewById(R.id.formulario_paciente_antropometria_calculos_peso_a_perder_spinner);
+            spinner = activity.findViewById(R.id.patient_form_activity_anthropometry_calculations_weight_lose_spinner);
             spinner.setSelection(0);
 
         });

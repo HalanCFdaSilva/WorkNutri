@@ -67,7 +67,7 @@ public class PatientFormActivityGeneralTest {
     public void phoneFieldFormatTextCorrectly() {
 
         scenario.onActivity(activity -> {
-            EditText et = activity.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+            EditText et = activity.findViewById(R.id.patient_form_activity_personal_data_phone);
             assertEquals(InputType.TYPE_CLASS_PHONE, et.getInputType());
 
             // Expected 0 because the method press a key '0' to check the format after key pressed
@@ -86,7 +86,7 @@ public class PatientFormActivityGeneralTest {
     public void birthFieldFormatTextCorrectly() {
 
         scenario.onActivity(activity -> {
-            EditText et = activity.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+            EditText et = activity.findViewById(R.id.patient_form_activity_personal_data_birthday);
             assertEquals(InputType.TYPE_CLASS_NUMBER, et.getInputType());
 
             // Expected 0 because the method press a key '0' to check the format after key pressed
@@ -105,82 +105,82 @@ public class PatientFormActivityGeneralTest {
     public void checkClickInSaveButtonWithEmptyFieldsShowACorrectlyMessageInLayoutAndNotSaveLayout() {
         checkVisibilityOfCampInError(View.INVISIBLE);
 
-        onView(withId(R.id.formulario_paciente_activity_fab)).perform(click());
+        onView(withId(R.id.patient_form_activity_save_fab)).perform(click());
         
         String textExpected = ApplicationProvider.getApplicationContext().getString(R.string.error_blank);
-        onView(withId(R.id.formulario_paciente_activity_error)).check(TextViewAssertions.matchesText(textExpected));
+        onView(withId(R.id.patient_form_activity_error)).check(TextViewAssertions.matchesText(textExpected));
         checkVisibilityOfCampInError(View.VISIBLE);
 
-        onView(withId(R.id.formulario_paciente_dados_pessoais_name))
+        onView(withId(R.id.patient_form_activity_personal_data_name))
                 .check(TextViewAssertions.matchesHintColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_nascimento))
+        onView(withId(R.id.patient_form_activity_personal_data_birthday))
                 .check(TextViewAssertions.matchesHintColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual))
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current))
                 .check(TextViewAssertions.matchesHintColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual))
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current))
                 .check(TextViewAssertions.matchesHintColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.formulario_paciente_antropometria_altura))
+        onView(withId(R.id.patient_form_activity_anthropometry_height))
                 .check(TextViewAssertions.matchesHintColor(TestUtil.colorFromRes(R.color.obrigatorio)));
 
     }
 
     private static void checkVisibilityOfCampInError(int visibilityExpected) {
-        onView(withId(R.id.formulario_paciente_activity_error))
+        onView(withId(R.id.patient_form_activity_error))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_name_obrigatorio))
+        onView(withId(R.id.patient_form_activity_personal_data_name_mandatory))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_idade_obrigatorio))
+        onView(withId(R.id.patient_form_activity_personal_data_birthday_mandatory))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual_obrigatorio))
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current_mandatory))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual_obrigatorio))
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current_mandatory))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
-        onView(withId(R.id.formulario_paciente_antropometria_altura_obrigatorio))
+        onView(withId(R.id.patient_form_activity_anthropometry_height_mandatory))
                 .check(TextViewAssertions.matchesVisibility(visibilityExpected));
     }
 
     @Test
     public void notSaveInDataBankAndShowFieldsIfEmailFieldIsIncorrectlyFilled() throws Exception {
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_email,"aa",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_email,"aa",
                 R.string.error_email);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_email,"aa@",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_email,"aa@",
                 R.string.error_email);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_email,"aa@aa",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_email,"aa@aa",
                 R.string.error_email);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_email,"aa@aa.",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_email,"aa@aa.",
                 R.string.error_email);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_email,"aa@aa.c",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_email,"aa@aa.c",
                 R.string.error_email);
     }
     @Test
     public void notSaveInDataBankAndShowFieldsIfPhoneFieldIsIncorrectlyFilled() throws Exception {
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_fone, "12",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_phone, "12",
                 R.string.error_fone);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_fone, "(12) 1212-",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_phone, "(12) 1212-",
                 R.string.error_fone);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_fone, "(12) 1212-121",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_phone, "(12) 1212-121",
                 R.string.error_fone);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_fone, "(12) 1212-121212",
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_phone, "(12) 1212-121212",
                 R.string.error_fone);
 
     }
     @Test
     public void notSaveInDataBankAndShowFieldsIfBirthdayFieldIsIncorrectlyFilled() throws Exception {
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "12", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "12/04", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "12/12/121", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "29/02/2026", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "29/13/1990", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "41/07/1990", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "29/12/0000", R.string.error_data);
-        ifFieldIncorrectlyShowErrorCorrectly(R.id.formulario_paciente_dados_pessoais_nascimento,
+        ifFieldIncorrectlyShowErrorCorrectly(R.id.patient_form_activity_personal_data_birthday,
                 "29/10/0990", R.string.error_data);
 
     }
@@ -191,12 +191,12 @@ public class PatientFormActivityGeneralTest {
 
         onView(withId(idEdittextToCheck)).perform(replaceText(textToInsert));
 
-        onView(withId(R.id.formulario_paciente_activity_fab)).perform(click());
+        onView(withId(R.id.patient_form_activity_save_fab)).perform(click());
 
         Thread.sleep(500);
 
         onView(withId(idEdittextToCheck)).check(TextViewAssertions.matchesTextColor(TestUtil.colorFromRes(R.color.obrigatorio)));
-        onView(withId(R.id.formulario_paciente_activity_error))
+        onView(withId(R.id.patient_form_activity_error))
                 .check(TextViewAssertions.matchesVisibility(View.VISIBLE))
                 .check(TextViewAssertions.matchesText(TestUtil.getStringFromRes(idStringError)));
 
@@ -210,7 +210,7 @@ public class PatientFormActivityGeneralTest {
         String patientName = "Patient Teste";
         fillerNecessaryFields(patientName);
 
-        onView(withId(R.id.formulario_paciente_activity_fab)).perform(click());
+        onView(withId(R.id.patient_form_activity_save_fab)).perform(click());
 
         Thread.sleep(500);
 
@@ -221,11 +221,11 @@ public class PatientFormActivityGeneralTest {
     }
 
     private static void fillerNecessaryFields(String patientName) {
-        onView(withId(R.id.formulario_paciente_dados_pessoais_name)).perform(replaceText(patientName));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_nascimento)).perform(replaceText("12/12/2000"));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_ideal)).perform(replaceText("67"));
-        onView(withId(R.id.formulario_paciente_antropometria_peso_atual)).perform(replaceText("80"));
-        onView(withId(R.id.formulario_paciente_antropometria_altura)).perform(replaceText("1.70"));
+        onView(withId(R.id.patient_form_activity_personal_data_name)).perform(replaceText(patientName));
+        onView(withId(R.id.patient_form_activity_personal_data_birthday)).perform(replaceText("12/12/2000"));
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_ideal)).perform(replaceText("67"));
+        onView(withId(R.id.patient_form_activity_anthropometry_weight_current)).perform(replaceText("80"));
+        onView(withId(R.id.patient_form_activity_anthropometry_height)).perform(replaceText("1.70"));
     }
 
 
@@ -234,19 +234,19 @@ public class PatientFormActivityGeneralTest {
         Paciente patient = TestEntityFactory.generatePatient();
         patient.setNomePaciente("João Teste");
         fillerNecessaryFields(patient.getNomePaciente());
-        onView(withId(R.id.formulario_paciente_dados_pessoais_nascimento))
+        onView(withId(R.id.patient_form_activity_personal_data_birthday))
                 .perform(replaceText(patient.getNascimento()));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_fone))
+        onView(withId(R.id.patient_form_activity_personal_data_phone))
                 .perform(replaceText(patient.getTelefone()));
-        onView(withId(R.id.formulario_paciente_dados_pessoais_email))
+        onView(withId(R.id.patient_form_activity_personal_data_email))
                 .perform(replaceText(patient.getEmail()));
-        ViewUtil.selectSpinnerItemByName(R.id.formulario_paciente_dados_pessoais_genero_spinner,
+        ViewUtil.selectSpinnerItemByName(R.id.patient_form_activity_personal_data_gender_spinner,
                 String.valueOf(patient.getGenero()));
 
         scenario.onActivity(activity ->{
-            ((TextView)activity.findViewById(R.id.formulario_paciente_observation)).setText(patient.getObservacoes());
+            ((TextView)activity.findViewById(R.id.patient_form_activity_observation)).setText(patient.getObservacoes());
 
-            Spinner spinnerClinic = activity.findViewById(R.id.formulario_paciente_dados_pessoais_clinica_spinner);
+            Spinner spinnerClinic = activity.findViewById(R.id.patient_form_activity_personal_data_clinic_spinner);
             List<Clinica> allClinicsInOrder = db.clinicaDao().getAllInOrder();
             for (int i = 0; i < allClinicsInOrder.size(); i++) {
                 if(allClinicsInOrder.get(i).getId() == patient.getClinicaId()){
@@ -257,7 +257,7 @@ public class PatientFormActivityGeneralTest {
         });
 
 
-        onView(withId(R.id.formulario_paciente_activity_fab)).perform(click());
+        onView(withId(R.id.patient_form_activity_save_fab)).perform(click());
 
         Thread.sleep(500);
 
@@ -297,7 +297,7 @@ public class PatientFormActivityGeneralTest {
             checkIfEditTextIsInsertedPacienteDataCorrectly(localScenario, paciente);
             checkIfEditTextIsInsertedAnthropometryDataCorrectly(localScenario, antropometria);
             localScenario.onActivity(activity -> {
-                ViewGroup viewGroup = activity.findViewById(R.id.formulario_paciente_patologia_layout_content);
+                ViewGroup viewGroup = activity.findViewById(R.id.patient_form_activity_pathological_layout_content);
 
                 assertEquals(12, viewGroup.getChildCount());
                 ViewGroup viewOfPathology = (ViewGroup) viewGroup.getChildAt(0);
@@ -327,12 +327,12 @@ public class PatientFormActivityGeneralTest {
     private static void checkIfEditTextIsInsertedPacienteDataCorrectly(ActivityScenario<PatientFormActivity> localScenario,
                                                                        Paciente paciente) {
         localScenario.onActivity(activity -> {
-            EditText etName = activity.findViewById(R.id.formulario_paciente_dados_pessoais_name);
-            EditText etNasc = activity.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
-            EditText etEmail = activity.findViewById(R.id.formulario_paciente_dados_pessoais_email);
-            EditText etPhone = activity.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
-            android.widget.Spinner spinnerGender = activity.findViewById(R.id.formulario_paciente_dados_pessoais_genero_spinner);
-            EditText etObservation = activity.findViewById(R.id.formulario_paciente_observation);
+            EditText etName = activity.findViewById(R.id.patient_form_activity_personal_data_name);
+            EditText etNasc = activity.findViewById(R.id.patient_form_activity_personal_data_birthday);
+            EditText etEmail = activity.findViewById(R.id.patient_form_activity_personal_data_email);
+            EditText etPhone = activity.findViewById(R.id.patient_form_activity_personal_data_phone);
+            android.widget.Spinner spinnerGender = activity.findViewById(R.id.patient_form_activity_personal_data_gender_spinner);
+            EditText etObservation = activity.findViewById(R.id.patient_form_activity_observation);
 
             assertEquals(paciente.getNomePaciente(), etName.getText().toString());
             assertEquals(paciente.getNascimento(), etNasc.getText().toString());
@@ -349,14 +349,14 @@ public class PatientFormActivityGeneralTest {
     private static void checkIfEditTextIsInsertedAnthropometryDataCorrectly(ActivityScenario<PatientFormActivity> localScenario,
                                                                             Antropometria antropometria) {
         localScenario.onActivity(activity -> {
-            EditText etHeight = activity.findViewById(R.id.formulario_paciente_antropometria_altura);
-            EditText etWeight = activity.findViewById(R.id.formulario_paciente_antropometria_peso_atual);
-            EditText etExpectedWeight = activity.findViewById(R.id.formulario_paciente_antropometria_peso_ideal);
-            EditText etRightArm = activity.findViewById(R.id.formulario_paciente_antropometria_circum_braco);
-            EditText etRightThigh = activity.findViewById(R.id.formulario_paciente_antropometria_circum_coxa);
-            EditText etAbdomen = activity.findViewById(R.id.formulario_paciente_antropometria_circum_abdomen);
-            EditText etWaist = activity.findViewById(R.id.formulario_paciente_antropometria_circum_cintura);
-            EditText etHip = activity.findViewById(R.id.formulario_paciente_antropometria_circum_quadril);
+            EditText etHeight = activity.findViewById(R.id.patient_form_activity_anthropometry_height);
+            EditText etWeight = activity.findViewById(R.id.patient_form_activity_anthropometry_weight_current);
+            EditText etExpectedWeight = activity.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal);
+            EditText etRightArm = activity.findViewById(R.id.patient_form_activity_anthropometry_circum_arm);
+            EditText etRightThigh = activity.findViewById(R.id.patient_form_activity_anthropometry_circum_thigh);
+            EditText etAbdomen = activity.findViewById(R.id.patient_form_activity_anthropometry_circum_abdomen);
+            EditText etWaist = activity.findViewById(R.id.patient_form_activity_anthropometry_circum_waist);
+            EditText etHip = activity.findViewById(R.id.patient_form_activity_anthropometry_circum_hip);
 
             assertEquals(antropometria.getAltura(), etHeight.getText().toString());
             assertEquals(antropometria.getPeso(), etWeight.getText().toString());
@@ -372,7 +372,7 @@ public class PatientFormActivityGeneralTest {
     @Test
     public void clickingBottomNav_shouldSelectCorrectFragment() {
 
-        NavViewInteractionTest<PatientFormActivity> navTest = new NavViewInteractionTest<>(R.id.formulario_paciente_activity_nav_view, PatientFormActivity.class);
+        NavViewInteractionTest<PatientFormActivity> navTest = new NavViewInteractionTest<>(R.id.patient_form_activity_nav_view, PatientFormActivity.class);
         navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_pacientes,FragmentSelectedActivity.PACIENTE_FRAGMENT);
         navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_clinicas,FragmentSelectedActivity.CLINICA_FRAGMENT);
 

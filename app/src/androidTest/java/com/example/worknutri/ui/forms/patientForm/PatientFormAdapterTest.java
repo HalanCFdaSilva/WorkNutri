@@ -39,7 +39,7 @@ public class PatientFormAdapterTest {
         context = TestUtil.getThemedContext();
         adapter = new PatientFormAdapter(context);
 
-        root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
     }
 
@@ -80,10 +80,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsFalseWhenPhoneFieldIsFilledIncorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText phoneEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText phoneEditText = root.findViewById(R.id.patient_form_activity_personal_data_phone);
         phoneEditText.setText("invalid phone");
         assertFalse("validaFormulario should return false when phone field is filled incorrectly",
                 adapter.validateForm(root, error));
@@ -93,11 +93,11 @@ public class PatientFormAdapterTest {
 
     @Test
     public void whenMandatoryFieldsIsEmptyAndPhoneFieldIsIncorrectlyFilledAMandatoryFieldsErrorHasPriority() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
         getMandatoryEditTexts()[0].setText("");
-        EditText phoneEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText phoneEditText = root.findViewById(R.id.patient_form_activity_personal_data_phone);
         phoneEditText.setText("invalid phone");
 
         assertFalse("validaFormulario should return false when phone field is filled incorrectly or a mandatory field is empty",
@@ -108,10 +108,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsTrueWhenPhoneFieldIsFilledCorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText phoneEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText phoneEditText = root.findViewById(R.id.patient_form_activity_personal_data_phone);
         phoneEditText.setText("21999999999");
         assertTrue("validaFormulario should return true when phone field is filled correctly and all mandatory fields are filled",
                 adapter.validateForm(root, error));
@@ -121,10 +121,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsFalseWhenEmailFieldIsFilledIncorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText emailEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
+        EditText emailEditText = root.findViewById(R.id.patient_form_activity_personal_data_email);
         emailEditText.setText("invalid@email");
         assertFalse("validaFormulario should return false when email field is filled incorrectly",
                 adapter.validateForm(root, error));
@@ -134,11 +134,11 @@ public class PatientFormAdapterTest {
 
     @Test
     public void whenMandatoryFieldsIsEmptyAndEmailFieldIsIncorrectlyFilledAMandatoryFieldsErrorHasPriority() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
         getMandatoryEditTexts()[0].setText("");
-        EditText emailEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
+        EditText emailEditText = root.findViewById(R.id.patient_form_activity_personal_data_email);
         emailEditText.setText("invalid@email");
 
         assertFalse("validaFormulario should return false when email field is filled incorrectly or a mandatory field is empty",
@@ -149,12 +149,12 @@ public class PatientFormAdapterTest {
 
     @Test
     public void whenEmailFieldAndPhoneFieldIsIncorrectlyFilledAEmailFieldErrorHasPriority() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText phoneEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_fone);
+        EditText phoneEditText = root.findViewById(R.id.patient_form_activity_personal_data_phone);
         phoneEditText.setText("invalid phone");
-        EditText emailEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
+        EditText emailEditText = root.findViewById(R.id.patient_form_activity_personal_data_email);
         emailEditText.setText("invalid@email");
 
         assertFalse("validaFormulario should return false when email field is filled incorrectly or a mandatory field is empty",
@@ -165,10 +165,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsTrueWhenEmailFieldIsFilledCorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText emailEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
+        EditText emailEditText = root.findViewById(R.id.patient_form_activity_personal_data_email);
         emailEditText.setText("email@correctly.filled");
         assertTrue("validaFormulario should return true when email field is filled correctly and all mandatory fields are filled",
                 adapter.validateForm(root, error));
@@ -178,10 +178,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsFalseWhenDateFieldIsFilledIncorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText dateEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        EditText dateEditText = root.findViewById(R.id.patient_form_activity_personal_data_birthday);
         dateEditText.setText("22/22/2222");
         assertFalse("validaFormulario should return false when date field is filled incorrectly",
                 adapter.validateForm(root, error));
@@ -191,11 +191,11 @@ public class PatientFormAdapterTest {
 
     @Test
     public void whenMandatoryFieldsIsEmptyAndDateFieldIsIncorrectlyFilledAMandatoryFieldsErrorHasPriority() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
         getMandatoryEditTexts()[0].setText("");
-        EditText dateEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        EditText dateEditText = root.findViewById(R.id.patient_form_activity_personal_data_birthday);
         dateEditText.setText("22/22/2222");
 
         assertFalse("validaFormulario should return false when date field is filled incorrectly or a mandatory field is empty",
@@ -206,12 +206,12 @@ public class PatientFormAdapterTest {
 
     @Test
     public void whenDateFieldAndEmailFieldIsIncorrectlyFilledADateFieldErrorHasPriority() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText emailEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_email);
+        EditText emailEditText = root.findViewById(R.id.patient_form_activity_personal_data_email);
         emailEditText.setText("invalid@email");
-        EditText dateEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        EditText dateEditText = root.findViewById(R.id.patient_form_activity_personal_data_birthday);
         dateEditText.setText("22/22/2222");
 
         assertFalse("validaFormulario should return false when email field or a  date field is filled incorrectly ",
@@ -222,10 +222,10 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsTrueWhenDateFieldIsFilledCorrectly() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
-        EditText dateEditText = root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento);
+        EditText dateEditText = root.findViewById(R.id.patient_form_activity_personal_data_birthday);
         dateEditText.setText("22/10/1990");
         assertTrue("validaFormulario should return true when email field is filled correctly and all mandatory fields are filled",
                 adapter.validateForm(root, error));
@@ -246,7 +246,7 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsTrueWhenAllMandatoryFieldsIsFilled() {
-        TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
         error.setText("");
         insertStringMandatoryfields();
 
@@ -259,7 +259,7 @@ public class PatientFormAdapterTest {
 
     @Test
     public void validateFormReturnsFalseWhenAnyMandatoryFieldIsEmpty() {
-        final TextView error = root.findViewById(R.id.formulario_paciente_antropometria_calculos_error);
+        final TextView error = root.findViewById(R.id.patient_form_activity_anthropometry_calculations_error);
 
         EditText[] editTexts = getMandatoryEditTexts();
         String[] texts = getStringsToMandatoryEditTexts();
@@ -280,11 +280,11 @@ public class PatientFormAdapterTest {
 
     private EditText[] getMandatoryEditTexts() {
         return new EditText[]{
-                root.findViewById(R.id.formulario_paciente_dados_pessoais_name),
-                root.findViewById(R.id.formulario_paciente_dados_pessoais_nascimento),
-                root.findViewById(R.id.formulario_paciente_antropometria_altura),
-                root.findViewById(R.id.formulario_paciente_antropometria_peso_atual),
-                root.findViewById(R.id.formulario_paciente_antropometria_peso_ideal)
+                root.findViewById(R.id.patient_form_activity_personal_data_name),
+                root.findViewById(R.id.patient_form_activity_personal_data_birthday),
+                root.findViewById(R.id.patient_form_activity_anthropometry_height),
+                root.findViewById(R.id.patient_form_activity_anthropometry_weight_current),
+                root.findViewById(R.id.patient_form_activity_anthropometry_weight_ideal)
         };
     }
 

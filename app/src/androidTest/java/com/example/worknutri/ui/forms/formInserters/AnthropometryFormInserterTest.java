@@ -37,7 +37,7 @@ public class AnthropometryFormInserterTest {
     @Before
     public void setUp() {
         context = TestUtil.getThemedContext();
-        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
         inserter = AnthropometryFormInserter.create(viewGroup);
         anthropometryExpected = TestEntityFactory.generateAntropometria(birthday, 1.75, 65);
@@ -47,14 +47,14 @@ public class AnthropometryFormInserterTest {
 
     @Test
     public void getViewGroupExpectedIdIsCorrect() {
-        assertEquals(R.id.formulario_paciente_antropometria_layout, AnthropometryFormInserter.getViewGroupIdExpected());
+        assertEquals(R.id.patient_form_activity_anthropometry_layout, AnthropometryFormInserter.getViewGroupIdExpected());
     }
 
     @Test
     public void insertViewGroupInEntityPopulatesAntropometriaFromUi() {
 
         assertNotNull(viewGroup);
-        assertEquals(R.id.form_patient_activity, viewGroup.getId());
+        assertEquals(R.id.patient_form_activity, viewGroup.getId());
         insertDataInLayout();
 
         Antropometria anthropometryResult = new Antropometria();
@@ -70,17 +70,17 @@ public class AnthropometryFormInserterTest {
     }
 
     private void insertDataInLayout() {
-        insertInEditText(R.id.formulario_paciente_antropometria_circum_braco, anthropometryExpected.getCircumferenciaBracoDir());
-        insertInEditText(R.id.formulario_paciente_antropometria_circum_coxa, anthropometryExpected.getCircumferenciaCoxaDir());
-        insertInEditText(R.id.formulario_paciente_antropometria_circum_abdomen, anthropometryExpected.getCircumferenciaAbdomen());
-        insertInEditText(R.id.formulario_paciente_antropometria_circum_cintura, anthropometryExpected.getCircumferenciaCintura());
-        insertInEditText(R.id.formulario_paciente_antropometria_circum_quadril, anthropometryExpected.getCircumferenciaQuadril());
+        insertInEditText(R.id.patient_form_activity_anthropometry_circum_arm, anthropometryExpected.getCircumferenciaBracoDir());
+        insertInEditText(R.id.patient_form_activity_anthropometry_circum_thigh, anthropometryExpected.getCircumferenciaCoxaDir());
+        insertInEditText(R.id.patient_form_activity_anthropometry_circum_abdomen, anthropometryExpected.getCircumferenciaAbdomen());
+        insertInEditText(R.id.patient_form_activity_anthropometry_circum_waist, anthropometryExpected.getCircumferenciaCintura());
+        insertInEditText(R.id.patient_form_activity_anthropometry_circum_hip, anthropometryExpected.getCircumferenciaQuadril());
 
-        insertInEditText(R.id.formulario_paciente_antropometria_altura, anthropometryExpected.getAltura());
-        insertInEditText(R.id.formulario_paciente_antropometria_peso_atual, anthropometryExpected.getPeso());
-        insertInEditText(R.id.formulario_paciente_antropometria_peso_ideal, anthropometryExpected.getPesoIdeal());
-        insertInEditText(R.id.formulario_paciente_dados_pessoais_nascimento, birthday);
-        Spinner genderSpinner = viewGroup.findViewById(R.id.formulario_paciente_antropometria_calculos_atividade_spinner);
+        insertInEditText(R.id.patient_form_activity_anthropometry_height, anthropometryExpected.getAltura());
+        insertInEditText(R.id.patient_form_activity_anthropometry_weight_current, anthropometryExpected.getPeso());
+        insertInEditText(R.id.patient_form_activity_anthropometry_weight_ideal, anthropometryExpected.getPesoIdeal());
+        insertInEditText(R.id.patient_form_activity_personal_data_birthday, birthday);
+        Spinner genderSpinner = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_calculations_activity_level_spinner);
         genderSpinner.setSelection(1);
     }
 
@@ -115,7 +115,7 @@ public class AnthropometryFormInserterTest {
 
     @Test
     public void insertAnthropometryInViewGroupPopulatesUiFromEntity(){
-        assertEquals(viewGroup.getId(), R.id.form_patient_activity);
+        assertEquals(viewGroup.getId(), R.id.patient_form_activity);
         inserter.insertEntityInViewGroup(anthropometryExpected);
         checkIfViewGroupIsPopulatedWithAnthropometry();
 
@@ -123,22 +123,22 @@ public class AnthropometryFormInserterTest {
 
     private void checkIfViewGroupIsPopulatedWithAnthropometry() {
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getCircumferenciaAbdomen(),
-                R.id.formulario_paciente_antropometria_circum_abdomen);
+                R.id.patient_form_activity_anthropometry_circum_abdomen);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getCircumferenciaCoxaDir(),
-                R.id.formulario_paciente_antropometria_circum_coxa);
+                R.id.patient_form_activity_anthropometry_circum_thigh);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getCircumferenciaBracoDir(),
-                R.id.formulario_paciente_antropometria_circum_braco);
+                R.id.patient_form_activity_anthropometry_circum_arm);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getCircumferenciaCintura(),
-                R.id.formulario_paciente_antropometria_circum_cintura);
+                R.id.patient_form_activity_anthropometry_circum_waist);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getCircumferenciaQuadril(),
-                R.id.formulario_paciente_antropometria_circum_quadril);
+                R.id.patient_form_activity_anthropometry_circum_hip);
 
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getAltura(),
-                R.id.formulario_paciente_antropometria_altura);
+                R.id.patient_form_activity_anthropometry_height);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getPeso(),
-                R.id.formulario_paciente_antropometria_peso_atual);
+                R.id.patient_form_activity_anthropometry_weight_current);
         checkIfEditTextIsPopulatedWithValue(anthropometryExpected.getPesoIdeal(),
-                R.id.formulario_paciente_antropometria_peso_ideal);
+                R.id.patient_form_activity_anthropometry_weight_ideal);
     }
     private void checkIfEditTextIsPopulatedWithValue( String expectedValue, int idEditText) {
         EditText editText = viewGroup.findViewById(idEditText);
@@ -147,23 +147,23 @@ public class AnthropometryFormInserterTest {
 
     @Test
     public void checkViewGroupIsCorrectlyReturnsTrueIfViewGroupIsCorrect() {
-        assertEquals(viewGroup.getId(), R.id.form_patient_activity);
+        assertEquals(viewGroup.getId(), R.id.patient_form_activity);
         assertTrue(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup));
-        assertTrue(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout)));
-        assertFalse(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_dados_pessoais_layout)));
-        assertFalse(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.formulario_paciente_patologia_layout)));
+        assertTrue(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_anthropometry_layout)));
+        assertFalse(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_personal_data_layout)));
+        assertFalse(AnthropometryFormInserter.checkViewGroupIsCorrectly(viewGroup.findViewById(R.id.patient_form_activity_pathological_layout)));
 
     }
 
     @Test
     public void checkIfInCallCreateToViewGroupWithIdIncorrectThrowInvalidViewGroupIdException(){
-        ViewGroup incorrectViewGroup = viewGroup.findViewById(R.id.formulario_paciente_antropometria_layout);
+        ViewGroup incorrectViewGroup = viewGroup.findViewById(R.id.patient_form_activity_anthropometry_layout);
         assertTrue(AnthropometryFormInserter.checkViewGroupIsCorrectly(incorrectViewGroup));
         inserter = AnthropometryFormInserter.create(incorrectViewGroup);
         inserter.insertEntityInViewGroup(anthropometryExpected);
         checkIfViewGroupIsPopulatedWithAnthropometry();
 
-        incorrectViewGroup.setId(R.id.formulario_paciente_dados_pessoais_layout);
+        incorrectViewGroup.setId(R.id.patient_form_activity_personal_data_layout);
         assertFalse(AnthropometryFormInserter.checkViewGroupIsCorrectly(incorrectViewGroup));
         assertThrows(InvalidViewGroupIdException.class,() -> AnthropometryFormInserter.create(incorrectViewGroup));
 
@@ -172,11 +172,11 @@ public class AnthropometryFormInserterTest {
 
     @Test
     public void createThrowsWhenViewGroupIdInvalid_andReturnsInstanceWhenValid() {
-        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.formulario_paciente_activity,
+        ViewGroup root = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
-        checkNotThrowExceptionAndGenerateObject(R.id.formulario_paciente_antropometria_layout, root);
-        checkNotThrowExceptionAndGenerateObject(R.id.form_patient_activity, root);
-        root.setId(R.id.formulario_paciente_dados_pessoais_layout);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity_anthropometry_layout, root);
+        checkNotThrowExceptionAndGenerateObject(R.id.patient_form_activity, root);
+        root.setId(R.id.patient_form_activity_personal_data_layout);
         assertThrows("create() not throws InvalidViewGroupIdException to viewGroup with id invalid",
                 InvalidViewGroupIdException.class, () -> PathologyFormInserter.create(root,null));
 

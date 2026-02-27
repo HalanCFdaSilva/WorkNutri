@@ -26,7 +26,7 @@ public class PathologyFormInserter extends FormInserter<Patologia> {
 
     private PathologyFormInserter(ViewGroup viewGroup, List<PathologyField> pathologies) {
         super(viewGroup);
-        viewGroupIdExpected = R.id.formulario_paciente_patologia_layout_content;
+        viewGroupIdExpected = R.id.patient_form_activity_pathological_layout_content;
         this.pathologies = pathologies;
         this.context = viewGroup.getContext();
     }
@@ -43,8 +43,8 @@ public class PathologyFormInserter extends FormInserter<Patologia> {
     @Override
     public void insertViewGroupInEntity(Patologia pathology) {
         ViewGroup viewGroupWithCards = viewGroup;
-        if (viewGroup.getId() != R.id.formulario_paciente_patologia_layout_content) {
-            viewGroupWithCards = viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content);
+        if (viewGroup.getId() != R.id.patient_form_activity_pathological_layout_content) {
+            viewGroupWithCards = viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content);
         }
         for (int i = 0; i < viewGroupWithCards.getChildCount() ; i++) {
             ViewGroup child = (ViewGroup) viewGroupWithCards.getChildAt(i);
@@ -105,8 +105,8 @@ public class PathologyFormInserter extends FormInserter<Patologia> {
     private void generateView(PathologyField pathologyTypeToInsert, Patologia pathology) {
         String valueOfPathology = new PathologyFieldMapper(pathologyTypeToInsert).getValue(pathology);
         ViewGroup viewToInsert = viewGroup;
-        if (viewGroup.getId() != R.id.formulario_paciente_patologia_layout_content) {
-            viewToInsert = viewGroup.findViewById(R.id.formulario_paciente_patologia_layout_content);
+        if (viewGroup.getId() != R.id.patient_form_activity_pathological_layout_content) {
+            viewToInsert = viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content);
         }
         if (valueOfPathology != null && !valueOfPathology.isEmpty()) {
             PathologyFormFragmentFactory pathologyFormFragmentFactory = new PathologyFormFragmentFactory(pathologyTypeToInsert,pathology);
@@ -119,9 +119,9 @@ public class PathologyFormInserter extends FormInserter<Patologia> {
     }
 
     public static boolean checkViewGroupIsCorrectly(ViewGroup viewGroup){
-        return viewGroup != null && ( viewGroup.getId() == R.id.form_patient_activity ||
-                viewGroup.getId() == R.id.formulario_paciente_patologia_layout ||
-                viewGroup.getId() == R.id.formulario_paciente_patologia_layout_content);
+        return viewGroup != null && ( viewGroup.getId() == R.id.patient_form_activity ||
+                viewGroup.getId() == R.id.patient_form_activity_pathological_layout ||
+                viewGroup.getId() == R.id.patient_form_activity_pathological_layout_content);
     }
 
 

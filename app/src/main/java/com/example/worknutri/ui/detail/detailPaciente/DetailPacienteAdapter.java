@@ -23,7 +23,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 import com.example.worknutri.ui.BottomMenuConfigurator;
 import com.example.worknutri.ui.ExtrasActivities;
-import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
+import com.example.worknutri.ui.detail.detailClinica.ClinicDescriptionActivity;
 import com.example.worknutri.ui.forms.patientForm.PatientFormActivity;
 import com.example.worknutri.ui.popUp.RemoveConfirmPopUp;
 import com.example.worknutri.ui.popUp.anthropometry.AntropometriaDetaillPopUp;
@@ -77,7 +77,7 @@ public class DetailPacienteAdapter {
     private void bottomNavClinicaIcon(BottomMenuConfigurator menuConfigurator) {
         Intent intent;
         if (clinica != null){
-            intent = new Intent(context, ClinicaDescriptionActivity.class);
+            intent = new Intent(context, ClinicDescriptionActivity.class);
             intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
             menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
         }

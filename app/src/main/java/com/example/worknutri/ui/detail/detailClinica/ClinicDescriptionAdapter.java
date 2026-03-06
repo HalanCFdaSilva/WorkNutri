@@ -19,84 +19,83 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class ClinicaDescriptionAdapter {
-    private Clinica clinica;
+public class ClinicDescriptionAdapter {
+    private Clinica clinic;
     private List<DayOfWork> dayOfWorkList;
     private AppDataBase dataBase;
     private Context context;
 
-    public ClinicaDescriptionAdapter(Intent intent, Context context) {
+    public ClinicDescriptionAdapter(Intent intent, Context context) {
         if (intent.hasExtra(ExtrasActivities.CLINICA_EXTRA.getKey())) {
-            this.clinica = (Clinica) intent.getSerializableExtra(ExtrasActivities.CLINICA_EXTRA.getKey());
+            this.clinic = (Clinica) intent.getSerializableExtra(ExtrasActivities.CLINICA_EXTRA.getKey());
             dataBase = AppDataBase.getInstance(context);
-            dayOfWorkList = dataBase.dayOfWorkDao().getDaysforClinicaId(clinica.getId());
+            dayOfWorkList = dataBase.dayOfWorkDao().getDaysforClinicaId(clinic.getId());
             this.context = context;
         } else ((Activity) context).finish();
 
 
     }
 
-    public void insertClinicaInLayout(ViewGroup viewGroup) {
-        insertDadosGerais(viewGroup);
-        InsertEndereco(viewGroup);
+    public void insertClinicInLayout(ViewGroup viewGroup) {
+        insertGeneralData(viewGroup);
+        InsertAdress(viewGroup);
 
     }
 
-    private void insertDadosGerais(ViewGroup viewGroup) {
+    private void insertGeneralData(ViewGroup viewGroup) {
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_name), clinica.getNome());
+                R.id.clinica_description_activity_dados_gerais_name), clinic.getNome());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_fone), clinica.getTelefone1());
+                R.id.clinica_description_activity_dados_gerais_fone), clinic.getTelefone1());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_dados_gerais_email), clinica.getEmail());
+                R.id.clinica_description_activity_dados_gerais_email), clinic.getEmail());
     }
 
-    private void InsertEndereco(ViewGroup viewGroup) {
+    private void InsertAdress(ViewGroup viewGroup) {
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cep), clinica.getCodigoPostal());
+                R.id.clinica_description_activity_endereco_cep), clinic.getCodigoPostal());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_rua), clinica.getRua());
+                R.id.clinica_description_activity_endereco_rua), clinic.getRua());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_numero), String.valueOf(clinica.getNumero()));
+                R.id.clinica_description_activity_endereco_numero), String.valueOf(clinic.getNumero()));
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_complemento), clinica.getComplemento());
+                R.id.clinica_description_activity_endereco_complemento), clinic.getComplemento());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_cidade), clinica.getCidade());
+                R.id.clinica_description_activity_endereco_cidade), clinic.getCidade());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_bairro), clinica.getBairro());
+                R.id.clinica_description_activity_endereco_bairro), clinic.getBairro());
         ViewsUtil.insertInTextView(viewGroup.findViewById(
-                R.id.clinica_description_activity_endereco_estado), clinica.getEstado());
+                R.id.clinica_description_activity_endereco_estado), clinic.getEstado());
     }
 
     public void insertDaysOfWorkInLayout(ViewGroup linearLayout) {
         DayOfWorkUiService dayOfWorkUiService = new DayOfWorkUiService(linearLayout);
-        dayOfWorkUiService.insertAllDayOfWorkWithNotRemoveButton(dataBase.dayOfWorkDao(), clinica.getId());
+        dayOfWorkUiService.insertAllDayOfWorkWithNotRemoveButton(dataBase.dayOfWorkDao(), clinic.getId());
 
     }
 
-    public void configureNavButton(BottomNavigationView navigationView) {
+    public void configureNavButton(BottomNavigationView navigationView, ViewGroup layoutRoot) {
         BottomMenuConfigurator menuConfigurator = new BottomMenuConfigurator(context, navigationView);
 
         Intent intent = new Intent(context, ClinicFormActivity.class);
-        intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
+        intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinic);
         menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
 
 
-        configureDeleteButton(navigationView);
+        configureDeleteButton(navigationView,layoutRoot);
     }
 
-    private void configureDeleteButton(BottomNavigationView navigationView) {
+    private void configureDeleteButton(BottomNavigationView navigationView, ViewGroup rootLayout) {
         navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(item -> {
             RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
             removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton -> {
-                dataBase.clinicaDao().delete(clinica);
+                dataBase.clinicaDao().delete(clinic);
                 for (DayOfWork dayOfWork : dayOfWorkList) {
                     dataBase.dayOfWorkDao().delete(dayOfWork);
                 }
                 ((Activity) context).finish();
             });
-            removeConfirmPopUp.getPopUpWindow().showAtLocation(((Activity) context).
-                    findViewById(R.id.clinica_description_activity_root_layout), Gravity.CENTER, 0, 0);
+            removeConfirmPopUp.getPopUpWindow().showAtLocation(rootLayout, Gravity.CENTER, 0, 0);
             return false;
         });
     }

@@ -11,7 +11,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.util.ViewsUtil;
-import com.example.worknutri.ui.detail.detailClinica.ClinicaDescriptionActivity;
+import com.example.worknutri.ui.detail.detailClinica.ClinicDescriptionActivity;
 
 public class ClinicaCardInflater implements CardInflater<Clinica> {
     private final Context context;
@@ -29,7 +29,7 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
 
         ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
         viewGroup.setOnClickListener(onClick -> {
-            Intent intent = new Intent(context, ClinicaDescriptionActivity.class);
+            Intent intent = new Intent(context, ClinicDescriptionActivity.class);
             intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
             context.startActivities(new Intent[]{intent});
         });

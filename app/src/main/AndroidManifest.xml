@@ -24,7 +24,7 @@
         <activity android:name=".ui.forms.patientForm.PatientFormActivity"/>
         <activity android:name=".ui.forms.clinicForm.ClinicFormActivity"/>
         <activity android:name=".ui.detail.detailPaciente.PacienteDescriptionActivity"/>
-        <activity android:name=".ui.detail.detailClinica.ClinicaDescriptionActivity"/>
+        <activity android:name=".ui.detail.detailClinica.ClinicDescriptionActivity"/>
         <activity android:name=".ui.ActivityToTest" />
 
     </application>

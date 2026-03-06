@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navegation_edit"
+        android:id="@+id/navigation_edit"
         android:icon="@drawable/pen_edit"
         android:iconTint="@color/black"
-        android:title="EDITAR" />
+        android:title="@string/edit_caps" />
 
     <item
-        android:id="@+id/navegation_delete"
+        android:id="@+id/navigation_delete"
         android:icon="@drawable/delete_28dp_button_red"
-        android:title="APAGAR"/>
+        android:title="@string/erase_caps"/>
 </menu>

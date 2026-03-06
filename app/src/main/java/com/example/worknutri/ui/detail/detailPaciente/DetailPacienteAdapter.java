@@ -71,7 +71,7 @@ public class DetailPacienteAdapter {
     private void bottomNavEditIcon(BottomMenuConfigurator menuConfigurator) {
         Intent intent = new Intent(context, PatientFormActivity.class);
         intent.putExtra(ExtrasActivities.PACIENTE_EXTRA.getKey(), paciente);
-        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
+        menuConfigurator.onClickInBottomAppBar(R.id.navigation_edit, intent);
     }
 
     private void bottomNavClinicaIcon(BottomMenuConfigurator menuConfigurator) {
@@ -79,12 +79,12 @@ public class DetailPacienteAdapter {
         if (clinica != null){
             intent = new Intent(context, ClinicDescriptionActivity.class);
             intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
-            menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinica_paciente, intent);
+            menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinic_patient, intent);
         }
     }
 
     private void bottomNavDeleteIcon(BottomNavigationView bottomNavigationView) {
-        bottomNavigationView.getMenu().findItem(R.id.navegation_delete).
+        bottomNavigationView.getMenu().findItem(R.id.navigation_delete).
                 setOnMenuItemClickListener(onClick -> {
                     RemoveConfirmPopUp popUp = new PopUpFactoryImpl( context).generateRemoveConfirmPopUp();
                     popUp.getConfirmButton().setOnClickListener(onClickButton -> {

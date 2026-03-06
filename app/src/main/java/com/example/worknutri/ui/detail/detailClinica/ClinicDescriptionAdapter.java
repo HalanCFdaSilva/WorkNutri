@@ -79,14 +79,14 @@ public class ClinicDescriptionAdapter {
 
         Intent intent = new Intent(context, ClinicFormActivity.class);
         intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinic);
-        menuConfigurator.onClickInBottomAppBar(R.id.navegation_edit, intent);
+        menuConfigurator.onClickInBottomAppBar(R.id.navigation_edit, intent);
 
 
         configureDeleteButton(navigationView,layoutRoot);
     }
 
     private void configureDeleteButton(BottomNavigationView navigationView, ViewGroup rootLayout) {
-        navigationView.getMenu().findItem(R.id.navegation_delete).setOnMenuItemClickListener(item -> {
+        navigationView.getMenu().findItem(R.id.navigation_delete).setOnMenuItemClickListener(item -> {
             RemoveConfirmPopUp removeConfirmPopUp = new RemoveConfirmPopUp(((Activity) context).getLayoutInflater());
             removeConfirmPopUp.getConfirmButton().setOnClickListener(onClickButton -> {
                 dataBase.clinicaDao().delete(clinic);

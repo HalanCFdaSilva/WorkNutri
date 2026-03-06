@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navegation_edit"
+        android:id="@+id/navigation_edit"
         android:icon="@drawable/pen_edit"
         android:iconTint="@color/black"
-        android:title="EDITAR" />
+        android:title="@string/edit_caps" />
     <item
-        android:id="@+id/navigation_clinica_paciente"
+        android:id="@+id/navigation_clinic_patient"
         android:icon="@drawable/icons8_clinic_50"
-        android:title="CLINICA"/>
+        android:title="@string/clinic_caps"/>
 
     <item
-        android:id="@+id/navegation_delete"
+        android:id="@+id/navigation_delete"
         android:icon="@drawable/delete_28dp_button_red"
-        android:title="APAGAR"/>
+        android:title="@string/erase_caps"/>
 </menu>

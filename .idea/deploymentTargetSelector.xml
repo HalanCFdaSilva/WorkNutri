@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.forms'">
+      <SelectionState runConfigName="onClickInNavDeleteButtonShowPopUpToConfirmDeleteAndInConfirmIsRemovedClinicFromLayout()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="clickingBottomNav_shouldSelectCorrectFragment()">
+      <SelectionState runConfigName="navEditOpensClinicForm()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="clickingBottomNav_shouldSelectCorrectFragment() (1)">
+      <SelectionState runConfigName="whenLaunchedWithClinicaIntent_itPopulatesLayout()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="FormNavViewTest">
+      <SelectionState runConfigName="ClinicaDescriptionActivityTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="patientFormClickingBottomNav_shouldSelectCorrectFragment()">
+      <SelectionState runConfigName="onClickInFabButtonHisFinishActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -6,10 +6,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
-import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +15,12 @@ import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
+import com.example.worknutri.support.NavViewInteractionTest;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.ExtrasActivities;
@@ -103,22 +100,9 @@ public class ClinicDescriptionActivityTest {
 
     @Test
     public void onClickInNavEditItemHisOpenAClinicFormActivity() {
-        Instrumentation.ActivityMonitor monitor = InstrumentationRegistry.getInstrumentation()
-                .addMonitor(ClinicFormActivity.class.getName(), null, false);
-
-        scenario.onActivity(activity -> {
-            android.view.View nav = activity.findViewById(R.id.clinica_description_activity_nav_view);
-            assertNotNull("Bottom nav must be present", nav);
-            // perform menu action for edit
-            if (nav instanceof com.google.android.material.bottomnavigation.BottomNavigationView) {
-                ((com.google.android.material.bottomnavigation.BottomNavigationView) nav).getMenu().performIdentifierAction(R.id.navegation_edit, 0);
-            }
-        });
-
-        Activity started = InstrumentationRegistry.getInstrumentation().waitForMonitorWithTimeout(monitor, 2000);
-        assertNotNull("ClinicFormActivity should be started", started);
-        started.finish();
-        InstrumentationRegistry.getInstrumentation().removeMonitor(monitor);
+        NavViewInteractionTest<ClinicDescriptionActivity> navViewInteractionTest =
+                new NavViewInteractionTest<>(R.id.clinica_description_activity_nav_view,scenario);
+        navViewInteractionTest.clickInNavItemOpenActivity(R.id.navigation_edit, ClinicFormActivity.class);
     }
 
     @Test
@@ -133,7 +117,7 @@ public class ClinicDescriptionActivityTest {
         scenario.onActivity(activity -> {
             android.view.View nav = activity.findViewById(R.id.clinica_description_activity_nav_view);
             if (nav instanceof BottomNavigationView) {
-                ((BottomNavigationView) nav).getMenu().performIdentifierAction(R.id.navegation_delete, 0);
+                ((BottomNavigationView) nav).getMenu().performIdentifierAction(R.id.navigation_delete, 0);
             }
         });
 

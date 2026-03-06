@@ -558,9 +558,9 @@ public class ClinicFormActivityTest {
     @Test
     public void clickingBottomNav_shouldSelectCorrectFragment() {
 
-        NavViewInteractionTest<ClinicFormActivity> navTest = new NavViewInteractionTest<>(R.id.clinic_form_nav_view, ClinicFormActivity.class);
-        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_pacientes,FragmentSelectedActivity.PACIENTE_FRAGMENT);
-        navTest.clickSingleNavItemOpenScheduleFragment(R.id.navigation_clinicas,FragmentSelectedActivity.CLINICA_FRAGMENT);
+        NavViewInteractionTest<ClinicFormActivity> navTest = new NavViewInteractionTest<>(R.id.clinic_form_nav_view, scenario);
+        navTest.clickInNavItemOpenScheduleFragment(R.id.navigation_pacientes,FragmentSelectedActivity.PACIENTE_FRAGMENT);
+        navTest.clickInNavItemOpenScheduleFragment(R.id.navigation_clinicas,FragmentSelectedActivity.CLINICA_FRAGMENT);
 
 
     }

@@ -8,8 +8,6 @@ import static org.junit.Assert.assertNotNull;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
-import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 
 
@@ -29,6 +26,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
+import com.example.worknutri.support.NavViewInteractionTest;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.ActivityToTest;
@@ -187,22 +185,14 @@ public class ClinicDescriptionAdapterTest {
     }
 
     private void checkNavegationEditIsConfigured(ActivityScenario<ActivityToTest> scenario) {
-        Instrumentation.ActivityMonitor monitor = InstrumentationRegistry.getInstrumentation()
-                .addMonitor(ClinicFormActivity.class.getName(), null, false);
-        scenario.onActivity(activity -> ((BottomNavigationView)activity.findViewById(12))
-                .getMenu().performIdentifierAction(R.id.navegation_edit, 0));
-
-        Activity started = InstrumentationRegistry.getInstrumentation()
-                .waitForMonitorWithTimeout(monitor, 2000);
-        assertNotNull("ClinicFormActivity should be started", started);
-        started.finish();
-        InstrumentationRegistry.getInstrumentation().removeMonitor(monitor);
+        NavViewInteractionTest<ActivityToTest> navViewTester = new NavViewInteractionTest<>(12, scenario);
+        navViewTester.clickInNavItemOpenActivity(R.id.navigation_edit, ClinicFormActivity.class);
 
     }
 
     private void checkNavegationDeleteHasConfigured(ActivityScenario<ActivityToTest> scenario) throws InterruptedException {
         scenario.onActivity(activity -> ((BottomNavigationView)activity.findViewById(12))
-                .getMenu().performIdentifierAction(R.id.navegation_delete, 0));
+                .getMenu().performIdentifierAction(R.id.navigation_delete, 0));
         Thread.sleep(500);
         onView(withId(R.id.popup_base_layout)).check(matches(isDisplayed()));
         onView(withId(R.id.popup_delete_confirm_layout)).check(matches(isDisplayed()));

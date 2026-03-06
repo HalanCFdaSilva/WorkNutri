@@ -63,8 +63,9 @@ public abstract class TextViewAssertions {
         return (view, noViewFoundException) -> {
             if (noViewFoundException != null) {
                 throw noViewFoundException;
+
             }
-            assertEquals("Cor do texto diferente", expectedVisibility, view.getVisibility());
+            assertEquals("View visibility expected not match with visibity Of View", expectedVisibility, view.getVisibility());
         };
     }
 

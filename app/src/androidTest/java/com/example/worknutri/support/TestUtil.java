@@ -1,6 +1,7 @@
 package com.example.worknutri.support;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.view.ContextThemeWrapper;
 
 import androidx.core.content.ContextCompat;
@@ -40,5 +41,13 @@ public abstract class TestUtil {
         }
         return stringValue;
 
+    }
+
+
+    public static void waitFor(int waitFor) {
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() - start < waitFor) {
+            SystemClock.sleep(200);
+        }
     }
 }

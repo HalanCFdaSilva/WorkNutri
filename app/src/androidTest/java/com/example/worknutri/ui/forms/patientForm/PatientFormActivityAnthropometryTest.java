@@ -178,7 +178,7 @@ public class PatientFormActivityAnthropometryTest {
         onView(withId(R.id.patient_form_activity_personal_data_name)).perform(replaceText(pacientName));
         LocalDate date = LocalDate.of(2000, 12, 12);
 
-        Antropometria antropometricExpected = TestEntityFactory.generateAntropometria(
+        Antropometria antropometricExpected = TestEntityFactory.generateAnthropometry(
                 date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), 1.75, 70);
 
         insertDataInactivity(date, antropometricExpected);

@@ -1,8 +1,13 @@
 package com.example.worknutri.support;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
+import com.example.worknutri.R;
 import com.example.worknutri.calcular.AntropometricCalculator;
+import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
@@ -22,11 +27,9 @@ public  abstract class TestEntityFactory {
         return paciente;
     }
 
-    /**
-     * Método que cria uma instância de Patologia com dados de teste
-     */
+
     @NonNull
-    public static Patologia generatePatologia() {
+    public static Patologia generatePathology() {
         Patologia patologia = new Patologia();
         patologia.setPatologiaAtual("Diabetes");
         patologia.setUrina("Normal");
@@ -44,7 +47,8 @@ public  abstract class TestEntityFactory {
 
     }
 
-    public static Antropometria generateAntropometria(String date, double height, double weight) {
+    @NonNull
+    public static Antropometria generateAnthropometry(String date, double height, double weight) {
         Antropometria antropometria = new Antropometria();
         AntropometricCalculator calculator = new AntropometricCalculator(weight,height);
         antropometria.setAltura(String.valueOf(height));
@@ -80,5 +84,36 @@ public  abstract class TestEntityFactory {
 
 
         return antropometria;
+    }
+
+    @NonNull
+    public static Clinica generateClinic() {
+        Clinica c = new Clinica();
+        c.setNome("Nome Teste");
+        c.setTelefone1("111222333");
+        c.setEmail("teste@example.com");
+        c.setRua("Rua A");
+        c.setNumero(10);
+        c.setComplemento("Apto 1");
+        c.setCodigoPostal("12345-678");
+        c.setBairro("Bairro");
+        c.setCidade("Cidade");
+        c.setEstado("RJ");
+        return c;
+    }
+
+    @NonNull
+    public static DayOfWork generateRandomicDayOfWork(long clinicId) {
+        Context context = TestUtil.getThemedContext();
+       String[] daysOfWeek = context.getResources().getStringArray(R.array.dias_semana);
+       String[] hours = context.getResources().getStringArray(R.array.hours_total);
+       int indexHourStart = (int) (Math.random() * (hours.length - 2));
+       DayOfWork dayOfWork = new DayOfWork();
+       dayOfWork.setIdClinica(clinicId);
+       dayOfWork.setDayOfWeek(daysOfWeek[(int) (Math.random() * daysOfWeek.length)]);
+       dayOfWork.setHoraInicio(hours[indexHourStart]);
+       dayOfWork.setHoraFim(hours[indexHourStart +2]);
+       return dayOfWork;
+
     }
 }

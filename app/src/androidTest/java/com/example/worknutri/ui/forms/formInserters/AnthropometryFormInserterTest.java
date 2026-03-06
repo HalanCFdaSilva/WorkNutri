@@ -40,7 +40,7 @@ public class AnthropometryFormInserterTest {
         viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
                 new LinearLayout(context), false);
         inserter = AnthropometryFormInserter.create(viewGroup);
-        anthropometryExpected = TestEntityFactory.generateAntropometria(birthday, 1.75, 65);
+        anthropometryExpected = TestEntityFactory.generateAnthropometry(birthday, 1.75, 65);
 
 
     }

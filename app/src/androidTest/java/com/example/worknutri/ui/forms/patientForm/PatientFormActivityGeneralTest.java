@@ -312,13 +312,13 @@ public class PatientFormActivityGeneralTest {
     }
 
     private Antropometria createAntropometriaForPatient(int patientId) {
-        Antropometria antropometria = TestEntityFactory.generateAntropometria("15/08/1990", 1.80, 81);
+        Antropometria antropometria = TestEntityFactory.generateAnthropometry("15/08/1990", 1.80, 81);
         antropometria.setIdPaciente(patientId);
         return antropometria;
     }
 
     private Patologia createPathologyForPatient(int id) {
-        Patologia patologia = TestEntityFactory.generatePatologia();
+        Patologia patologia = TestEntityFactory.generatePathology();
         patologia.setIdPaciente(id);
         return patologia;
 

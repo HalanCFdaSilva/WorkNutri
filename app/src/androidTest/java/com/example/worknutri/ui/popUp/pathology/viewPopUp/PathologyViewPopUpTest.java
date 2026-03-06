@@ -160,7 +160,7 @@ public class PathologyViewPopUpTest {
         int initialChildCount = internLayout.getChildCount();
         Assert.assertEquals(0, initialChildCount);
 
-        Patologia patologia = TestEntityFactory.generatePatologia();
+        Patologia patologia = TestEntityFactory.generatePathology();
 
         patologiaDetailPopUp.setText(patologia);
 
@@ -178,7 +178,7 @@ public class PathologyViewPopUpTest {
         int initialChildCount = internLayout.getChildCount();
         Assert.assertEquals(0, initialChildCount);
 
-        Patologia patologia = TestEntityFactory.generatePatologia();
+        Patologia patologia = TestEntityFactory.generatePathology();
 
         patologiaDetailPopUp.setText(patologia);
 

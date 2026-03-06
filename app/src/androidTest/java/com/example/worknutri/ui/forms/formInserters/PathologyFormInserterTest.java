@@ -89,7 +89,7 @@ public class PathologyFormInserterTest {
                 R.id.patient_form_activity
         };
 
-        Patologia expected = TestEntityFactory.generatePatologia();
+        Patologia expected = TestEntityFactory.generatePathology();
         for (int id : validIds) {
             pathologies = new ArrayList<>(Arrays.asList(PathologyField.values()));
             ViewGroup viewInflated = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.patient_form_activity,
@@ -168,7 +168,7 @@ public class PathologyFormInserterTest {
 
     @Test
     public void insertEntityInViewGroupAddsViewsForNonEmptyFields() {
-        Patologia expected = TestEntityFactory.generatePatologia();
+        Patologia expected = TestEntityFactory.generatePathology();
         inserter.insertEntityInViewGroup(expected);
 
         ViewGroup content = viewGroup.findViewById(R.id.patient_form_activity_pathological_layout_content);

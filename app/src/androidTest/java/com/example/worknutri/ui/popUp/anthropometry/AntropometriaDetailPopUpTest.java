@@ -41,7 +41,7 @@ public class AntropometriaDetailPopUpTest {
 
         antropometriaDetaillPopUp = new PopUpFactoryImpl(context).generateAntropometriaPopUp();
 
-        anthropometry = TestEntityFactory.generateAntropometria("15/08/2000",1.70,68);
+        anthropometry = TestEntityFactory.generateAnthropometry("15/08/2000",1.70,68);
 
 
     }

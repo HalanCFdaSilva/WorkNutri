@@ -30,7 +30,7 @@ public class PathologyFormFragmentFactoryTest {
 
     @Before
     public void setUp() {
-        pathology = TestEntityFactory.generatePatologia();
+        pathology = TestEntityFactory.generatePathology();
         pathologyFormFactory = new PathologyFormFragmentFactory(PathologyField.ETHYLIC, pathology);
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         context = new ContextThemeWrapper(context, R.style.Theme_NutriCoop);

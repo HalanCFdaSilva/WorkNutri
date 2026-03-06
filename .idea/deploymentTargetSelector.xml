@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="onClickInNavDeleteButtonShowPopUpToConfirmDeleteAndInConfirmIsRemovedClinicFromLayout()">
+      <SelectionState runConfigName="onClickInNavClinicItemOpensClinicDescriptionActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="navEditOpensClinicForm()">
+      <SelectionState runConfigName="onClickInNavEditItemHisOpenAClinicFormActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="whenLaunchedWithClinicaIntent_itPopulatesLayout()">
+      <SelectionState runConfigName="configureNavButtonModifyCorrectlyBottomNavView()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ClinicaDescriptionActivityTest">
+      <SelectionState runConfigName="clickAntropometriaButton_inflatesCompletePopupAndShowsCorrectData()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="onClickInFabButtonHisFinishActivity()">
+      <SelectionState runConfigName="clickPatologiaButton_inflatesPopupAndShowsCorrectData()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

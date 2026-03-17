@@ -55,6 +55,7 @@ dependencies {
     testImplementation(libs.mockito.core)
     testImplementation("org.robolectric:robolectric:4.11.1")
     testImplementation(libs.androidx.core)
+    testImplementation(project(":app"))
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.androidx.runner)

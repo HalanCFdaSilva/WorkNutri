@@ -249,7 +249,7 @@ public class PacienteDescriptionActivityTest {
     }
 
     @Test
-    public void clickPatologiaButton_inflatesPopupAndShowsCorrectData() {
+    public void clickPatologiaButtonInflatesPopupAndShowsCorrectData() {
         // ensure no popup initially
         onView(withId(R.id.popup_base_layout)).check(doesNotExist());
 

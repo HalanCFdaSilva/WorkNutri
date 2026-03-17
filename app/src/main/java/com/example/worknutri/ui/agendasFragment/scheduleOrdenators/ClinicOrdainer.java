@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaOrdenators;
+package com.example.worknutri.ui.agendasFragment.scheduleOrdenators;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;

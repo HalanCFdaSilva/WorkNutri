@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaOrdenators;
+package com.example.worknutri.ui.agendasFragment.scheduleOrdenators;
 
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;

@@ -9,7 +9,7 @@ import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.PacienteScheduleInflater;
-import com.example.worknutri.ui.agendasFragment.agendaOrdenators.OrderListOfSchedule;
+import com.example.worknutri.ui.agendasFragment.scheduleOrdenators.OrderListOfSchedule;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import java.util.List;
 

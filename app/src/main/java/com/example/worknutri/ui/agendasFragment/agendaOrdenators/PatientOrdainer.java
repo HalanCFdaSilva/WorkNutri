@@ -8,11 +8,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PacienteOrder {
+public class PatientOrdainer {
 
     private final List<Paciente> toOrder;
-    protected PacienteOrder(List<Paciente> pacientesToOrder) {
-        this.toOrder = pacientesToOrder;
+    protected PatientOrdainer(List<Paciente> patientsToOrder) {
+        this.toOrder = patientsToOrder;
     }
 
     public List<Paciente> byName(boolean isReversed) {
@@ -25,42 +25,42 @@ public class PacienteOrder {
                 .collect(Collectors.toList());
     }
 
-    public List<Paciente> byIMCCategory(List<Antropometria> antropometriaList) {
+    public List<Paciente> byBMICategory(List<Antropometria> anthropometryList) {
         return toOrder.stream().sorted(Comparator
-                .comparing(paciente -> valueToImcCategory(antropometriaList, paciente)))
+                .comparing(patient -> valueToBMICategory(anthropometryList, patient)))
                 .collect(Collectors.toList());
     }
 
-    private static float valueToImcCategory(List<Antropometria> antropometriaList, Paciente paciente) {
-        Antropometria antropometria = antropometriaList.stream()
-                .filter(a -> a.getIdPaciente() == paciente.getId())
+    private static float valueToBMICategory(List<Antropometria> anthropometryList, Paciente patient) {
+        Antropometria anthropometry = anthropometryList.stream()
+                .filter(a -> a.getIdPaciente() == patient.getId())
                 .findFirst()
                 .orElse(null);
-        if (antropometria != null){
-            ClassificacaoImc imc = ClassificacaoImc.tipoImc(Double.parseDouble(antropometria.getImc()));
+        if (anthropometry != null){
+            ClassificacaoImc imc = ClassificacaoImc.tipoImc(Double.parseDouble(anthropometry.getImc()));
             return imc != null ? imc.getPriority() : Float.MAX_VALUE;
         }
         return Float.MAX_VALUE;
     }
 
-    public List<Paciente> byHeight(List<Antropometria> antropometriaList) {
-        return toOrder.stream().sorted(Comparator.comparing(paciente -> {
-            Antropometria antropometria = antropometriaList.stream()
-                    .filter(a -> a.getIdPaciente() == paciente.getId())
+    public List<Paciente> byHeight(List<Antropometria> anthropometryList) {
+        return toOrder.stream().sorted(Comparator.comparing(patient -> {
+            Antropometria anthropometry = anthropometryList.stream()
+                    .filter(a -> a.getIdPaciente() == patient.getId())
                     .findFirst()
                     .orElse(null);
-            return antropometria != null ? Float.parseFloat(antropometria.getAltura()): Float.MAX_VALUE;
+            return anthropometry != null ? Float.parseFloat(anthropometry.getAltura()): Float.MAX_VALUE;
 
         })).collect(Collectors.toList());
     }
 
-    public List<Paciente> byWeight(List<Antropometria> antropometriaList) {
-        return toOrder.stream().sorted(Comparator.comparing(paciente -> {
-            Antropometria antropometria = antropometriaList.stream()
-                    .filter(a -> a.getIdPaciente() == paciente.getId())
+    public List<Paciente> byWeight(List<Antropometria> anthropometryList) {
+        return toOrder.stream().sorted(Comparator.comparing(patient -> {
+            Antropometria anthropometry = anthropometryList.stream()
+                    .filter(a -> a.getIdPaciente() == patient.getId())
                     .findFirst()
                     .orElse(null);
-            return antropometria != null ? Float.parseFloat(antropometria.getPeso()): Float.MAX_VALUE;
+            return anthropometry != null ? Float.parseFloat(anthropometry.getPeso()): Float.MAX_VALUE;
 
         })).collect(Collectors.toList());
     }

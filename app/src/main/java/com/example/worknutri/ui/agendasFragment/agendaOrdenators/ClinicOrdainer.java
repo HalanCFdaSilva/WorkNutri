@@ -9,11 +9,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClinicaOrder {
+public class ClinicOrdainer {
 
     private final List<Clinica> toOrder;
-    protected ClinicaOrder(List<Clinica> clinicasToOrder) {
-        this.toOrder = clinicasToOrder;
+    protected ClinicOrdainer(List<Clinica> clinicsToOrder) {
+        this.toOrder = clinicsToOrder;
     }
 
     public List<Clinica> byName(boolean isReversed) {
@@ -25,12 +25,12 @@ public class ClinicaOrder {
                 .collect(Collectors.toList());
         }
 
-    public List<Clinica> byBairro() {
+    public List<Clinica> byDistrict() {
         return toOrder.stream().sorted(Comparator.comparing(Clinica::getBairro))
                 .collect(Collectors.toList());
     }
 
-    public List<Clinica> byCidade() {
+    public List<Clinica> byCity() {
         return toOrder.stream().sorted(Comparator.comparing(Clinica::getCidade))
                 .collect(Collectors.toList());
     }
@@ -42,25 +42,25 @@ public class ClinicaOrder {
                 .collect(Collectors.toList());
 
 
-        List<Clinica> clinicasToReturn = new ArrayList<>();
+        List<Clinica> clinicsToReturn = new ArrayList<>();
         if (!daysOfWorrkInsideFilter.isEmpty()){
-            clinicasToReturn = toOrder.stream().filter(clinica -> daysOfWorrkInsideFilter.stream()
-                            .anyMatch(dayOfWork -> dayOfWork.getIdClinica() == clinica.getId()))
+            clinicsToReturn = toOrder.stream().filter(clinic -> daysOfWorrkInsideFilter.stream()
+                            .anyMatch(dayOfWork -> dayOfWork.getIdClinica() == clinic.getId()))
                     .collect(Collectors.toList());
         }
 
-        return clinicasToReturn;
+        return clinicsToReturn;
     }
 
-    public List<Clinica> byNumberPatients( List<Paciente> pacientes) {
-        toOrder.sort((clinica1, clinica2) -> {
-            if (pacientes.isEmpty())
+    public List<Clinica> byNumberPatients( List<Paciente> patients) {
+        toOrder.sort((clinic1, clinic2) -> {
+            if (patients.isEmpty())
                 return 0;
-            int numberOfPatientsOfClinica1 = (int) pacientes.stream()
-                    .filter(paciente -> paciente.getClinicaId() == clinica1.getId())
+            int numberOfPatientsOfClinica1 = (int) patients.stream()
+                    .filter(paciente -> paciente.getClinicaId() == clinic1.getId())
                     .count();
-            int numberOfPatientsOfClinica2 = (int) pacientes.stream()
-                    .filter(paciente -> paciente.getClinicaId() == clinica2.getId())
+            int numberOfPatientsOfClinica2 = (int) patients.stream()
+                    .filter(paciente -> paciente.getClinicaId() == clinic2.getId())
                     .count();
             return Integer.compare(numberOfPatientsOfClinica1, numberOfPatientsOfClinica2);
         });

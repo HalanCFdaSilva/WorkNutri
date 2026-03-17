@@ -9,7 +9,7 @@ import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.ClinicaScheduleInflater;
-import com.example.worknutri.ui.agendasFragment.agendaOrdenators.OrderListOfAgenda;
+import com.example.worknutri.ui.agendasFragment.agendaOrdenators.OrderListOfSchedule;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
 import java.util.List;
@@ -36,8 +36,8 @@ public class AgendaClinicasAdapter {
     public void inflateAgenda(LinearLayout linearLayout) {
         linearLayout.removeAllViews();
 
-        OrderListOfAgenda orderListOfAgenda = new OrderListOfAgenda();
-        List<Clinica> clinicasOrdered = orderListOfAgenda.orderToAgendaClinicas(clinicaFilterPojo);
+        OrderListOfSchedule orderListOfSchedule = new OrderListOfSchedule();
+        List<Clinica> clinicasOrdered = orderListOfSchedule.orderToClinicSchedule(clinicaFilterPojo);
         clinicaFilterPojo.setClinicasSelected(clinicasOrdered);
         
         ClinicaScheduleInflater clinicaScheduleInflater = new ClinicaScheduleInflater(clinicaFilterPojo);

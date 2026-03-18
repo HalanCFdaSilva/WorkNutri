@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
@@ -25,19 +26,20 @@ public class ClinicCardInflater implements CardInflater<Clinica> {
     }
 
     @Override
-    public ViewGroup generateCard(ViewGroup layoutWereAddCard, Clinica clinic) {
+    public void configureOnClickInCard(ViewGroup card, Clinica clinic) {
 
-        ViewGroup viewGroup = inflateClinicCard(layoutWereAddCard, clinic, context);
-        viewGroup.setOnClickListener(onClick -> {
+
+        card.setOnClickListener(onClick -> {
             Intent intent = new Intent(context, ClinicDescriptionActivity.class);
             intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinic);
             context.startActivities(new Intent[]{intent});
         });
-        return viewGroup;
+
     }
 
-    private ViewGroup inflateClinicCard(ViewGroup layout, Clinica clinic, Context context) {
-        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout);
+    public ViewGroup inflateCard(Clinica clinic) {
+
+        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, new LinearLayout(context),false);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
         ViewsUtil.insertInTextView(textView, clinic.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
@@ -46,27 +48,12 @@ public class ClinicCardInflater implements CardInflater<Clinica> {
         ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getBairro());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
         ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getCidade());
-        if (clinic.getBairro().isBlank()) {
-            viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
-        }
-        return viewGroup;
-    }
-
-    public static ViewGroup generateClinicCardToSpinner(ViewGroup layout, Clinica clinic, Context context) {
-        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout, false);
-        TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
-        ViewsUtil.insertInTextView(textView, clinic.getNome());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
-        ViewsUtil.insertInTextView(textView, clinic.getRua());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinica_bairro);
-        ViewsUtil.insertInTextView(textView, clinic.getBairro());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
-        ViewsUtil.insertInTextView(textView, clinic.getCidade());
         if (clinic.getBairro().isBlank() || clinic.getCidade().isBlank()) {
             viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
         }
         return viewGroup;
     }
+
 
 
 }

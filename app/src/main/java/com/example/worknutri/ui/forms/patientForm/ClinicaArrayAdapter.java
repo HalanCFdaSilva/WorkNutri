@@ -12,18 +12,18 @@ import java.util.List;
 
 public class ClinicaArrayAdapter extends BaseAdapter {
     private final Context context;
-    private final List<Clinica> clinicas;
+    private final List<Clinica> clinics;
 
 
-    public ClinicaArrayAdapter(Context context, List<Clinica> clinicas) {
+    public ClinicaArrayAdapter(Context context, List<Clinica> clinics) {
         this.context = context;
-        this.clinicas = clinicas;
+        this.clinics = clinics;
 
     }
 
     @Override
     public int getCount() {
-        return clinicas != null ? clinicas.size() : 0;
+        return clinics != null ? clinics.size() : 0;
     }
 
     @Override
@@ -39,7 +39,9 @@ public class ClinicaArrayAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Clinica clinica = clinicas.get(position);
-        return ClinicCardInflater.generateClinicCardToSpinner(parent, clinica, context);
+        Clinica clinic = clinics.get(position);
+
+        return new ClinicCardInflater(context).inflateCard(clinic);
+
     }
 }

@@ -68,13 +68,17 @@ public abstract class ScheduleInflater<T> {
 
     private void generatePacienteCard(ViewGroup viewGroup, Paciente element) {
         PacienteCardInflater pacienteCardInflater = new PacienteCardInflater(context);
-        pacienteCardInflater.generateCard(viewGroup, element);
+        ViewGroup card = pacienteCardInflater.inflateCard(element);
+        pacienteCardInflater.configureOnClickInCard(card, element);
+        viewGroup.addView(card);
 
     }
 
     private void generateClinicaCard(ViewGroup viewGroup, Clinica element) {
         ClinicCardInflater clinicCardInflater = new ClinicCardInflater(context);
-        clinicCardInflater.generateCard(viewGroup, element);
+        ViewGroup card = clinicCardInflater.inflateCard(element);
+        clinicCardInflater.configureOnClickInCard(card, element);
+        viewGroup.addView(card);
 
     }
 }

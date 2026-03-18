@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
@@ -24,19 +25,23 @@ public class PacienteCardInflater implements CardInflater<Paciente> {
     }
 
     @Override
-    public ViewGroup generateCard(ViewGroup layout, Paciente paciente) {
+    public void configureOnClickInCard(ViewGroup card, Paciente paciente) {
 
-            ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_paciente, layout);
-            TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
-            textView.setText(paciente.getNomePaciente());
-
-            view.setOnClickListener( onClick ->{
+            card.setOnClickListener( onClick ->{
                 Intent intent = new Intent(context, PacienteDescriptionActivity.class);
                 intent.putExtra(ExtrasActivities.PACIENTE_EXTRA.getKey(), paciente);
                 context.startActivities(new Intent[]{intent});
             });
-            return view;
 
+    }
+
+    @Override
+    public ViewGroup inflateCard(Paciente patient) {
+        ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_paciente,
+                new LinearLayout(context),false);
+        TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
+        textView.setText(patient.getNomePaciente());
+        return view;
     }
 
 

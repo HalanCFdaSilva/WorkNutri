@@ -13,11 +13,11 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.util.ViewsUtil;
 import com.example.worknutri.ui.detail.detailClinica.ClinicDescriptionActivity;
 
-public class ClinicaCardInflater implements CardInflater<Clinica> {
+public class ClinicCardInflater implements CardInflater<Clinica> {
     private final Context context;
 
 
-    public ClinicaCardInflater( Context context) {
+    public ClinicCardInflater(Context context) {
 
 
         this.context = context;
@@ -25,44 +25,44 @@ public class ClinicaCardInflater implements CardInflater<Clinica> {
     }
 
     @Override
-    public ViewGroup generateCard(ViewGroup layoutWereAddCard, Clinica clinica) {
+    public ViewGroup generateCard(ViewGroup layoutWereAddCard, Clinica clinic) {
 
-        ViewGroup viewGroup = inflateClinicaCard(layoutWereAddCard, clinica, context);
+        ViewGroup viewGroup = inflateClinicCard(layoutWereAddCard, clinic, context);
         viewGroup.setOnClickListener(onClick -> {
             Intent intent = new Intent(context, ClinicDescriptionActivity.class);
-            intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinica);
+            intent.putExtra(ExtrasActivities.CLINICA_EXTRA.getKey(), clinic);
             context.startActivities(new Intent[]{intent});
         });
         return viewGroup;
     }
 
-    private ViewGroup inflateClinicaCard(ViewGroup layout, Clinica clinica, Context context) {
+    private ViewGroup inflateClinicCard(ViewGroup layout, Clinica clinic, Context context) {
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
-        ViewsUtil.insertInTextView(textView, clinica.getNome());
+        ViewsUtil.insertInTextView(textView, clinic.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
-        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getRua());
+        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getRua());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_bairro);
-        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getBairro());
+        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getBairro());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
-        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinica.getCidade());
-        if (clinica.getBairro().isBlank()) {
+        ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getCidade());
+        if (clinic.getBairro().isBlank()) {
             viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
         }
         return viewGroup;
     }
 
-    public static ViewGroup generateClinicaCardForSpinner(ViewGroup layout, Clinica clinica, Context context) {
+    public static ViewGroup generateClinicCardToSpinner(ViewGroup layout, Clinica clinic, Context context) {
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinica, layout, false);
         TextView textView = viewGroup.findViewById(R.id.card_fragment_clinica_name);
-        ViewsUtil.insertInTextView(textView, clinica.getNome());
+        ViewsUtil.insertInTextView(textView, clinic.getNome());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_rua);
-        ViewsUtil.insertInTextView(textView, clinica.getRua());
+        ViewsUtil.insertInTextView(textView, clinic.getRua());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_bairro);
-        ViewsUtil.insertInTextView(textView, clinica.getBairro());
+        ViewsUtil.insertInTextView(textView, clinic.getBairro());
         textView = viewGroup.findViewById(R.id.card_fragment_clinica_cidade);
-        ViewsUtil.insertInTextView(textView, clinica.getCidade());
-        if (clinica.getBairro().isBlank() || clinica.getCidade().isBlank()) {
+        ViewsUtil.insertInTextView(textView, clinic.getCidade());
+        if (clinic.getBairro().isBlank() || clinic.getCidade().isBlank()) {
             viewGroup.findViewById(R.id.card_fragment_clinica_virgula).setVisibility(View.GONE);
         }
         return viewGroup;

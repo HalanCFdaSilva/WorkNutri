@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicaCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicCardInflater;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.PacienteCardInflater;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,8 +73,8 @@ public abstract class ScheduleInflater<T> {
     }
 
     private void generateClinicaCard(ViewGroup viewGroup, Clinica element) {
-        ClinicaCardInflater clinicaCardInflater = new ClinicaCardInflater(context);
-        clinicaCardInflater.generateCard(viewGroup, element);
+        ClinicCardInflater clinicCardInflater = new ClinicCardInflater(context);
+        clinicCardInflater.generateCard(viewGroup, element);
 
     }
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicaCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicCardInflater;
 
 import java.util.List;
 
@@ -40,6 +40,6 @@ public class ClinicaArrayAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Clinica clinica = clinicas.get(position);
-        return ClinicaCardInflater.generateClinicaCardForSpinner(parent, clinica, context);
+        return ClinicCardInflater.generateClinicCardToSpinner(parent, clinica, context);
     }
 }

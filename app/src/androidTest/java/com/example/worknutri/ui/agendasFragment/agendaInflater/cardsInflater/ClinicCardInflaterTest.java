@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.view.ContextThemeWrapper;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -28,24 +27,7 @@ public class ClinicCardInflaterTest {
 
     private ClinicCardInflater clinicCardInflater;
 
-    // Context that applies the app theme and records startActivities calls instead of launching them
-    private static class RecordingContext extends ContextThemeWrapper {
-        private Intent[] lastStartedIntents;
 
-        RecordingContext(Context base, int themeResId) {
-            super(base, themeResId);
-        }
-
-        @Override
-        public void startActivities(Intent[] intents) {
-            // record and do NOT call super to avoid actually launching activities during tests
-            this.lastStartedIntents = intents;
-        }
-
-        Intent[] getLastStartedIntents() {
-            return lastStartedIntents;
-        }
-    }
 
     @Before
     public void setUp() {

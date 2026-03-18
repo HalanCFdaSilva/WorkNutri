@@ -14,6 +14,12 @@
       <SelectionState runConfigName="inflateCardPopulatesFieldsAndHidesCommaWhenNeighborhoodOrCityIsBlank()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="PatientCardInflaterInstrumentedTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="configureOnclickInCardOnClickStartsClinicDescriptionActivityWithExtra()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

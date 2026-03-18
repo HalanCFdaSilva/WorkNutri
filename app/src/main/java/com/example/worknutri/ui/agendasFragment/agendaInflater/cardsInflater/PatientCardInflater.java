@@ -12,12 +12,12 @@ import com.example.worknutri.ui.ExtrasActivities;
 import com.example.worknutri.ui.detail.detailPaciente.PacienteDescriptionActivity;
 
 
-public class PacienteCardInflater implements CardInflater<Paciente> {
+public class PatientCardInflater implements CardInflater<Paciente> {
 
     private final Context context;
 
 
-    public PacienteCardInflater( Context context) {
+    public PatientCardInflater(Context context) {
 
 
         this.context = context;

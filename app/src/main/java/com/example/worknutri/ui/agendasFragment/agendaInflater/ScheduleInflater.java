@@ -9,7 +9,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.ClinicCardInflater;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.PacienteCardInflater;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.cardsInflater.PatientCardInflater;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,9 +67,9 @@ public abstract class ScheduleInflater<T> {
     }
 
     private void generatePacienteCard(ViewGroup viewGroup, Paciente element) {
-        PacienteCardInflater pacienteCardInflater = new PacienteCardInflater(context);
-        ViewGroup card = pacienteCardInflater.inflateCard(element);
-        pacienteCardInflater.configureOnClickInCard(card, element);
+        PatientCardInflater patientCardInflater = new PatientCardInflater(context);
+        ViewGroup card = patientCardInflater.inflateCard(element);
+        patientCardInflater.configureOnClickInCard(card, element);
         viewGroup.addView(card);
 
     }

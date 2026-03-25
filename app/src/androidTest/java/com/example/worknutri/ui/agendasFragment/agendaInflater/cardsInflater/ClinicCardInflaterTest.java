@@ -53,19 +53,19 @@ public class ClinicCardInflaterTest {
     }
 
     private void compareClinicCardWithClinicData(Clinica clinic, ViewGroup card) {
-        TextView name = card.findViewById(R.id.card_fragment_clinica_name);
+        TextView name = card.findViewById(R.id.card_fragment_clinic_name);
         assertEquals(clinic.getNome(), name.getText().toString());
 
-        TextView street = card.findViewById(R.id.card_fragment_clinica_rua);
+        TextView street = card.findViewById(R.id.card_fragment_clinic_street);
         assertEquals(clinic.getRua(), street.getText().toString());
 
-        TextView neighborhood = card.findViewById(R.id.card_fragment_clinica_bairro);
+        TextView neighborhood = card.findViewById(R.id.card_fragment_clinic_neighborhood);
         assertEquals(clinic.getBairro(), neighborhood.getText().toString());
 
-        TextView city = card.findViewById(R.id.card_fragment_clinica_cidade);
+        TextView city = card.findViewById(R.id.card_fragment_clinic_city);
         assertEquals(clinic.getCidade(), city.getText().toString());
 
-        View comma = card.findViewById(R.id.card_fragment_clinica_virgula);
+        View comma = card.findViewById(R.id.card_fragment_clinic_comma);
         assertEquals(View.GONE, comma.getVisibility());
     }
 

@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_fragment_clinic"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/card_fragment_clinica_name"
+        android:id="@+id/card_fragment_clinic_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,49 +23,49 @@
         tools:text="nome clinica" />
 
     <TextView
-        android:id="@+id/card_fragment_clinica_rua"
+        android:id="@+id/card_fragment_clinic_street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textAllCaps="true"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinica_name"
-        app:layout_constraintTop_toBottomOf="@+id/card_fragment_clinica_name"
+        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinic_name"
+        app:layout_constraintTop_toBottomOf="@+id/card_fragment_clinic_name"
         tools:text="rua" />
 
     <TextView
-        android:id="@+id/card_fragment_clinica_bairro"
+        android:id="@+id/card_fragment_clinic_neighborhood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textAllCaps="true"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinica_rua"
-        app:layout_constraintTop_toBottomOf="@+id/card_fragment_clinica_rua"
+        app:layout_constraintStart_toStartOf="@+id/card_fragment_clinic_street"
+        app:layout_constraintTop_toBottomOf="@+id/card_fragment_clinic_street"
         app:layout_constraintVertical_bias="0.0"
         tools:text="bairro" />
 
     <TextView
-        android:id="@+id/card_fragment_clinica_cidade"
+        android:id="@+id/card_fragment_clinic_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/card_fragment_clinica_bairro"
-        app:layout_constraintStart_toEndOf="@+id/card_fragment_clinica_virgula"
-        app:layout_constraintTop_toTopOf="@+id/card_fragment_clinica_bairro"
+        app:layout_constraintBottom_toBottomOf="@+id/card_fragment_clinic_neighborhood"
+        app:layout_constraintStart_toEndOf="@+id/card_fragment_clinic_comma"
+        app:layout_constraintTop_toTopOf="@+id/card_fragment_clinic_neighborhood"
         tools:text="cidade" />
 
 
     <TextView
-        android:id="@+id/card_fragment_clinica_virgula"
+        android:id="@+id/card_fragment_clinic_comma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=", "
-        app:layout_constraintBottom_toBottomOf="@+id/card_fragment_clinica_bairro"
-        app:layout_constraintStart_toEndOf="@+id/card_fragment_clinica_bairro"
-        app:layout_constraintTop_toTopOf="@+id/card_fragment_clinica_bairro" />
+        android:text="@string/comma"
+        app:layout_constraintBottom_toBottomOf="@+id/card_fragment_clinic_neighborhood"
+        app:layout_constraintStart_toEndOf="@+id/card_fragment_clinic_neighborhood"
+        app:layout_constraintTop_toTopOf="@+id/card_fragment_clinic_neighborhood" />
 
 
 

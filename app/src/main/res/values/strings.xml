@@ -15,4 +15,5 @@
     <string name="edit_caps">EDITAR</string>
     <string name="clinic_caps">CLINICA</string>
     <string name="erase_caps">APAGAR</string>
+    <string name="comma">,</string>
 </resources>

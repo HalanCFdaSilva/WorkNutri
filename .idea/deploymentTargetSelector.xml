@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ClinicCardInflaterTest">
+      <SelectionState runConfigName="generateAgenda_createsCategoriesAndAddsCards()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.forms.patientForm'">
+      <SelectionState runConfigName="ifMoreThanOneCityContainsSameCityGenerateAgendaInsertAllThisCityInSameCategory()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="inflateCardPopulatesFieldsAndHidesCommaWhenNeighborhoodOrCityIsBlank()">
+      <SelectionState runConfigName="generateAgendaCreatesCategoriesAndAddsCards()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PatientCardInflaterInstrumentedTest">
+      <SelectionState runConfigName="ifMoreThanOneClinicContainsSameNumberOfPatientsGenerateAgendaInsertAllThisClinicInSameCategory()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="configureOnclickInCardOnClickStartsClinicDescriptionActivityWithExtra()">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

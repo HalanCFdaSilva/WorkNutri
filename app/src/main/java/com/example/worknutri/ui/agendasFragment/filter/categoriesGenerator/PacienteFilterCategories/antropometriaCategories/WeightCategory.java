@@ -29,7 +29,7 @@ public class WeightCategory extends PacientesFilterCategory {
     public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Peso:");
         RangeSlider rangeSlider = generateRangeSlider();
-        ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
+        ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.registry_filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
         return viewGroup;
     }

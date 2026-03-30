@@ -25,7 +25,7 @@ public class HourWorkCategory extends ClinicaFilterCategory {
         rangeSlider.setStepSize(1);
         onSliderRangeSlider(rangeSlider);
         selectInitialValues(rangeSlider);
-        ViewGroup linearLayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
+        ViewGroup linearLayout = viewGroup.findViewById(R.id.registry_filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
         return viewGroup;
     }

@@ -34,7 +34,7 @@ public class PatientCardInflaterInstrumentedTest {
         ViewGroup card = inflater.inflateCard(paciente);
         assertNotNull(card);
 
-        TextView textView = card.findViewById(R.id.paciente_card_fragment_textview);
+        TextView textView = card.findViewById(R.id.registry_card_fragment_patient_textview);
         assertNotNull(textView);
         assertEquals(paciente.getNomePaciente(), textView.getText().toString());
     }

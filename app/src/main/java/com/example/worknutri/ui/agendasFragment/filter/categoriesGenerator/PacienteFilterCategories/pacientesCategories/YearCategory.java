@@ -32,7 +32,7 @@ public class YearCategory extends PacientesFilterCategory {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Idade:");
 
         RangeSlider rangeSlider = generateRangeSlider();
-        ViewGroup linearLayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
+        ViewGroup linearLayout = viewGroup.findViewById(R.id.registry_filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
 
         return viewGroup;

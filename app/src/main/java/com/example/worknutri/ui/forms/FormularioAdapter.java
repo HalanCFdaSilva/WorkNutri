@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
-import com.example.worknutri.ui.agendasFragment.ScheduleActivity;
+import com.example.worknutri.ui.agendasFragment.RegistryActivity;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.ui.BottomMenuConfigurator;
@@ -27,11 +27,11 @@ public class FormularioAdapter {
         if(intentActivity.hasExtra(ExtrasActivities.PACIENTE_EXTRA.getKey())||
                 intentActivity.hasExtra(ExtrasActivities.CLINICA_EXTRA.getKey())){
 
-            Intent intent = new Intent(getContext(), ScheduleActivity.class);
+            Intent intent = new Intent(getContext(), RegistryActivity.class);
             intent.putExtra(ExtrasActivities.SCHEDULE_EXTRA.getKey(),true);
             menuConfigurator.onClickInBottomAppBar(R.id.navigation_pacientes, intent);
 
-            intent = new Intent(getContext(), ScheduleActivity.class);
+            intent = new Intent(getContext(), RegistryActivity.class);
             intent.putExtra(ExtrasActivities.SCHEDULE_EXTRA.getKey(),false);
             menuConfigurator.onClickInBottomAppBar(R.id.navigation_clinicas, intent);
         }else{

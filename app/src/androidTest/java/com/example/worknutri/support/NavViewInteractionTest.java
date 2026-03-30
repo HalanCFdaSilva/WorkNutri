@@ -10,7 +10,7 @@ import androidx.test.core.app.ActivityScenario;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
-import com.example.worknutri.ui.agendasFragment.ScheduleActivity;
+import com.example.worknutri.ui.agendasFragment.RegistryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class NavViewInteractionTest<T extends Activity> {
@@ -33,7 +33,7 @@ public class NavViewInteractionTest<T extends Activity> {
             nav.getMenu().performIdentifierAction(itemId, 0);
         });
 
-        assertEquals(fragmentExpected, ScheduleActivity.fragmentSelected);
+        assertEquals(fragmentExpected, RegistryActivity.fragmentSelected);
 
     }
 

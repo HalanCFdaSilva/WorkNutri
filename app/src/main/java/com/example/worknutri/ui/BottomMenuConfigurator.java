@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.worknutri.ui.agendasFragment.FragmentSelectedActivity;
-import com.example.worknutri.ui.agendasFragment.ScheduleActivity;
+import com.example.worknutri.ui.agendasFragment.RegistryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomMenuConfigurator {
@@ -20,7 +20,7 @@ public class BottomMenuConfigurator {
     public void onClickInBottomAppBar(int idItemMenu, FragmentSelectedActivity fragmentSelectedActivity) {
 
         navView.getMenu().findItem(idItemMenu).setOnMenuItemClickListener(item -> {
-            ScheduleActivity.fragmentSelected = fragmentSelectedActivity;
+            RegistryActivity.fragmentSelected = fragmentSelectedActivity;
             ((Activity) context).finish();
             return false;
         });

@@ -28,7 +28,7 @@ public class HeightCategory extends PacientesFilterCategory {
     public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Altura:");
         RangeSlider rangeSlider = generateRangeSlider();
-        ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.filter_category_intern_layout);
+        ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.registry_filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
         return viewGroup;
     }

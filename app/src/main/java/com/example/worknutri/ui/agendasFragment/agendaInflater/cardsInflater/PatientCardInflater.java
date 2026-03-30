@@ -37,9 +37,9 @@ public class PatientCardInflater implements CardInflater<Paciente> {
 
     @Override
     public ViewGroup inflateCard(Paciente patient) {
-        ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_paciente,
+        ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.registry_card_fragment_patient,
                 new LinearLayout(context),false);
-        TextView textView = view.findViewById(R.id.paciente_card_fragment_textview);
+        TextView textView = view.findViewById(R.id.registry_card_fragment_patient_textview);
         textView.setText(patient.getNomePaciente());
         return view;
     }

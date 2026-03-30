@@ -39,17 +39,17 @@ public class ClinicCardInflater implements CardInflater<Clinica> {
 
     public ViewGroup inflateCard(Clinica clinic) {
 
-        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.card_fragment_clinic, new LinearLayout(context),false);
-        TextView textView = viewGroup.findViewById(R.id.card_fragment_clinic_name);
+        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.registry_card_fragment_clinic, new LinearLayout(context),false);
+        TextView textView = viewGroup.findViewById(R.id.registry_card_fragment_clinic_name);
         ViewsUtil.insertInTextView(textView, clinic.getNome());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinic_street);
+        textView = viewGroup.findViewById(R.id.registry_card_fragment_clinic_street);
         ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getRua());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinic_neighborhood);
+        textView = viewGroup.findViewById(R.id.registry_card_fragment_clinic_neighborhood);
         ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getBairro());
-        textView = viewGroup.findViewById(R.id.card_fragment_clinic_city);
+        textView = viewGroup.findViewById(R.id.registry_card_fragment_clinic_city);
         ViewsUtil.insertInTextViewOrTextViewGone(textView, clinic.getCidade());
         if (clinic.getBairro().isBlank() || clinic.getCidade().isBlank()) {
-            viewGroup.findViewById(R.id.card_fragment_clinic_comma).setVisibility(View.GONE);
+            viewGroup.findViewById(R.id.registry_card_fragment_clinic_comma).setVisibility(View.GONE);
         }
         return viewGroup;
     }

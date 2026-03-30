@@ -39,13 +39,13 @@ public class CategoriesGeneratorUtil {
 
     public ViewGroup generateCategoryWithChipGroup(LayoutInflater inflater,
                                                    String title) {
-        ViewGroup viewGroup =  (ViewGroup) inflater.inflate(R.layout.filter_category, null);
+        ViewGroup viewGroup =  (ViewGroup) inflater.inflate(R.layout.registry_filter_category, null);
 
-        TextView text = viewGroup.findViewById(R.id.filter_category_title);
+        TextView text = viewGroup.findViewById(R.id.registry_filter_category_title);
         text.setText(title);
 
         HorizontalScrollView scrollView = generateChipGroup();
-        ViewGroup linearlayout = viewGroup.findViewById(R.id.filter_category_intern_layout);
+        ViewGroup linearlayout = viewGroup.findViewById(R.id.registry_filter_category_intern_layout);
         linearlayout.addView(scrollView);
 
         return viewGroup;
@@ -63,8 +63,8 @@ public class CategoriesGeneratorUtil {
 
     public ViewGroup generateCategory(LayoutInflater inflater,
                                       String title){
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.filter_category, null);
-        TextView text = viewGroup.findViewById(R.id.filter_category_title);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.registry_filter_category, null);
+        TextView text = viewGroup.findViewById(R.id.registry_filter_category_title);
         text.setText(title);
         return viewGroup;
     }

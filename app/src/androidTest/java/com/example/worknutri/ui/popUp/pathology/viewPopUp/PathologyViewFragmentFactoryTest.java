@@ -17,7 +17,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.worknutri.R;
-import com.example.worknutri.ui.agendasFragment.ScheduleActivity;
+import com.example.worknutri.ui.agendasFragment.RegistryActivity;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public class PathologyViewFragmentFactoryTest {
     private Context context;
 
     @Rule
-    public ActivityScenarioRule<ScheduleActivity> activityRule = new ActivityScenarioRule<>(ScheduleActivity.class);
+    public ActivityScenarioRule<RegistryActivity> activityRule = new ActivityScenarioRule<>(RegistryActivity.class);
 
     @Before
     public void setUp() {

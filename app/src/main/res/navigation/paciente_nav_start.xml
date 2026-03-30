@@ -9,9 +9,9 @@
 
     <fragment
         android:id="@+id/navigation_pacientes"
-        android:name="com.example.worknutri.ui.agendasFragment.fragments.agendaPacientes.AgendaPacienteFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.fragments.patientRegistry.PatientRegistryFragment"
         android:label="@string/title_pacientes"
-        tools:layout="@layout/fragment_agenda" >
+        tools:layout="@layout/registry_fragment" >
         <action
             android:id="@+id/action_navigation_pacientes_to_filter"
             app:destination="@id/navigation_filter_pacientes" />
@@ -21,23 +21,23 @@
     </fragment>
     <dialog
         android:id="@+id/navigation_filter_pacientes"
-        android:name="com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteFilterFragment"
-        tools:layout="@layout/filter_agenda"/>
+        android:name="com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteRegistryFilterFragment"
+        tools:layout="@layout/registry_filter"/>
 
 
     <fragment
         android:id="@+id/navigation_clinicas"
-        android:name="com.example.worknutri.ui.agendasFragment.fragments.agendaClinicas.AgendaClinicasFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.fragments.clinicRegistry.ClinicRegistryFragment"
         android:label="@string/title_clinicas"
-        tools:layout="@layout/fragment_agenda" >
+        tools:layout="@layout/registry_fragment" >
         <action
             android:id="@+id/action_navigation_clinicas_to_filter"
             app:destination="@id/navigation_filter_clinica" />
     </fragment>
     <dialog
         android:id="@+id/navigation_filter_clinica"
-        android:name="com.example.worknutri.ui.agendasFragment.filter.clinicaFilter.ClinicaFilterFragment"
-        tools:layout="@layout/filter_agenda"/>
+        android:name="com.example.worknutri.ui.agendasFragment.filter.clinicaFilter.ClinicaRegistryFilterFragment"
+        tools:layout="@layout/registry_filter"/>
 
 
 

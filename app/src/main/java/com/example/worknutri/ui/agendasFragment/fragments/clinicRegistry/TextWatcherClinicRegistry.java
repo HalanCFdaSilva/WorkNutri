@@ -1,0 +1,46 @@
+package com.example.worknutri.ui.agendasFragment.fragments.clinicRegistry;
+
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.LinearLayout;
+
+import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class TextWatcherClinicRegistry implements TextWatcher {
+    private final ClinicRegistryAdapter adapter;
+    private final LinearLayout layoutToInsert;
+
+    public TextWatcherClinicRegistry(ClinicRegistryAdapter adapter, LinearLayout layoutToInsert) {
+        this.adapter = adapter;
+        this.layoutToInsert = layoutToInsert;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+        List<Clinica> clinicasFiltradas = isEquals(s.toString());
+        adapter.inflateAgenda(layoutToInsert, clinicasFiltradas);
+
+    }
+
+    private List<Clinica> isEquals(String string) {
+        Stream<Clinica> pacienteStream = adapter.getClinicaList().stream().filter(clinica -> clinica.getNome().contains(string));
+        return pacienteStream.collect(Collectors.toList());
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+}

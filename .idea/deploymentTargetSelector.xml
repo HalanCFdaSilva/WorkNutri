@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generateAgenda_createsCategoriesAndAddsCards()">
+      <SelectionState runConfigName="IMCAntropometryRegistryInflaterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ifMoreThanOneCityContainsSameCityGenerateAgendaInsertAllThisCityInSameCategory()">
+      <SelectionState runConfigName="HeightAntropometryRegistryInflaterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generateAgendaCreatesCategoriesAndAddsCards()">
+      <SelectionState runConfigName="WeightAntropometryRegistryInflaterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ifMoreThanOneClinicContainsSameNumberOfPatientsGenerateAgendaInsertAllThisClinicInSameCategory()">
+      <SelectionState runConfigName="ifMoreThenOneRegistryHasSameIntegerPartTheyAreAddedInTheSameCategory() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Tests in 'com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfScheduleInflater.clinicsTypes'">
+      <SelectionState runConfigName="ifMoreThenOneRegistryHasSameIMCClassificationTheyAreAddedInTheSameCategory()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

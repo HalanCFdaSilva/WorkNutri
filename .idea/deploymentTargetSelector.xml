@@ -5,19 +5,13 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="NameRegistryInflaterTest">
+      <SelectionState runConfigName="Tests in 'com.example.worknutri'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generateAgendaGroupsClinicsByFirstLetterAndAddsCards()">
+      <SelectionState runConfigName="onClickInNavDeleteButtonShowPopUpToConfirmDeleteAndInConfirmIsRemovedClinicFromLayout()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="generateAgendaGroupsPatientsByFirstLetterAndAddsCards()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="clinicsWithSameInitialLetterDifferentCaseAreGroupedTogether()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="patientsWithSameInitialLetterDifferentCaseAreGroupedTogether()">
+      <SelectionState runConfigName="PatientRegistryInflaterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

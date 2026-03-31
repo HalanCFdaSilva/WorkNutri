@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.worknutri.R;
+import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestEntityFactory;
@@ -67,5 +68,23 @@ public abstract class PatientScheduleInflaterAsserter {
         Antropometria a3 = TestEntityFactory.generateAnthropometry("15/08/1990", 1.70, 90);
         a3.setIdPaciente((int) patients.get(2).getId());
         return Arrays.asList(a1, a2, a3);
+    }
+
+    public static String buildExpectedTitle(Paciente paciente) {
+        int categoryValor = AntropometricCalculator.getYearFromDate(paciente.getNascimento());
+        int decimal = getDecimalValue(categoryValor);
+        String decimalValue = String.valueOf(decimal);
+        if (decimalValue.equals("0")) decimalValue = "";
+        String title = String.format("%s0,00 - %s9,99 %s", decimalValue, decimalValue, "ANOS");
+        // AgeScheduleInflater removes ",00" and ",99"
+        return title.replace(",00", "").replace(",99", "");
+    }
+
+    private static int getDecimalValue(int ageCompare) {
+        String compareString = String.valueOf(ageCompare);
+        int decimal = 0;
+        if (compareString.length() > 1)
+            decimal = Integer.parseInt(compareString.substring(0,1));
+        return decimal;
     }
 }

@@ -5,7 +5,6 @@ import android.widget.LinearLayout;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.worknutri.calcular.AntropometricCalculator;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
 
@@ -34,9 +33,9 @@ public class AgeRegistryInflaterTest {
 
 
         String[] categoriesNamesExpected = new String[] {
-                buildExpectedTitle(list.get(0)),
-                buildExpectedTitle(list.get(1)),
-                buildExpectedTitle(list.get(2))
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(0)),
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(1)),
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(2))
         };
 
         List<List<Paciente>> patientsExpectedInCards = Arrays.asList(
@@ -63,9 +62,9 @@ public class AgeRegistryInflaterTest {
         list.get(2).setNascimento("12/08/2018");
 
         String[] categoriesNamesExpected = new String[] {
-                buildExpectedTitle(list.get(0)),
-                buildExpectedTitle(list.get(1)),
-                buildExpectedTitle(list.get(2))
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(0)),
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(1)),
+                PatientScheduleInflaterAsserter.buildExpectedTitle(list.get(2))
         };
 
         List<List<Paciente>> patientsExpectedInCards = List.of(list);
@@ -78,23 +77,7 @@ public class AgeRegistryInflaterTest {
 
         PatientScheduleInflaterAsserter.assertLayout(parent, categoriesNamesExpected, patientsExpectedInCards);
     }
-    private String buildExpectedTitle(Paciente paciente) {
-        int categoryValor = AntropometricCalculator.getYearFromDate(paciente.getNascimento());
-        int decimal = getDecimalValue(categoryValor);
-        String decimalValue = String.valueOf(decimal);
-        if (decimalValue.equals("0")) decimalValue = "";
-        String title = String.format("%s0,00 - %s9,99 %s", decimalValue, decimalValue, "ANOS");
-        // AgeScheduleInflater removes ",00" and ",99"
-        return title.replace(",00", "").replace(",99", "");
-    }
 
-    private int getDecimalValue(int ageCompare) {
-        String compareString = String.valueOf(ageCompare);
-        int decimal = 0;
-        if (compareString.length() > 1)
-            decimal = Integer.parseInt(compareString.substring(0,1));
-        return decimal;
-    }
 
 }
 

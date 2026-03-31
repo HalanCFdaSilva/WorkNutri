@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="IMCAntropometryRegistryInflaterTest">
+      <SelectionState runConfigName="NameRegistryInflaterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="HeightAntropometryRegistryInflaterTest">
+      <SelectionState runConfigName="generateAgendaGroupsClinicsByFirstLetterAndAddsCards()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="WeightAntropometryRegistryInflaterTest">
+      <SelectionState runConfigName="generateAgendaGroupsPatientsByFirstLetterAndAddsCards()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ifMoreThenOneRegistryHasSameIntegerPartTheyAreAddedInTheSameCategory() (1)">
+      <SelectionState runConfigName="clinicsWithSameInitialLetterDifferentCaseAreGroupedTogether()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ifMoreThenOneRegistryHasSameIMCClassificationTheyAreAddedInTheSameCategory()">
+      <SelectionState runConfigName="patientsWithSameInitialLetterDifferentCaseAreGroupedTogether()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

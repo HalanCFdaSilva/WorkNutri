@@ -13,7 +13,7 @@ import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryIn
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.patientTypes.PatientScheduleInflaterAsserter;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 

@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.support.TestUtil;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.asserter.ClinicScheduleInflaterAsserter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

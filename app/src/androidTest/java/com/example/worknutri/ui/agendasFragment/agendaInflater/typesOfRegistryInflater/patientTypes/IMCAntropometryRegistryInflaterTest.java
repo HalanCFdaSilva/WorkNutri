@@ -9,6 +9,7 @@ import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
+import com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

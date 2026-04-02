@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.patientTypes;
+package com.example.worknutri.ui.agendasFragment.agendaInflater.typesOfRegistryInflater.asserter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

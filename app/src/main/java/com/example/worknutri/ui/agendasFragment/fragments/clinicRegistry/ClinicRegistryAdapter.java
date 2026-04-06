@@ -8,7 +8,7 @@ import com.example.worknutri.sqlLite.dao.clinica.DayOfWorkDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.ClinicRegistryInflater;
+import com.example.worknutri.ui.agendasFragment.registryInflater.ClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.RegistryOrdenators.OrderListOfRegistry;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 

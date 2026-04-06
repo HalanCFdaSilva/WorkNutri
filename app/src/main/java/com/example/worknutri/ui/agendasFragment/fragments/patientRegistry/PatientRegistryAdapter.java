@@ -8,7 +8,7 @@ import com.example.worknutri.sqlLite.dao.paciente.AntropometriaDao;
 import com.example.worknutri.sqlLite.dao.paciente.PacienteDao;
 import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.agendaInflater.PatientRegistryInflater;
+import com.example.worknutri.ui.agendasFragment.registryInflater.PatientRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.RegistryOrdenators.OrderListOfRegistry;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import java.util.List;

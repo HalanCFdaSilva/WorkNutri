@@ -8,11 +8,8 @@ import android.widget.TextView;
 
 import com.example.worknutri.R;
 import com.example.worknutri.calcular.AntropometricCalculator;
-import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.support.TestEntityFactory;
 
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class PatientScheduleInflaterAsserter {
@@ -48,27 +45,8 @@ public abstract class PatientScheduleInflaterAsserter {
         }
     }
 
-    public static List<Paciente> generatePatientToTest(){
-        Paciente p1 = TestEntityFactory.generatePatient();
-        p1.setId(1); p1.setNomePaciente("Paciente 1");
 
-        Paciente p2 = TestEntityFactory.generatePatient();
-        p2.setId(2); p2.setNomePaciente("Paciente 2");
 
-        Paciente p3 = TestEntityFactory.generatePatient();
-        p3.setId(3); p3.setNomePaciente("Paciente 3");
-        return Arrays.asList(p1, p2, p3);
-    }
-
-    public static List<Antropometria> generateAnthropometryToTest(List<Paciente> patients) {
-        Antropometria a1 = TestEntityFactory.generateAnthropometry("15/08/1990", 1.70, 60);
-        a1.setIdPaciente((int) patients.get(0).getId());
-        Antropometria a2 = TestEntityFactory.generateAnthropometry("15/08/1990", 1.70, 80);
-        a2.setIdPaciente((int) patients.get(1).getId());
-        Antropometria a3 = TestEntityFactory.generateAnthropometry("15/08/1990", 1.70, 90);
-        a3.setIdPaciente((int) patients.get(2).getId());
-        return Arrays.asList(a1, a2, a3);
-    }
 
     public static String buildExpectedTitle(Paciente paciente) {
         int categoryValor = AntropometricCalculator.getYearFromDate(paciente.getNascimento());

@@ -40,7 +40,7 @@ public class ClinicRegistryInflaterTest {
 
     @Before
     public void setup() {
-        clinics = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        clinics = TestEntityFactory.generateClinicListToTest();
         daysOfWork = new ArrayList<>();
         patients = new ArrayList<>();
         pojo = new ClinicaFilterPojo();

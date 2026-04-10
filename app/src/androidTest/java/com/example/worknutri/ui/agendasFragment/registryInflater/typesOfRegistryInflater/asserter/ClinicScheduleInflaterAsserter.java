@@ -8,9 +8,7 @@ import android.widget.TextView;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.support.TestEntityFactory;
 
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class ClinicScheduleInflaterAsserter {
@@ -49,14 +47,5 @@ public abstract class ClinicScheduleInflaterAsserter {
         }
     }
 
-    public static List<Clinica> generateClinicsToTest(){
-        Clinica c1 = TestEntityFactory.generateClinic();
-        c1.setId(1); c1.setBairro("Boa Viagem"); c1.setCidade("Recife"); c1.setNome("Alpha Clinic");
-        Clinica c2 = TestEntityFactory.generateClinic();
-        c2.setId(2); c2.setBairro("boa viagem"); c2.setCidade("Ramá"); c2.setNome("Beta Clinic");
-        Clinica c3 = TestEntityFactory.generateClinic();
-        c3.setId(3); c3.setBairro("Casa Amarela"); c3.setCidade("Olinda"); c3.setNome("Gamma Clinic");
 
-        return Arrays.asList(c1, c2, c3);
-    }
 }

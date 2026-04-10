@@ -36,7 +36,7 @@ public class PatientsClinicRegistryInflaterTest {
         p3.setId(3); p3.setClinicaId(2);
         List<Paciente> patient = Arrays.asList(p1,p2,p3);
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
         String[] categoriesNamesExpected = {"2", "1","0"};
         List<List<Clinica>> clinicsExpectedInCards = Arrays.asList(List.of(list.get(0)),
                 List.of(list.get(1)),
@@ -61,7 +61,7 @@ public class PatientsClinicRegistryInflaterTest {
         p2.setId(2); p2.setClinicaId(2);
         List<Paciente> patient = Arrays.asList(p1,p2);
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
         list = list.subList(0,2);
 
 

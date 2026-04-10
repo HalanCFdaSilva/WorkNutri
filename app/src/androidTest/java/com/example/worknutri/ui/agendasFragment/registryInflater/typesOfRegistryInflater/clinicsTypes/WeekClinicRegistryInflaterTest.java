@@ -39,7 +39,7 @@ public class WeekClinicRegistryInflaterTest {
 
         List<DayOfWork> daysOfWork = Arrays.asList(d1, d2, d3);
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
         String[] categoriesNamesExpected = {d1.getDayOfWeek(), d3.getDayOfWeek()};
 
         List<List<Clinica>> clinicsExpectedInCards = Arrays.asList(

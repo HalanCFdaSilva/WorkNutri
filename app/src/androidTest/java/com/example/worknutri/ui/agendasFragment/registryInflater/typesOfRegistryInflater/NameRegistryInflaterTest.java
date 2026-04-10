@@ -27,7 +27,7 @@ public class NameRegistryInflaterTest {
 
     @Test
     public void generateAgendaGroupsClinicsByFirstLetterAndAddsCards() {
-        List<Clinica> clinics = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> clinics = TestEntityFactory.generateClinicListToTest();
 
         String[] categoriesExpected = {"A", "B", "G"};
         List<List<Clinica>> clinicsExpectedInCards = Arrays.asList(
@@ -71,7 +71,7 @@ public class NameRegistryInflaterTest {
     public void clinicsWithSameInitialLetterDifferentCaseAreGroupedTogether() {
 
 
-        List<Clinica> clinics = ClinicScheduleInflaterAsserter.generateClinicsToTest().subList(0, 2);
+        List<Clinica> clinics = TestEntityFactory.generateClinicListToTest().subList(0, 2);
         clinics.get(1).setNome("alpha Center");
 
         String[] categoriesExpected = {"A"};

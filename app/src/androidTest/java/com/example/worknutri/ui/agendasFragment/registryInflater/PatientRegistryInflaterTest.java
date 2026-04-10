@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.AgeRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.HeightAntropometryRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.WeightAntropometryRegistryInflater;
@@ -35,8 +36,8 @@ public class PatientRegistryInflaterTest {
     private List<Antropometria> anthropometry;
     @Before
     public void setup() {
-        patients = PatientScheduleInflaterAsserter.generatePatientToTest();
-        anthropometry = PatientScheduleInflaterAsserter.generateAnthropometryToTest(patients);
+        patients = TestEntityFactory.generatePatientListToTest();
+        anthropometry = TestEntityFactory.generateAnthropometryListToTest(patients);
         pojo = new PacienteFilterPojo(patients, anthropometry, new ArrayList<>());
         registryInflater = new PatientRegistryInflater(pojo);
     }

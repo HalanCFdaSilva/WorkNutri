@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 
@@ -25,9 +26,9 @@ public class IMCAntropometryRegistryInflaterTest {
 
     @Test
     public void generateAgendaCreatesCategoriesAndAddsCards() {
-        List<Paciente>  patientList  = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente>  patientList  = TestEntityFactory.generatePatientListToTest();
 
-        List<Antropometria> antropometriaList = PatientScheduleInflaterAsserter.generateAnthropometryToTest(patientList);
+        List<Antropometria> antropometriaList = TestEntityFactory.generateAnthropometryListToTest(patientList);
 
 
         // Prepare patients grouped by their IMC classification
@@ -53,9 +54,9 @@ public class IMCAntropometryRegistryInflaterTest {
 
     @Test
     public void ifMoreThenOneRegistryHasSameIMCClassificationTheyAreAddedInTheSameCategory() {
-        List<Paciente>  patientList  = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente>  patientList  = TestEntityFactory.generatePatientListToTest();
 
-        List<Antropometria> antropometriaList = PatientScheduleInflaterAsserter.generateAnthropometryToTest(patientList);
+        List<Antropometria> antropometriaList = TestEntityFactory.generateAnthropometryListToTest(patientList);
         antropometriaList.get(0).setImc("18.5");
         antropometriaList.get(1).setImc("20.0");
         antropometriaList.get(2).setImc("24.99");

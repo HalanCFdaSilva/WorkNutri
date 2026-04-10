@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 
@@ -24,7 +25,7 @@ public class AgeRegistryInflaterTest {
 
     @Test
     public void generateAgendaCreatesCategoriesAndAddsCards() {
-        List<Paciente> list = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente> list = TestEntityFactory.generatePatientListToTest();
         list.get(0).setNascimento("12/06/2018"); // child
 
         list.get(1).setNascimento("01/01/2005"); // teenager
@@ -57,7 +58,7 @@ public class AgeRegistryInflaterTest {
 
     @Test
     public void ifMoreThenOneRegistryBirthInSameYearTheyAreAddedInTheSameCategory() {
-        List<Paciente> list = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente> list = TestEntityFactory.generatePatientListToTest();
         list.get(0).setNascimento("02/02/2018");
         list.get(1).setNascimento("01/06/2018");
         list.get(2).setNascimento("12/08/2018");

@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 
@@ -24,9 +25,9 @@ public class WeightAntropometryRegistryInflaterTest {
 
     @Test
     public void generateAgendaCreatesCategoriesAndAddsCards() {
-        List<Paciente> patientList = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente> patientList = TestEntityFactory.generatePatientListToTest();
 
-        List<Antropometria> antropometriaList = PatientScheduleInflaterAsserter.generateAnthropometryToTest(patientList);
+        List<Antropometria> antropometriaList = TestEntityFactory.generateAnthropometryListToTest(patientList);
 
 
         String[] categoriesNamesExpected = new String[] {
@@ -51,9 +52,9 @@ public class WeightAntropometryRegistryInflaterTest {
 
     @Test
     public void ifMoreThenOneRegistryHasSameIntegerPartTheyAreAddedInTheSameCategory() {
-        List<Paciente> patientList = PatientScheduleInflaterAsserter.generatePatientToTest();
+        List<Paciente> patientList = TestEntityFactory.generatePatientListToTest();
 
-        List<Antropometria> antropometriaList = PatientScheduleInflaterAsserter.generateAnthropometryToTest(patientList);
+        List<Antropometria> antropometriaList = TestEntityFactory.generateAnthropometryListToTest(patientList);
         antropometriaList.get(0).setPeso("60.0");
         antropometriaList.get(1).setPeso("65.38");
         antropometriaList.get(2).setPeso("69.99");

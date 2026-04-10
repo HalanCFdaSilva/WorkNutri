@@ -17,6 +17,12 @@ public abstract class TestUtil {
         return context;
     }
 
+    public static Context getContextWithFilterTheme() {
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        context = new ContextThemeWrapper(context, R.style.Theme_themeFilter);
+        return context;
+    }
+
     public static int colorFromRes(int resId) {
         return ContextCompat.getColor(getThemedContext(), resId);
     }

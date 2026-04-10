@@ -1,15 +1,15 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories;
 
 import android.content.Context;
 import android.view.ContextThemeWrapper;
 
 
-import androidx.annotation.NonNull;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
 
@@ -30,7 +30,7 @@ import static org.junit.Assert.assertEquals;
 public class DayInClinicaCategoryTest {
 
     private ClinicaFilterPojo clinicaFilterPojo;
-    private DayInClinicaCategory dayInClinicaCategory;
+    private DayInClinicCategory dayInClinicaCategory;
     private List<Clinica> clinics;
 
     @Before
@@ -39,68 +39,18 @@ public class DayInClinicaCategoryTest {
         context = new ContextThemeWrapper(context, R.style.Theme_themeFilter_Chip);
         clinicaFilterPojo = new ClinicaFilterPojo();
         
-        // Criar clínicas para teste
-        clinics = new ArrayList<>();
-        Clinica clinica1 = new Clinica();
-        clinica1.setId(1);
-        clinica1.setNome("Clinica A");
-        clinica1.setCidade("Sao Paulo");
-        clinica1.setBairro("Zona Sul");
+        clinics = TestEntityFactory.generateClinicListToTest();
         
-        Clinica clinica2 = new Clinica();
-        clinica2.setId(2);
-        clinica2.setNome("Clinica B");
-        clinica2.setCidade("Sao Paulo");
-        clinica2.setBairro("Zona Leste");
-        
-        Clinica clinica3 = new Clinica();
-        clinica3.setId(3);
-        clinica3.setNome("Clinica C");
-        clinica3.setCidade("Sao Paulo");
-        clinica3.setBairro("Zona Norte");
-        
-        clinics.add(clinica1);
-        clinics.add(clinica2);
-        clinics.add(clinica3);
-        
-        // Criar DaysOfWork
-        List<DayOfWork> daysOfWork = getDaysOfWork();
+        List<DayOfWork> daysOfWork = TestEntityFactory.getDaysOfWork();
+        daysOfWork.get(0).setId(clinics.get(0).getId());
+        daysOfWork.get(1).setId(clinics.get(1).getId());
+        daysOfWork.get(2).setId(clinics.get(2).getId());
 
         clinicaFilterPojo.setClinicas(clinics);
         clinicaFilterPojo.setClinicasSelected(new ArrayList<>(clinics));
         clinicaFilterPojo.setDayOfWorkList(daysOfWork);
         
-        dayInClinicaCategory = new DayInClinicaCategory(context, clinicaFilterPojo);
-    }
-
-    @NonNull
-    private static List<DayOfWork> getDaysOfWork() {
-        List<DayOfWork> daysOfWork = new ArrayList<>();
-        DayOfWork dayOfWork1 = new DayOfWork();
-        dayOfWork1.setId(1);
-        dayOfWork1.setIdClinica(1);
-        dayOfWork1.setDayOfWeek("SEGUNDA");
-        dayOfWork1.setHoraInicio("08:00");
-        dayOfWork1.setHoraFim("12:00");
-
-        DayOfWork dayOfWork2 = new DayOfWork();
-        dayOfWork2.setId(2);
-        dayOfWork2.setIdClinica(2);
-        dayOfWork2.setDayOfWeek("SEGUNDA");
-        dayOfWork2.setHoraInicio("13:00");
-        dayOfWork2.setHoraFim("17:00");
-
-        DayOfWork dayOfWork3 = new DayOfWork();
-        dayOfWork3.setId(3);
-        dayOfWork3.setIdClinica(3);
-        dayOfWork3.setDayOfWeek("TERÇA");
-        dayOfWork3.setHoraInicio("09:00");
-        dayOfWork3.setHoraFim("14:00");
-
-        daysOfWork.add(dayOfWork1);
-        daysOfWork.add(dayOfWork2);
-        daysOfWork.add(dayOfWork3);
-        return daysOfWork;
+        dayInClinicaCategory = new DayInClinicCategory(context, clinicaFilterPojo);
     }
 
     // ==================== Testes de Inicialização ====================

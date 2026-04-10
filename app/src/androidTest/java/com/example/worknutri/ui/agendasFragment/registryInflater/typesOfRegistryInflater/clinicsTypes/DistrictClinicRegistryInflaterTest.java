@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.ClinicScheduleInflaterAsserter;
 
@@ -26,7 +27,7 @@ public class DistrictClinicRegistryInflaterTest {
     @Test
     public void generateAgendaGroupsByDistrictAndAddsCards() {
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
         String[] categoriesNamesExpected = {list.get(0).getBairro().toUpperCase(), list.get(2).getBairro().toUpperCase()};
         List<List<Clinica>> clinicsExpectedInCards = new ArrayList<>();
         clinicsExpectedInCards.add(Arrays.asList(list.get(0),list.get(1)));

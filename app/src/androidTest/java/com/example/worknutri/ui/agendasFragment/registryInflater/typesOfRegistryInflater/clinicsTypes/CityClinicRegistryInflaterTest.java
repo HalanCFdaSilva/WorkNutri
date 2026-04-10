@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
+import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.ClinicScheduleInflaterAsserter;
 
@@ -26,7 +27,7 @@ public class CityClinicRegistryInflaterTest {
     @Test
     public void generateAgendaCreatesCategoriesAndAddsCards() {
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
 
 
         String[] categoriesNamesExpected = {list.get(0).getCidade().toUpperCase(),
@@ -49,7 +50,7 @@ public class CityClinicRegistryInflaterTest {
     @Test
     public void ifMoreThanOneClinicContainsSameCityGenerateAgendaInsertAllThisCityInSameCategory() {
 
-        List<Clinica> list = ClinicScheduleInflaterAsserter.generateClinicsToTest();
+        List<Clinica> list = TestEntityFactory.generateClinicListToTest();
         list = list.subList(0,2); // only two clinics with same city
         list.get(1).setCidade(list.get(0).getCidade());
 

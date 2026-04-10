@@ -1,10 +1,10 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories;
 
 import android.content.Context;
 
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
-public abstract class PacientesCategoryFactory {
+public abstract class PatientCategoryFactory {
 
 
 
@@ -16,7 +16,7 @@ public abstract class PacientesCategoryFactory {
         return new YearCategory(context, pojo);
     }
 
-    public static PacienteInClinicaCategory generatePacienteInClinicaCategory(Context context, PacienteFilterPojo pojo) {
-        return new PacienteInClinicaCategory(context, pojo);
+    public static PatientInClinicCategory generatePacienteInClinicaCategory(Context context, PacienteFilterPojo pojo) {
+        return new PatientInClinicCategory(context, pojo);
     }
 }

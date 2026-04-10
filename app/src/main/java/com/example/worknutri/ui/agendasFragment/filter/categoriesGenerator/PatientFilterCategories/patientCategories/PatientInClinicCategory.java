@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
@@ -15,10 +15,10 @@ import com.google.android.material.chip.ChipGroup;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PacienteInClinicaCategory extends PacientesFilterCategory {
+public class PatientInClinicCategory extends PatientFilterCategory {
 
     private boolean hasNoFilterActive = true;
-    protected PacienteInClinicaCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+    protected PatientInClinicCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         super(context, pacienteFilterPojo);
     }
 
@@ -91,8 +91,7 @@ public class PacienteInClinicaCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public void reset() {
-        super.reset();
+    protected void resetLayout() {
         hasNoFilterActive = true;
         pojo.getState().getClinicaIdSelected().clear();
         ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));

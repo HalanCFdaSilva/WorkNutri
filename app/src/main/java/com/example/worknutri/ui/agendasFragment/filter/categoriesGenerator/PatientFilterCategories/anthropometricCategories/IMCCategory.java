@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.anthropometricCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.calcular.ClassificacaoImc;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class IMCCategory extends PacientesFilterCategory {
+public class IMCCategory extends PatientFilterCategory {
 
     boolean firstTime = true;
     public IMCCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
@@ -93,8 +93,7 @@ public class IMCCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public void reset() {
-        super.reset();
+    protected void resetLayout() {
         firstTime = true;
         pojo.getState().getClassificacaoImcs().clear();
         ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));

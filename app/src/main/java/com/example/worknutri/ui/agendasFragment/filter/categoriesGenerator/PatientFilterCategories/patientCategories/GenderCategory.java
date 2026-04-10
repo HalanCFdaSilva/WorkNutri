@@ -1,11 +1,11 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.google.android.material.chip.Chip;
@@ -13,7 +13,7 @@ import com.google.android.material.chip.ChipGroup;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GenderCategory extends PacientesFilterCategory {
+public class GenderCategory extends PatientFilterCategory {
 
 
     protected GenderCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
@@ -72,8 +72,7 @@ public class GenderCategory extends PacientesFilterCategory {
     }
 
     @Override
-    public void reset() {
-        super.reset();
+    protected void resetLayout() {
         ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));
         pojo.getState().setGeneroSelected('N');
     }

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.anthropometricCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
@@ -20,14 +20,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class WeightCategory extends PacientesFilterCategory {
-    protected WeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+public class HeightCategory extends PatientFilterCategory {
+    public HeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         super(context, pacienteFilterPojo);
     }
 
-    @Override
     public ViewGroup generateView(LayoutInflater layoutInflater) {
-        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Peso:");
+        ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Altura:");
         RangeSlider rangeSlider = generateRangeSlider();
         ViewGroup linearLayout = viewGroup.findViewById(com.example.worknutri.R.id.registry_filter_category_intern_layout);
         linearLayout.addView(rangeSlider);
@@ -38,19 +37,18 @@ public class WeightCategory extends PacientesFilterCategory {
 
     private RangeSlider generateRangeSlider() {
 
-        float maxValue = (int)getValue(pojo.getAntropometriaList().stream()
-                .max(Comparator.comparing(Antropometria::getPeso)));
+        float maxValue = getValue(pojo.getAntropometriaList().stream()
+                .max(Comparator.comparing(Antropometria::getAltura)));
 
-        float minValue = (int)getValue(pojo.getAntropometriaList().stream()
-                .min(Comparator.comparing(Antropometria::getPeso)));
+        float minValue = getValue(pojo.getAntropometriaList().stream()
+                .min(Comparator.comparing(Antropometria::getAltura)));
 
 
         RangeSlider slider = categoriesGeneratorUtil.generateRangeSlider(minValue, maxValue);
-        slider.setStepSize(1);
 
         onClickInSlider(slider);
 
-        setInitialValue(slider,  minValue, maxValue);
+        setInitialValue(slider, minValue, maxValue);
 
 
         return slider;
@@ -60,11 +58,11 @@ public class WeightCategory extends PacientesFilterCategory {
 
 
     private float getValue(Optional<Antropometria> antropometriaOptional) {
-        return antropometriaOptional.map(antropometria -> Float.valueOf(antropometria.getPeso()))
+        return antropometriaOptional.map(antropometria -> Float.valueOf(antropometria.getAltura()))
                 .orElse(0f);
     }
 
-    private void onClickInSlider(RangeSlider slider) {
+    private void onClickInSlider(@NonNull RangeSlider slider) {
         slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
             @Override
             public void onStartTrackingTouch(@NonNull RangeSlider slider) {
@@ -76,7 +74,7 @@ public class WeightCategory extends PacientesFilterCategory {
 
                 float minValue = slider.getValues().get(0);
                 float maxValue = slider.getValues().get(1);
-                float[] valuesOfWeightSlider = pojo.getState().getTupleOfWeightSlider();
+                float[] valuesOfWeightSlider = pojo.getState().getTupleOfHeightSlider();
                 PojoUtil.setValuesOfFloatTuple(valuesOfWeightSlider, minValue, maxValue);
                 selectPacientesInRange(valuesOfWeightSlider);
 
@@ -84,20 +82,20 @@ public class WeightCategory extends PacientesFilterCategory {
         });
     }
 
-private void selectPacientesInRange(float[] values) {
-    if (pojo.getPacientes().stream().findAny().isPresent()){
-        for (Antropometria antropometria : pojo.getAntropometriaList()) {
-            selectpacienteByAntropometria(values, antropometria);
+    private void selectPacientesInRange(float[] values) {
+        if (pojo.getPacientes().stream().findAny().isPresent()){
+            for (Antropometria antropometria : pojo.getAntropometriaList()) {
+                selectpacienteByAntropometria(values, antropometria);
+            }
         }
+
     }
 
-}
-
     private void selectpacienteByAntropometria(float[] values, Antropometria antropometria) {
-        float weigth = Float.parseFloat(antropometria.getPeso());
+        float heigth = Float.parseFloat(antropometria.getAltura());
         List<Paciente> pacientesFiltred = pojo.getPacientes().stream().filter(paciente -> paciente.getId() == antropometria.getIdPaciente())
                 .collect(Collectors.toList());
-        if (weigth >= values[0] && weigth <= values[1]) {
+        if (heigth >= values[0] && heigth <= values[1]) {
             if (!pacientesFiltred.isEmpty() && !pacientesInsideFilter.contains(pacientesFiltred.get(0))) {
                 pacientesInsideFilter.add(pacientesFiltred.get(0));
             }
@@ -108,7 +106,7 @@ private void selectPacientesInRange(float[] values) {
     }
 
     private void setInitialValue(RangeSlider slider, float minValue, float maxValue) {
-        float[] valuesOfWeightSlider = pojo.getState().getTupleOfWeightSlider();
+        float[] valuesOfWeightSlider = pojo.getState().getTupleOfHeightSlider();
         if (valuesOfWeightSlider[0] == 0 && valuesOfWeightSlider[1] == 0) {
             slider.setValues(minValue, maxValue);
         } else {
@@ -117,11 +115,10 @@ private void selectPacientesInRange(float[] values) {
         }
     }
 
-
     @Override
-    public void reset() {
-        super.reset();
+    protected void resetLayout() {
         ReseterOfCategory.resetSlider(viewGroup.findViewById(R.id.filter_category_rangeslider)
-                ,pojo.getState().getTupleOfWeightSlider());
+                ,pojo.getState().getTupleOfHeightSlider());
+
     }
 }

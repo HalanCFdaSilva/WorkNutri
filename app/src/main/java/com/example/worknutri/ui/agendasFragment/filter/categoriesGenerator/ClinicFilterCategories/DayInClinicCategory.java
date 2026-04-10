@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,10 +16,10 @@ import com.google.android.material.chip.ChipGroup;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DayInClinicaCategory extends ClinicaFilterCategory {
+public class DayInClinicCategory extends ClinicFilterCategory {
 
     private boolean isFirstTime = true;
-    protected DayInClinicaCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
+    protected DayInClinicCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
         super(context, clinicaFilterPojo);
     }
 

@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class YearCategory extends PacientesFilterCategory {
+public class YearCategory extends PatientFilterCategory {
 
 
 
@@ -88,8 +88,7 @@ public class YearCategory extends PacientesFilterCategory {
 
 
     @Override
-    public void reset() {
-        super.reset();
+    protected void resetLayout() {
         ReseterOfCategory.resetSlider(viewGroup.findViewById(R.id.filter_category_rangeslider)
                 ,pojo.getState().getTupleOfYearSlider());
 

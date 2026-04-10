@@ -1,10 +1,10 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.anthropometricCategories;
 
 import android.content.Context;
 
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
 
-public abstract class AntropometriaCategoryFactory {
+public abstract class AnthropometryCategoryFactory {
 
     public static WeightCategory createWeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
         return new WeightCategory(context, pacienteFilterPojo);

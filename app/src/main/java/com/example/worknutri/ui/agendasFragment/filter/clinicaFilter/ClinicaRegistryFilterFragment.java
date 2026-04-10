@@ -9,8 +9,8 @@ import android.os.Bundle;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.RegistryFilterFragment;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories.ClinicaFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories.ClinicaFilterCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories.ClinicFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories.ClinicFilterCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
@@ -21,13 +21,13 @@ import java.util.List;
 public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
 
     private ClinicaFilterPojo clinicaFilterPojo;
-    private final List<ClinicaFilterCategory> categories = new ArrayList<>();
+    private final List<ClinicFilterCategory> categories = new ArrayList<>();
 
     @Override
     protected void generateFilter(Context context) {
          getPojo();
-        insertCategotyInLayout(ClinicaFilterCategoryFactory.generateDayInClinicaCategory(context, clinicaFilterPojo));
-        insertCategotyInLayout(ClinicaFilterCategoryFactory.generateHourWorkCategory(context, clinicaFilterPojo));
+        insertCategotyInLayout(ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicaFilterPojo));
+        insertCategotyInLayout(ClinicFilterCategoryFactory.generateHourWorkCategory(context, clinicaFilterPojo));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
     }
 
 
-    protected void insertCategotyInLayout(ClinicaFilterCategory categoryGenerate) {
+    protected void insertCategotyInLayout(ClinicFilterCategory categoryGenerate) {
         super.insertCategotyInLayout(categoryGenerate);
         categories.add(categoryGenerate);
     }
@@ -83,7 +83,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
         clinicaFilterPojo.getClinicasSelected().clear();
         for (Clinica clinica : clinicaFilterPojo.getClinicas()) {
             boolean isSelected = true;
-            for (ClinicaFilterCategory category : categories) {
+            for (ClinicFilterCategory category : categories) {
 
 
                 if (!category.getSelecteds().contains(clinica)){
@@ -102,7 +102,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
 
     @Override
     protected void resetAllCategories() {
-        for (ClinicaFilterCategory category : categories) {
+        for (ClinicFilterCategory category : categories) {
             category.reset();
         }
     }

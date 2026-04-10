@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.Clini
 import com.google.android.material.slider.RangeSlider;
 import java.util.List;
 
-public class HourWorkCategory extends ClinicaFilterCategory {
+public class HourWorkCategory extends ClinicFilterCategory {
     protected HourWorkCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
         super(context, clinicaFilterPojo);
     }

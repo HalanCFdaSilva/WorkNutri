@@ -1,7 +1,6 @@
-package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicaFilterCategories;
+package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories;
 
 import android.content.Context;
-import android.view.ViewGroup;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
@@ -10,16 +9,16 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.Clini
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ClinicaFilterCategory extends FilterCategories {
+public abstract class ClinicFilterCategory extends FilterCategories {
 
 
     protected List<Clinica> clinicasSelecteds;
     protected  final ClinicaFilterPojo clinicaFilterPojo;
     protected Context context;
-    protected ViewGroup viewGroup;
 
 
-    protected ClinicaFilterCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
+
+    protected ClinicFilterCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
         super(context);
         this.clinicaFilterPojo = clinicaFilterPojo;
         clinicasSelecteds = new ArrayList<>(clinicaFilterPojo.getClinicas());

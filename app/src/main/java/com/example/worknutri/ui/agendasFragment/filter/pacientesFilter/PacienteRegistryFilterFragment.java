@@ -9,9 +9,9 @@ import android.os.Bundle;
 
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.RegistryFilterFragment;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.PacientesFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.antropometriaCategories.AntropometriaCategoryFactory;
-import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PacienteFilterCategories.pacientesCategories.PacientesCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.anthropometricCategories.AnthropometryCategoryFactory;
+import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories.PatientCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
@@ -26,19 +26,19 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
 
     private PacienteFilterPojo pojo;
 
-    private final List<PacientesFilterCategory> categories = new ArrayList<>();
+    private final List<PatientFilterCategory> categories = new ArrayList<>();
 
 
     @Override
     protected void generateFilter(Context context) {
         getPojo();
 
-        insertCategotyInLayout(PacientesCategoryFactory.generateGenderCategory(context, pojo));
-        insertCategotyInLayout(PacientesCategoryFactory.generateYearCategory(context, pojo));
-        insertCategotyInLayout(PacientesCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
-        insertCategotyInLayout(AntropometriaCategoryFactory.createWeightCategory(context, pojo));
-        insertCategotyInLayout(AntropometriaCategoryFactory.createHeightCategory(context, pojo));
-        insertCategotyInLayout(AntropometriaCategoryFactory.createIMCCategory(context, pojo));
+        insertCategotyInLayout(PatientCategoryFactory.generateGenderCategory(context, pojo));
+        insertCategotyInLayout(PatientCategoryFactory.generateYearCategory(context, pojo));
+        insertCategotyInLayout(PatientCategoryFactory.generatePacienteInClinicaCategory(context, pojo));
+        insertCategotyInLayout(AnthropometryCategoryFactory.createWeightCategory(context, pojo));
+        insertCategotyInLayout(AnthropometryCategoryFactory.createHeightCategory(context, pojo));
+        insertCategotyInLayout(AnthropometryCategoryFactory.createIMCCategory(context, pojo));
 
     }
 
@@ -71,7 +71,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
     }
 
 
-    protected void insertCategotyInLayout(PacientesFilterCategory categoryGenerate) {
+    protected void insertCategotyInLayout(PatientFilterCategory categoryGenerate) {
         super.insertCategotyInLayout(categoryGenerate);
         categories.add(categoryGenerate);
     }
@@ -81,7 +81,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
         pojo.getPacienteSelected().clear();
         for (Paciente paciente : pojo.getPacientes()) {
             boolean isSelected = true;
-            for (PacientesFilterCategory category : categories) {
+            for (PatientFilterCategory category : categories) {
                 if (!category.getSelecteds().contains(paciente)){
                     isSelected = false;
                     break;
@@ -115,7 +115,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
 
     @Override
     protected void resetAllCategories() {
-        for (PacientesFilterCategory category : categories) {
+        for (PatientFilterCategory category : categories) {
             category.reset();
         }
     }

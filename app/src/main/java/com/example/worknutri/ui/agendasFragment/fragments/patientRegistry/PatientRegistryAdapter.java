@@ -10,7 +10,7 @@ import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.registryInflater.PatientRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.RegistryOrdenators.OrderListOfRegistry;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import java.util.List;
 
 public class PatientRegistryAdapter {
@@ -19,7 +19,7 @@ public class PatientRegistryAdapter {
     private final AntropometriaDao antropometriaDao;
 
     private final ClinicaDao clinicaDao;
-    private PacienteFilterPojo pacienteFilterPojo;
+    private PatientFilterPojo patientFilterPojo;
 
     public PatientRegistryAdapter(Context context) {
         this.context = context;
@@ -27,15 +27,15 @@ public class PatientRegistryAdapter {
         pacienteDao = appDB.pacienteDao();
         antropometriaDao = appDB.antropometriaDao();
         clinicaDao = appDB.clinicaDao();
-        pacienteFilterPojo =  new PacienteFilterPojo(getPacientes(), antropometriaDao.getAll(), clinicaDao.getAllInOrder());
+        patientFilterPojo =  new PatientFilterPojo(getPacientes(), antropometriaDao.getAll(), clinicaDao.getAllInOrder());
     }
 
     public void inflateAgenda(LinearLayout linearLayout) {
 
         linearLayout.removeAllViews();
-        List<Paciente> pacienteOrdered = new OrderListOfRegistry().orderToAgendaPacientes(pacienteFilterPojo);
-        pacienteFilterPojo.setPacienteSelected(pacienteOrdered);
-        PatientRegistryInflater patientRegistryInflater = new PatientRegistryInflater(pacienteFilterPojo);
+        List<Paciente> pacienteOrdered = new OrderListOfRegistry().orderToAgendaPacientes(patientFilterPojo);
+        patientFilterPojo.setPatientsSelected(pacienteOrdered);
+        PatientRegistryInflater patientRegistryInflater = new PatientRegistryInflater(patientFilterPojo);
         patientRegistryInflater.inflateSchedule(linearLayout, context);
 
 
@@ -43,7 +43,7 @@ public class PatientRegistryAdapter {
 
     public void inflateAgendaAfterSearch(LinearLayout linearLayout, List<Paciente> pacientes) {
         linearLayout.removeAllViews();
-        pacienteFilterPojo.setPacienteSelected(pacientes);
+        patientFilterPojo.setPatientsSelected(pacientes);
         inflateAgenda(linearLayout);
 
 
@@ -59,15 +59,15 @@ public class PatientRegistryAdapter {
         return this.context;
     }
 
-    public void setPacienteFilterPojo(PacienteFilterPojo pacienteFilterPojo) {
-        this.pacienteFilterPojo = pacienteFilterPojo;
+    public void setPacienteFilterPojo(PatientFilterPojo patientFilterPojo) {
+        this.patientFilterPojo = patientFilterPojo;
     }
-    public PacienteFilterPojo getPacienteFilterPojo(){
-        return pacienteFilterPojo;
+    public PatientFilterPojo getPacienteFilterPojo(){
+        return patientFilterPojo;
     }
     public void updatePojo(){
-        pacienteFilterPojo.setPacientes(getPacientes());
-        pacienteFilterPojo.setAntropometriaList(antropometriaDao.getAll());
-        pacienteFilterPojo.setClinicas(clinicaDao.getAllInOrder());
+        patientFilterPojo.setPatientList(getPacientes());
+        patientFilterPojo.setAnthropometryList(antropometriaDao.getAll());
+        patientFilterPojo.setClinicas(clinicaDao.getAllInOrder());
     }
 }

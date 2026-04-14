@@ -10,7 +10,7 @@ import com.example.worknutri.sqlLite.database.AppDataBase;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.registryInflater.ClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.RegistryOrdenators.OrderListOfRegistry;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ClinicRegistryAdapter {
     private final PacienteDao pacienteDao;
     private final DayOfWorkDao dayOfWorkDao;
     private final Context context;
-    private ClinicaFilterPojo clinicaFilterPojo;
+    private ClinicFilterPojo clinicFilterPojo;
 
     public ClinicRegistryAdapter(Context context) {
         this.context = context;
@@ -28,8 +28,8 @@ public class ClinicRegistryAdapter {
         clinicaDao = appDataBase.clinicaDao();
         pacienteDao = appDataBase.pacienteDao();
         dayOfWorkDao = appDataBase.dayOfWorkDao();
-        clinicaFilterPojo = new ClinicaFilterPojo();
-        clinicaFilterPojo.setClinicasSelected(clinicaDao.getAllInOrder());
+        clinicFilterPojo = new ClinicFilterPojo();
+        clinicFilterPojo.setClinicsSelected(clinicaDao.getAllInOrder());
         updatePojo();
     }
 
@@ -37,16 +37,16 @@ public class ClinicRegistryAdapter {
         linearLayout.removeAllViews();
 
         OrderListOfRegistry orderListOfRegistry = new OrderListOfRegistry();
-        List<Clinica> clinicasOrdered = orderListOfRegistry.orderToClinicSchedule(clinicaFilterPojo);
-        clinicaFilterPojo.setClinicasSelected(clinicasOrdered);
+        List<Clinica> clinicasOrdered = orderListOfRegistry.orderToClinicSchedule(clinicFilterPojo);
+        clinicFilterPojo.setClinicsSelected(clinicasOrdered);
         
-        ClinicRegistryInflater clinicRegistryInflater = new ClinicRegistryInflater(clinicaFilterPojo);
+        ClinicRegistryInflater clinicRegistryInflater = new ClinicRegistryInflater(clinicFilterPojo);
         clinicRegistryInflater.inflateSchedule(linearLayout, context);
 
     }
 
     public void inflateAgenda(LinearLayout linearLayout, List<Clinica> clinicaList) {
-        clinicaFilterPojo.setClinicasSelected(clinicaList);
+        clinicFilterPojo.setClinicsSelected(clinicaList);
         inflateAgenda(linearLayout);
 
     }
@@ -59,18 +59,18 @@ public class ClinicRegistryAdapter {
         return clinicaDao.getAllInOrder();
     }
 
-    public ClinicaFilterPojo getClinicaFilterPojo() {
-        return clinicaFilterPojo;
+    public ClinicFilterPojo getClinicaFilterPojo() {
+        return clinicFilterPojo;
     }
 
-    public void setClinicaFilterPojo(ClinicaFilterPojo clinicaFilterPojo) {
-        this.clinicaFilterPojo = clinicaFilterPojo;
+    public void setClinicaFilterPojo(ClinicFilterPojo clinicFilterPojo) {
+        this.clinicFilterPojo = clinicFilterPojo;
     }
 
     public void updatePojo() {
-        clinicaFilterPojo.setClinicas(clinicaDao.getAll());
-        clinicaFilterPojo.setPacientes(pacienteDao.getAll());
-        clinicaFilterPojo.setDayOfWorkList(dayOfWorkDao.getAll());
+        clinicFilterPojo.setClinicsList(clinicaDao.getAll());
+        clinicFilterPojo.setPatientList(pacienteDao.getAll());
+        clinicFilterPojo.setDayOfWorkList(dayOfWorkDao.getAll());
 
     }
 }

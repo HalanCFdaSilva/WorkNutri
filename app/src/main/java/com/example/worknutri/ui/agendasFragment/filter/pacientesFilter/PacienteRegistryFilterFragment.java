@@ -14,7 +14,7 @@ import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.Patie
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.patientCategories.PatientCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
 
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
 
     private final List<PatientFilterCategory> categories = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             if (arguments.containsKey(PACIENTE_FILTER_POJO)) {
-                pojo = (PacienteFilterPojo) arguments.getSerializable(PACIENTE_FILTER_POJO);
+                pojo = (PatientFilterPojo) arguments.getSerializable(PACIENTE_FILTER_POJO);
             } else {
                 dismiss();
             }
@@ -78,8 +78,8 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
 
     @Override
     protected void getAllCategories() {
-        pojo.getPacienteSelected().clear();
-        for (Paciente paciente : pojo.getPacientes()) {
+        pojo.getPatientsSelected().clear();
+        for (Paciente paciente : pojo.getPatientList()) {
             boolean isSelected = true;
             for (PatientFilterCategory category : categories) {
                 if (!category.getSelecteds().contains(paciente)){
@@ -88,7 +88,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
                 }
             }
             if (isSelected){
-                pojo.getPacienteSelected().add(paciente);
+                pojo.getPatientsSelected().add(paciente);
             }
         }
 
@@ -104,7 +104,7 @@ public class PacienteRegistryFilterFragment extends RegistryFilterFragment {
     }
 
     private void filterPacientesSelected(){
-        pojo.setPacienteSelected( pojo.getPacienteSelected().stream().sorted(Comparator.comparing(Paciente::getNomePaciente)).collect(Collectors.toList()));
+        pojo.setPatientsSelected( pojo.getPatientsSelected().stream().sorted(Comparator.comparing(Paciente::getNomePaciente)).collect(Collectors.toList()));
 
     }
 

@@ -5,11 +5,11 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PacienteFilterUiState extends UiState {
+public class PatientFilterUiState extends UiState {
     private char generoSelected = 'N';
-    private final List<Long> clinicaIdSelected = new ArrayList<>();
+    private final List<Long> clinicsIdSelected = new ArrayList<>();
 
-    private final List<ClassificacaoImc> classificacaoImcs = new ArrayList<>();
+    private final List<ClassificacaoImc> bmiClassificationsSelected = new ArrayList<>();
     private final float[] tupleOfYearSlider;
     private final float[] tupleOfWeightSlider;
 
@@ -18,7 +18,7 @@ public class PacienteFilterUiState extends UiState {
 
 
 
-    public PacienteFilterUiState(int minValue, int maxValue) {
+    public PatientFilterUiState(int minValue, int maxValue) {
         tupleOfYearSlider = new float[]{minValue,maxValue};
         tupleOfWeightSlider = new float[]{0,0};
         tupleOfHeightSlider = new float[]{0,0};
@@ -32,8 +32,8 @@ public class PacienteFilterUiState extends UiState {
         this.generoSelected = generoSelected;
     }
 
-    public List<Long> getClinicaIdSelected() {
-        return clinicaIdSelected;
+    public List<Long> getClinicsIdSelected() {
+        return clinicsIdSelected;
     }
 
 
@@ -49,7 +49,7 @@ public class PacienteFilterUiState extends UiState {
         return tupleOfHeightSlider;
     }
 
-    public List<ClassificacaoImc> getClassificacaoImcs() {
-        return classificacaoImcs;
+    public List<ClassificacaoImc> getBmiClassificationsSelected() {
+        return bmiClassificationsSelected;
     }
 }

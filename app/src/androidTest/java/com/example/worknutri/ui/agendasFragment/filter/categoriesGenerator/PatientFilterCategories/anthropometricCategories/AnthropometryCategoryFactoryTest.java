@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,45 +20,45 @@ import java.util.ArrayList;
 public class AnthropometryCategoryFactoryTest {
 
     private Context context;
-    private PacienteFilterPojo pacienteFilterPojo;
+    private PatientFilterPojo patientFilterPojo;
 
     @Before
     public void setUp() {
         context = TestUtil.getContextWithFilterTheme();
-        pacienteFilterPojo = new PacienteFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
+        patientFilterPojo = new PatientFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
     }
 
     // ==================== Testes para createWeightCategory ====================
 
     @Test
     public void testCreateWeightCategoryReturnsNotNull() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertNotNull(weightCategory);
     }
 
     @Test
     public void testCreateWeightCategoryReturnsCorrectType() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertTrue(weightCategory instanceof WeightCategory);
     }
 
     @Test
     public void testCreateWeightCategoryWithValidContext() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertNotNull(weightCategory);
         assertTrue(weightCategory instanceof WeightCategory);
     }
 
     @Test
     public void testCreateWeightCategoryWithValidPojo() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertNotNull(weightCategory);
     }
 
     @Test
     public void testCreateWeightCategoryMultipleTimes() {
-        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
-        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
+        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
 
         assertNotNull(weightCategory1);
         assertNotNull(weightCategory2);
@@ -70,33 +70,33 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testCreateHeightCategoryReturnsNotNull() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertNotNull(heightCategory);
     }
 
     @Test
     public void testCreateHeightCategoryReturnsCorrectType() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertTrue(heightCategory instanceof HeightCategory);
     }
 
     @Test
     public void testCreateHeightCategoryWithValidContext() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertNotNull(heightCategory);
         assertTrue(heightCategory instanceof HeightCategory);
     }
 
     @Test
     public void testCreateHeightCategoryWithValidPojo() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertNotNull(heightCategory);
     }
 
     @Test
     public void testCreateHeightCategoryMultipleTimes() {
-        HeightCategory heightCategory1 = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
-        HeightCategory heightCategory2 = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory1 = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
+        HeightCategory heightCategory2 = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
 
         assertNotNull(heightCategory1);
         assertNotNull(heightCategory2);
@@ -108,33 +108,33 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testCreateIMCCategoryReturnsNotNull() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertNotNull(imcCategory);
     }
 
     @Test
     public void testCreateIMCCategoryReturnsCorrectType() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertTrue(imcCategory instanceof IMCCategory);
     }
 
     @Test
     public void testCreateIMCCategoryWithValidContext() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertNotNull(imcCategory);
         assertTrue(imcCategory instanceof IMCCategory);
     }
 
     @Test
     public void testCreateIMCCategoryWithValidPojo() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertNotNull(imcCategory);
     }
 
     @Test
     public void testCreateIMCCategoryMultipleTimes() {
-        IMCCategory imcCategory1 = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
-        IMCCategory imcCategory2 = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory1 = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
+        IMCCategory imcCategory2 = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
 
         assertNotNull(imcCategory1);
         assertNotNull(imcCategory2);
@@ -146,9 +146,9 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testAllFactoryMethodsReturnNotNull() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
 
         assertNotNull(weightCategory);
         assertNotNull(heightCategory);
@@ -157,9 +157,9 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testAllFactoryMethodsReturnCorrectTypes() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
 
         assertTrue(weightCategory instanceof WeightCategory);
         assertTrue(heightCategory instanceof HeightCategory);
@@ -168,8 +168,8 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testFactoryCreatesIndependentInstances() {
-        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
-        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
+        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
 
         assertNotNull(weightCategory1);
         assertNotNull(weightCategory2);
@@ -183,8 +183,8 @@ public class AnthropometryCategoryFactoryTest {
         Context context1 = TestUtil.getThemedContext();
         Context context2 = TestUtil.getThemedContext();
 
-        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context1, pacienteFilterPojo);
-        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context2, pacienteFilterPojo);
+        WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context1, patientFilterPojo);
+        WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context2, patientFilterPojo);
 
         assertNotNull(weightCategory1);
         assertNotNull(weightCategory2);
@@ -192,8 +192,8 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testFactoryWithDifferentPojos() {
-        PacienteFilterPojo pojo1 = new PacienteFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
-        PacienteFilterPojo pojo2 = new PacienteFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
+        PatientFilterPojo pojo1 = new PatientFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
+        PatientFilterPojo pojo2 = new PatientFilterPojo(new ArrayList<>(),new ArrayList<>(),new ArrayList<>());
 
         WeightCategory weightCategory1 = AnthropometryCategoryFactory.createWeightCategory(context, pojo1);
         WeightCategory weightCategory2 = AnthropometryCategoryFactory.createWeightCategory(context, pojo2);
@@ -204,40 +204,40 @@ public class AnthropometryCategoryFactoryTest {
 
     @Test
     public void testFactoryCreatesValidWeightCategoryWithCorrectDependencies() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertNotNull(weightCategory);
         assertTrue(weightCategory instanceof WeightCategory);
     }
 
     @Test
     public void testFactoryCreatesValidHeightCategoryWithCorrectDependencies() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertNotNull(heightCategory);
         assertTrue(heightCategory instanceof HeightCategory);
     }
 
     @Test
     public void testFactoryCreatesValidIMCCategoryWithCorrectDependencies() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertNotNull(imcCategory);
         assertTrue(imcCategory instanceof IMCCategory);
     }
 
     @Test
     public void testWeightCategoryIsAbstractCategorySubtype() {
-        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, pacienteFilterPojo);
+        WeightCategory weightCategory = AnthropometryCategoryFactory.createWeightCategory(context, patientFilterPojo);
         assertTrue(weightCategory instanceof WeightCategory);
     }
 
     @Test
     public void testHeightCategoryIsAbstractCategorySubtype() {
-        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, pacienteFilterPojo);
+        HeightCategory heightCategory = AnthropometryCategoryFactory.createHeightCategory(context, patientFilterPojo);
         assertTrue(heightCategory instanceof HeightCategory);
     }
 
     @Test
     public void testIMCCategoryIsAbstractCategorySubtype() {
-        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, pacienteFilterPojo);
+        IMCCategory imcCategory = AnthropometryCategoryFactory.createIMCCategory(context, patientFilterPojo);
         assertTrue(imcCategory instanceof IMCCategory);
     }
 }

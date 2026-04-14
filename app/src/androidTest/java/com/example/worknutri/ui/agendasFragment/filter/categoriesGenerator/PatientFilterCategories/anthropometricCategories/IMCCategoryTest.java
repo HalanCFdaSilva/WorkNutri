@@ -18,7 +18,7 @@ import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.ActivityToTest;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -37,7 +37,7 @@ public class IMCCategoryTest {
     private Context context;
     private List<Paciente> pacientes;
     private List<Clinica> clinicas;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private IMCCategory imcCategory;
     private LayoutInflater layoutInflater;
 
@@ -50,7 +50,7 @@ public class IMCCategoryTest {
         pacientes = TestEntityFactory.generatePatientListToTest();
         List<Antropometria> antropometrias = TestEntityFactory.generateAnthropometryListToTest(pacientes);
         clinicas = new ArrayList<>();
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
         imcCategory = new IMCCategory(context, pojo);
     }
@@ -59,7 +59,7 @@ public class IMCCategoryTest {
     public void testIMCCategoryConstructor() {
         assertNotNull(imcCategory);
         assertNotNull(pojo);
-        assertEquals(3, pojo.getPacientes().size());
+        assertEquals(3, pojo.getPatientList().size());
     }
 
     @Test
@@ -180,14 +180,14 @@ public class IMCCategoryTest {
         a2.setImc(imc1);
         sameAntropometrias.add(a2);
 
-        PacienteFilterPojo samePojo = new PacienteFilterPojo(samePacientes, sameAntropometrias, clinicas);
+        PatientFilterPojo samePojo = new PatientFilterPojo(samePacientes, sameAntropometrias, clinicas);
         return new IMCCategory(context, samePojo);
     }
 
     @Test
     public void testEmptyAntropometriaList() {
         List<Antropometria> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(pacientes, emptyList, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(pacientes, emptyList, clinicas);
         IMCCategory emptyImcCategory = new IMCCategory(context, emptyPojo);
 
         // Não deve lançar exceção ao gerar a view mesmo com lista vazia
@@ -231,19 +231,19 @@ public class IMCCategoryTest {
             variousAntropometrias.add(a);
         }
 
-        PacienteFilterPojo variousPojo = new PacienteFilterPojo(variousPacientes, variousAntropometrias, clinicas);
+        PatientFilterPojo variousPojo = new PatientFilterPojo(variousPacientes, variousAntropometrias, clinicas);
         IMCCategory variousCategory = new IMCCategory(context, variousPojo);
 
         ViewGroup viewGroup = variousCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(6, variousPojo.getPacientes().size());
+        assertEquals(6, variousPojo.getPatientList().size());
     }
 
     @Test
     public void testIMCCategoryStateInitialization() {
         assertNotNull(pojo.getState());
-        assertNotNull(pojo.getState().getClassificacaoImcs());
-        assertEquals(0, pojo.getState().getClassificacaoImcs().size());
+        assertNotNull(pojo.getState().getBmiClassificationsSelected());
+        assertEquals(0, pojo.getState().getBmiClassificationsSelected().size());
     }
 
     @Test
@@ -290,8 +290,8 @@ public class IMCCategoryTest {
     public void testResetClearsIMCSelection() {
         // Adicionar uma classificação IMC ao estado
         ActivityScenario.launch(ActivityToTest.class).onActivity(activity -> {
-            pojo.getState().getClassificacaoImcs().add(ClassificacaoImc.NORMAL);
-            assertEquals(1, pojo.getState().getClassificacaoImcs().size());
+            pojo.getState().getBmiClassificationsSelected().add(ClassificacaoImc.NORMAL);
+            assertEquals(1, pojo.getState().getBmiClassificationsSelected().size());
 
             // Gerar a view
             ViewGroup viewGroup = imcCategory.generateCategory(layoutInflater);
@@ -301,7 +301,7 @@ public class IMCCategoryTest {
             imcCategory.reset();
 
             // Verificar que as classificações foram limpas
-            assertEquals(0, pojo.getState().getClassificacaoImcs().size());
+            assertEquals(0, pojo.getState().getBmiClassificationsSelected().size());
         });
 
     }
@@ -320,7 +320,7 @@ public class IMCCategoryTest {
         a.setImc("28.5");
         singleAntropometria.add(a);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singlePaciente, singleAntropometria, clinicas);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singlePaciente, singleAntropometria, clinicas);
         IMCCategory singleCategory = new IMCCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleCategory.generateView(layoutInflater);
@@ -367,7 +367,7 @@ public class IMCCategoryTest {
             boundaryAntropometrias.add(a);
         }
 
-        PacienteFilterPojo boundaryPojo = new PacienteFilterPojo(boundaryPacientes, boundaryAntropometrias, clinicas);
+        PatientFilterPojo boundaryPojo = new PatientFilterPojo(boundaryPacientes, boundaryAntropometrias, clinicas);
         IMCCategory boundaryCategory = new IMCCategory(context, boundaryPojo);
 
         ViewGroup viewGroup = boundaryCategory.generateView(layoutInflater);

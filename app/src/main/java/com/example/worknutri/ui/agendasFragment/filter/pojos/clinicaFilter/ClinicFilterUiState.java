@@ -5,12 +5,12 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClinicaFilterUiState extends UiState {
+public class ClinicFilterUiState extends UiState {
 
     private final List<String> daysOfWeekSelected;
     private final float[] hoursSelected = new float[]{0,0};
 
-    public ClinicaFilterUiState() {
+    public ClinicFilterUiState() {
         daysOfWeekSelected = new ArrayList<>();
     }
 

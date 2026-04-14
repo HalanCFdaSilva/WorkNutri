@@ -16,7 +16,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.asserter.PatientScheduleInflaterAsserter;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,14 +31,14 @@ public class PatientRegistryInflaterTest {
 
     private final Context context = TestUtil.getThemedContext();
     private PatientRegistryInflater registryInflater;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private List<Paciente> patients;
     private List<Antropometria> anthropometry;
     @Before
     public void setup() {
         patients = TestEntityFactory.generatePatientListToTest();
         anthropometry = TestEntityFactory.generateAnthropometryListToTest(patients);
-        pojo = new PacienteFilterPojo(patients, anthropometry, new ArrayList<>());
+        pojo = new PatientFilterPojo(patients, anthropometry, new ArrayList<>());
         registryInflater = new PatientRegistryInflater(pojo);
     }
     @Test
@@ -49,8 +49,8 @@ public class PatientRegistryInflaterTest {
         LinearLayout parentFromRegistry = new LinearLayout(context);
         registryInflater.inflateSchedule(parentFromRegistry, context);
 
-        List<Paciente> patients = pojo.getPacientes();
-        String[] expectedCategoriesName = getCategoryNamesForIMC(pojo.getAntropometriaList());
+        List<Paciente> patients = pojo.getPatientList();
+        String[] expectedCategoriesName = getCategoryNamesForIMC(pojo.getAnthropometryList());
         List<List<Paciente>> patientsExpectedInCards = List.of(
                 List.of(patients.get(0)),
                 List.of(patients.get(1)),
@@ -80,7 +80,7 @@ public class PatientRegistryInflaterTest {
 
         LinearLayout parentFromDirect = new LinearLayout(context);
         HeightAntropometryRegistryInflater direct = new HeightAntropometryRegistryInflater(context, anthropometry);
-        direct.generateAgenda(parentFromDirect, pojo.getPacientes());
+        direct.generateAgenda(parentFromDirect, pojo.getPatientList());
         assertEquals(parentFromDirect.getChildCount(), parentFromRegistry.getChildCount());
 
         String[] categoriesNamesExpected = new String[] {

@@ -9,7 +9,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import java.util.List;
@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 public class PatientInClinicCategory extends PatientFilterCategory {
 
     private boolean hasNoFilterActive = true;
-    protected PatientInClinicCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        super(context, pacienteFilterPojo);
+    protected PatientInClinicCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        super(context, patientFilterPojo);
     }
 
 
@@ -33,7 +33,7 @@ public class PatientInClinicCategory extends PatientFilterCategory {
     private void generateAllChips(ChipGroup chipGroup) {
 
         for (Clinica clinica : pojo.getClinicas()) {
-            if (pojo.getPacientes().stream().anyMatch(paciente -> paciente.getClinicaId() == clinica.getId())) {
+            if (pojo.getPatientList().stream().anyMatch(paciente -> paciente.getClinicaId() == clinica.getId())) {
                 Chip chip = generateChip(clinica);
                 chipGroup.addView(chip);
             }
@@ -43,18 +43,18 @@ public class PatientInClinicCategory extends PatientFilterCategory {
     private Chip generateChip(Clinica clinica) {
         Chip chip = categoriesGeneratorUtil.generateChip(clinica.getNome());
         onClickInChip(chip,clinica);
-        chip.setChecked(pojo.getState().getClinicaIdSelected().contains(clinica.getId()));
+        chip.setChecked(pojo.getState().getClinicsIdSelected().contains(clinica.getId()));
         return chip;
     }
 
     private void onClickInChip(Chip chip, Clinica clinica) {
         chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-            List<Paciente> pacientesInClinica = pojo.getPacientes().stream()
+            List<Paciente> pacientesInClinica = pojo.getPatientList().stream()
                     .filter(paciente -> paciente.getClinicaId() == clinica.getId())
                     .collect(Collectors.toList());
 
-            List<Long> clinicaIdSelected = pojo.getState().getClinicaIdSelected();
+            List<Long> clinicaIdSelected = pojo.getState().getClinicsIdSelected();
 
             if (isChecked){
 
@@ -93,7 +93,7 @@ public class PatientInClinicCategory extends PatientFilterCategory {
     @Override
     protected void resetLayout() {
         hasNoFilterActive = true;
-        pojo.getState().getClinicaIdSelected().clear();
+        pojo.getState().getClinicsIdSelected().clear();
         ReseterOfCategory.resetChipGroup(viewGroup.findViewById(R.id.filter_category_chipgroup));
 
     }

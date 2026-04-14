@@ -13,26 +13,26 @@ import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.Clini
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories.ClinicFilterCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
 
-    private ClinicaFilterPojo clinicaFilterPojo;
+    private ClinicFilterPojo clinicFilterPojo;
     private final List<ClinicFilterCategory> categories = new ArrayList<>();
 
     @Override
     protected void generateFilter(Context context) {
          getPojo();
-        insertCategotyInLayout(ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicaFilterPojo));
-        insertCategotyInLayout(ClinicFilterCategoryFactory.generateHourWorkCategory(context, clinicaFilterPojo));
+        insertCategotyInLayout(ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo));
+        insertCategotyInLayout(ClinicFilterCategoryFactory.generateHourWorkCategory(context, clinicFilterPojo));
     }
 
     @Override
     protected UiState getUiState() {
-        return clinicaFilterPojo.getUiState();
+        return clinicFilterPojo.getUiState();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             if (arguments.containsKey(CLINICA_FILTER_POJO)) {
-                clinicaFilterPojo = (ClinicaFilterPojo) arguments.getSerializable(CLINICA_FILTER_POJO);
+                clinicFilterPojo = (ClinicFilterPojo) arguments.getSerializable(CLINICA_FILTER_POJO);
             } else {
                 dismiss();
             }
@@ -67,7 +67,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
     @Override
     protected Bundle generateBundle() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(CLINICA_FILTER_POJO, clinicaFilterPojo);
+        bundle.putSerializable(CLINICA_FILTER_POJO, clinicFilterPojo);
         return bundle;
 
     }
@@ -80,8 +80,8 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
 
     @Override
     protected void getAllCategories() {
-        clinicaFilterPojo.getClinicasSelected().clear();
-        for (Clinica clinica : clinicaFilterPojo.getClinicas()) {
+        clinicFilterPojo.getClinicsSelected().clear();
+        for (Clinica clinica : clinicFilterPojo.getClinicsList()) {
             boolean isSelected = true;
             for (ClinicFilterCategory category : categories) {
 
@@ -92,7 +92,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
                 }
             }
             if (isSelected){
-                clinicaFilterPojo.getClinicasSelected().add(clinica);
+                clinicFilterPojo.getClinicsSelected().add(clinica);
             }
         }
 

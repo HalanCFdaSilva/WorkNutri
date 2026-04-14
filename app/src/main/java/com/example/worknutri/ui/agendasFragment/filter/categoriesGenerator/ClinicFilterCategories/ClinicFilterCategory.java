@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,15 @@ public abstract class ClinicFilterCategory extends FilterCategories {
 
 
     protected List<Clinica> clinicasSelecteds;
-    protected  final ClinicaFilterPojo clinicaFilterPojo;
+    protected  final ClinicFilterPojo clinicFilterPojo;
     protected Context context;
 
 
 
-    protected ClinicFilterCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
+    protected ClinicFilterCategory(Context context, ClinicFilterPojo clinicFilterPojo) {
         super(context);
-        this.clinicaFilterPojo = clinicaFilterPojo;
-        clinicasSelecteds = new ArrayList<>(clinicaFilterPojo.getClinicas());
+        this.clinicFilterPojo = clinicFilterPojo;
+        clinicasSelecteds = new ArrayList<>(clinicFilterPojo.getClinicsList());
         this.context = context;
     }
 
@@ -33,6 +33,6 @@ public abstract class ClinicFilterCategory extends FilterCategories {
     @Override
     public void reset() {
         clinicasSelecteds.clear();
-        clinicasSelecteds.addAll(clinicaFilterPojo.getClinicas());
+        clinicasSelecteds.addAll(clinicFilterPojo.getClinicsList());
     }
 }

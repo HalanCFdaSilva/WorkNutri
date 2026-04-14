@@ -17,7 +17,7 @@ import androidx.navigation.Navigation;
 import com.example.worknutri.R;
 import com.example.worknutri.databinding.RegistryFragmentBinding;
 import com.example.worknutri.ui.agendasFragment.filter.NavsDirection.NavDirectionClinicaFilter;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 
 public class ClinicRegistryFragment extends Fragment {
@@ -67,8 +67,8 @@ public class ClinicRegistryFragment extends Fragment {
 
         getParentFragmentManager().setFragmentResultListener(CLINICA_FILTER_BUNDLE,this, (requestKey, result) -> {
             if (result.containsKey(CLINICA_FILTER_POJO)) {
-                ClinicaFilterPojo clinicaFilterPojo = (ClinicaFilterPojo) result.getSerializable(CLINICA_FILTER_POJO);
-                adapter.setClinicaFilterPojo(clinicaFilterPojo);
+                ClinicFilterPojo clinicFilterPojo = (ClinicFilterPojo) result.getSerializable(CLINICA_FILTER_POJO);
+                adapter.setClinicaFilterPojo(clinicFilterPojo);
                 adapter.inflateAgenda(binding.registryFragmentLinearLayout);
             }
         });

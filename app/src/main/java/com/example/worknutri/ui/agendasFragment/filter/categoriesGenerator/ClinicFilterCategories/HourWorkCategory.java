@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 import com.google.android.material.slider.RangeSlider;
 import java.util.List;
 
 public class HourWorkCategory extends ClinicFilterCategory {
-    protected HourWorkCategory(Context context, ClinicaFilterPojo clinicaFilterPojo) {
-        super(context, clinicaFilterPojo);
+    protected HourWorkCategory(Context context, ClinicFilterPojo clinicFilterPojo) {
+        super(context, clinicFilterPojo);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class HourWorkCategory extends ClinicFilterCategory {
             public void onStopTrackingTouch(@NonNull RangeSlider slider) {
                 List<Float> values = slider.getValues();
 
-                PojoUtil.setValuesOfFloatTuple(clinicaFilterPojo.getUiState().getHoursSelected(), values.get(0), values.get(1));
+                PojoUtil.setValuesOfFloatTuple(clinicFilterPojo.getUiState().getHoursSelected(), values.get(0), values.get(1));
                 clinicasSelecteds.clear();
                 selectClinicaInsideRange(values.get(0), values.get(1));
             }
@@ -63,8 +63,8 @@ public class HourWorkCategory extends ClinicFilterCategory {
 
     private void selectClinicaInsideRange(Float min, Float max) {
 
-        List<Clinica> clinicas = clinicaFilterPojo.getClinicas();
-        clinicaFilterPojo.getDayOfWorkList().forEach(dayOfWork -> {
+        List<Clinica> clinicas = clinicFilterPojo.getClinicsList();
+        clinicFilterPojo.getDayOfWorkList().forEach(dayOfWork -> {
             float horaInicio = getTimeInMinutes(dayOfWork.getHoraInicio());
             float horaFim = getTimeInMinutes(dayOfWork.getHoraFim());
             if (horaInicio >= min && horaFim <= max) {
@@ -87,7 +87,7 @@ public class HourWorkCategory extends ClinicFilterCategory {
     }
 
     private void selectInitialValues(RangeSlider rangeSlider) {
-        float[] hoursSelected = clinicaFilterPojo.getUiState().getHoursSelected();
+        float[] hoursSelected = clinicFilterPojo.getUiState().getHoursSelected();
         if (hoursSelected[0] != 0 && hoursSelected[1] != 0) {
             rangeSlider.setValues(hoursSelected[0], hoursSelected[1]);
             selectClinicaInsideRange(hoursSelected[0], hoursSelected[1]);
@@ -101,7 +101,7 @@ public class HourWorkCategory extends ClinicFilterCategory {
     @Override
     public void reset() {
         super.reset();
-        PojoUtil.setValuesOfFloatTuple(clinicaFilterPojo.getUiState().getHoursSelected(),0,0);
+        PojoUtil.setValuesOfFloatTuple(clinicFilterPojo.getUiState().getHoursSelected(),0,0);
 
     }
 }

@@ -17,7 +17,7 @@ import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.ActivityToTest;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -36,7 +36,7 @@ public class PatientInClinicCategoryTest {
     private Context context;
     private List<Clinica> clinicas;
     private List<Antropometria> antropometrias;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private PatientInClinicCategory patientInClinicCategory;
     private LayoutInflater layoutInflater;
 
@@ -46,7 +46,6 @@ public class PatientInClinicCategoryTest {
         context = new ContextThemeWrapper(context, R.style.Theme_themeFilter_Chip);
         layoutInflater = LayoutInflater.from(context);
 
-        // Criar clínicas de teste
         clinicas = new ArrayList<>();
         Clinica c1 = new Clinica();
         c1.setId(1L);
@@ -63,7 +62,6 @@ public class PatientInClinicCategoryTest {
         c3.setNome("Clínica C");
         clinicas.add(c3);
 
-        // Criar pacientes associados às clínicas
         List<Paciente> pacientes = TestEntityFactory.generatePatientListToTest();
 
         Paciente p1 = pacientes.get(0);
@@ -81,10 +79,8 @@ public class PatientInClinicCategoryTest {
 
         antropometrias = new ArrayList<>();
 
-        // Criar pojo
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
-        // Criar PatientInClinicCategory
         patientInClinicCategory = new PatientInClinicCategory(context, pojo);
     }
 
@@ -92,7 +88,7 @@ public class PatientInClinicCategoryTest {
     public void testPatientInClinicCategoryConstructor() {
         assertNotNull(patientInClinicCategory);
         assertNotNull(pojo);
-        assertEquals(4, pojo.getPacientes().size());
+        assertEquals(4, pojo.getPatientList().size());
         assertEquals(3, pojo.getClinicas().size());
     }
 
@@ -112,7 +108,6 @@ public class PatientInClinicCategoryTest {
 
     @Test
     public void testChipsAreCreatedOnlyForClinicasWithPatients() {
-        // Adicionar clínica sem pacientes
         Clinica clinicaSemPacientes = new Clinica();
         clinicaSemPacientes.setId(4L);
         clinicaSemPacientes.setNome("Clínica Sem Pacientes");
@@ -121,7 +116,6 @@ public class PatientInClinicCategoryTest {
         ViewGroup viewGroup = patientInClinicCategory.generateView(layoutInflater);
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
-        // Deve haver apenas 3 chips (clínicas com pacientes)
         assertEquals(3, chipGroup.getChildCount());
     }
 
@@ -134,17 +128,13 @@ public class PatientInClinicCategoryTest {
 
     @Test
     public void testResetRestoresPacientes() {
-        // Remove pacientes dos selecionados
         patientInClinicCategory.getSelecteds().clear();
         assertEquals(0, patientInClinicCategory.getSelecteds().size());
 
-        // Gera a view para inicializar viewGroup
         patientInClinicCategory.generateView(layoutInflater);
 
-        // Chama reset
         patientInClinicCategory.reset();
 
-        // Verifica se os pacientes foram restaurados
         assertEquals(4, patientInClinicCategory.getSelecteds().size());
     }
 
@@ -181,7 +171,6 @@ public class PatientInClinicCategoryTest {
             ViewGroup viewGroup = patientInClinicCategory.generateView(layoutInflater);
             ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
-            // Marcar primeiro e segundo chips
             if (chipGroup.getChildCount() >= 2) {
                 Chip firstChip = (Chip) chipGroup.getChildAt(0);
                 Chip secondChip = (Chip) chipGroup.getChildAt(1);
@@ -191,10 +180,8 @@ public class PatientInClinicCategoryTest {
 
                 List<Paciente> selecteds = patientInClinicCategory.getSelecteds();
 
-                // Deve ter pacientes de ambas as clínicas
                 assertTrue(selecteds.size() >= 2);
 
-                // Verificar que tem pacientes de clínicas diferentes
                 boolean temClinica1 = selecteds.stream().anyMatch(p -> p.getClinicaId() == 1);
                 boolean temClinica2 = selecteds.stream().anyMatch(p -> p.getClinicaId() == 2);
 
@@ -223,7 +210,7 @@ public class PatientInClinicCategoryTest {
         c.setNome("Clínica Única");
         singleClinic.add(c);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singleClinicPacientes, antropometrias, singleClinic);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singleClinicPacientes, antropometrias, singleClinic);
         PatientInClinicCategory singleCategory = new PatientInClinicCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleCategory.generateView(layoutInflater);
@@ -233,10 +220,9 @@ public class PatientInClinicCategoryTest {
     @Test
     public void testEmptyPacienteList() {
         List<Paciente> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(emptyList, antropometrias, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(emptyList, antropometrias, clinicas);
         PatientInClinicCategory emptyCategory = new PatientInClinicCategory(context, emptyPojo);
 
-        // Não deve lançar exceção ao gerar a view mesmo com lista vazia
         ViewGroup viewGroup = emptyCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
     }
@@ -262,7 +248,6 @@ public class PatientInClinicCategoryTest {
         List<Paciente> variousPacientes = new ArrayList<>();
         List<Clinica> variousClinics = new ArrayList<>();
 
-        // Criar 3 clínicas
         for (int i = 1; i <= 3; i++) {
             Clinica c = new Clinica();
             c.setId(i);
@@ -270,7 +255,6 @@ public class PatientInClinicCategoryTest {
             variousClinics.add(c);
         }
 
-        // Criar 9 pacientes distribuídos entre as clínicas
         for (int i = 1; i <= 9; i++) {
             Paciente p = new Paciente();
             p.setId(i);
@@ -279,19 +263,19 @@ public class PatientInClinicCategoryTest {
             variousPacientes.add(p);
         }
 
-        PacienteFilterPojo variousPojo = new PacienteFilterPojo(variousPacientes, antropometrias, variousClinics);
+        PatientFilterPojo variousPojo = new PatientFilterPojo(variousPacientes, antropometrias, variousClinics);
         PatientInClinicCategory variousCategory = new PatientInClinicCategory(context, variousPojo);
 
         ViewGroup viewGroup = variousCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(9, variousPojo.getPacientes().size());
+        assertEquals(9, variousPojo.getPatientList().size());
     }
 
     @Test
     public void testPatientInClinicCategoryStateInitialization() {
         assertNotNull(pojo.getState());
-        assertNotNull(pojo.getState().getClinicaIdSelected());
-        assertEquals(0, pojo.getState().getClinicaIdSelected().size());
+        assertNotNull(pojo.getState().getClinicsIdSelected());
+        assertEquals(0, pojo.getState().getClinicsIdSelected().size());
     }
 
     @Test
@@ -318,7 +302,7 @@ public class PatientInClinicCategoryTest {
 
 
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, antropometrias, getClinicas());
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, antropometrias, getClinicas());
         PatientInClinicCategory filterCategory = new PatientInClinicCategory(context, filterPojo);
 
         List<Paciente> selecteds = filterCategory.getSelecteds();
@@ -345,7 +329,6 @@ public class PatientInClinicCategoryTest {
         ViewGroup viewGroup = patientInClinicCategory.generateView(layoutInflater);
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
-        // Verificar que nenhum chip está marcado inicialmente
         for (int i = 0; i < chipGroup.getChildCount(); i++) {
             Chip chip = (Chip) chipGroup.getChildAt(i);
             assertFalse(chip.isChecked());
@@ -375,7 +358,7 @@ public class PatientInClinicCategoryTest {
 
 
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, antropometrias, getClinicas());
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, antropometrias, getClinicas());
         PatientInClinicCategory filterCategory = new PatientInClinicCategory(context, filterPojo);
 
         ViewGroup viewGroup = filterCategory.generateView(layoutInflater);
@@ -388,7 +371,6 @@ public class PatientInClinicCategoryTest {
         ViewGroup viewGroup = patientInClinicCategory.generateView(layoutInflater);
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
-        // Verificar que os chips têm nomes
         for (int i = 0; i < chipGroup.getChildCount(); i++) {
             Chip chip = (Chip) chipGroup.getChildAt(i);
             assertNotNull(chip.getText());
@@ -406,16 +388,11 @@ public class PatientInClinicCategoryTest {
             if (chipGroup.getChildCount() > 0) {
                 Chip firstChip = (Chip) chipGroup.getChildAt(0);
 
-                // Marcar
                 firstChip.setChecked(true);
                 List<Paciente> selectedsAfterCheck = patientInClinicCategory.getSelecteds();
-                int sizeAfterCheck = selectedsAfterCheck.size();
 
-                // Desmarcar
                 firstChip.setChecked(false);
                 List<Paciente> selectedsAfterUncheck = patientInClinicCategory.getSelecteds();
-
-                // Após desmarcar, ou volta ao estado inicial ou remove os pacientes daquela clínica
                 assertNotNull(selectedsAfterUncheck);
             }
         });
@@ -430,12 +407,11 @@ public class PatientInClinicCategoryTest {
             ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
             if (chipGroup.getChildCount() > 0) {
-                // Marcar um chip
+
                 Chip chip = (Chip) chipGroup.getChildAt(0);
                 chip.setChecked(true);
 
-                // Verificar que a clínica foi adicionada ao estado
-                List<Long> clinicaIdSelected = pojo.getState().getClinicaIdSelected();
+                List<Long> clinicaIdSelected = pojo.getState().getClinicsIdSelected();
                 assertFalse(clinicaIdSelected.isEmpty());
             }
         });
@@ -453,14 +429,11 @@ public class PatientInClinicCategoryTest {
                 Chip chip = (Chip) chipGroup.getChildAt(0);
                 chip.setChecked(true);
 
-                // Verificar que há seleção
                 assertTrue(chip.isChecked());
 
-                // Chamar reset
                 patientInClinicCategory.reset();
 
-                // Verificar que a seleção foi limpa
-                assertEquals(0, pojo.getState().getClinicaIdSelected().size());
+                assertEquals(0, pojo.getState().getClinicsIdSelected().size());
             }
         });
 
@@ -473,13 +446,11 @@ public class PatientInClinicCategoryTest {
             ViewGroup viewGroup = patientInClinicCategory.generateView(activity.getLayoutInflater());
             ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
 
-            // Marcar todos os chips
             for (int i = 0; i < chipGroup.getChildCount(); i++) {
                 Chip chip = (Chip) chipGroup.getChildAt(i);
                 chip.setChecked(true);
             }
 
-            // Todos os pacientes devem estar selecionados
             List<Paciente> selecteds = patientInClinicCategory.getSelecteds();
             assertEquals(4, selecteds.size());
         });
@@ -501,7 +472,7 @@ public class PatientInClinicCategoryTest {
         c.setNome("Single Clinic");
         singleClinic.add(c);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singlePatient, antropometrias, singleClinic);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singlePatient, antropometrias, singleClinic);
         PatientInClinicCategory singleCategory = new PatientInClinicCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleCategory.generateView(layoutInflater);

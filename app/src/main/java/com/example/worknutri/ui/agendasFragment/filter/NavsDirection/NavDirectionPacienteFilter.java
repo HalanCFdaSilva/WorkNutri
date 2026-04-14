@@ -6,15 +6,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import java.io.Serializable;
 
 
 public class NavDirectionPacienteFilter extends NavDirectionsFilter {
-    private final PacienteFilterPojo pacientePojo;
+    private final PatientFilterPojo pacientePojo;
 
-    public NavDirectionPacienteFilter(int actionId, PacienteFilterPojo pojo) {
+    public NavDirectionPacienteFilter(int actionId, PatientFilterPojo pojo) {
         super(actionId);
         this.pacientePojo = pojo;
     }
@@ -24,7 +24,7 @@ public class NavDirectionPacienteFilter extends NavDirectionsFilter {
     public Bundle getArguments() {
         Bundle bundle = new Bundle();
 
-        Serializable.class.isAssignableFrom(PacienteFilterPojo.class);
+        Serializable.class.isAssignableFrom(PatientFilterPojo.class);
         bundle.putSerializable(PACIENTE_FILTER_POJO, pacientePojo);
         return bundle;
     }

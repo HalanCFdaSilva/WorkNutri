@@ -7,7 +7,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import java.util.List;
@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 public class GenderCategory extends PatientFilterCategory {
 
 
-    protected GenderCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        super(context, pacienteFilterPojo);
+    protected GenderCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        super(context, patientFilterPojo);
     }
 
     protected ViewGroup generateView(LayoutInflater layoutInflater){
@@ -59,7 +59,7 @@ public class GenderCategory extends PatientFilterCategory {
 
             } else {
                 pojo.getState().setGeneroSelected('N');
-                List<Paciente> pacientesFiltred = pojo.getPacientes().stream()
+                List<Paciente> pacientesFiltred = pojo.getPatientList().stream()
                         .filter(paciente -> paciente.getGenero() != genero).collect(Collectors.toList());
                 pacientesInsideFilter.addAll(pacientesFiltred);
             }

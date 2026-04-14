@@ -2,18 +2,18 @@ package com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.Pati
 
 import android.content.Context;
 
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 public abstract class AnthropometryCategoryFactory {
 
-    public static WeightCategory createWeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        return new WeightCategory(context, pacienteFilterPojo);
+    public static WeightCategory createWeightCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        return new WeightCategory(context, patientFilterPojo);
     }
 
-    public static HeightCategory createHeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        return new HeightCategory(context, pacienteFilterPojo);
+    public static HeightCategory createHeightCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        return new HeightCategory(context, patientFilterPojo);
     }
-    public static IMCCategory createIMCCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        return new IMCCategory(context, pacienteFilterPojo);
+    public static IMCCategory createIMCCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        return new IMCCategory(context, patientFilterPojo);
     }
 }

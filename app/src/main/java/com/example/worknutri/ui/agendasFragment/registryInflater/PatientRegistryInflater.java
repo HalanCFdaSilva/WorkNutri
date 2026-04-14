@@ -9,33 +9,33 @@ import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistry
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.HeightAntropometryRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.IMCAntropometryRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.patientTypes.WeightAntropometryRegistryInflater;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 public class PatientRegistryInflater {
-    private final PacienteFilterPojo pacienteFilterPojo;
+    private final PatientFilterPojo patientFilterPojo;
 
-    public PatientRegistryInflater(PacienteFilterPojo pacienteFilterPojo) {
-        this.pacienteFilterPojo = pacienteFilterPojo;
+    public PatientRegistryInflater(PatientFilterPojo patientFilterPojo) {
+        this.patientFilterPojo = patientFilterPojo;
     }
 
     public void inflateSchedule(ViewGroup viewGroup, Context context){
         RegistryInflater<Paciente> registryInflater = new NameRegistryInflater<>(context);
-        switch (pacienteFilterPojo.getState().getOrderBy()) {
+        switch (patientFilterPojo.getState().getOrderBy()) {
             case IMC_CATEGORY: {
-                registryInflater = new IMCAntropometryRegistryInflater(context, pacienteFilterPojo.getAntropometriaList());
+                registryInflater = new IMCAntropometryRegistryInflater(context, patientFilterPojo.getAnthropometryList());
                 break;
             }
             case HEIGHT: {
-                registryInflater = new HeightAntropometryRegistryInflater(context,pacienteFilterPojo.getAntropometriaList());
+                registryInflater = new HeightAntropometryRegistryInflater(context, patientFilterPojo.getAnthropometryList());
                 break;
             }
             case WEIGHT: {
-                registryInflater = new WeightAntropometryRegistryInflater(context, pacienteFilterPojo.getAntropometriaList());
+                registryInflater = new WeightAntropometryRegistryInflater(context, patientFilterPojo.getAnthropometryList());
                 break;
             }
             case AGE: registryInflater = new AgeRegistryInflater(context);
 
         }
-        registryInflater.generateAgenda(viewGroup, pacienteFilterPojo.getPacienteSelected());
+        registryInflater.generateAgenda(viewGroup, patientFilterPojo.getPatientsSelected());
     }
 }

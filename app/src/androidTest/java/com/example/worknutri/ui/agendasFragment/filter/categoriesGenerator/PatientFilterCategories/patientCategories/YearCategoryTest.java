@@ -13,7 +13,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.slider.RangeSlider;
 
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class YearCategoryTest {
     private Context context;
     private List<Antropometria> antropometrias;
     private List<Clinica> clinicas;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private YearCategory yearCategory;
     private LayoutInflater layoutInflater;
 
@@ -58,7 +58,7 @@ public class YearCategoryTest {
         clinicas = new ArrayList<>();
 
         // Criar pojo
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
         // Criar YearCategory
         yearCategory = new YearCategory(context, pojo);
@@ -68,7 +68,7 @@ public class YearCategoryTest {
     public void testYearCategoryConstructor() {
         assertNotNull(yearCategory);
         assertNotNull(pojo);
-        assertEquals(2, pojo.getPacientes().size());
+        assertEquals(2, pojo.getPatientList().size());
     }
 
     @Test
@@ -149,7 +149,7 @@ public class YearCategoryTest {
         p.setIdade(30);
         singlePaciente.add(p);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singlePaciente, antropometrias, clinicas);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singlePaciente, antropometrias, clinicas);
         YearCategory singleYearCategory = new YearCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleYearCategory.generateView(layoutInflater);
@@ -159,7 +159,7 @@ public class YearCategoryTest {
     @Test
     public void testEmptyPacienteList() {
         List<Paciente> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(emptyList, antropometrias, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(emptyList, antropometrias, clinicas);
         YearCategory emptyYearCategory = new YearCategory(context, emptyPojo);
 
         // Não deve lançar exceção ao gerar a view mesmo com lista vazia
@@ -199,12 +199,12 @@ public class YearCategoryTest {
             testPacientes.add(p);
         }
 
-        PacienteFilterPojo testPojo = new PacienteFilterPojo(testPacientes, antropometrias, clinicas);
+        PatientFilterPojo testPojo = new PatientFilterPojo(testPacientes, antropometrias, clinicas);
         YearCategory testCategory = new YearCategory(context, testPojo);
 
         ViewGroup viewGroup = testCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(5, testPojo.getPacientes().size());
+        assertEquals(5, testPojo.getPatientList().size());
     }
 
     @Test
@@ -229,7 +229,7 @@ public class YearCategoryTest {
         p2.setIdade(70);
         filterPacientes.add(p2);
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, antropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, antropometrias, clinicas);
         YearCategory filterCategory = new YearCategory(context, filterPojo);
 
         List<Paciente> selecteds = filterCategory.getSelecteds();
@@ -256,7 +256,7 @@ public class YearCategoryTest {
         p2.setIdade(30);
         samePacientes.add(p2);
 
-        PacienteFilterPojo samePojo = new PacienteFilterPojo(samePacientes, antropometrias, clinicas);
+        PatientFilterPojo samePojo = new PatientFilterPojo(samePacientes, antropometrias, clinicas);
         YearCategory sameCategory = new YearCategory(context, samePojo);
 
         ViewGroup viewGroup = sameCategory.generateView(layoutInflater);
@@ -275,7 +275,7 @@ public class YearCategoryTest {
             filterPacientes.add(p);
         }
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, antropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, antropometrias, clinicas);
         YearCategory filterCategory = new YearCategory(context, filterPojo);
 
         // Gerar a view para inicializar o slider
@@ -309,7 +309,7 @@ public class YearCategoryTest {
             narrowPacientes.add(p);
         }
 
-        PacienteFilterPojo narrowPojo = new PacienteFilterPojo(narrowPacientes, antropometrias, clinicas);
+        PatientFilterPojo narrowPojo = new PatientFilterPojo(narrowPacientes, antropometrias, clinicas);
         YearCategory narrowCategory = new YearCategory(context, narrowPojo);
 
         ViewGroup viewGroup = narrowCategory.generateView(layoutInflater);
@@ -338,7 +338,7 @@ public class YearCategoryTest {
             widePacientes.add(p);
         }
 
-        PacienteFilterPojo widePojo = new PacienteFilterPojo(widePacientes, antropometrias, clinicas);
+        PatientFilterPojo widePojo = new PatientFilterPojo(widePacientes, antropometrias, clinicas);
         YearCategory wideCategory = new YearCategory(context, widePojo);
 
         ViewGroup viewGroup = wideCategory.generateView(layoutInflater);
@@ -395,7 +395,7 @@ public class YearCategoryTest {
         p3.setIdade(70);
         excludePacientes.add(p3);
 
-        PacienteFilterPojo excludePojo = new PacienteFilterPojo(excludePacientes, antropometrias, clinicas);
+        PatientFilterPojo excludePojo = new PatientFilterPojo(excludePacientes, antropometrias, clinicas);
         return new YearCategory(context, excludePojo);
 
     }
@@ -431,7 +431,7 @@ public class YearCategoryTest {
         old.setIdade(85);
         testPacientes.add(old);
 
-        PacienteFilterPojo testPojo = new PacienteFilterPojo(testPacientes, antropometrias, clinicas);
+        PatientFilterPojo testPojo = new PatientFilterPojo(testPacientes, antropometrias, clinicas);
         YearCategory testCategory = new YearCategory(context, testPojo);
 
         ViewGroup viewGroup = testCategory.generateView(layoutInflater);

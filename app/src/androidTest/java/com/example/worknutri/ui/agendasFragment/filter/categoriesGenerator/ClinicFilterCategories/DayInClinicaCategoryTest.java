@@ -11,7 +11,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 
 import org.junit.Before;
@@ -29,7 +29,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class DayInClinicaCategoryTest {
 
-    private ClinicaFilterPojo clinicaFilterPojo;
+    private ClinicFilterPojo clinicFilterPojo;
     private DayInClinicCategory dayInClinicaCategory;
     private List<Clinica> clinics;
 
@@ -37,7 +37,7 @@ public class DayInClinicaCategoryTest {
     public void setUp() {
         Context context = TestUtil.getThemedContext();
         context = new ContextThemeWrapper(context, R.style.Theme_themeFilter_Chip);
-        clinicaFilterPojo = new ClinicaFilterPojo();
+        clinicFilterPojo = new ClinicFilterPojo();
         
         clinics = TestEntityFactory.generateClinicListToTest();
         
@@ -46,11 +46,11 @@ public class DayInClinicaCategoryTest {
         daysOfWork.get(1).setId(clinics.get(1).getId());
         daysOfWork.get(2).setId(clinics.get(2).getId());
 
-        clinicaFilterPojo.setClinicas(clinics);
-        clinicaFilterPojo.setClinicasSelected(new ArrayList<>(clinics));
-        clinicaFilterPojo.setDayOfWorkList(daysOfWork);
+        clinicFilterPojo.setClinicsList(clinics);
+        clinicFilterPojo.setClinicsSelected(new ArrayList<>(clinics));
+        clinicFilterPojo.setDayOfWorkList(daysOfWork);
         
-        dayInClinicaCategory = new DayInClinicCategory(context, clinicaFilterPojo);
+        dayInClinicaCategory = new DayInClinicCategory(context, clinicFilterPojo);
     }
 
     // ==================== Testes de Inicialização ====================
@@ -74,7 +74,7 @@ public class DayInClinicaCategoryTest {
 
     @Test
     public void testDayInClinicaCategoryInitializationWithDayOfWork() {
-        List<DayOfWork> daysInCategory = clinicaFilterPojo.getDayOfWorkList();
+        List<DayOfWork> daysInCategory = clinicFilterPojo.getDayOfWorkList();
         assertNotNull(daysInCategory);
         assertFalse(daysInCategory.isEmpty());
         assertEquals(3, daysInCategory.size());
@@ -84,13 +84,13 @@ public class DayInClinicaCategoryTest {
 
     @Test
     public void testResetClearsDaysOfWeekSelected() {
-        List<String> daysOfWeekSelected = clinicaFilterPojo.getUiState().getDaysOfWeekSelected();
+        List<String> daysOfWeekSelected = clinicFilterPojo.getUiState().getDaysOfWeekSelected();
         daysOfWeekSelected.add("SEGUNDA");
         daysOfWeekSelected.add("TERÇA");
         
         dayInClinicaCategory.reset();
         
-        daysOfWeekSelected = clinicaFilterPojo.getUiState().getDaysOfWeekSelected();
+        daysOfWeekSelected = clinicFilterPojo.getUiState().getDaysOfWeekSelected();
         assertTrue(daysOfWeekSelected.isEmpty());
     }
 
@@ -122,14 +122,14 @@ public class DayInClinicaCategoryTest {
     public void testDayInClinicaCategoryResetRestoresInitialState() {
         List<Clinica> selecteds = dayInClinicaCategory.getSelecteds();
         selecteds.remove(0);
-        List<String> daysOfWeekSelected = clinicaFilterPojo.getUiState().getDaysOfWeekSelected();
+        List<String> daysOfWeekSelected = clinicFilterPojo.getUiState().getDaysOfWeekSelected();
         daysOfWeekSelected.add("SEGUNDA");
         
         dayInClinicaCategory.reset();
         
         selecteds = dayInClinicaCategory.getSelecteds();
         assertEquals(3, selecteds.size());
-        daysOfWeekSelected = clinicaFilterPojo.getUiState().getDaysOfWeekSelected();
+        daysOfWeekSelected = clinicFilterPojo.getUiState().getDaysOfWeekSelected();
         assertTrue(daysOfWeekSelected.isEmpty());
     }
 
@@ -147,7 +147,7 @@ public class DayInClinicaCategoryTest {
 
     @Test
     public void testDayInClinicaCategoryWithMultipleDaysOfWork() {
-        List<DayOfWork> daysOfWorkList = clinicaFilterPojo.getDayOfWorkList();
+        List<DayOfWork> daysOfWorkList = clinicFilterPojo.getDayOfWorkList();
         assertEquals(3, daysOfWorkList.size());
         
         DayOfWork day1 = daysOfWorkList.get(0);
@@ -173,13 +173,13 @@ public class DayInClinicaCategoryTest {
 
     @Test
     public void testResetClearsSelections() {
-        clinicaFilterPojo.getUiState().getDaysOfWeekSelected().add("SEGUNDA");
+        clinicFilterPojo.getUiState().getDaysOfWeekSelected().add("SEGUNDA");
         dayInClinicaCategory.getSelecteds().clear();
         
         dayInClinicaCategory.reset();
         
         assertEquals(3, dayInClinicaCategory.getSelecteds().size());
-        assertTrue(clinicaFilterPojo.getUiState().getDaysOfWeekSelected().isEmpty());
+        assertTrue(clinicFilterPojo.getUiState().getDaysOfWeekSelected().isEmpty());
     }
 
 }

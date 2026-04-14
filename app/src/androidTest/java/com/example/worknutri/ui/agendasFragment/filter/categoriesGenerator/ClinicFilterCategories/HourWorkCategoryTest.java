@@ -8,7 +8,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,13 +32,13 @@ import static org.junit.Assert.fail;
 public class HourWorkCategoryTest {
 
     private Context context;
-    private ClinicaFilterPojo clinicaFilterPojo;
+    private ClinicFilterPojo clinicFilterPojo;
     private HourWorkCategory hourWorkCategory;
 
     @Before
     public void setUp() {
         context = TestUtil.getThemedContext();
-        clinicaFilterPojo = new ClinicaFilterPojo();
+        clinicFilterPojo = new ClinicFilterPojo();
 
         // Criar clínicas para teste
         List<Clinica> clinics = TestEntityFactory.generateClinicListToTest();
@@ -48,11 +48,11 @@ public class HourWorkCategoryTest {
         daysOfWork.get(1).setId(clinics.get(1).getId());
         daysOfWork.get(2).setId(clinics.get(2).getId());
 
-        clinicaFilterPojo.setClinicas(clinics);
-        clinicaFilterPojo.setClinicasSelected(new ArrayList<>(clinics));
-        clinicaFilterPojo.setDayOfWorkList(daysOfWork);
+        clinicFilterPojo.setClinicsList(clinics);
+        clinicFilterPojo.setClinicsSelected(new ArrayList<>(clinics));
+        clinicFilterPojo.setDayOfWorkList(daysOfWork);
 
-        hourWorkCategory = new HourWorkCategory(context, clinicaFilterPojo);
+        hourWorkCategory = new HourWorkCategory(context, clinicFilterPojo);
     }
 
     @Test
@@ -141,7 +141,7 @@ public class HourWorkCategoryTest {
     @Test
     public void testGenerateCategoryWithInitialValues() {
         // Definir valores iniciais
-        float[] hoursSelected = clinicaFilterPojo.getUiState().getHoursSelected();
+        float[] hoursSelected = clinicFilterPojo.getUiState().getHoursSelected();
         hoursSelected[0] = 480f; // 08:00
         hoursSelected[1] = 720f; // 12:00
 
@@ -162,7 +162,7 @@ public class HourWorkCategoryTest {
     @Test
     public void testGenerateCategoryWithoutInitialValues() {
         // Garantir que não há valores iniciais
-        float[] hoursSelected = clinicaFilterPojo.getUiState().getHoursSelected();
+        float[] hoursSelected = clinicFilterPojo.getUiState().getHoursSelected();
         hoursSelected[0] = 0;
         hoursSelected[1] = 0;
 

@@ -16,7 +16,7 @@ import com.example.worknutri.support.TestEntityFactory;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.ActivityToTest;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -36,7 +36,7 @@ public class GenderCategoryTest {
     private List<Paciente> pacientes;
     private List<Clinica> clinicas;
     private List<Antropometria> antropometrias;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private GenderCategory genderCategory;
     private LayoutInflater layoutInflater;
 
@@ -54,7 +54,7 @@ public class GenderCategoryTest {
         clinicas = new ArrayList<>();
 
         // Criar pojo
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
         // Criar GenderCategory
         genderCategory = new GenderCategory(context, pojo);
@@ -64,7 +64,7 @@ public class GenderCategoryTest {
     public void testGenderCategoryConstructor() {
         assertNotNull(genderCategory);
         assertNotNull(pojo);
-        assertEquals(pacientes.size(), pojo.getPacientes().size());
+        assertEquals(pacientes.size(), pojo.getPatientList().size());
     }
 
     @Test
@@ -212,7 +212,7 @@ public class GenderCategoryTest {
         p2.setGenero('M');
         malePacientes.add(p2);
 
-        PacienteFilterPojo malePojo = new PacienteFilterPojo(malePacientes, antropometrias, clinicas);
+        PatientFilterPojo malePojo = new PatientFilterPojo(malePacientes, antropometrias, clinicas);
         GenderCategory maleCategory = new GenderCategory(context, malePojo);
 
         ViewGroup viewGroup = maleCategory.generateView(layoutInflater);
@@ -235,7 +235,7 @@ public class GenderCategoryTest {
         p2.setGenero('F');
         femalePacientes.add(p2);
 
-        PacienteFilterPojo femalePojo = new PacienteFilterPojo(femalePacientes, antropometrias, clinicas);
+        PatientFilterPojo femalePojo = new PatientFilterPojo(femalePacientes, antropometrias, clinicas);
         GenderCategory femaleCategory = new GenderCategory(context, femalePojo);
 
         ViewGroup viewGroup = femaleCategory.generateView(layoutInflater);
@@ -246,7 +246,7 @@ public class GenderCategoryTest {
     @Test
     public void testEmptyPacienteList() {
         List<Paciente> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(emptyList, antropometrias, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(emptyList, antropometrias, clinicas);
         GenderCategory emptyCategory = new GenderCategory(context, emptyPojo);
 
         // Não deve lançar exceção ao gerar a view mesmo com lista vazia
@@ -283,12 +283,12 @@ public class GenderCategoryTest {
             variousPacientes.add(p);
         }
 
-        PacienteFilterPojo variousPojo = new PacienteFilterPojo(variousPacientes, antropometrias, clinicas);
+        PatientFilterPojo variousPojo = new PatientFilterPojo(variousPacientes, antropometrias, clinicas);
         GenderCategory variousCategory = new GenderCategory(context, variousPojo);
 
         ViewGroup viewGroup = variousCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(6, variousPojo.getPacientes().size());
+        assertEquals(6, variousPojo.getPatientList().size());
     }
 
     @Test
@@ -320,7 +320,7 @@ public class GenderCategoryTest {
         p2.setGenero('M');
         filterPacientes.add(p2);
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, antropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, antropometrias, clinicas);
         GenderCategory filterCategory = new GenderCategory(context, filterPojo);
 
         List<Paciente> selecteds = filterCategory.getSelecteds();
@@ -449,7 +449,7 @@ public class GenderCategoryTest {
             balancedPacientes.add(p);
         }
 
-        PacienteFilterPojo balancedPojo = new PacienteFilterPojo(balancedPacientes, antropometrias, clinicas);
+        PatientFilterPojo balancedPojo = new PatientFilterPojo(balancedPacientes, antropometrias, clinicas);
         GenderCategory balancedCategory = new GenderCategory(context, balancedPojo);
 
         ViewGroup viewGroup = balancedCategory.generateView(layoutInflater);
@@ -469,7 +469,7 @@ public class GenderCategoryTest {
             unbalancedPacientes.add(p);
         }
 
-        PacienteFilterPojo unbalancedPojo = new PacienteFilterPojo(unbalancedPacientes, antropometrias, clinicas);
+        PatientFilterPojo unbalancedPojo = new PatientFilterPojo(unbalancedPacientes, antropometrias, clinicas);
         GenderCategory unbalancedCategory = new GenderCategory(context, unbalancedPojo);
 
         ViewGroup viewGroup = unbalancedCategory.generateView(layoutInflater);
@@ -486,7 +486,7 @@ public class GenderCategoryTest {
         p.setGenero('M');
         singleMale.add(p);
 
-        PacienteFilterPojo singleMalePojo = new PacienteFilterPojo(singleMale, antropometrias, clinicas);
+        PatientFilterPojo singleMalePojo = new PatientFilterPojo(singleMale, antropometrias, clinicas);
         GenderCategory singleMaleCategory = new GenderCategory(context, singleMalePojo);
 
         ViewGroup viewGroup = singleMaleCategory.generateView(layoutInflater);
@@ -503,7 +503,7 @@ public class GenderCategoryTest {
         p.setGenero('F');
         singleFemale.add(p);
 
-        PacienteFilterPojo singleFemalePojo = new PacienteFilterPojo(singleFemale, antropometrias, clinicas);
+        PatientFilterPojo singleFemalePojo = new PatientFilterPojo(singleFemale, antropometrias, clinicas);
         GenderCategory singleFemaleCategory = new GenderCategory(context, singleFemalePojo);
 
         ViewGroup viewGroup = singleFemaleCategory.generateView(layoutInflater);

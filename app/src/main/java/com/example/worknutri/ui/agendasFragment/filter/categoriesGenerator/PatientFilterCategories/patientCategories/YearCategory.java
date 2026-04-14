@@ -10,7 +10,7 @@ import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
 
@@ -23,8 +23,8 @@ public class YearCategory extends PatientFilterCategory {
 
 
 
-    public YearCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        super(context, pacienteFilterPojo);
+    public YearCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        super(context, patientFilterPojo);
     }
 
     protected ViewGroup generateView(LayoutInflater layoutInflater) {
@@ -41,10 +41,10 @@ public class YearCategory extends PatientFilterCategory {
 
 
     private RangeSlider generateRangeSlider() {
-        Optional<Paciente> max = pojo.getPacientes().stream().max(Comparator.comparing(Paciente::getIdade));
+        Optional<Paciente> max = pojo.getPatientList().stream().max(Comparator.comparing(Paciente::getIdade));
         int maxValue = max.map(Paciente::getIdade).orElse(0);
 
-        Optional <Paciente> min = pojo.getPacientes().stream().min(Comparator.comparing(Paciente::getIdade));
+        Optional <Paciente> min = pojo.getPatientList().stream().min(Comparator.comparing(Paciente::getIdade));
         int minValue = min.map(Paciente::getIdade).orElse(0);
         RangeSlider slider = categoriesGeneratorUtil.generateRangeSlider(minValue,maxValue);
         slider.setStepSize(1);
@@ -68,7 +68,7 @@ public class YearCategory extends PatientFilterCategory {
     }
 
     private void selectPacienteInsideRange(float minValue, float maxValue) {
-        for(Paciente paciente : pojo.getPacientes()) {
+        for(Paciente paciente : pojo.getPatientList()) {
             if (paciente.getIdade() < minValue || paciente.getIdade() > maxValue) {
                 pacientesInsideFilter.remove(paciente);
             } else if (!pacientesInsideFilter.contains(paciente)) {

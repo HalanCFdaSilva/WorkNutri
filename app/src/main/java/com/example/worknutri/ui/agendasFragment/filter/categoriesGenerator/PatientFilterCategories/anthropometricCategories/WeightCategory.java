@@ -11,7 +11,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ReseterOfCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.google.android.material.slider.RangeSlider;
 
@@ -21,8 +21,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class WeightCategory extends PatientFilterCategory {
-    protected WeightCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
-        super(context, pacienteFilterPojo);
+    protected WeightCategory(Context context, PatientFilterPojo patientFilterPojo) {
+        super(context, patientFilterPojo);
     }
 
     @Override
@@ -38,10 +38,10 @@ public class WeightCategory extends PatientFilterCategory {
 
     private RangeSlider generateRangeSlider() {
 
-        float maxValue = (int)getValue(pojo.getAntropometriaList().stream()
+        float maxValue = (int)getValue(pojo.getAnthropometryList().stream()
                 .max(Comparator.comparing(Antropometria::getPeso)));
 
-        float minValue = (int)getValue(pojo.getAntropometriaList().stream()
+        float minValue = (int)getValue(pojo.getAnthropometryList().stream()
                 .min(Comparator.comparing(Antropometria::getPeso)));
 
 
@@ -85,8 +85,8 @@ public class WeightCategory extends PatientFilterCategory {
     }
 
 private void selectPacientesInRange(float[] values) {
-    if (pojo.getPacientes().stream().findAny().isPresent()){
-        for (Antropometria antropometria : pojo.getAntropometriaList()) {
+    if (pojo.getPatientList().stream().findAny().isPresent()){
+        for (Antropometria antropometria : pojo.getAnthropometryList()) {
             selectpacienteByAntropometria(values, antropometria);
         }
     }
@@ -95,7 +95,7 @@ private void selectPacientesInRange(float[] values) {
 
     private void selectpacienteByAntropometria(float[] values, Antropometria antropometria) {
         float weigth = Float.parseFloat(antropometria.getPeso());
-        List<Paciente> pacientesFiltred = pojo.getPacientes().stream().filter(paciente -> paciente.getId() == antropometria.getIdPaciente())
+        List<Paciente> pacientesFiltred = pojo.getPatientList().stream().filter(paciente -> paciente.getId() == antropometria.getIdPaciente())
                 .collect(Collectors.toList());
         if (weigth >= values[0] && weigth <= values[1]) {
             if (!pacientesFiltred.isEmpty() && !pacientesInsideFilter.contains(pacientesFiltred.get(0))) {

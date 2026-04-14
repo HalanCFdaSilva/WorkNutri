@@ -6,23 +6,23 @@ import android.view.ViewGroup;
 
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public abstract class PatientFilterCategory extends FilterCategories {
 
-    protected final PacienteFilterPojo pojo;
+    protected final PatientFilterPojo pojo;
     protected List<Paciente> pacientesInsideFilter;
 
     protected ViewGroup viewGroup;
 
 
-    public PatientFilterCategory(Context context, PacienteFilterPojo pacienteFilterPojo) {
+    public PatientFilterCategory(Context context, PatientFilterPojo patientFilterPojo) {
         super(context);
-        pojo = pacienteFilterPojo;
-        pacientesInsideFilter = new ArrayList<>(pojo.getPacientes());
+        pojo = patientFilterPojo;
+        pacientesInsideFilter = new ArrayList<>(pojo.getPatientList());
 
     }
 
@@ -42,7 +42,7 @@ public abstract class PatientFilterCategory extends FilterCategories {
             resetLayout();
         }
         pacientesInsideFilter.clear();
-        pacientesInsideFilter.addAll(pojo.getPacientes());
+        pacientesInsideFilter.addAll(pojo.getPatientList());
     }
 
     protected abstract void resetLayout();

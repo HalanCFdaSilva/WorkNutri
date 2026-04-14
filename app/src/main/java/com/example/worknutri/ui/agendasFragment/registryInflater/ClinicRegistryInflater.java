@@ -9,21 +9,21 @@ import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistry
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.clinicsTypes.DistrictClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.clinicsTypes.PatientsClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.clinicsTypes.WeekClinicRegistryInflater;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 public class ClinicRegistryInflater {
 
-    private final ClinicaFilterPojo clinicaFilterPojo;
+    private final ClinicFilterPojo clinicFilterPojo;
 
-    public ClinicRegistryInflater(ClinicaFilterPojo clinicaFilterPojo) {
-        this.clinicaFilterPojo = clinicaFilterPojo;
+    public ClinicRegistryInflater(ClinicFilterPojo clinicFilterPojo) {
+        this.clinicFilterPojo = clinicFilterPojo;
     }
 
     public void inflateSchedule(ViewGroup viewGroup, Context context) {
         RegistryInflater<Clinica> registryInflater = new NameRegistryInflater<>(context);
-        switch (clinicaFilterPojo.getUiState().getOrderBy()){
+        switch (clinicFilterPojo.getUiState().getOrderBy()){
             case DAY_OF_WEEK:{
-                registryInflater = new WeekClinicRegistryInflater(context, clinicaFilterPojo.getDayOfWorkList());
+                registryInflater = new WeekClinicRegistryInflater(context, clinicFilterPojo.getDayOfWorkList());
                 break;
             }
             case CITY:{
@@ -31,12 +31,12 @@ public class ClinicRegistryInflater {
                 break;
             }
             case NUMBER_OF_PATIENTS:{
-                registryInflater = new PatientsClinicRegistryInflater(context, clinicaFilterPojo.getPacientes());
+                registryInflater = new PatientsClinicRegistryInflater(context, clinicFilterPojo.getPatientList());
                 break;
             }
             case DISTRICT: registryInflater = new DistrictClinicRegistryInflater(context);
 
         }
-        registryInflater.generateAgenda(viewGroup, clinicaFilterPojo.getClinicasSelected());
+        registryInflater.generateAgenda(viewGroup, clinicFilterPojo.getClinicsSelected());
     }
 }

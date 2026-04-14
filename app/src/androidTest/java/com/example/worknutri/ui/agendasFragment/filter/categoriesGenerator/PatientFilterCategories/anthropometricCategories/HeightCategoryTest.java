@@ -13,7 +13,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.slider.RangeSlider;
 
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class HeightCategoryTest {
     private Context context;
     private List<Paciente> pacientes;
     private List<Clinica> clinicas;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private HeightCategory heightCategory;
     private LayoutInflater layoutInflater;
 
@@ -71,7 +71,7 @@ public class HeightCategoryTest {
         clinicas = new ArrayList<>();
 
         // Criar pojo
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
         // Criar HeightCategory
         heightCategory = new HeightCategory(context, pojo);
@@ -81,7 +81,7 @@ public class HeightCategoryTest {
     public void testHeightCategoryConstructor() {
         assertNotNull(heightCategory);
         assertNotNull(pojo);
-        assertEquals(2, pojo.getPacientes().size());
+        assertEquals(2, pojo.getPatientList().size());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class HeightCategoryTest {
         a.setAltura("1.75");
         singleAntropometria.add(a);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singlePaciente, singleAntropometria, clinicas);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singlePaciente, singleAntropometria, clinicas);
         HeightCategory singleHeightCategory = new HeightCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleHeightCategory.generateView(layoutInflater);
@@ -176,7 +176,7 @@ public class HeightCategoryTest {
     @Test
     public void testEmptyAntropometriaList() {
         List<Antropometria> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(pacientes, emptyList, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(pacientes, emptyList, clinicas);
         HeightCategory emptyHeightCategory = new HeightCategory(context, emptyPojo);
 
         // Não deve lançar exceção ao gerar a view mesmo com lista vazia
@@ -225,12 +225,12 @@ public class HeightCategoryTest {
             testAntropometrias.add(a);
         }
 
-        PacienteFilterPojo testPojo = new PacienteFilterPojo(testPacientes, testAntropometrias, clinicas);
+        PatientFilterPojo testPojo = new PatientFilterPojo(testPacientes, testAntropometrias, clinicas);
         HeightCategory testCategory = new HeightCategory(context, testPojo);
 
         ViewGroup viewGroup = testCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(5, testPojo.getPacientes().size());
+        assertEquals(5, testPojo.getPatientList().size());
     }
 
 
@@ -274,7 +274,7 @@ public class HeightCategoryTest {
         a2.setAltura(altura1);
         filterAntropometrias.add(a2);
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, filterAntropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, filterAntropometrias, clinicas);
         return new HeightCategory(context, filterPojo);
     }
 

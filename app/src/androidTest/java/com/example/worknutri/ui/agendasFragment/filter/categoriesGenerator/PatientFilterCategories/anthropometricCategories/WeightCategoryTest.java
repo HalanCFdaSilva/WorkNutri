@@ -13,7 +13,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.support.TestUtil;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.PatientFilterCategories.PatientFilterCategory;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 import com.google.android.material.slider.RangeSlider;
 
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class WeightCategoryTest {
     private Context context;
     private List<Paciente> pacientes;
     private List<Clinica> clinicas;
-    private PacienteFilterPojo pojo;
+    private PatientFilterPojo pojo;
     private WeightCategory weightCategory;
     private LayoutInflater layoutInflater;
 
@@ -71,7 +71,7 @@ public class WeightCategoryTest {
         clinicas = new ArrayList<>();
 
         // Criar pojo
-        pojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
+        pojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
 
         // Criar WeightCategory
         weightCategory = new WeightCategory(context, pojo);
@@ -81,7 +81,7 @@ public class WeightCategoryTest {
     public void testWeightCategoryConstructor() {
         assertNotNull(weightCategory);
         assertNotNull(pojo);
-        assertEquals(2, pojo.getPacientes().size());
+        assertEquals(2, pojo.getPatientList().size());
     }
 
     @Test
@@ -165,7 +165,7 @@ public class WeightCategoryTest {
         a.setPeso("75.0");
         singleAntropometria.add(a);
 
-        PacienteFilterPojo singlePojo = new PacienteFilterPojo(singlePaciente, singleAntropometria, clinicas);
+        PatientFilterPojo singlePojo = new PatientFilterPojo(singlePaciente, singleAntropometria, clinicas);
         WeightCategory singleWeightCategory = new WeightCategory(context, singlePojo);
 
         ViewGroup viewGroup = singleWeightCategory.generateView(layoutInflater);
@@ -175,7 +175,7 @@ public class WeightCategoryTest {
     @Test
     public void testEmptyAntropometriaList() {
         List<Antropometria> emptyList = new ArrayList<>();
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(pacientes, emptyList, clinicas);
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(pacientes, emptyList, clinicas);
         WeightCategory emptyWeightCategory = new WeightCategory(context, emptyPojo);
 
         // Não deve lançar exceção ao gerar a view mesmo com lista vazia
@@ -223,12 +223,12 @@ public class WeightCategoryTest {
             testAntropometrias.add(a);
         }
 
-        PacienteFilterPojo testPojo = new PacienteFilterPojo(testPacientes, testAntropometrias, clinicas);
+        PatientFilterPojo testPojo = new PatientFilterPojo(testPacientes, testAntropometrias, clinicas);
         WeightCategory testCategory = new WeightCategory(context, testPojo);
 
         ViewGroup viewGroup = testCategory.generateView(layoutInflater);
         assertNotNull(viewGroup);
-        assertEquals(5, testPojo.getPacientes().size());
+        assertEquals(5, testPojo.getPatientList().size());
     }
 
     @Test
@@ -270,7 +270,7 @@ public class WeightCategoryTest {
         a2.setPeso("100.0");
         filterAntropometrias.add(a2);
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, filterAntropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, filterAntropometrias, clinicas);
         return new WeightCategory(context, filterPojo);
     }
 
@@ -311,7 +311,7 @@ public class WeightCategoryTest {
         a2.setPeso("75.0");
         sameAntropometrias.add(a2);
 
-        PacienteFilterPojo samePojo = new PacienteFilterPojo(samePacientes, sameAntropometrias, clinicas);
+        PatientFilterPojo samePojo = new PatientFilterPojo(samePacientes, sameAntropometrias, clinicas);
         return new WeightCategory(context, samePojo);
     }
 
@@ -335,7 +335,7 @@ public class WeightCategoryTest {
             filterAntropometrias.add(a);
         }
 
-        PacienteFilterPojo filterPojo = new PacienteFilterPojo(filterPacientes, filterAntropometrias, clinicas);
+        PatientFilterPojo filterPojo = new PatientFilterPojo(filterPacientes, filterAntropometrias, clinicas);
         WeightCategory filterCategory = new WeightCategory(context, filterPojo);
 
         // Gerar a view para inicializar o slider
@@ -376,7 +376,7 @@ public class WeightCategoryTest {
             narrowAntropometrias.add(a);
         }
 
-        PacienteFilterPojo narrowPojo = new PacienteFilterPojo(narrowPacientes, narrowAntropometrias, clinicas);
+        PatientFilterPojo narrowPojo = new PatientFilterPojo(narrowPacientes, narrowAntropometrias, clinicas);
         WeightCategory narrowCategory = new WeightCategory(context, narrowPojo);
 
         ViewGroup viewGroup = narrowCategory.generateView(layoutInflater);
@@ -412,7 +412,7 @@ public class WeightCategoryTest {
             wideAntropometrias.add(a);
         }
 
-        PacienteFilterPojo widePojo = new PacienteFilterPojo(widePacientes, wideAntropometrias, clinicas);
+        PatientFilterPojo widePojo = new PatientFilterPojo(widePacientes, wideAntropometrias, clinicas);
         WeightCategory wideCategory = new WeightCategory(context, widePojo);
 
         ViewGroup viewGroup = wideCategory.generateView(layoutInflater);
@@ -480,7 +480,7 @@ public class WeightCategoryTest {
         a3.setPeso("100.0");
         excludeAntropometrias.add(a3);
 
-        PacienteFilterPojo excludePojo = new PacienteFilterPojo(excludePacientes, excludeAntropometrias, clinicas);
+        PatientFilterPojo excludePojo = new PatientFilterPojo(excludePacientes, excludeAntropometrias, clinicas);
         return new WeightCategory(context, excludePojo);
     }
 }

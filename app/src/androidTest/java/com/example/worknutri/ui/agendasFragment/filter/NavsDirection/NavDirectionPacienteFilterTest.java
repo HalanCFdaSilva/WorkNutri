@@ -8,7 +8,7 @@ import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 public class NavDirectionPacienteFilterTest {
 
     private NavDirectionPacienteFilter navDirectionPacienteFilter;
-    private PacienteFilterPojo pacienteFilterPojo;
+    private PatientFilterPojo patientFilterPojo;
     private final int actionId = 1;
 
     @Before
@@ -61,14 +61,14 @@ public class NavDirectionPacienteFilterTest {
         // Create clinics
         List<Clinica> clinicas = new ArrayList<>();
         
-        pacienteFilterPojo = new PacienteFilterPojo(pacientes, antropometrias, clinicas);
-        navDirectionPacienteFilter = new NavDirectionPacienteFilter(actionId, pacienteFilterPojo);
+        patientFilterPojo = new PatientFilterPojo(pacientes, antropometrias, clinicas);
+        navDirectionPacienteFilter = new NavDirectionPacienteFilter(actionId, patientFilterPojo);
     }
 
     @Test
     public void testNavDirectionPacienteFilterConstructor() {
         assertNotNull(navDirectionPacienteFilter);
-        assertNotNull(pacienteFilterPojo);
+        assertNotNull(patientFilterPojo);
     }
 
     @Test
@@ -88,37 +88,37 @@ public class NavDirectionPacienteFilterTest {
     @Test
     public void testBundlePacienteFilterPojoIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        assertEquals(pacienteFilterPojo.getPacientes().size(), retrievedPojo.getPacientes().size());
+        assertEquals(patientFilterPojo.getPatientList().size(), retrievedPojo.getPatientList().size());
     }
 
     @Test
     public void testBundlePacientesAreCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        assertEquals(2, retrievedPojo.getPacientes().size());
+        assertEquals(2, retrievedPojo.getPatientList().size());
     }
 
     @Test
     public void testBundleAntropometriaListIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        assertEquals(pacienteFilterPojo.getAntropometriaList().size(), retrievedPojo.getAntropometriaList().size());
+        assertEquals(patientFilterPojo.getAnthropometryList().size(), retrievedPojo.getAnthropometryList().size());
     }
 
     @Test
     public void testBundlePacienteFirstPacienteIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        Paciente firstPaciente = retrievedPojo.getPacientes().get(0);
+        Paciente firstPaciente = retrievedPojo.getPatientList().get(0);
         assertEquals("Patient A", firstPaciente.getNomePaciente());
         assertEquals(25, firstPaciente.getIdade());
     }
@@ -126,10 +126,10 @@ public class NavDirectionPacienteFilterTest {
     @Test
     public void testBundlePacienteSecondPacienteIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        Paciente secondPaciente = retrievedPojo.getPacientes().get(1);
+        Paciente secondPaciente = retrievedPojo.getPatientList().get(1);
         assertEquals("Patient B", secondPaciente.getNomePaciente());
         assertEquals(35, secondPaciente.getIdade());
     }
@@ -137,10 +137,10 @@ public class NavDirectionPacienteFilterTest {
     @Test
     public void testBundleFirstAntropometriaIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        Antropometria firstAntro = retrievedPojo.getAntropometriaList().get(0);
+        Antropometria firstAntro = retrievedPojo.getAnthropometryList().get(0);
         assertEquals("1.70", firstAntro.getAltura());
         assertEquals("70.0", firstAntro.getPeso());
     }
@@ -148,10 +148,10 @@ public class NavDirectionPacienteFilterTest {
     @Test
     public void testBundleSecondAntropometriaIsCorrect() {
         Bundle bundle = navDirectionPacienteFilter.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
-        Antropometria secondAntro = retrievedPojo.getAntropometriaList().get(1);
+        Antropometria secondAntro = retrievedPojo.getAnthropometryList().get(1);
         assertEquals("1.80", secondAntro.getAltura());
         assertEquals("80.0", secondAntro.getPeso());
     }
@@ -164,16 +164,16 @@ public class NavDirectionPacienteFilterTest {
         assertNotNull(bundle1);
         assertNotNull(bundle2);
         
-        PacienteFilterPojo pojo1 = (PacienteFilterPojo) bundle1.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
-        PacienteFilterPojo pojo2 = (PacienteFilterPojo) bundle2.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo pojo1 = (PatientFilterPojo) bundle1.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo pojo2 = (PatientFilterPojo) bundle2.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         assertNotNull(pojo1);
         assertNotNull(pojo2);
-        assertEquals(pojo1.getPacientes().size(), pojo2.getPacientes().size());
+        assertEquals(pojo1.getPatientList().size(), pojo2.getPatientList().size());
     }
 
     @Test
     public void testSerializableClassCheck() {
-        assertTrue(java.io.Serializable.class.isAssignableFrom(PacienteFilterPojo.class));
+        assertTrue(java.io.Serializable.class.isAssignableFrom(PatientFilterPojo.class));
     }
 
 
@@ -194,23 +194,23 @@ public class NavDirectionPacienteFilterTest {
             pacientes.add(paciente);
         }
         
-        PacienteFilterPojo multiplePojo = new PacienteFilterPojo(pacientes, new ArrayList<>(), new ArrayList<>());
+        PatientFilterPojo multiplePojo = new PatientFilterPojo(pacientes, new ArrayList<>(), new ArrayList<>());
         NavDirectionPacienteFilter multipleNavDirection = new NavDirectionPacienteFilter(actionId, multiplePojo);
         
         Bundle bundle = multipleNavDirection.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
 
         assertNotNull(retrievedPojo);
-        assertEquals(5, retrievedPojo.getPacientes().size());
+        assertEquals(5, retrievedPojo.getPatientList().size());
     }
 
     @Test
     public void testBundleWithEmptyPacientes() {
-        PacienteFilterPojo emptyPojo = new PacienteFilterPojo(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        PatientFilterPojo emptyPojo = new PatientFilterPojo(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         NavDirectionPacienteFilter emptyNavDirection = new NavDirectionPacienteFilter(actionId, emptyPojo);
         
         Bundle bundle = emptyNavDirection.getArguments();
-        PacienteFilterPojo retrievedPojo = (PacienteFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
+        PatientFilterPojo retrievedPojo = (PatientFilterPojo) bundle.getSerializable(ConstantsFilters.PACIENTE_FILTER_POJO);
         
         assertNotNull(retrievedPojo);
     }

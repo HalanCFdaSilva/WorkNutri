@@ -18,7 +18,7 @@ import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistry
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.clinicsTypes.PatientsClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.registryInflater.typesOfRegistryInflater.clinicsTypes.WeekClinicRegistryInflater;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicaFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class ClinicRegistryInflaterTest {
 
     private final Context context = TestUtil.getThemedContext();
     private ClinicRegistryInflater registryInflater;
-    private ClinicaFilterPojo pojo;
+    private ClinicFilterPojo pojo;
     private List<Clinica> clinics;
     private List<DayOfWork> daysOfWork;
     private List<Paciente> patients;
@@ -43,10 +43,10 @@ public class ClinicRegistryInflaterTest {
         clinics = TestEntityFactory.generateClinicListToTest();
         daysOfWork = new ArrayList<>();
         patients = new ArrayList<>();
-        pojo = new ClinicaFilterPojo();
-        pojo.setClinicasSelected(clinics);
+        pojo = new ClinicFilterPojo();
+        pojo.setClinicsSelected(clinics);
         pojo.setDayOfWorkList(daysOfWork);
-        pojo.setPacientes(patients);
+        pojo.setPatientList(patients);
         registryInflater = new ClinicRegistryInflater(pojo);
     }
 
@@ -59,7 +59,7 @@ public class ClinicRegistryInflaterTest {
 
         LinearLayout parentFromDirect = new LinearLayout(context);
         DistrictClinicRegistryInflater direct = new DistrictClinicRegistryInflater(context);
-        direct.generateAgenda(parentFromDirect, pojo.getClinicasSelected());
+        direct.generateAgenda(parentFromDirect, pojo.getClinicsSelected());
         
         assertEquals(parentFromDirect.getChildCount(), parentFromRegistry.getChildCount());
 
@@ -84,7 +84,7 @@ public class ClinicRegistryInflaterTest {
 
         LinearLayout parentFromDirect = new LinearLayout(context);
         CityClinicRegistryInflater direct = new CityClinicRegistryInflater(context);
-        direct.generateAgenda(parentFromDirect, pojo.getClinicasSelected());
+        direct.generateAgenda(parentFromDirect, pojo.getClinicsSelected());
         
         assertEquals(parentFromDirect.getChildCount(), parentFromRegistry.getChildCount());
 
@@ -127,7 +127,7 @@ public class ClinicRegistryInflaterTest {
 
         LinearLayout parentFromDirect = new LinearLayout(context);
         WeekClinicRegistryInflater direct = new WeekClinicRegistryInflater(context, daysOfWork);
-        direct.generateAgenda(parentFromDirect, pojo.getClinicasSelected());
+        direct.generateAgenda(parentFromDirect, pojo.getClinicsSelected());
         
         assertEquals(parentFromDirect.getChildCount(), parentFromRegistry.getChildCount());
 
@@ -161,7 +161,7 @@ public class ClinicRegistryInflaterTest {
 
         LinearLayout parentFromDirect = new LinearLayout(context);
         PatientsClinicRegistryInflater direct = new PatientsClinicRegistryInflater(context, patients);
-        direct.generateAgenda(parentFromDirect, pojo.getClinicasSelected());
+        direct.generateAgenda(parentFromDirect, pojo.getClinicsSelected());
         
         assertEquals(parentFromDirect.getChildCount(), parentFromRegistry.getChildCount());
 

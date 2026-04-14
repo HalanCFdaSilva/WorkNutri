@@ -388,15 +388,22 @@ public class PatientInClinicCategoryTest {
             if (chipGroup.getChildCount() > 0) {
                 Chip firstChip = (Chip) chipGroup.getChildAt(0);
 
+                String clinicName = firstChip.getText().toString();
                 firstChip.setChecked(true);
-                List<Paciente> selectedsAfterCheck = patientInClinicCategory.getSelecteds();
+                checkIfPojoClinicsSelectedContainsOrNotPatientsFromClinic(clinicName, true);
 
                 firstChip.setChecked(false);
-                List<Paciente> selectedsAfterUncheck = patientInClinicCategory.getSelecteds();
-                assertNotNull(selectedsAfterUncheck);
+                checkIfPojoClinicsSelectedContainsOrNotPatientsFromClinic(clinicName, false);
             }
         });
 
+    }
+
+    private void checkIfPojoClinicsSelectedContainsOrNotPatientsFromClinic(String clinicName, boolean shouldContain) {
+        clinicas.stream().filter(c -> c.getNome().equals(clinicName))
+                .findFirst()
+                .ifPresent(c -> assertEquals(shouldContain,
+                        pojo.getState().getClinicsIdSelected().contains(c.getId())));
     }
 
     @Test

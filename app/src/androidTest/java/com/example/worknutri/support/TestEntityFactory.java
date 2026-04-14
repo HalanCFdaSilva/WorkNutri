@@ -12,6 +12,7 @@ import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.sqlLite.domain.paciente.Patologia;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -129,7 +130,7 @@ public  abstract class TestEntityFactory {
 
         Paciente p3 = TestEntityFactory.generatePatient();
         p3.setId(3); p3.setNomePaciente("Paciente 3");
-        return Arrays.asList(p1, p2, p3);
+        return new ArrayList<>(Arrays.asList(p1, p2, p3));
     }
 
     public static List<Antropometria> generateAnthropometryListToTest(List<Paciente> patients) {

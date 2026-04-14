@@ -3,7 +3,7 @@ package com.example.worknutri.ui.agendasFragment.RegistryOrdenators;
 import com.example.worknutri.sqlLite.domain.paciente.Antropometria;
 import com.example.worknutri.sqlLite.domain.paciente.Paciente;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
-import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PacienteFilterPojo;
+import com.example.worknutri.ui.agendasFragment.filter.pojos.pacienteFilter.PatientFilterPojo;
 
 import org.junit.Test;
 
@@ -14,12 +14,12 @@ import static org.junit.Assert.assertEquals;
 
 public class OrderListOfRegistryTest {
 
-    private Paciente newPaciente(long id, String nome, int idade, long clinicaId) {
+    private Paciente newPaciente(long id, String nome, int idade) {
         Paciente p = new Paciente();
         p.setId(id);
         p.setNomePaciente(nome);
         p.setIdade(idade);
-        p.setClinicaId(clinicaId);
+        p.setClinicaId(1);
         return p;
     }
 
@@ -35,10 +35,10 @@ public class OrderListOfRegistryTest {
     @Test
     public void orderByNameAscending() {
         List<Paciente> list = new ArrayList<>();
-        list.add(newPaciente(1, "Beta", 30, 1));
-        list.add(newPaciente(2, "Alpha", 25, 1));
+        list.add(newPaciente(1, "Beta", 30));
+        list.add(newPaciente(2, "Alpha", 25));
 
-        PacienteFilterPojo pojo = new PacienteFilterPojo(list, new ArrayList<>(), new ArrayList<>());
+        PatientFilterPojo pojo = new PatientFilterPojo(list, new ArrayList<>(), new ArrayList<>());
         pojo.getState().setOrderBy(OrderFilterSelectedsBy.NAME_ASC);
 
         OrderListOfRegistry orderer = new OrderListOfRegistry();
@@ -52,10 +52,10 @@ public class OrderListOfRegistryTest {
     @Test
     public void orderByNameDescending() {
         List<Paciente> list = new ArrayList<>();
-        list.add(newPaciente(1, "Alpha", 30, 1));
-        list.add(newPaciente(2, "Beta", 25, 1));
+        list.add(newPaciente(1, "Alpha", 30));
+        list.add(newPaciente(2, "Beta", 25));
 
-        PacienteFilterPojo pojo = new PacienteFilterPojo(list, new ArrayList<>(), new ArrayList<>());
+        PatientFilterPojo pojo = new PatientFilterPojo(list, new ArrayList<>(), new ArrayList<>());
         pojo.getState().setOrderBy(OrderFilterSelectedsBy.NAME_DESC);
 
         OrderListOfRegistry orderer = new OrderListOfRegistry();
@@ -69,11 +69,11 @@ public class OrderListOfRegistryTest {
     @Test
     public void orderByAgeAscending() {
         List<Paciente> pacientes = new ArrayList<>();
-        pacientes.add(newPaciente(1, "P1", 50, 1));
-        pacientes.add(newPaciente(2, "P2", 20, 1));
-        pacientes.add(newPaciente(3, "P3", 35, 1));
+        pacientes.add(newPaciente(1, "P1", 50));
+        pacientes.add(newPaciente(2, "P2", 20));
+        pacientes.add(newPaciente(3, "P3", 35));
 
-        PacienteFilterPojo pojo = new PacienteFilterPojo(pacientes, new ArrayList<>(), new ArrayList<>());
+        PatientFilterPojo pojo = new PatientFilterPojo(pacientes, new ArrayList<>(), new ArrayList<>());
         pojo.getState().setOrderBy(OrderFilterSelectedsBy.AGE);
 
         OrderListOfRegistry orderer = new OrderListOfRegistry();
@@ -88,17 +88,17 @@ public class OrderListOfRegistryTest {
     @Test
     public void orderByBMICategoryDelegatesToOrdainer() {
         List<Paciente> pacientes = new ArrayList<>();
-        pacientes.add(newPaciente(1, "P1", 20, 1)); // DEFICIT
-        pacientes.add(newPaciente(2, "P2", 22, 1)); // NORMAL
-        pacientes.add(newPaciente(3, "P3", 30, 1)); // SOBREPESO
-        pacientes.add(newPaciente(4, "P4", 40, 1)); // no antropometria -> MAX
+        pacientes.add(newPaciente(1, "P1", 20)); // DEFICIT
+        pacientes.add(newPaciente(2, "P2", 22)); // NORMAL
+        pacientes.add(newPaciente(3, "P3", 30)); // SOBREPESO
+        pacientes.add(newPaciente(4, "P4", 40)); // no antropometria -> MAX
 
         List<Antropometria> antropometrias = new ArrayList<>();
         antropometrias.add(newAntropometria(1, "17.0", "1.70", "60.0"));
         antropometrias.add(newAntropometria(2, "22.0", "1.60", "55.0"));
         antropometrias.add(newAntropometria(3, "27.0", "1.80", "90.0"));
 
-        PacienteFilterPojo pojo = new PacienteFilterPojo(pacientes, antropometrias, new ArrayList<>());
+        PatientFilterPojo pojo = new PatientFilterPojo(pacientes, antropometrias, new ArrayList<>());
         pojo.getState().setOrderBy(OrderFilterSelectedsBy.IMC_CATEGORY);
 
         OrderListOfRegistry orderer = new OrderListOfRegistry();
@@ -114,9 +114,9 @@ public class OrderListOfRegistryTest {
     @Test
     public void orderByHeightAndWeightDelegatesToOrdainer() {
         List<Paciente> pacientes = new ArrayList<>();
-        pacientes.add(newPaciente(1, "P1", 20, 1));
-        pacientes.add(newPaciente(2, "P2", 20, 1));
-        pacientes.add(newPaciente(3, "P3", 20, 1));
+        pacientes.add(newPaciente(1, "P1", 20));
+        pacientes.add(newPaciente(2, "P2", 20));
+        pacientes.add(newPaciente(3, "P3", 20));
 
         List<Antropometria> antropometrias = new ArrayList<>();
         antropometrias.add(newAntropometria(1, "22.0", "1.90", "90.0")); // tallest / heaviest
@@ -124,7 +124,7 @@ public class OrderListOfRegistryTest {
         antropometrias.add(newAntropometria(3, "22.0", "1.75", "75.0")); // middle
 
         // Test height ordering
-        PacienteFilterPojo pojoHeight = new PacienteFilterPojo(pacientes, antropometrias, new ArrayList<>());
+        PatientFilterPojo pojoHeight = new PatientFilterPojo(pacientes, antropometrias, new ArrayList<>());
         pojoHeight.getState().setOrderBy(OrderFilterSelectedsBy.HEIGHT);
 
         OrderListOfRegistry orderer = new OrderListOfRegistry();
@@ -137,7 +137,7 @@ public class OrderListOfRegistryTest {
         assertEquals(1, resultHeight.get(2).getId());
 
         // Test weight ordering
-        PacienteFilterPojo pojoWeight = new PacienteFilterPojo(pacientes, antropometrias, new ArrayList<>());
+        PatientFilterPojo pojoWeight = new PatientFilterPojo(pacientes, antropometrias, new ArrayList<>());
         pojoWeight.getState().setOrderBy(OrderFilterSelectedsBy.WEIGHT);
 
         List<Paciente> resultWeight = orderer.orderToAgendaPacientes(pojoWeight);

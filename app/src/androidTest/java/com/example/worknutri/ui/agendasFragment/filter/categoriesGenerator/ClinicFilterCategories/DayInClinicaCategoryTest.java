@@ -42,9 +42,9 @@ public class DayInClinicaCategoryTest {
         clinics = TestEntityFactory.generateClinicListToTest();
         
         List<DayOfWork> daysOfWork = TestEntityFactory.getDaysOfWork();
-        daysOfWork.get(0).setId(clinics.get(0).getId());
-        daysOfWork.get(1).setId(clinics.get(1).getId());
-        daysOfWork.get(2).setId(clinics.get(2).getId());
+        daysOfWork.get(0).setIdClinica(clinics.get(0).getId());
+        daysOfWork.get(1).setIdClinica(clinics.get(1).getId());
+        daysOfWork.get(2).setIdClinica(clinics.get(2).getId());
 
         clinicFilterPojo.setClinicsList(clinics);
         clinicFilterPojo.setClinicsSelected(new ArrayList<>(clinics));
@@ -152,7 +152,7 @@ public class DayInClinicaCategoryTest {
         
         DayOfWork day1 = daysOfWorkList.get(0);
         assertEquals("SEGUNDA", day1.getDayOfWeek());
-        assertEquals(1, day1.getIdClinica());
+        assertEquals(clinics.get(0).getId(), day1.getIdClinica());
     }
 
     // ==================== Testes de Comportamento Público ====================

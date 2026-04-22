@@ -4,17 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-
 import com.example.worknutri.R;
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.sqlLite.domain.clinica.DayOfWork;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DayInClinicCategory extends ClinicFilterCategory {
 
@@ -26,6 +22,7 @@ public class DayInClinicCategory extends ClinicFilterCategory {
     @Override
     public ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategoryWithChipGroup(layoutInflater,"Dia na Clinica:");
+        viewGroup.setId(R.id.filter_category_clinic_day);
         String[] diasSemana = context.getResources().getStringArray(R.array.dias_semana);
         ChipGroup chipGroup = viewGroup.findViewById(R.id.filter_category_chipgroup);
         for (String dia : diasSemana){
@@ -47,13 +44,15 @@ public class DayInClinicCategory extends ClinicFilterCategory {
         chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
             String dayOfWeek = chip.getText().toString();
-            List<Clinica> clinicasFiltred = getClinicasInsideChip(dayOfWeek);
+            List<Clinica> clinicsFiltered = new ClinicsSelector(clinicFilterPojo.getClinicsList()).
+                    byDayOfWeek(dayOfWeek, clinicFilterPojo.getDayOfWorkList());
+
             List<String> daysOfWeekSelected = clinicFilterPojo.getUiState().getDaysOfWeekSelected();
             if (isChecked){
-                insertInClinicasSelecteds(clinicasFiltred);
+                insertInClinicasSelecteds(clinicsFiltered);
                 daysOfWeekSelected.add(dayOfWeek);
             }else {
-                clinicasSelecteds.removeAll(clinicasFiltred);
+                clinicasSelecteds.removeAll(clinicsFiltered);
                 if (clinicasSelecteds.isEmpty())
                     reset();
                 else
@@ -75,20 +74,7 @@ public class DayInClinicCategory extends ClinicFilterCategory {
         }
     }
 
-    @NonNull
-    private List<Clinica> getClinicasInsideChip(String dayOfWeek) {
-        List<DayOfWork> daysOfWorkFiltred = clinicFilterPojo.getDayOfWorkList().stream()
-                .filter(dayOfWork -> dayOfWork.getDayOfWeek().equals(dayOfWeek)).collect(Collectors.toList());
 
-        return clinicFilterPojo.getClinicsList().stream()
-                .filter(clinica -> {
-                    for (DayOfWork dayOfWork : daysOfWorkFiltred){
-                        if (dayOfWork.getIdClinica() == clinica.getId())
-                            return true;
-                    }
-                    return false;})
-                .collect(Collectors.toList());
-    }
 
 
 

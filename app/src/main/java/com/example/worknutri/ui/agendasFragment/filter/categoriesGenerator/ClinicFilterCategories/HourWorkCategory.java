@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.example.worknutri.R;
-import com.example.worknutri.sqlLite.domain.clinica.Clinica;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.PojoUtil;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 import com.google.android.material.slider.RangeSlider;
 import java.util.List;
+import java.util.Locale;
 
 public class HourWorkCategory extends ClinicFilterCategory {
     protected HourWorkCategory(Context context, ClinicFilterPojo clinicFilterPojo) {
@@ -21,6 +21,7 @@ public class HourWorkCategory extends ClinicFilterCategory {
     @Override
     protected ViewGroup generateView(LayoutInflater layoutInflater) {
         ViewGroup viewGroup = categoriesGeneratorUtil.generateCategory(layoutInflater, "Horário de Trabalho:");
+        viewGroup.setId(R.id.filter_category_clinic_hour);
         RangeSlider rangeSlider = generateRangeSlider();
         rangeSlider.setStepSize(1);
         onSliderRangeSlider(rangeSlider);
@@ -35,8 +36,9 @@ public class HourWorkCategory extends ClinicFilterCategory {
     private RangeSlider generateRangeSlider() {
 
         RangeSlider rangeSlider = categoriesGeneratorUtil.generateRangeSlider(0, 24*60);
-        rangeSlider.setStepSize(15f);
-        rangeSlider.setLabelFormatter(f-> String.format("%02d:%02d", (int) f / 60, (int) f % 60));
+        rangeSlider.setStepSize(1f);
+        rangeSlider.setLabelFormatter(f-> String.format(Locale.getDefault(),
+                "%02d:%02d", (int) f / 60, (int) f % 60));
         onSliderRangeSlider(rangeSlider);
         selectInitialValues(rangeSlider);
         return rangeSlider;
@@ -53,44 +55,27 @@ public class HourWorkCategory extends ClinicFilterCategory {
                 List<Float> values = slider.getValues();
 
                 PojoUtil.setValuesOfFloatTuple(clinicFilterPojo.getUiState().getHoursSelected(), values.get(0), values.get(1));
-                clinicasSelecteds.clear();
-                selectClinicaInsideRange(values.get(0), values.get(1));
+                updateSelectedClinicsByHourRange(values.get(0), values.get(1));
+
             }
 
 
         });
     }
 
-    private void selectClinicaInsideRange(Float min, Float max) {
-
-        List<Clinica> clinicas = clinicFilterPojo.getClinicsList();
-        clinicFilterPojo.getDayOfWorkList().forEach(dayOfWork -> {
-            float horaInicio = getTimeInMinutes(dayOfWork.getHoraInicio());
-            float horaFim = getTimeInMinutes(dayOfWork.getHoraFim());
-            if (horaInicio >= min && horaFim <= max) {
-                clinicas.stream().filter(clinica -> clinica.getId() == dayOfWork.getIdClinica())
-                        .findFirst()
-                        .ifPresent(clinica -> {
-                            if (!clinicasSelecteds.contains(clinica))
-                                clinicasSelecteds.add(clinica);
-                        });
-
-            }
-        });
-
-    }
-
-    private float getTimeInMinutes(String horaInicio) {
-        float hoursInMinute = Float.parseFloat(horaInicio.substring(0, 2))*60;
-        float minutes = Float.parseFloat(horaInicio.substring(3, 5));
-        return hoursInMinute + minutes;
+    private void updateSelectedClinicsByHourRange(float hourStartInMinute, float hourEndInMinute) {
+        clinicasSelecteds.clear();
+        clinicasSelecteds.addAll(
+                new ClinicsSelector(clinicFilterPojo.getClinicsList()).
+                        byRangeOfHourWork(List.of(hourStartInMinute, hourEndInMinute), clinicFilterPojo.getDayOfWorkList())
+        );
     }
 
     private void selectInitialValues(RangeSlider rangeSlider) {
         float[] hoursSelected = clinicFilterPojo.getUiState().getHoursSelected();
         if (hoursSelected[0] != 0 && hoursSelected[1] != 0) {
             rangeSlider.setValues(hoursSelected[0], hoursSelected[1]);
-            selectClinicaInsideRange(hoursSelected[0], hoursSelected[1]);
+            updateSelectedClinicsByHourRange(hoursSelected[0], hoursSelected[1]);
         }else{
             rangeSlider.setValues(rangeSlider.getValueFrom(), rangeSlider.getValueTo());
         }

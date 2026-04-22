@@ -26,7 +26,7 @@ public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
     @Override
     protected void generateFilter(Context context) {
          getPojo();
-        insertCategotyInLayout(ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo));
+        insertCategotyInLayout(ClinicFilterCategoryFactory.generateDayInClinicCategory(context, clinicFilterPojo));
         insertCategotyInLayout(ClinicFilterCategoryFactory.generateHourWorkCategory(context, clinicFilterPojo));
     }
 

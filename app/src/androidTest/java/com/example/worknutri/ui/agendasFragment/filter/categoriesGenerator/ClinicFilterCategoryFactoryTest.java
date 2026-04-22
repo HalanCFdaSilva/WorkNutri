@@ -45,20 +45,20 @@ public class ClinicFilterCategoryFactoryTest {
     }
 
     @Test
-    public void testGenerateDayInClinicaCategoryReturnsNotNull() {
-        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo);
+    public void testGenerateDayInClinicCategoryReturnsNotNull() {
+        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicCategory(context, clinicFilterPojo);
         assertNotNull(category);
     }
 
     @Test
-    public void testGenerateDayInClinicaCategoryReturnsCorrectType() {
-        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo);
+    public void testGenerateDayInClinicCategoryReturnsCorrectType() {
+        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicCategory(context, clinicFilterPojo);
         assertTrue(category instanceof DayInClinicCategory);
     }
 
     @Test
-    public void testGenerateDayInClinicaCategoryWithValidContext() {
-        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo);
+    public void testGenerateDayInClinicCategoryWithValidContext() {
+        DayInClinicCategory category = ClinicFilterCategoryFactory.generateDayInClinicCategory(context, clinicFilterPojo);
         assertNotNull(category);
     }
 
@@ -82,7 +82,7 @@ public class ClinicFilterCategoryFactoryTest {
 
     @Test
     public void testBothCategoriesCanBeCreatedWithSamePojo() {
-        DayInClinicCategory dayCategory = ClinicFilterCategoryFactory.generateDayInClinicaCategory(context, clinicFilterPojo);
+        DayInClinicCategory dayCategory = ClinicFilterCategoryFactory.generateDayInClinicCategory(context, clinicFilterPojo);
         HourWorkCategory hourCategory = ClinicFilterCategoryFactory.generateHourWorkCategory(context, clinicFilterPojo);
         
         assertNotNull(dayCategory);

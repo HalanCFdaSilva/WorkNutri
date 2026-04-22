@@ -4,4 +4,8 @@
     <item name="popup_activity_level_imageview" type="id"/>
     <item name="filter_category_rangeslider" type="id"/>
     <item name="filter_category_chipgroup" type="id"/>
+    <item name="filter_category_clinic_day" type="id"/>
+    <item name="filter_category_clinic_hour" type="id"/>
+    <item name="filter_category_patient_height" type="id"/>
+    <item name="filter_category_patient_weight" type="id"/>
 </resources>

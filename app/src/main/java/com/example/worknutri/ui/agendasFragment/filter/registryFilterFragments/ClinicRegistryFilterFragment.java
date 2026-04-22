@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter.clinicaFilter;
+package com.example.worknutri.ui.agendasFragment.filter.registryFilterFragments;
 
 
 import static com.example.worknutri.ui.agendasFragment.filter.ConstantsFilters.CLINICA_FILTER_BUNDLE;
@@ -8,7 +8,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.example.worknutri.sqlLite.domain.clinica.Clinica;
-import com.example.worknutri.ui.agendasFragment.filter.RegistryFilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories.ClinicFilterCategory;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.ClinicFilterCategories.ClinicFilterCategoryFactory;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
@@ -18,7 +17,7 @@ import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.Clini
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClinicaRegistryFilterFragment extends RegistryFilterFragment {
+public class ClinicRegistryFilterFragment extends RegistryFilterFragment {
 
     private ClinicFilterPojo clinicFilterPojo;
     private final List<ClinicFilterCategory> categories = new ArrayList<>();

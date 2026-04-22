@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.example.worknutri.ui.agendasFragment.filter.clinicaFilter.ClinicaRegistryFilterFragment;
+import com.example.worknutri.ui.agendasFragment.filter.registryFilterFragments.ClinicRegistryFilterFragment;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.clinicaFilter.ClinicFilterPojo;
 
 import java.io.Serializable;
@@ -29,7 +29,7 @@ public class NavDirectionClinicaFilter extends NavDirectionsFilter {
     public Bundle getArguments() {
         Bundle bundle = new Bundle();
 
-        Serializable.class.isAssignableFrom(ClinicaRegistryFilterFragment.class);
+        Serializable.class.isAssignableFrom(ClinicRegistryFilterFragment.class);
         bundle.putSerializable(CLINICA_FILTER_POJO, clinicFilterPojo);
         return bundle;
     }

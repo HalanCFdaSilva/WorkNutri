@@ -1,4 +1,4 @@
-package com.example.worknutri.ui.agendasFragment.filter;
+package com.example.worknutri.ui.agendasFragment.filter.registryFilterFragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.example.worknutri.databinding.RegistryFilterBinding;
+import com.example.worknutri.ui.agendasFragment.filter.OrderSelectorGenerator;
 import com.example.worknutri.ui.agendasFragment.filter.categoriesGenerator.FilterCategories;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.OrderFilterSelectedsBy;
 import com.example.worknutri.ui.agendasFragment.filter.pojos.UiState;

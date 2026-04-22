@@ -21,7 +21,7 @@
     </fragment>
     <dialog
         android:id="@+id/navigation_filter_pacientes"
-        android:name="com.example.worknutri.ui.agendasFragment.filter.pacientesFilter.PacienteRegistryFilterFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.filter.registryFilterFragments.PatientRegistryFilterFragment"
         tools:layout="@layout/registry_filter"/>
 
 
@@ -36,7 +36,7 @@
     </fragment>
     <dialog
         android:id="@+id/navigation_filter_clinica"
-        android:name="com.example.worknutri.ui.agendasFragment.filter.clinicaFilter.ClinicaRegistryFilterFragment"
+        android:name="com.example.worknutri.ui.agendasFragment.filter.registryFilterFragments.ClinicRegistryFilterFragment"
         tools:layout="@layout/registry_filter"/>
 
 
